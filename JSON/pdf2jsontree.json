@@ -1,0 +1,31 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "generated_at": "2026-03-03T18:31:22+01:00",
+    "timezone": "Europe/Madrid",
+    "source": {
+      "file": "2026ddcc.pdf",
+      "generator": "pdf2tree.py"
+    }
+  },
+  "dimensions": {
+    "seasons": [
+      {
+        "id": "s_2025_2026",
+        "label": "Temporada 2025-2026"
+      }
+    ],
+    "competitions": [
+      {
+        "id": "c_001",
+        "name": "VI Spanish Short Course Championship VI Campeonato De España De Distancias Cortas Juvenil, Júnior Y Absoluto",
+        "date": "2025-11-15",
+        "date_start": "2025-11-15",
+        "date_end": "2025-11-16",
+        "location": "Guadalajara",
+        "region": "",
+        "pool_type": "25E"
+      }
+    ]
+  }
+}
