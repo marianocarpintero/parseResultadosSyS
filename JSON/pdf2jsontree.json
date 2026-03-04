@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-03-03T21:11:45+01:00",
+    "generated_at": "2026-03-04T12:12:57+01:00",
     "timezone": "Europe/Madrid",
     "source": {
       "generator": "pdf2tree.py",
@@ -30,12 +30,12 @@
       {
         "id": "c_001",
         "season_id": "s_2024_2025",
-        "name": "XIII Spanish Open - VI Europe Cup XXXIX Campeonato De España Juvenil, Júnior Y Absoluto De Primavera Torrevieja (alicante)",
+        "name": "XIII Spanish Open - VI Europe Cup XXXIX Campeonato De España Juvenil, Júnior Y Absoluto De Primavera",
         "date": "2025-05-02",
         "date_start": "2025-05-02",
         "date_end": "2025-05-04",
-        "location": "Nd Th",
-        "region": "",
+        "location": "Torrevieja",
+        "region": "Alicante",
         "pool_type": "50E",
         "source_file": "2025esp.pdf"
       },

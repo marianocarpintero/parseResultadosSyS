@@ -451,16 +451,19 @@ def parse_competition_from_header(lines, debug=False):
 
     date_start, date_end = parse_dates(date_line, debug=debug)
 
-    # localización = línea inmediatamente anterior
-    if date_idx - 1 >= 0:
-        loc = lines[date_idx - 1]
-        if "," in loc:
-            location, region = [normalize_title(x.strip()) for x in loc.split(",", 1)]
-        else:
-            location = normalize_title(loc)
+    # localización = línea inmediatamente anterior "real" (saltando ordinal-only)
+    loc_idx = date_idx - 1
+    while loc_idx >= 0 and is_ordinal_only_line(lines[loc_idx]):
+        if debug:
+            print("DEBUG skipping ordinal-only line for location:", lines[loc_idx])
+        loc_idx -= 1
+    if loc_idx >= 0:
+        location, region = parse_location_region(lines[loc_idx], debug=debug)
 
-    # nombre = desde la línea 1 hasta antes de la localización
-    name_lines = lines[1:date_idx - 1]
+    # nombre = desde la línea 1 hasta antes de la localización real (loc_idx)
+    name_lines = lines[1:loc_idx]
+    # filtra por si hubiera alguna ordinal en medio (por seguridad)
+    name_lines = [ln for ln in name_lines if not is_ordinal_only_line(ln)]
     name = normalize_title(" ".join(name_lines))
 
     if debug:
@@ -480,6 +483,53 @@ def parse_competition_from_header(lines, debug=False):
         "date_end": date_end,
         "date": date_start
     }
+
+def is_ordinal_only_line(line: str) -> bool:
+    """
+    Detecta líneas que solo contienen sufijos ordinales ingleses:
+    'st', 'nd', 'rd', 'th' (posiblemente repetidos, con espacios).
+    Ej: "nd th"
+    """
+    if not line:
+        return False
+    s = normalize_spaces(line).lower()
+    return bool(re.fullmatch(r"(st|nd|rd|th)(\s+(st|nd|rd|th))*", s))
+
+def parse_location_region(loc_line: str, debug=False):
+    """
+    Soporta:
+      - 'Ciudad (Región)'  -> (Ciudad, Región)
+      - 'Ciudad, Región'   -> (Ciudad, Región)
+      - 'Ciudad'           -> (Ciudad, "")
+    """
+    if not loc_line:
+        return "", ""
+
+    loc_line = normalize_spaces(loc_line).strip()
+
+    # 1) Ciudad (Región)
+    m = re.match(r"^(?P<loc>.+?)\s*\((?P<reg>[^()]+)\)\s*$", loc_line)
+    if m:
+        location = normalize_title(m.group("loc").strip())
+        region = normalize_title(m.group("reg").strip())
+        if debug:
+            print("DEBUG location parsed (paren):", location, "| region:", region)
+        return location, region
+
+    # 2) Ciudad, Región
+    if "," in loc_line:
+        a, b = [x.strip() for x in loc_line.split(",", 1)]
+        location = normalize_title(a)
+        region = normalize_title(b)
+        if debug:
+            print("DEBUG location parsed (comma):", location, "| region:", region)
+        return location, region
+
+    # 3) Solo ciudad
+    location = normalize_title(loc_line)
+    if debug:
+        print("DEBUG location parsed (solo):", location)
+    return location, ""
 
 # ----------------------------
 # MAIN
