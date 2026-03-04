@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
-from doctest import debug
 import os
 import re
 import json
@@ -76,11 +75,32 @@ def athlete_key(name: str) -> str:
       - solo letras/números/espacios (los espacios compactados)
     """
     s = sanitize_name_raw(name)
-    s = strip_accents(s).lower()
+    s = strip_accents(s).capitalize()
     # elimina puntuación y deja letras/números/espacios
     s = re.sub(r"[^a-z0-9\s]", "", s)
     s = normalize_spaces(s)
     return s
+
+def normalize_sex(raw: str):
+    if not raw:
+        return None
+    r = raw.lower()
+    if "fem" in r or "women" in r:
+        return "femenino"
+    if "masc" in r or "men" in r:
+        return "masculino"
+    if "mixt" in r:
+        return "mixto"
+    return None
+
+def normalize_category(raw: str):
+    if not raw:
+        return None
+    r = raw.capitalize()
+    for c in ["juvenil", "junior", "júnior", "absoluto", "máster", "master"]:
+        if c in r:
+            return c.replace("júnior", "junior")
+    return None
 
 HEADER_KEYWORDS = (
     "resultados", "results", "final results", "socorrista", "lifeguard",
@@ -133,7 +153,6 @@ STATUS_TOKENS = {
     "no", "presentado"  # para "No Presentado"
 }
 
-
 RANGE_RE = re.compile(
     r"(?P<d1>\d{1,2})\s*(?:-|al|a)\s*(?P<d2>\d{1,2})\s+de\s+(?P<m>[a-záéíóúñ]+)\s+(?P<y>\d{4})",
     re.IGNORECASE
@@ -142,6 +161,29 @@ RANGE_RE = re.compile(
 CLUB_START_TOKENS = {
     "club", "c.d.", "c.d.e", "cde", "c.n.", "cn", "real", "asociación", "asociacion"
 }
+
+TABLE_HEADER_KEYWORDS = (
+    "socorrista",
+    "lifeguard",
+    "año",
+    "year",
+    "club",
+    "team",
+    "elim.t",
+    "final.t",
+    "ptos",
+    "score"
+)
+
+EVENT_START_RE = re.compile(
+    r"""^(
+        (men's|women's)\s+
+        (4x\d+(\.\d+)?m\.|line\sthrow|\d+m\.)
+        |
+        (\d+\s*m\.|4x\d+(\.\d+)?\s*m\.|lanzamiento)
+    )""",
+    re.IGNORECASE | re.VERBOSE
+)
 
 # ----------------------------
 # Fechas
@@ -1152,10 +1194,179 @@ def parse_athletes_from_pdf(pdf_path: str, debug=False, club_filters=None):
     return athletes
 
 
+# ----------------------------
+# EVENTS
+# ----------------------------
+def extract_distance_m(raw_line: str):
+    """
+    Extrae la distancia individual:
+    - 25 m., 50 m., 100 m., 200 m.
+    - 4x25 m., 4x50 m., 4x12,5 m. / 4x12.5 m.
+    - 200m., 50m. (inglés)
+    """
+    s = normalize_dashes(raw_line.lower())
 
+    m = re.search(r"(\d+(?:[.,]\d+)?)\s*m", s)
+    if not m:
+        return None
 
+    val = float(m.group(1).replace(",", "."))
+    if val.is_integer():
+        return int(val)
+    return val
 
+def extract_base_name(raw_line: str, distance_m):
+    """
+    Construye el base del evento:
+    - siempre incluye la distancia ("50 m.", "4x25 m.")
+    - NO incluye categoría
+    - NO incluye sexo
+    - español, minúsculas
+    """
+    s = normalize_dashes(raw_line.lower())
 
+    # si hay parte EN–ES, nos quedamos con la ES
+    if "-" in s:
+        s = s.split("-", 1)[1].strip()
+
+    # eliminar 'categoría ...'
+    s = re.sub(r"categoría\s+\w+", "", s)
+
+    # eliminar categorías sueltas
+    s = re.sub(r"\b(juvenil|junior|júnior|absoluto|absoluta)\b", "", s)
+
+    # eliminar sexo (todas las variantes)
+    s = re.sub(
+        r"\b(masculino|masculina|femenino|femenina|mixto|mixta|femenenina)\b",
+        "",
+        s,
+    )
+
+    s = normalize_spaces(s)
+
+    # si la distancia NO está en el texto español, la añadimos delante
+    if distance_m is not None and not re.search(r"\d+\s*m", s):
+        if "4x" in raw_line.lower():
+            s = f"4x{distance_m} m. {s}"
+        else:
+            s = f"{distance_m} m. {s}"
+
+    return s
+
+def is_table_header_line(line: str) -> bool:
+    l = line.lower()
+    return any(k in l for k in TABLE_HEADER_KEYWORDS)
+
+def parse_events_from_pdf(pdf_path: str, debug=False):
+    events = []
+    current_event = None
+
+    def close_event():
+        nonlocal current_event
+        if not current_event:
+            return
+
+        # categoría por defecto
+        if not current_event["category"]:
+            current_event["category"] = "absoluto"
+
+        # normalización final de sexo
+        if current_event["sex"] in ("femenina", "femenenina"):
+            current_event["sex"] = "femenino"
+
+        if current_event["sex"] is None:
+            if current_event["relay"]:
+                current_event["sex"] = "mixto"
+            else:
+                raise ValueError(
+                    f"Evento individual sin sexo detectado: {current_event['base']}"
+                )
+
+        # construir ID semántico definitivo
+        current_event["id"] = (
+            "e_" +
+            slugify(current_event["base"]) + "_" +
+            current_event["category"] + "_" +
+            current_event["sex"]
+        )
+
+        events.append(current_event)
+        current_event = None
+
+    with pdfplumber.open(pdf_path) as pdf:
+        for page_idx, page in enumerate(pdf.pages, start=1):
+            text = page.extract_text()
+            if not text:
+                continue
+
+            lines = [normalize_spaces(l) for l in text.split("\n") if l.strip()]
+
+            for ln in lines:
+
+                # 1️⃣ Nunca iniciar evento en cabecera de página
+                if is_headerish_line(ln):
+                    continue
+
+                # 2️⃣ Cabecera de tabla → no iniciar evento
+                if is_table_header_line(ln):
+                    continue
+
+                # 3️⃣ Inicio de evento
+                if EVENT_START_RE.match(ln):
+
+                    close_event()
+
+                    raw = normalize_dashes(ln.lower())
+
+                    # relevo
+                    relay = (
+                        "4x" in raw
+                        or "lanzamiento" in raw
+                        or "line throw" in raw
+                    )
+
+                    # distancia (por tramo)
+                    distance_m = extract_distance_m(ln)
+
+                    # sexo (línea 1)
+                    sex = normalize_sex(raw)
+
+                    # categoría (línea 1)
+                    category = normalize_category(raw)
+
+                    # nombre base
+                    base = extract_base_name(ln, distance_m)
+
+                    current_event = {
+                        "id": None,  # se completa al cerrar
+                        "base": base,
+                        "discipline": base,
+                        "distance_m": distance_m,
+                        "relay": relay,
+                        "category": category,
+                        "sex": sex
+                    }
+                    continue
+
+                # 4️⃣ Línea secundaria: "Juvenil (Femenino)"
+                if current_event:
+                    m = re.match(r"(.+?)\s*\((.+?)\)", ln)
+                    if m:
+                        cat = normalize_category(m.group(1))
+                        sex2 = normalize_sex(m.group(2))
+                        if cat:
+                            current_event["category"] = cat
+                        if sex2:
+                            current_event["sex"] = sex2
+
+    close_event()
+
+    if debug:
+        print(f"DEBUG events en {os.path.basename(pdf_path)}: {len(events)}")
+        for e in events:
+            print(" ", e)
+
+    return events
 
 # ----------------------------
 # MAIN
@@ -1232,15 +1443,14 @@ def main():
 
     # Acumuladores (para un único JSON final)
     competitions = []
-    seasons_map = {}  # id -> {"id":..., "label":...}
-
     processed = []
     skipped = []
 
+    seasons_map = {}  # id -> {"id":..., "label":...}
     clubs_map_global = {}  # club_id -> obj
     results_global = []
-
     athletes_map_global = {}  # athlete_id -> obj
+    events_map_global = {}
 
 
     # El Loop de procesamiento principal: iterar sobre PDFs, extraer datos, acumular en estructuras globales
@@ -1287,6 +1497,7 @@ def main():
 
             processed.append(os.path.basename(pdf_path))
 
+            # ---- deportistas
             ath_map = parse_athletes_from_pdf(
                 pdf_path,
                 debug=args.debug,
@@ -1294,6 +1505,11 @@ def main():
             )
             for aid, aobj in ath_map.items():
                 athletes_map_global.setdefault(aid, aobj)
+
+            # ---- events
+            evs = parse_events_from_pdf(pdf_path, debug=args.debug)
+            for e in evs:
+                events_map_global.setdefault(e["id"], e)
 
         except Exception as e:
             msg = f"{os.path.basename(pdf_path)} -> {e}"
@@ -1344,7 +1560,8 @@ def main():
             "seasons": list(seasons_map.values()),
             "clubs": list(clubs_map_global.values()),
             "athletes": list(athletes_map_global.values()),
-            "competitions": competitions
+            "competitions": competitions,
+            "events": list(events_map_global.values())
         },
         "results": results_global
     }
