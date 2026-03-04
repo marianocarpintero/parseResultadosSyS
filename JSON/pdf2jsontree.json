@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-03-04T20:05:07+01:00",
+    "generated_at": "2026-03-04T20:25:07+01:00",
     "timezone": "Europe/Madrid",
     "source": {
       "generator": "pdf2tree.py",
@@ -149,516 +149,516 @@
     "events": [
       {
         "id": "e_200_m_natacion_con_obstaculos_absoluto_femenino",
-        "base": "200 m. natación con obstáculos",
-        "discipline": "200 m. natación con obstáculos",
+        "base": "200 m. Natación con Obstáculos",
+        "discipline": "200 m. Natación con Obstáculos",
         "distance_m": 200,
         "relay": false,
-        "category": "absoluto",
-        "sex": "femenino"
+        "category": "Absoluto",
+        "sex": "Femenino"
       },
       {
         "id": "e_200_m_natacion_con_obstaculos_juvenil_femenino",
-        "base": "200 m. natación con obstáculos",
-        "discipline": "200 m. natación con obstáculos",
+        "base": "200 m. Natación con Obstáculos",
+        "discipline": "200 m. Natación con Obstáculos",
         "distance_m": 200,
         "relay": false,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_200_m_natacion_con_obstaculos_absoluto_masculino",
-        "base": "200 m. natación con obstáculos",
-        "discipline": "200 m. natación con obstáculos",
+        "base": "200 m. Natación con Obstáculos",
+        "discipline": "200 m. Natación con Obstáculos",
         "distance_m": 200,
         "relay": false,
-        "category": "absoluto",
-        "sex": "masculino"
+        "category": "Absoluto",
+        "sex": "Masculino"
       },
       {
         "id": "e_200_m_natacion_con_obstaculos_juvenil_masculino",
-        "base": "200 m. natación con obstáculos",
-        "discipline": "200 m. natación con obstáculos",
+        "base": "200 m. Natación con Obstáculos",
+        "discipline": "200 m. Natación con Obstáculos",
         "distance_m": 200,
         "relay": false,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_lanzamiento_de_cuerda_juvenil_femenino",
-        "base": "lanzamiento de cuerda",
-        "discipline": "lanzamiento de cuerda",
+        "base": "Lanzamiento de Cuerda",
+        "discipline": "Lanzamiento de Cuerda",
         "distance_m": null,
         "relay": true,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_lanzamiento_de_cuerda_juvenil_masculino",
-        "base": "lanzamiento de cuerda",
-        "discipline": "lanzamiento de cuerda",
+        "base": "Lanzamiento de Cuerda",
+        "discipline": "Lanzamiento de Cuerda",
         "distance_m": null,
         "relay": true,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_lanzamiento_de_cuerda_junior_femenino",
-        "base": "lanzamiento de cuerda",
-        "discipline": "lanzamiento de cuerda",
+        "base": "Lanzamiento de Cuerda",
+        "discipline": "Lanzamiento de Cuerda",
         "distance_m": null,
         "relay": true,
-        "category": "junior",
-        "sex": "femenino"
+        "category": "Junior",
+        "sex": "Femenino"
       },
       {
         "id": "e_lanzamiento_de_cuerda_junior_masculino",
-        "base": "lanzamiento de cuerda",
-        "discipline": "lanzamiento de cuerda",
+        "base": "Lanzamiento de Cuerda",
+        "discipline": "Lanzamiento de Cuerda",
         "distance_m": null,
         "relay": true,
-        "category": "junior",
-        "sex": "masculino"
+        "category": "Junior",
+        "sex": "Masculino"
       },
       {
         "id": "e_4x50_m_relevo_natacion_con_obstaculos_juvenil_femenino",
-        "base": "4x50 m. relevo natacion con obstáculos",
-        "discipline": "4x50 m. relevo natacion con obstáculos",
+        "base": "4x50 m. Relevo Natacion con Obstáculos",
+        "discipline": "4x50 m. Relevo Natacion con Obstáculos",
         "distance_m": 50,
         "relay": true,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_4x50_m_relevo_natacion_con_obstaculos_juvenil_masculino",
-        "base": "4x50 m. relevo natación con obstáculos",
-        "discipline": "4x50 m. relevo natación con obstáculos",
+        "base": "4x50 m. Relevo Natación con Obstáculos",
+        "discipline": "4x50 m. Relevo Natación con Obstáculos",
         "distance_m": 50,
         "relay": true,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_femenino",
-        "base": "4x50 m. relevo natación con obstáculos",
-        "discipline": "4x50 m. relevo natación con obstáculos",
+        "base": "4x50 m. Relevo Natación con Obstáculos",
+        "discipline": "4x50 m. Relevo Natación con Obstáculos",
         "distance_m": 50,
         "relay": true,
-        "category": "junior",
-        "sex": "femenino"
+        "category": "Junior",
+        "sex": "Femenino"
       },
       {
         "id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_masculino",
-        "base": "4x50 m. relevo natación con obstáculos",
-        "discipline": "4x50 m. relevo natación con obstáculos",
+        "base": "4x50 m. Relevo Natación con Obstáculos",
+        "discipline": "4x50 m. Relevo Natación con Obstáculos",
         "distance_m": 50,
         "relay": true,
-        "category": "junior",
-        "sex": "masculino"
+        "category": "Junior",
+        "sex": "Masculino"
       },
       {
         "id": "e_4x25_m_relevo_remolque_de_maniqui_juvenil_femenino",
-        "base": "4x25 m. relevo remolque de maniquí",
-        "discipline": "4x25 m. relevo remolque de maniquí",
+        "base": "4x25 m. Relevo Remolque de Maniquí",
+        "discipline": "4x25 m. Relevo Remolque de Maniquí",
         "distance_m": 25,
         "relay": true,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_4x25_m_relevo_remolque_de_maniqui_juvenil_masculino",
-        "base": "4x25 m. relevo remolque de maniquí",
-        "discipline": "4x25 m. relevo remolque de maniquí",
+        "base": "4x25 m. Relevo Remolque de Maniquí",
+        "discipline": "4x25 m. Relevo Remolque de Maniquí",
         "distance_m": 25,
         "relay": true,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_4x25_m_relevo_remolque_de_maniqui_junior_femenino",
-        "base": "4x25 m. relevo remolque de maniquí",
-        "discipline": "4x25 m. relevo remolque de maniquí",
+        "base": "4x25 m. Relevo Remolque de Maniquí",
+        "discipline": "4x25 m. Relevo Remolque de Maniquí",
         "distance_m": 25,
         "relay": true,
-        "category": "junior",
-        "sex": "femenino"
+        "category": "Junior",
+        "sex": "Femenino"
       },
       {
         "id": "e_4x25_m_relevo_remolque_de_maniqui_junior_masculino",
-        "base": "4x25 m. relevo remolque de maniquí",
-        "discipline": "4x25 m. relevo remolque de maniquí",
+        "base": "4x25 m. Relevo Remolque de Maniquí",
+        "discipline": "4x25 m. Relevo Remolque de Maniquí",
         "distance_m": 25,
         "relay": true,
-        "category": "junior",
-        "sex": "masculino"
+        "category": "Junior",
+        "sex": "Masculino"
       },
       {
         "id": "e_4x50_m_relevo_combinado_juvenil_femenino",
-        "base": "4x50 m. relevo combinado",
-        "discipline": "4x50 m. relevo combinado",
+        "base": "4x50 m. Relevo Combinado",
+        "discipline": "4x50 m. Relevo Combinado",
         "distance_m": 50,
         "relay": true,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_4x50_m_relevo_combinado_juvenil_masculino",
-        "base": "4x50 m. relevo combinado",
-        "discipline": "4x50 m. relevo combinado",
+        "base": "4x50 m. Relevo Combinado",
+        "discipline": "4x50 m. Relevo Combinado",
         "distance_m": 50,
         "relay": true,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_4x50_m_relevo_combinado_junior_femenino",
-        "base": "4x50 m. relevo combinado",
-        "discipline": "4x50 m. relevo combinado",
+        "base": "4x50 m. Relevo Combinado",
+        "discipline": "4x50 m. Relevo Combinado",
         "distance_m": 50,
         "relay": true,
-        "category": "junior",
-        "sex": "femenino"
+        "category": "Junior",
+        "sex": "Femenino"
       },
       {
         "id": "e_4x50_m_relevo_combinado_junior_masculino",
-        "base": "4x50 m. relevo combinado",
-        "discipline": "4x50 m. relevo combinado",
+        "base": "4x50 m. Relevo Combinado",
+        "discipline": "4x50 m. Relevo Combinado",
         "distance_m": 50,
         "relay": true,
-        "category": "junior",
-        "sex": "masculino"
+        "category": "Junior",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_remolque_de_maniqui_absoluto_masculino",
-        "base": "50 m. remolque de maniquí",
-        "discipline": "50 m. remolque de maniquí",
+        "base": "50 m. Remolque de Maniquí",
+        "discipline": "50 m. Remolque de Maniquí",
         "distance_m": 50,
         "relay": false,
-        "category": "absoluto",
-        "sex": "masculino"
+        "category": "Absoluto",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_remolque_de_maniqui_juvenil_masculino",
-        "base": "50 m. remolque de maniquí",
-        "discipline": "50 m. remolque de maniquí",
+        "base": "50 m. Remolque de Maniquí",
+        "discipline": "50 m. Remolque de Maniquí",
         "distance_m": 50,
         "relay": false,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_100_m_combinada_de_salvamento_absoluto_femenino",
-        "base": "100 m. combinada de salvamento",
-        "discipline": "100 m. combinada de salvamento",
+        "base": "100 m. Combinada de Salvamento",
+        "discipline": "100 m. Combinada de Salvamento",
         "distance_m": 100,
         "relay": false,
-        "category": "absoluto",
-        "sex": "femenino"
+        "category": "Absoluto",
+        "sex": "Femenino"
       },
       {
         "id": "e_100_m_combinada_de_salvamento_juvenil_femenino",
-        "base": "100 m. combinada de salvamento",
-        "discipline": "100 m. combinada de salvamento",
+        "base": "100 m. Combinada de Salvamento",
+        "discipline": "100 m. Combinada de Salvamento",
         "distance_m": 100,
         "relay": false,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_100_m_combinada_de_salvamento_absoluto_masculino",
-        "base": "100 m. combinada de salvamento",
-        "discipline": "100 m. combinada de salvamento",
+        "base": "100 m. Combinada de Salvamento",
+        "discipline": "100 m. Combinada de Salvamento",
         "distance_m": 100,
         "relay": false,
-        "category": "absoluto",
-        "sex": "masculino"
+        "category": "Absoluto",
+        "sex": "Masculino"
       },
       {
         "id": "e_100_m_combinada_de_salvamento_juvenil_masculino",
-        "base": "100 m. combinada de salvamento",
-        "discipline": "100 m. combinada de salvamento",
+        "base": "100 m. Combinada de Salvamento",
+        "discipline": "100 m. Combinada de Salvamento",
         "distance_m": 100,
         "relay": false,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_femenino",
-        "base": "100 m. remolque de maniquí con aletas",
-        "discipline": "100 m. remolque de maniquí con aletas",
+        "base": "100 m. Remolque de Maniquí con Aletas",
+        "discipline": "100 m. Remolque de Maniquí con Aletas",
         "distance_m": 100,
         "relay": false,
-        "category": "absoluto",
-        "sex": "femenino"
+        "category": "Absoluto",
+        "sex": "Femenino"
       },
       {
         "id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_femenino",
-        "base": "100 m. remolque de maniquí con aletas",
-        "discipline": "100 m. remolque de maniquí con aletas",
+        "base": "100 m. Remolque de Maniquí con Aletas",
+        "discipline": "100 m. Remolque de Maniquí con Aletas",
         "distance_m": 100,
         "relay": false,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_masculino",
-        "base": "100 m. remolque de maniquí con aletas",
-        "discipline": "100 m. remolque de maniquí con aletas",
+        "base": "100 m. Remolque de Maniquí con Aletas",
+        "discipline": "100 m. Remolque de Maniquí con Aletas",
         "distance_m": 100,
         "relay": false,
-        "category": "absoluto",
-        "sex": "masculino"
+        "category": "Absoluto",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_natacion_con_obstaculos_juvenil_femenino",
-        "base": "50 m. natación con obstáculos",
-        "discipline": "50 m. natación con obstáculos",
+        "base": "50 m. Natación con Obstáculos",
+        "discipline": "50 m. Natación con Obstáculos",
         "distance_m": 50,
         "relay": false,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_50_m_natacion_con_obstaculos_juvenil_masculino",
-        "base": "50 m. natación con obstáculos",
-        "discipline": "50 m. natación con obstáculos",
+        "base": "50 m. Natación con Obstáculos",
+        "discipline": "50 m. Natación con Obstáculos",
         "distance_m": 50,
         "relay": false,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_natacion_con_obstaculos_junior_femenino",
-        "base": "50 m. natación con obstáculos",
-        "discipline": "50 m. natación con obstáculos",
+        "base": "50 m. Natación con Obstáculos",
+        "discipline": "50 m. Natación con Obstáculos",
         "distance_m": 50,
         "relay": false,
-        "category": "junior",
-        "sex": "femenino"
+        "category": "Junior",
+        "sex": "Femenino"
       },
       {
         "id": "e_50_m_natacion_con_obstaculos_junior_masculino",
-        "base": "50 m. natación con obstáculos",
-        "discipline": "50 m. natación con obstáculos",
+        "base": "50 m. Natación con Obstáculos",
+        "discipline": "50 m. Natación con Obstáculos",
         "distance_m": 50,
         "relay": false,
-        "category": "junior",
-        "sex": "masculino"
+        "category": "Junior",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_natacion_con_obstaculos_absoluto_femenino",
-        "base": "50 m. natación con obstáculos",
-        "discipline": "50 m. natación con obstáculos",
+        "base": "50 m. Natación con Obstáculos",
+        "discipline": "50 m. Natación con Obstáculos",
         "distance_m": 50,
         "relay": false,
-        "category": "absoluto",
-        "sex": "femenino"
+        "category": "Absoluto",
+        "sex": "Femenino"
       },
       {
         "id": "e_50_m_natacion_con_obstaculos_absoluto_masculino",
-        "base": "50 m. natación con obstáculos",
-        "discipline": "50 m. natación con obstáculos",
+        "base": "50 m. Natación con Obstáculos",
+        "discipline": "50 m. Natación con Obstáculos",
         "distance_m": 50,
         "relay": false,
-        "category": "absoluto",
-        "sex": "masculino"
+        "category": "Absoluto",
+        "sex": "Masculino"
       },
       {
         "id": "e_4x25_m_relevo_natacion_con_obstaculos_absoluto_femenino",
-        "base": "4x25 m. relevo natación con obstáculos",
-        "discipline": "4x25 m. relevo natación con obstáculos",
+        "base": "4x25 m. Relevo Natación con Obstáculos",
+        "discipline": "4x25 m. Relevo Natación con Obstáculos",
         "distance_m": 25,
         "relay": true,
-        "category": "absoluto",
-        "sex": "femenino"
+        "category": "Absoluto",
+        "sex": "Femenino"
       },
       {
         "id": "e_4x25_m_relevo_natacion_con_obstaculos_absoluto_masculino",
-        "base": "4x25 m. relevo natación con obstáculos",
-        "discipline": "4x25 m. relevo natación con obstáculos",
+        "base": "4x25 m. Relevo Natación con Obstáculos",
+        "discipline": "4x25 m. Relevo Natación con Obstáculos",
         "distance_m": 25,
         "relay": true,
-        "category": "absoluto",
-        "sex": "masculino"
+        "category": "Absoluto",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_combinada_de_salvamento_juvenil_femenino",
-        "base": "50 m. combinada de salvamento",
-        "discipline": "50 m. combinada de salvamento",
+        "base": "50 m. Combinada de Salvamento",
+        "discipline": "50 m. Combinada de Salvamento",
         "distance_m": 50,
         "relay": false,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_50_m_combinada_de_salvamento_juvenil_masculino",
-        "base": "50 m. combinada de salvamento",
-        "discipline": "50 m. combinada de salvamento",
+        "base": "50 m. Combinada de Salvamento",
+        "discipline": "50 m. Combinada de Salvamento",
         "distance_m": 50,
         "relay": false,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_combinada_de_salvamento_junior_femenino",
-        "base": "50 m. combinada de salvamento",
-        "discipline": "50 m. combinada de salvamento",
+        "base": "50 m. Combinada de Salvamento",
+        "discipline": "50 m. Combinada de Salvamento",
         "distance_m": 50,
         "relay": false,
-        "category": "junior",
-        "sex": "femenino"
+        "category": "Junior",
+        "sex": "Femenino"
       },
       {
         "id": "e_50_m_combinada_de_salvamento_junior_masculino",
-        "base": "50 m. combinada de salvamento",
-        "discipline": "50 m. combinada de salvamento",
+        "base": "50 m. Combinada de Salvamento",
+        "discipline": "50 m. Combinada de Salvamento",
         "distance_m": 50,
         "relay": false,
-        "category": "junior",
-        "sex": "masculino"
+        "category": "Junior",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_combinada_de_salvamento_absoluto_femenino",
-        "base": "50 m. combinada de salvamento",
-        "discipline": "50 m. combinada de salvamento",
+        "base": "50 m. Combinada de Salvamento",
+        "discipline": "50 m. Combinada de Salvamento",
         "distance_m": 50,
         "relay": false,
-        "category": "absoluto",
-        "sex": "femenino"
+        "category": "Absoluto",
+        "sex": "Femenino"
       },
       {
         "id": "e_50_m_combinada_de_salvamento_absoluto_masculino",
-        "base": "50 m. combinada de salvamento",
-        "discipline": "50 m. combinada de salvamento",
+        "base": "50 m. Combinada de Salvamento",
+        "discipline": "50 m. Combinada de Salvamento",
         "distance_m": 50,
         "relay": false,
-        "category": "absoluto",
-        "sex": "masculino"
+        "category": "Absoluto",
+        "sex": "Masculino"
       },
       {
         "id": "e_25_m_remolque_de_maniqui_juvenil_femenino",
-        "base": "25 m. remolque de maniquí",
-        "discipline": "25 m. remolque de maniquí",
+        "base": "25 m. Remolque de Maniquí",
+        "discipline": "25 m. Remolque de Maniquí",
         "distance_m": 25,
         "relay": false,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_25_m_remolque_de_maniqui_juvenil_masculino",
-        "base": "25 m. remolque de maniquí",
-        "discipline": "25 m. remolque de maniquí",
+        "base": "25 m. Remolque de Maniquí",
+        "discipline": "25 m. Remolque de Maniquí",
         "distance_m": 25,
         "relay": false,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_25_m_remolque_de_maniqui_junior_femenino",
-        "base": "25 m. remolque de maniquí",
-        "discipline": "25 m. remolque de maniquí",
+        "base": "25 m. Remolque de Maniquí",
+        "discipline": "25 m. Remolque de Maniquí",
         "distance_m": 25,
         "relay": false,
-        "category": "junior",
-        "sex": "femenino"
+        "category": "Junior",
+        "sex": "Femenino"
       },
       {
         "id": "e_25_m_remolque_de_maniqui_junior_masculino",
-        "base": "25 m. remolque de maniquí",
-        "discipline": "25 m. remolque de maniquí",
+        "base": "25 m. Remolque de Maniquí",
+        "discipline": "25 m. Remolque de Maniquí",
         "distance_m": 25,
         "relay": false,
-        "category": "junior",
-        "sex": "masculino"
+        "category": "Junior",
+        "sex": "Masculino"
       },
       {
         "id": "e_25_m_remolque_de_maniqui_absoluto_femenino",
-        "base": "25 m. remolque de maniquí",
-        "discipline": "25 m. remolque de maniquí",
+        "base": "25 m. Remolque de Maniquí",
+        "discipline": "25 m. Remolque de Maniquí",
         "distance_m": 25,
         "relay": false,
-        "category": "absoluto",
-        "sex": "femenino"
+        "category": "Absoluto",
+        "sex": "Femenino"
       },
       {
         "id": "e_25_m_remolque_de_maniqui_absoluto_masculino",
-        "base": "25 m. remolque de maniquí",
-        "discipline": "25 m. remolque de maniquí",
+        "base": "25 m. Remolque de Maniquí",
+        "discipline": "25 m. Remolque de Maniquí",
         "distance_m": 25,
         "relay": false,
-        "category": "absoluto",
-        "sex": "masculino"
+        "category": "Absoluto",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_remolque_de_maniqui_con_aletas_juvenil_femenino",
-        "base": "50 m. remolque de maniquí con aletas",
-        "discipline": "50 m. remolque de maniquí con aletas",
+        "base": "50 m. Remolque de Maniquí con Aletas",
+        "discipline": "50 m. Remolque de Maniquí con Aletas",
         "distance_m": 50,
         "relay": false,
-        "category": "juvenil",
-        "sex": "femenino"
+        "category": "Juvenil",
+        "sex": "Femenino"
       },
       {
         "id": "e_50_m_remolque_de_maniqui_con_aletas_juvenil_masculino",
-        "base": "50 m. remolque de maniquí con aletas",
-        "discipline": "50 m. remolque de maniquí con aletas",
+        "base": "50 m. Remolque de Maniquí con Aletas",
+        "discipline": "50 m. Remolque de Maniquí con Aletas",
         "distance_m": 50,
         "relay": false,
-        "category": "juvenil",
-        "sex": "masculino"
+        "category": "Juvenil",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_remolque_de_maniqui_con_aletas_junior_femenino",
-        "base": "50 m. remolque de maniquí con aletas",
-        "discipline": "50 m. remolque de maniquí con aletas",
+        "base": "50 m. Remolque de Maniquí con Aletas",
+        "discipline": "50 m. Remolque de Maniquí con Aletas",
         "distance_m": 50,
         "relay": false,
-        "category": "junior",
-        "sex": "femenino"
+        "category": "Junior",
+        "sex": "Femenino"
       },
       {
         "id": "e_50_m_remolque_de_maniqui_con_aletas_junior_masculino",
-        "base": "50 m. remolque de maniquí con aletas",
-        "discipline": "50 m. remolque de maniquí con aletas",
+        "base": "50 m. Remolque de Maniquí con Aletas",
+        "discipline": "50 m. Remolque de Maniquí con Aletas",
         "distance_m": 50,
         "relay": false,
-        "category": "junior",
-        "sex": "masculino"
+        "category": "Junior",
+        "sex": "Masculino"
       },
       {
         "id": "e_50_m_remolque_de_maniqui_con_aletas_absoluto_femenino",
-        "base": "50 m. remolque de maniquí con aletas",
-        "discipline": "50 m. remolque de maniquí con aletas",
+        "base": "50 m. Remolque de Maniquí con Aletas",
+        "discipline": "50 m. Remolque de Maniquí con Aletas",
         "distance_m": 50,
         "relay": false,
-        "category": "absoluto",
-        "sex": "femenino"
+        "category": "Absoluto",
+        "sex": "Femenino"
       },
       {
         "id": "e_50_m_remolque_de_maniqui_con_aletas_absoluto_masculino",
-        "base": "50 m. remolque de maniquí con aletas",
-        "discipline": "50 m. remolque de maniquí con aletas",
+        "base": "50 m. Remolque de Maniquí con Aletas",
+        "discipline": "50 m. Remolque de Maniquí con Aletas",
         "distance_m": 50,
         "relay": false,
-        "category": "absoluto",
-        "sex": "masculino"
+        "category": "Absoluto",
+        "sex": "Masculino"
       },
       {
         "id": "e_4x25_m_relevo_combinado_absoluto_femenino",
-        "base": "4x25 m. relevo combinado",
-        "discipline": "4x25 m. relevo combinado",
+        "base": "4x25 m. Relevo Combinado",
+        "discipline": "4x25 m. Relevo Combinado",
         "distance_m": 25,
         "relay": true,
-        "category": "absoluto",
-        "sex": "femenino"
+        "category": "Absoluto",
+        "sex": "Femenino"
       },
       {
         "id": "e_4x25_m_relevo_combinado_absoluto_masculino",
-        "base": "4x25 m. relevo combinado",
-        "discipline": "4x25 m. relevo combinado",
+        "base": "4x25 m. Relevo Combinado",
+        "discipline": "4x25 m. Relevo Combinado",
         "distance_m": 25,
         "relay": true,
-        "category": "absoluto",
-        "sex": "masculino"
+        "category": "Absoluto",
+        "sex": "Masculino"
       }
     ]
   },

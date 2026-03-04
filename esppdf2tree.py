@@ -194,6 +194,19 @@ EVENT_START_RE = re.compile(
 
 CATEGORY_SEX_LINE_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$")
 
+LOWER_WORDS_ES = {
+    "de","del","la","las","los","y","e","en","con","sin","al","a","por","para"
+}
+
+DIST_PREFIX_RE = re.compile(
+    r"""^\s*(
+        (?:\d+(?:[.,]\d+)?\s*m\.)|
+        (?:4x\d+(?:[.,]\d+)?\s*m\.)
+    )\s+(.*)$""",
+    re.IGNORECASE | re.VERBOSE
+)
+
+
 
 # ----------------------------
 # Fechas
@@ -1288,6 +1301,42 @@ def parse_category_sex_line(line: str):
     sex = normalize_sex(m.group(2))
     return cat, sex
 
+def title_case_es(s: str) -> str:
+    """Title Case en español con conectores en minúscula."""
+    if not s:
+        return s
+    s = re.sub(r"\s+", " ", s.strip())
+    tokens = s.split(" ")
+    out = []
+    for i, t in enumerate(tokens):
+        tl = t.lower()
+        # conserva siglas con puntos tipo C.D.E si apareciesen
+        if re.fullmatch(r"(?:[A-Za-z]\.){2,}", t):
+            out.append(t.upper())
+            continue
+        if i > 0 and tl in LOWER_WORDS_ES:
+            out.append(tl)
+        else:
+            out.append(tl[:1].upper() + tl[1:])
+    return " ".join(out)
+
+def format_event_text(base: str) -> str:
+    """
+    Devuelve:
+      - '50 m. Natación con Obstáculos'
+      - '4x50 m. Relevo Natación con Obstáculos'
+      - 'Lanzamiento de Cuerda'
+    """
+    if not base:
+        return base
+    b = re.sub(r"\s+", " ", base.strip())
+    m = DIST_PREFIX_RE.match(b)
+    if m:
+        prefix = m.group(1).replace("  ", " ").strip()
+        rest = m.group(2).strip()
+        return f"{prefix} {title_case_es(rest)}"
+    return title_case_es(b)
+
 def parse_events_from_pdf(pdf_path: str, debug=False):
     events_by_id = {}
     current_event = None
@@ -1313,18 +1362,21 @@ def parse_events_from_pdf(pdf_path: str, debug=False):
         if not current_event.get("sex"):
             current_event["sex"] = "mixto" if current_event["relay"] else None
 
-        # si es individual y aun así no hay sexo, lo dejamos (o puedes lanzar warning)
-        # if current_event["sex"] is None and debug:
-        #     print("WARN event sin sexo:", current_event)
+
 
         # id semántico
-        event_id = (
-            "e_" +
-            slugify(current_event["base"]) + "_" +
-            current_event["category"] + "_" +
-            current_event["sex"]
-        )
+        event_id = ("e_" + slugify(current_event["base"]) + "_" + current_event["category"] + "_" + current_event["sex"])
         current_event["id"] = event_id
+
+
+        current_event["base"] = format_event_text(current_event["base"])
+        current_event["discipline"] = format_event_text(current_event["discipline"])
+
+        # category y sex también capitalizados
+        current_event["category"] = title_case_es(current_event["category"])
+        current_event["sex"] = title_case_es(current_event["sex"])
+
+
 
         # dedup: si ya existe, no lo repetimos
         events_by_id.setdefault(event_id, current_event)
