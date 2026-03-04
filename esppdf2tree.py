@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
+from doctest import debug
 import os
 import re
 import json
@@ -46,9 +47,16 @@ def normalize_pool(pool_raw: str) -> str:
 def normalize_dashes(s: str) -> str:
     return re.sub(r"[‐‑‒–—−]", "-", s)
 
-# ----------------------------
-# Fechas
-# ----------------------------
+def normalize_key(s: str) -> str:
+    s = normalize_spaces(s)
+    s = strip_accents(s).lower()
+    return s
+
+def slugify(s: str) -> str:
+    s = normalize_key(s)
+    s = re.sub(r"[^a-z0-9]+", "_", s).strip("_")
+    return s or "na"
+
 MONTHS_ES = {
     "enero": "01", "febrero": "02", "marzo": "03",
     "abril": "04","mayo": "05", "junio": "06",
@@ -80,12 +88,33 @@ DATE_ES_NOYEAR_RE = re.compile(
     re.IGNORECASE
 )
 
+TIME_RE = re.compile(r"\b\d{1,2}:\d{2}:\d{2}\b")  # ej 00:28:44
+TIME_TOKEN_RE = re.compile(r"^\d{1,2}:\d{2}:\d{2}$")
+
+YEAR_RE = re.compile(r"\b\d{4}\b")
+
+STATUS_RE = re.compile(
+    r"\b(Descalificado|Baja|No\s+Presentado|DNS|DNF)\b",
+    re.IGNORECASE
+)
+STATUS_TOKENS = {
+    "descalificado", "baja", "dns", "dnf",
+    "no", "presentado"  # para "No Presentado"
+}
+
+
 RANGE_RE = re.compile(
     r"(?P<d1>\d{1,2})\s*(?:-|al|a)\s*(?P<d2>\d{1,2})\s+de\s+(?P<m>[a-záéíóúñ]+)\s+(?P<y>\d{4})",
     re.IGNORECASE
 )
 
+CLUB_START_TOKENS = {
+    "club", "c.d.", "c.d.e", "cde", "c.n.", "cn", "real", "asociación", "asociacion"
+}
 
+# ----------------------------
+# Fechas
+# ----------------------------
 def parse_date_en(text: str):
     """Devuelve yyyy-mm-dd o None"""
     m = DATE_EN_RE.search(text)
@@ -532,6 +561,336 @@ def parse_location_region(loc_line: str, debug=False):
     return location, ""
 
 # ----------------------------
+# CLUBES
+# ----------------------------
+
+def clean_club_name(raw: str) -> str:
+    """
+    Limpia el nombre del club:
+      - elimina cualquier '(...)' AL FINAL (categoría, p.ej. '(absoluta)')
+      - compacta espacios
+    """
+    if not raw:
+        return ""
+    s = normalize_spaces(raw)
+
+    # Quitar paréntesis finales repetidos: "Club X (absoluta)" -> "Club X"
+    s = re.sub(r"\s*\([^()]*\)\s*$", "", s).strip()
+    return s
+
+TIME_TOKEN_RE = re.compile(r"^\d{1,2}:\d{2}:\d{2}$")
+STATUS_TOKENS = {
+    "descalificado", "baja", "dns", "dnf",
+    "no", "presentado"  # para "No Presentado"
+}
+
+def clean_club_name_strict(raw: str) -> str:
+    """
+    Limpia nombre de club de forma estricta:
+      - quita '(...)' final
+      - elimina colas con tiempos/estados/puntos (p.ej. 'Descalificado 34', '00:30:25')
+    """
+    if not raw:
+        return ""
+
+    s = normalize_spaces(raw)
+
+    # 1) quitar paréntesis final (categoría)
+    s = re.sub(r"\s*\([^()]*\)\s*$", "", s).strip()
+
+    # 2) limpiar tokens finales "basura"
+    toks = s.split()
+
+    # elimina desde el final: tiempos, estados, números (puntos), "No Presentado"
+    while toks:
+        t = toks[-1]
+        tl = t.lower()
+
+        if TIME_TOKEN_RE.fullmatch(t):
+            toks.pop()
+            continue
+
+        if tl.isdigit():              # puntos u otros números sueltos al final
+            toks.pop()
+            continue
+
+        if tl in STATUS_TOKENS:       # descalificado/baja/no/presentado
+            toks.pop()
+            continue
+
+        # a veces aparece "No Presentado" como dos tokens, esto lo cubre el while
+        break
+
+    return " ".join(toks).strip()
+
+def looks_like_club(name: str) -> bool:
+    if not name or len(name) < 4:
+        return False
+    # si por alguna razón el "club" acaba siendo solo números/tiempos, lo descartamos
+    if TIME_TOKEN_RE.fullmatch(name):
+        return False
+    if re.fullmatch(r"\d+", name):
+        return False
+    return True
+
+def find_end_of_club(parts, start_idx):
+    """
+    Devuelve el índice donde termina el club (exclusivo).
+    Club = parts[start_idx:end_idx]
+    """
+    for i in range(start_idx, len(parts)):
+        t = parts[i]
+        tl = t.lower()
+
+        # si llega un tiempo, ahí empieza otra columna -> fin de club
+        if TIME_TOKEN_RE.fullmatch(t):
+            return i
+
+        # si llega un estado, también fin de club
+        if tl in STATUS_TOKENS:
+            return i
+
+        # a veces aparece puntuación suelta al final; si está muy al final,
+        # puedes cortar también (opcional, más seguro al usar columnas)
+    return len(parts)
+
+def parse_individual_result_line(line: str):
+    ln = normalize_spaces(line)
+    parts = ln.split()
+    if len(parts) < 6:
+        return None
+    if not parts[0].isdigit():
+        return None
+
+    pos = int(parts[0])
+
+    # localizar año
+    year_idx = None
+    for i in range(1, min(len(parts), 20)):
+        if re.fullmatch(r"\d{4}", parts[i]):
+            year_idx = i
+            break
+    if year_idx is None:
+        return None
+
+    # localizar primer tiempo o estado hacia el final
+    end_idx = None
+    for i in range(len(parts)-1, year_idx, -1):
+        if TIME_RE.fullmatch(parts[i]) or STATUS_RE.fullmatch(parts[i]):
+            end_idx = i
+            break
+    if end_idx is None or end_idx <= year_idx + 1:
+        # a veces hay varios tiempos; buscamos el primero desde year_idx
+        for i in range(year_idx+1, len(parts)):
+            if TIME_RE.fullmatch(parts[i]) or STATUS_RE.search(parts[i]):
+                end_idx = i
+                break
+    if end_idx is None or end_idx <= year_idx + 1:
+        return None
+
+    
+    club_start = year_idx + 1  # o club_start detectado
+    club_end = find_end_of_club(parts, club_start)
+    club_raw = " ".join(parts[club_start:club_end]).strip()
+    club = clean_club_name_strict(club_raw)
+    if not looks_like_club(club):
+        return None  # o continue, según contexto
+    club_id = f"club_{slugify(club)}"
+
+    if debug and club_raw != club:
+        print("DEBUG club cleaned:", club_raw, "=>", club)
+
+    # atleta y birth_year (opcional para este paso)
+    athlete_name = " ".join(parts[1:year_idx]).strip()
+    birth_year = int(parts[year_idx])
+
+    # tiempo/estado: tomamos el último tiempo encontrado en la línea (Final.T suele ir al final)
+    times = TIME_RE.findall(ln)
+    status = "OK"
+    if STATUS_RE.search(ln):
+        status = STATUS_RE.search(ln).group(1).upper()
+    time_raw = times[-1] if times else ""
+
+    return {
+        "kind": "individual",
+        "position": pos,
+        "athlete_name": athlete_name,
+        "birth_year": birth_year,
+        "club": club,
+        "time_raw": time_raw,
+        "status": status,
+    }
+
+def find_club_start_index(parts, start=1):
+    for i in range(start, len(parts)):
+        tok = parts[i].lower()
+        if tok in CLUB_START_TOKENS:
+            return i
+    return None
+
+def parse_relay_result_start_line(line: str):
+    ln = normalize_spaces(line)
+    parts = ln.split()
+    if len(parts) < 5:
+        return None
+    if not parts[0].isdigit():
+        return None
+    if not TIME_RE.search(ln) and not STATUS_RE.search(ln):
+        return None
+
+    pos = int(parts[0])
+
+    # club empieza en token típico (Club / C.D. / etc.)
+    club_start = find_club_start_index(parts, start=1)
+    if club_start is None:
+        return None
+
+    # club termina justo antes del primer tiempo/estado
+    end_idx = None
+    for i in range(club_start+1, len(parts)):
+        if TIME_RE.fullmatch(parts[i]) or STATUS_RE.search(parts[i]):
+            end_idx = i
+            break
+    if end_idx is None:
+        return None
+
+    club_end = find_end_of_club(parts, club_start)
+    club_raw = " ".join(parts[club_start:club_end]).strip()
+    club = clean_club_name_strict(club_raw)
+    if not looks_like_club(club):
+        return None  # o continue, según contexto
+    club_id = f"club_{slugify(club)}"
+    
+    if debug and club_raw != club:
+        print("DEBUG club cleaned:", club_raw, "=>", club)
+
+    # nombre(s) en la misma línea: tokens entre pos y club_start
+    athlete_name = " ".join(parts[1:club_start]).strip()
+
+    times = TIME_RE.findall(ln)
+    status = "OK"
+    if STATUS_RE.search(ln):
+        status = STATUS_RE.search(ln).group(1).upper()
+    time_raw = times[-1] if times else ""
+
+    return {
+        "kind": "relay",
+        "position": pos,
+        "club": club,
+        "time_raw": time_raw,
+        "status": status,
+        "relay_athletes": [athlete_name] if athlete_name else []
+    }
+
+def is_relay_continuation_line(line: str) -> bool:
+    ln = normalize_spaces(line)
+    if not ln:
+        return False
+    # NO empieza por número (no es nuevo puesto)
+    if re.match(r"^\d+\b", ln):
+        return False
+    # no contiene tiempo ni club (suele ser solo un nombre)
+    if TIME_RE.search(ln) or "club" in ln.lower():
+        return False
+    # heurística: contiene coma (APELLIDO, NOMBRE) o muchas mayúsculas
+    return ("," in ln) or (sum(1 for c in ln if c.isupper()) > 5)
+
+def parse_results_and_clubs_from_pdf(pdf_path: str, competition_id: str, debug=False, club_filters=None):
+    club_filters_norm = [normalize_key(x) for x in (club_filters or []) if x]
+
+    clubs_map = {}   # club_id -> {id,name,slug}
+    results = []
+
+    def club_passes_filter(club_name: str) -> bool:
+        if not club_filters_norm:
+            return True
+        ck = normalize_key(club_name)
+        return any(f in ck for f in club_filters_norm)
+
+    with pdfplumber.open(pdf_path) as pdf:
+        current_relay = None
+
+        for page_idx, page in enumerate(pdf.pages, start=1):
+            text = page.extract_text()
+            if not text:
+                continue
+            lines = [normalize_spaces(l) for l in text.split("\n") if l.strip()]
+
+            for ln in lines:
+                # 1) si estamos dentro de un relevo, mirar continuaciones
+                if current_relay and is_relay_continuation_line(ln):
+                    current_relay["relay_athletes"].append(normalize_spaces(ln))
+                    continue
+
+                # 2) intentar parsear individual
+                ind = parse_individual_result_line(ln)
+                if ind and ind.get("club"):
+                    club_name = ind["club"]
+                    if not club_passes_filter(club_name):
+                        continue
+
+                    club_id = f"club_{slugify(club_name)}"
+                    clubs_map.setdefault(club_id, {"id": club_id, "name": club_name, "slug": slugify(club_name)})
+
+                    rid = f"r_{competition_id}_{len(results)+1:06d}"
+                    results.append({
+                        "id": rid,
+                        "competition_id": competition_id,
+                        "club_id": club_id,
+                        "kind": "individual",
+                        "position": ind.get("position"),
+                        "athlete_name": ind.get("athlete_name"),
+                        "birth_year": ind.get("birth_year"),
+                        "time_raw": ind.get("time_raw"),
+                        "status": ind.get("status"),
+                    })
+                    current_relay = None
+                    continue
+
+                # 3) intentar parsear inicio de relevo
+                rel = parse_relay_result_start_line(ln)
+                if rel and rel.get("club"):
+                    club_name = rel["club"]
+                    if not club_passes_filter(club_name):
+                        current_relay = None
+                        continue
+
+                    club_id = f"club_{slugify(club_name)}"
+                    clubs_map.setdefault(club_id, {"id": club_id, "name": club_name, "slug": slugify(club_name)})
+
+                    rid = f"r_{competition_id}_{len(results)+1:06d}"
+                    row = {
+                        "id": rid,
+                        "competition_id": competition_id,
+                        "club_id": club_id,
+                        "kind": "relay",
+                        "position": rel.get("position"),
+                        "time_raw": rel.get("time_raw"),
+                        "status": rel.get("status"),
+                        "relay_athletes": rel.get("relay_athletes", [])
+                    }
+                    results.append(row)
+                    current_relay = row
+                    continue
+
+                # si no matchea nada, cerramos relevo abierto
+                current_relay = None
+
+    if debug:
+        print(f"DEBUG results en {os.path.basename(pdf_path)}: {len(results)}")
+        print(f"DEBUG clubs en {os.path.basename(pdf_path)}: {len(clubs_map)}")
+
+    return results, clubs_map
+
+
+
+
+
+
+
+
+
+# ----------------------------
 # MAIN
 # ----------------------------
 def resolve_pdf_inputs(inputs, base_dir="./PDF", debug=False):
@@ -585,6 +944,13 @@ def main():
         action="store_true",
         help="Si un PDF falla (p.ej. no encuentra fecha), detiene el proceso."
     )
+    parser.add_argument(
+        "--club-filter",
+        action="append",
+        default=None,
+        help="Filtra clubes por subcadena (repetible). Ej: --club-filter Pacifico"
+    )
+
     args = parser.parse_args()
 
     os.makedirs("./PDF", exist_ok=True)
@@ -603,6 +969,9 @@ def main():
 
     processed = []
     skipped = []
+
+    clubs_map_global = {}  # club_id -> obj
+    results_global = []
 
     for pdf_path in pdf_files:
         try:
@@ -634,6 +1003,17 @@ def main():
                 "source_file": os.path.basename(pdf_path)
             })
 
+            # ---- results + clubs
+            res, clubs_map = parse_results_and_clubs_from_pdf(
+                pdf_path,
+                competition_id=comp_id,
+                debug=args.debug,
+                club_filters=args.club_filter
+            )
+            for cid, cobj in clubs_map.items():
+                clubs_map_global.setdefault(cid, cobj)
+            results_global.extend(res)
+
             processed.append(os.path.basename(pdf_path))
 
         except Exception as e:
@@ -659,8 +1039,10 @@ def main():
         },
         "dimensions": {
             "seasons": list(seasons_map.values()),
+            "clubs": list(clubs_map_global.values()),
             "competitions": competitions
-        }
+        },
+        "results": results_global
     }
 
     with open(args.output, "w", encoding="utf-8") as f:
