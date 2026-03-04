@@ -94,12 +94,19 @@ def normalize_sex(raw: str):
     return None
 
 def normalize_category(raw: str):
+    """
+    Devuelve: juvenil | junior | absoluto
+    (corrige absoluta -> absoluto)
+    """
     if not raw:
         return None
-    r = raw.capitalize()
-    for c in ["juvenil", "junior", "júnior", "absoluto", "máster", "master"]:
-        if c in r:
-            return c.replace("júnior", "junior")
+    r = raw.lower()
+    if "juvenil" in r:
+        return "juvenil"
+    if "junior" in r or "júnior" in r:
+        return "junior"
+    if "absoluta" in r or "absoluto" in r:
+        return "absoluto"
     return None
 
 HEADER_KEYWORDS = (
@@ -184,6 +191,9 @@ EVENT_START_RE = re.compile(
     )""",
     re.IGNORECASE | re.VERBOSE
 )
+
+CATEGORY_SEX_LINE_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$")
+
 
 # ----------------------------
 # Fechas
@@ -1257,41 +1267,70 @@ def is_table_header_line(line: str) -> bool:
     l = line.lower()
     return any(k in l for k in TABLE_HEADER_KEYWORDS)
 
-def parse_events_from_pdf(pdf_path: str, debug=False):
-    events = []
-    current_event = None
+def looks_like_result_row(line: str) -> bool:
+    """
+    Detecta inicio de filas de resultados (individuales o relevos).
+    Muy simple: empieza por número y contiene tiempo o año.
+    """
+    ln = normalize_spaces(line)
+    if not re.match(r"^\d+\b", ln):
+        return False
+    return bool(TIME_RE.search(ln) or YEAR_RE.search(ln) or STATUS_RE.search(ln))
 
-    def close_event():
-        nonlocal current_event
+def parse_category_sex_line(line: str):
+    """
+    Parsea líneas tipo: 'Juvenil (Femenino)', 'Junior (Masculino)', 'Absoluto (Mixto)'
+    """
+    m = CATEGORY_SEX_LINE_RE.match(normalize_spaces(line))
+    if not m:
+        return None, None
+    cat = normalize_category(m.group(1))
+    sex = normalize_sex(m.group(2))
+    return cat, sex
+
+def parse_events_from_pdf(pdf_path: str, debug=False):
+    events_by_id = {}
+    current_event = None
+    open_for_grouping = False  # permite capturar "categoria (sexo)" tras la línea del evento
+
+    def finalize_and_store_event():
+        nonlocal current_event, open_for_grouping
         if not current_event:
             return
 
-        # categoría por defecto
-        if not current_event["category"]:
+        # defaults
+        if not current_event.get("category"):
+            current_event["category"] = "absoluto"
+        if current_event["category"] == "absoluta":
             current_event["category"] = "absoluto"
 
-        # normalización final de sexo
-        if current_event["sex"] in ("femenina", "femenenina"):
+        # sexo: en individuales debe existir; en relays puede default mixto
+        if current_event.get("sex") in ("femenina", "femenenina"):
             current_event["sex"] = "femenino"
+        if current_event.get("sex") == "mixta":
+            current_event["sex"] = "mixto"
 
-        if current_event["sex"] is None:
-            if current_event["relay"]:
-                current_event["sex"] = "mixto"
-            else:
-                raise ValueError(
-                    f"Evento individual sin sexo detectado: {current_event['base']}"
-                )
+        if not current_event.get("sex"):
+            current_event["sex"] = "mixto" if current_event["relay"] else None
 
-        # construir ID semántico definitivo
-        current_event["id"] = (
+        # si es individual y aun así no hay sexo, lo dejamos (o puedes lanzar warning)
+        # if current_event["sex"] is None and debug:
+        #     print("WARN event sin sexo:", current_event)
+
+        # id semántico
+        event_id = (
             "e_" +
             slugify(current_event["base"]) + "_" +
             current_event["category"] + "_" +
             current_event["sex"]
         )
+        current_event["id"] = event_id
 
-        events.append(current_event)
+        # dedup: si ya existe, no lo repetimos
+        events_by_id.setdefault(event_id, current_event)
+
         current_event = None
+        open_for_grouping = False
 
     with pdfplumber.open(pdf_path) as pdf:
         for page_idx, page in enumerate(pdf.pages, start=1):
@@ -1303,67 +1342,79 @@ def parse_events_from_pdf(pdf_path: str, debug=False):
 
             for ln in lines:
 
-                # 1️⃣ Nunca iniciar evento en cabecera de página
+                # --- 0) si estamos justo después de un event, intentar capturar "categoria (sexo)" ---
+                if current_event and open_for_grouping:
+                    cat, sex2 = parse_category_sex_line(ln)
+                    if cat or sex2:
+                        if cat:
+                            current_event["category"] = cat
+                        if sex2:
+                            current_event["sex"] = sex2
+                        # seguimos abiertos por si hubiera otra línea similar
+                        continue
+
+                    # si ya empiezan resultados, bloqueamos grouping
+                    if looks_like_result_row(ln):
+                        open_for_grouping = False
+                        # NO hacemos continue: dejamos que la línea se procese por otras lógicas si hiciera falta
+
+                # --- 1) Nunca iniciar evento en cabecera de página ---
+                # (mantén tu helper de cabecera de página; aquí reutilizo is_headerish_line como lo has hecho)
                 if is_headerish_line(ln):
                     continue
 
-                # 2️⃣ Cabecera de tabla → no iniciar evento
+                # --- 2) Cabecera de tabla ---
+                # OJO: no debe impedir que una línea posterior "categoria (sexo)" sea leída;
+                # por eso solo la ignoramos, no cerramos evento.
                 if is_table_header_line(ln):
                     continue
 
-                # 3️⃣ Inicio de evento
+                # --- 3) Inicio de evento ---
                 if EVENT_START_RE.match(ln):
-
-                    close_event()
+                    finalize_and_store_event()
 
                     raw = normalize_dashes(ln.lower())
 
-                    # relevo
                     relay = (
                         "4x" in raw
                         or "lanzamiento" in raw
                         or "line throw" in raw
                     )
 
-                    # distancia (por tramo)
                     distance_m = extract_distance_m(ln)
 
-                    # sexo (línea 1)
                     sex = normalize_sex(raw)
-
-                    # categoría (línea 1)
                     category = normalize_category(raw)
 
-                    # nombre base
                     base = extract_base_name(ln, distance_m)
+                    discipline = base
 
                     current_event = {
-                        "id": None,  # se completa al cerrar
+                        "id": None,  # se construye al cerrar
                         "base": base,
-                        "discipline": base,
+                        "discipline": discipline,
                         "distance_m": distance_m,
                         "relay": relay,
                         "category": category,
                         "sex": sex
                     }
+
+                    # tras una línea de evento, permitimos que venga "categoria (sexo)" después
+                    open_for_grouping = True
                     continue
 
-                # 4️⃣ Línea secundaria: "Juvenil (Femenino)"
-                if current_event:
-                    m = re.match(r"(.+?)\s*\((.+?)\)", ln)
-                    if m:
-                        cat = normalize_category(m.group(1))
-                        sex2 = normalize_sex(m.group(2))
-                        if cat:
-                            current_event["category"] = cat
-                        if sex2:
-                            current_event["sex"] = sex2
+                # --- 4) si ya estamos en evento y aparece una fila de resultados, cerramos grouping ---
+                if current_event and open_for_grouping and looks_like_result_row(ln):
+                    open_for_grouping = False
+                    continue
 
-    close_event()
+    finalize_and_store_event()
+
+    events = list(events_by_id.values())
 
     if debug:
         print(f"DEBUG events en {os.path.basename(pdf_path)}: {len(events)}")
-        for e in events:
+        for e in events[:30]:
             print(" ", e)
 
     return events
