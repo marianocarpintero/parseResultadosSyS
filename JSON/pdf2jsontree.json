@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-03-04T13:35:58+01:00",
+    "generated_at": "2026-03-04T17:17:29+01:00",
     "timezone": "Europe/Madrid",
     "source": {
       "generator": "pdf2tree.py",
@@ -31,6 +31,93 @@
         "id": "club_c_d_e_pacifico_salvamento",
         "name": "C.D.E Pacífico Salvamento",
         "slug": "c_d_e_pacifico_salvamento"
+      }
+    ],
+    "athletes": [
+      {
+        "id": "a_nerea_ibanez_gonzalez_2008",
+        "name": "Nerea Ibañez Gonzalez",
+        "birth_year": 2008
+      },
+      {
+        "id": "a_andrea_ibanez_gonzalez_2009",
+        "name": "Andrea Ibáñez González",
+        "birth_year": 2009
+      },
+      {
+        "id": "a_claudia_mate_garcia_2010",
+        "name": "Claudia Mate García",
+        "birth_year": 2010
+      },
+      {
+        "id": "a_alvaro_sanchez_martinez_2004",
+        "name": "Alvaro Sánchez Martínez",
+        "birth_year": 2004
+      },
+      {
+        "id": "a_inaki_cuairan_garay_2009",
+        "name": "Iñaki Cuairán Garay",
+        "birth_year": 2009
+      },
+      {
+        "id": "a_maria_cruz_gonzalez_2000",
+        "name": "Maria Cruz Gonzalez",
+        "birth_year": 2000
+      },
+      {
+        "id": "a_lucia_gonzalez_garcia_2007",
+        "name": "Lucía González García",
+        "birth_year": 2007
+      },
+      {
+        "id": "a_julia_gonzalez_rodriguez_2006",
+        "name": "Julia Gonzalez Rodriguez",
+        "birth_year": 2006
+      },
+      {
+        "id": "a_inigo_mendez_bodas_2010",
+        "name": "Íñigo Méndez Bodas",
+        "birth_year": 2010
+      },
+      {
+        "id": "a_ruth_carpintero_moreno_2008",
+        "name": "Ruth Carpintero Moreno",
+        "birth_year": 2008
+      },
+      {
+        "id": "a_gabriela_huertas_sanchez_2009",
+        "name": "Gabriela Huertas Sánchez",
+        "birth_year": 2009
+      },
+      {
+        "id": "a_adrian_castellanos_rodriguez_2006",
+        "name": "Adrián Castellanos Rodriguez",
+        "birth_year": 2006
+      },
+      {
+        "id": "a_alejandro_hernandez_ojeda_2006",
+        "name": "Alejandro Hernández Ojeda",
+        "birth_year": 2006
+      },
+      {
+        "id": "a_jorge_murcia_conde_2009",
+        "name": "Jorge Murcia Conde",
+        "birth_year": 2009
+      },
+      {
+        "id": "a_alvaro_rojo_paz_2010",
+        "name": "Álvaro Rojo Paz",
+        "birth_year": 2010
+      },
+      {
+        "id": "a_lucas_gabriel_nieto_2009",
+        "name": "Lucas Gabriel Nieto",
+        "birth_year": 2009
+      },
+      {
+        "id": "a_alvaro_moreno_diaz_1995",
+        "name": "Alvaro Moreno Diaz",
+        "birth_year": 1995
       }
     ],
     "competitions": [

@@ -57,6 +57,37 @@ def slugify(s: str) -> str:
     s = re.sub(r"[^a-z0-9]+", "_", s).strip("_")
     return s or "na"
 
+def sanitize_name_raw(s: str) -> str:
+    """Limpieza previa del texto de nombre que viene del PDF."""
+    if not s:
+        return ""
+    s = s.replace("\u00a0", " ")               # NBSP -> space
+    s = normalize_spaces(s)
+    # quitar adornos típicos de PDF (asteriscos, bullets)
+    s = re.sub(r"[*•·]+", "", s)
+    # normalizar guiones Unicode a guion normal
+    s = re.sub(r"[‐‑‒–—−]", "-", s)
+    return normalize_spaces(s)
+
+def athlete_key(name: str) -> str:
+    """
+    Clave fuerte para deduplicar atletas:
+      - minúsculas, sin tildes, sin puntuación, sin caracteres raros
+      - solo letras/números/espacios (los espacios compactados)
+    """
+    s = sanitize_name_raw(name)
+    s = strip_accents(s).lower()
+    # elimina puntuación y deja letras/números/espacios
+    s = re.sub(r"[^a-z0-9\s]", "", s)
+    s = normalize_spaces(s)
+    return s
+
+HEADER_KEYWORDS = (
+    "resultados", "results", "final results", "socorrista", "lifeguard",
+    "año/year", "club / team", "club/team", "elim.t", "final.t", "ptos", "score",
+    "campeonato", "championship", "open", "cup", "pool", "piscina"
+)
+
 MONTHS_ES = {
     "enero": "01", "febrero": "02", "marzo": "03",
     "abril": "04","mayo": "05", "junio": "06",
@@ -578,7 +609,6 @@ def clean_club_name(raw: str) -> str:
     s = re.sub(r"\s*\([^()]*\)\s*$", "", s).strip()
     return s
 
-TIME_TOKEN_RE = re.compile(r"^\d{1,2}:\d{2}:\d{2}$")
 STATUS_TOKENS = {
     "descalificado", "baja", "dns", "dnf",
     "no", "presentado"  # para "No Presentado"
@@ -697,9 +727,6 @@ def parse_individual_result_line(line: str):
         return None  # o continue, según contexto
     club_id = f"club_{slugify(club)}"
 
-    if debug and club_raw != club:
-        print("DEBUG club cleaned:", club_raw, "=>", club)
-
     # atleta y birth_year (opcional para este paso)
     athlete_name = " ".join(parts[1:year_idx]).strip()
     birth_year = int(parts[year_idx])
@@ -761,9 +788,6 @@ def parse_relay_result_start_line(line: str):
         return None  # o continue, según contexto
     club_id = f"club_{slugify(club)}"
     
-    if debug and club_raw != club:
-        print("DEBUG club cleaned:", club_raw, "=>", club)
-
     # nombre(s) en la misma línea: tokens entre pos y club_start
     athlete_name = " ".join(parts[1:club_start]).strip()
 
@@ -882,7 +906,250 @@ def parse_results_and_clubs_from_pdf(pdf_path: str, competition_id: str, debug=F
 
     return results, clubs_map
 
+# ----------------------------
+# DEPORTISTAS
+# ----------------------------
+def looks_like_row_start(ln: str) -> bool:
+    return bool(re.match(r"^\d+\b", ln)) and (TIME_RE.search(ln) or STATUS_RE.search(ln))
 
+def normalize_athlete_name(raw: str) -> str:
+    """
+    Normaliza 'APELLIDOS, NOMBRE' -> 'Nombre Apellidos'
+    y aplica Title Case con conectores comunes en minúscula.
+    """
+    if not raw:
+        return ""
+    s = normalize_spaces(raw.replace("\u00a0", " "))
+
+    # si viene con coma, invertimos
+    if "," in s:
+        a, b = [x.strip() for x in s.split(",", 1)]
+        if a and b:
+            s = f"{b} {a}".strip()
+
+    # title case inteligente
+    lower_words = {"de", "del", "la", "las", "los", "y", "e"}
+    out = []
+    for i, w in enumerate(s.split()):
+        wl = w.lower()
+        if i > 0 and wl in lower_words:
+            out.append(wl)
+        else:
+            # conserva siglas tipo C.D.E
+            if re.fullmatch(r"(?:[A-Za-z]\.){2,}", w):
+                out.append(w.upper())
+            else:
+                out.append(wl.capitalize())
+    return " ".join(out).strip()
+
+def athlete_id(name: str, birth_year=None) -> str:
+    by = str(birth_year) if birth_year else "na"
+    return f"a_{slugify(name)}_{by}"
+
+ATH_YEAR_RE = re.compile(r"\b(19\d{2}|20\d{2})\b")
+
+def parse_individual_athlete_line(line: str):
+    """
+    Espera algo como: '1 APELLIDOS, NOMBRE 2003 Club ... 01:58:43 20'
+    Devuelve (name, birth_year, club_name_clean) o None
+    """
+    ln = normalize_spaces(line)
+    parts = ln.split()
+    if len(parts) < 5:
+        return None
+    if not parts[0].isdigit():
+        return None
+
+    # localizar año
+    yidx = None
+    for i in range(1, min(len(parts), 25)):
+        if re.fullmatch(r"(19\d{2}|20\d{2})", parts[i]):
+            yidx = i
+            break
+    if yidx is None:
+        return None
+
+    # nombre = tokens entre pos y año
+    raw_name = " ".join(parts[1:yidx]).strip()
+    name = normalize_athlete_name(raw_name)
+    if not name:
+        return None
+
+    birth_year = int(parts[yidx])
+
+    # club_raw: tokens entre año y "fin de club" (tiempo/estado)
+    club_start = yidx + 1
+    club_end = find_end_of_club(parts, club_start)  
+    club_raw = " ".join(parts[club_start:club_end]).strip()
+    club_clean = clean_club_name_strict(club_raw)   
+    if not looks_like_club(club_clean):
+        # puede ser fila rara sin club o con columnas desplazadas
+        return (name, birth_year, "")
+
+    return (name, birth_year, club_clean)
+
+def is_headerish_line(ln: str) -> bool:
+    l = ln.lower()
+    return any(k in l for k in HEADER_KEYWORDS)
+
+def parse_relay_athlete_continuation(line: str):
+    """
+    Línea que contiene solo un nombre de deportista (sin pos, sin año, sin tiempos).
+    Devuelve name o None.
+    """
+    ln = normalize_spaces(line)
+    if not ln:
+        return None
+    if re.match(r"^\d+\b", ln):
+        return None
+    if ATH_YEAR_RE.search(ln) or TIME_RE.search(ln):
+        return None
+    if is_headerish_line(ln):
+        return None
+    if ln.count(",") != 1:
+        return None
+    if re.search(r"\d", ln):
+        return None
+
+    name = normalize_athlete_name(ln)
+    return name if name else None
+
+def parse_athletes_from_pdf(pdf_path: str, debug=False, club_filters=None):
+    """
+    Devuelve dict {athlete_id: {id,name,birth_year}} aplicando la regla:
+      - Crear atletas CON año si existen en individuales.
+      - Crear atletas SIN año SOLO si el nombre no aparece nunca con año (solo relays).
+    Filtra por club (p.ej. Pacifico).
+    """
+    club_filters_norm = [normalize_key(x) for x in (club_filters or []) if x]
+
+    def club_passes(club_name: str) -> bool:
+        if not club_filters_norm:
+            return True
+        ck = normalize_key(club_name)
+        return any(f in ck for f in club_filters_norm)
+
+    # Evidencia
+    seen_with_year = {}      # name_key -> set(years)
+    display_name_by_key = {} # name_key -> display name normalizado (para emitir en dimensión)
+    relay_names = set()      # name_key vistos en relays (solo nombres, sin año)
+
+    current_relay_club = None  # club del relevo activo
+
+    with pdfplumber.open(pdf_path) as pdf:
+        for page_idx, page in enumerate(pdf.pages, start=1):
+            text = page.extract_text()
+            if not text:
+                continue
+            lines = [normalize_spaces(l) for l in text.split("\n") if l.strip()]
+
+            for ln in lines:                
+                # Paso 1: cabecera => reset y skip
+                if is_headerish_line(ln) or is_header_start(ln) or is_date_line(ln):
+                    current_relay_club = None
+                    continue
+
+                #  Paso 2: inicio de nueva fila => reset del contexto de relevo (para evitar arrastres)
+                if looks_like_row_start(ln):
+                    # por defecto cerramos el relevo anterior
+                    current_relay_club = None
+
+                    # intentamos leer si esta fila es un relevo y capturar club
+                    rel = parse_relay_result_start_line(ln)
+                    if rel and rel.get("club") and club_passes(rel["club"]):
+                        current_relay_club = rel["club"]
+                        # añade el primer nombre si lo hay...
+                                
+                # 1) Individual: pos + "Apellidos, Nombre" + año + club...
+                ind = parse_individual_athlete_line(ln)
+                if ind:
+                    name, by, club_clean = ind
+
+                    # resetea contexto de relevo
+                    current_relay_club = None
+
+                    # Solo atletas del club filtrado
+                    if club_clean and club_passes(club_clean):
+                        key = athlete_key(name)
+                        display_name_by_key.setdefault(key, name)
+                        seen_with_year.setdefault(key, set()).add(by)
+
+                        if debug:
+                            print("DEBUG ATH IND:", name, by, "| club:", club_clean)
+                    continue
+
+                # 2) Inicio de relevo: pos + atleta1 + club + tiempo...
+                rel = parse_relay_result_start_line(ln)
+                if rel and rel.get("club"):
+                    current_relay_club = rel["club"]  # nombre limpio del club
+
+                    if current_relay_club and club_passes(current_relay_club):
+                        first_names = rel.get("relay_athletes", [])
+                        for nm in first_names:
+                            nm_norm = normalize_athlete_name(nm)
+                            if not nm_norm:
+                                continue
+                            key = athlete_key(nm_norm)
+                            display_name_by_key.setdefault(key, nm_norm)
+                            relay_names.add(key)
+
+                            if debug:
+                                print("DEBUG ATH RELAY START:", nm_norm, "| club:", current_relay_club)
+                    continue
+
+                # 3) Continuación de relevo: líneas con nombres sin pos/año/club
+                if current_relay_club and club_passes(current_relay_club):
+                    nm = parse_relay_athlete_continuation(ln)
+                    if nm:
+                        key = athlete_key(nm)
+                        display_name_by_key.setdefault(key, nm)
+                        relay_names.add(key)
+
+                        if debug:
+                            print("DEBUG ATH RELAY CONT:", nm, "| club:", current_relay_club)
+                        continue
+
+                # 4) Si no encaja, no tocamos el contexto (listas pueden continuar)
+                #    (si quisieras, podrías resetear en cabeceras claras)
+
+    # -------- Construcción final de la dimensión --------
+    athletes = {}
+
+    # A) Crear todos los atletas con año (si hay varios años, crea uno por año)
+    for key, years in seen_with_year.items():
+        name = display_name_by_key.get(key, key)
+        for by in sorted(years):
+            aid = athlete_id(name, by)
+            athletes.setdefault(aid, {"id": aid, "name": name, "birth_year": by})
+
+    # B) Crear atleta sin año SOLO si aparece en relay y NUNCA con año
+    for key in relay_names:
+        if key in seen_with_year:
+            continue  # ya existe con año, no crear el "na"
+        name = display_name_by_key.get(key, key)
+        aid = athlete_id(name, None)
+        athletes.setdefault(aid, {"id": aid, "name": name, "birth_year": None})
+
+    if debug:
+        print(f"DEBUG athletes final en {os.path.basename(pdf_path)}: {len(athletes)} "
+              f"(with_year={sum(len(v) for v in seen_with_year.values())}, relay_only={len([k for k in relay_names if k not in seen_with_year])})")
+
+    # Blindaje final: si existe atleta con año para ese nombre, elimina su versión "na"
+    year_keys = set(seen_with_year.keys())
+    to_delete = []
+    for aid, obj in athletes.items():
+        if obj.get("birth_year") is None:
+            k = athlete_key(obj.get("name", ""))
+            if k in year_keys:
+                to_delete.append(aid)
+
+    for aid in to_delete:
+        athletes.pop(aid, None)
+
+    if debug and to_delete:
+        print("DEBUG removed relay-only duplicates:", len(to_delete))
+
+    return athletes
 
 
 
@@ -973,6 +1240,10 @@ def main():
     clubs_map_global = {}  # club_id -> obj
     results_global = []
 
+    athletes_map_global = {}  # athlete_id -> obj
+
+
+    # El Loop de procesamiento principal: iterar sobre PDFs, extraer datos, acumular en estructuras globales
     for pdf_path in pdf_files:
         try:
             if args.debug:
@@ -1016,6 +1287,14 @@ def main():
 
             processed.append(os.path.basename(pdf_path))
 
+            ath_map = parse_athletes_from_pdf(
+                pdf_path,
+                debug=args.debug,
+                club_filters=args.club_filter  # Pacífico
+            )
+            for aid, aobj in ath_map.items():
+                athletes_map_global.setdefault(aid, aobj)
+
         except Exception as e:
             msg = f"{os.path.basename(pdf_path)} -> {e}"
             if args.debug:
@@ -1025,6 +1304,30 @@ def main():
             skipped.append({"file": os.path.basename(pdf_path), "reason": str(e)})
             continue
 
+    # ---- Consolidación global de athletes ----
+    # Regla: si existe atleta con año para ese nombre (en cualquier PDF),
+    # eliminar su versión "_na" creada en PDFs anteriores.
+    name_has_year = set()
+    to_delete = []
+
+    for aid, aobj in athletes_map_global.items():
+        if aobj.get("birth_year") is not None:
+            k = athlete_key(aobj.get("name", ""))
+            if k:
+                name_has_year.add(k)
+
+    for aid, aobj in list(athletes_map_global.items()):
+        if aobj.get("birth_year") is None:
+            k = athlete_key(aobj.get("name", ""))
+            if k in name_has_year:
+                to_delete.append(aid)
+                athletes_map_global.pop(aid, None)
+
+    if args.debug and to_delete:
+        print("DEBUG athletes global: removed _na duplicates:", len(to_delete))
+
+
+    # ---- Construcción del JSON ----
     data = {
         "meta": {
             "version": "1.0.0",
@@ -1040,6 +1343,7 @@ def main():
         "dimensions": {
             "seasons": list(seasons_map.values()),
             "clubs": list(clubs_map_global.values()),
+            "athletes": list(athletes_map_global.values()),
             "competitions": competitions
         },
         "results": results_global
