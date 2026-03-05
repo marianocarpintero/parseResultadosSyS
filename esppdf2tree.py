@@ -13,6 +13,110 @@ from glob import glob
 # ----------------------------
 # Normalización
 # ----------------------------
+HEADER_KEYWORDS = (
+    "resultados", "results", "final results", "socorrista", "lifeguard",
+    "año/year", "club / team", "club/team", "elim.t", "final.t", "ptos", "score",
+    "campeonato", "championship", "open", "cup", "pool", "piscina"
+)
+
+MONTHS_ES = {
+    "enero": "01", "febrero": "02", "marzo": "03",
+    "abril": "04","mayo": "05", "junio": "06",
+    "julio": "07", "agosto": "08","septiembre": "09", "setiembre": "09",
+    "octubre": "10", "noviembre": "11", "diciembre": "12"
+}
+
+MONTHS_EN = {
+    "january":"01","february":"02","march":"03",
+    "april":"04","may":"05","june":"06",
+    "july":"07","august":"08","september":"09",
+    "october":"10","november":"11","december":"12"
+}
+
+DATE_RE = re.compile(
+    r"(?P<d1>\d{1,2})\s*(?:de)?\s*(?P<m>[a-záéíóúñ]+)\s*(?:de)?\s*(?P<y>\d{4})",
+    re.IGNORECASE
+)
+
+# 02nd May 2025  |  2 May 2025
+DATE_EN_RE = re.compile(
+    r"\b(?P<d>\d{1,2})(?:st|nd|rd|th)?\s+(?P<m>[A-Za-z]+)\s+(?P<y>\d{4})\b",
+    re.IGNORECASE
+)
+
+# 2 de mayo | 2 mayo  (sin año)
+DATE_ES_NOYEAR_RE = re.compile(
+    r"\b(?P<d>\d{1,2})\s*(?:de\s+)?(?P<m>[a-záéíóúñ]+)\b",
+    re.IGNORECASE
+)
+
+TIME_RE = re.compile(r"\b\d{1,2}:\d{2}:\d{2}\b")  # ej 00:28:44
+
+TIME_TOKEN_RE = re.compile(r"^\d{1,2}:\d{2}:\d{2}$")
+
+YEAR_RE = re.compile(r"\b\d{4}\b")
+
+STATUS_RE = re.compile(
+    r"\b(Descalificado|Baja|No\s+Presentado|DNS|DNF)\b",
+    re.IGNORECASE
+)
+STATUS_TOKENS = {
+    "descalificado", "baja", "dns", "dnf",
+    "no", "presentado"  # para "No Presentado"
+}
+
+RANGE_RE = re.compile(
+    r"(?P<d1>\d{1,2})\s*(?:-|al|a)\s*(?P<d2>\d{1,2})\s+de\s+(?P<m>[a-záéíóúñ]+)\s+(?P<y>\d{4})",
+    re.IGNORECASE
+)
+
+CLUB_START_TOKENS = {
+    "club", "c.d.", "c.d.e", "cde", "c.n.", "cn", "real", "asociación", "asociacion"
+}
+
+TABLE_HEADER_KEYWORDS = (
+    "socorrista",
+    "lifeguard",
+    "año",
+    "year",
+    "club",
+    "team",
+    "elim.t",
+    "final.t",
+    "ptos",
+    "score"
+)
+
+EVENT_START_RE = re.compile(
+    r"""^(
+        (men's|women's)\s+
+        (4x\d+(\.\d+)?m\.|line\sthrow|\d+m\.)
+        |
+        (\d+\s*m\.|4x\d+(\.\d+)?\s*m\.|lanzamiento)
+    )""",
+    re.IGNORECASE | re.VERBOSE
+)
+
+CATEGORY_SEX_LINE_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$")
+
+LOWER_WORDS_ES = {
+    "de","del","la","las","los","y","e","en","con","sin","al","a","por","para"
+}
+
+DIST_PREFIX_RE = re.compile(
+    r"""^\s*(
+        (?:\d+(?:[.,]\d+)?\s*m\.)|
+        (?:4x\d+(?:[.,]\d+)?\s*m\.)
+    )\s+(.*)$""",
+    re.IGNORECASE | re.VERBOSE
+)
+
+TIME_RAW_RE = re.compile(r"^\d{1,2}:\d{2}:\d{2}$")      # mm:ss:cc
+
+TIME_RAW_DOT_RE = re.compile(r"^\d{1,2}:\d{2}\.\d{1,3}$")  # mm:ss.mmm
+
+
+
 def normalize_spaces(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
@@ -109,104 +213,95 @@ def normalize_category(raw: str):
         return "absoluto"
     return None
 
-HEADER_KEYWORDS = (
-    "resultados", "results", "final results", "socorrista", "lifeguard",
-    "año/year", "club / team", "club/team", "elim.t", "final.t", "ptos", "score",
-    "campeonato", "championship", "open", "cup", "pool", "piscina"
-)
+def time_raw_to_display_seconds(raw: str):
+    """
+    raw:
+      - '00:31:93'  (mm:ss:cc centésimas)
+      - '00:31.930' (mm:ss.mmm)
+    display:
+      - '00:31.930'
+    seconds:
+      - 31.93
+    """
+    if not raw:
+        return None, None
 
-MONTHS_ES = {
-    "enero": "01", "febrero": "02", "marzo": "03",
-    "abril": "04","mayo": "05", "junio": "06",
-    "julio": "07", "agosto": "08","septiembre": "09", "setiembre": "09",
-    "octubre": "10", "noviembre": "11", "diciembre": "12"
-}
+    raw = raw.strip()
 
-MONTHS_EN = {
-    "january":"01","february":"02","march":"03",
-    "april":"04","may":"05","june":"06",
-    "july":"07","august":"08","september":"09",
-    "october":"10","november":"11","december":"12"
-}
+    m = TIME_RAW_RE.match(raw)
+    if m:
+        mm, ss, cc = raw.split(":")
+        mm_i = int(mm); ss_i = int(ss); cc_i = int(cc)
+        ms = cc_i * 10
+        display = f"{mm_i:02d}:{ss_i:02d}.{ms:03d}"
+        seconds = mm_i * 60 + ss_i + cc_i / 100.0
+        return display, seconds
 
-DATE_RE = re.compile(
-    r"(?P<d1>\d{1,2})\s*(?:de)?\s*(?P<m>[a-záéíóúñ]+)\s*(?:de)?\s*(?P<y>\d{4})",
-    re.IGNORECASE
-)
+    m = TIME_RAW_DOT_RE.match(raw)
+    if m:
+        mm, rest = raw.split(":")
+        ss, mmm = rest.split(".")
+        mm_i = int(mm); ss_i = int(ss)
+        mmm_i = int(mmm.ljust(3, "0")[:3])
+        display = f"{mm_i:02d}:{ss_i:02d}.{mmm_i:03d}"
+        seconds = mm_i * 60 + ss_i + (mmm_i / 1000.0)
+        return display, seconds
 
-# 02nd May 2025  |  2 May 2025
-DATE_EN_RE = re.compile(
-    r"\b(?P<d>\d{1,2})(?:st|nd|rd|th)?\s+(?P<m>[A-Za-z]+)\s+(?P<y>\d{4})\b",
-    re.IGNORECASE
-)
+    # si no es tiempo, devolvemos raw como display
+    return raw, None
 
-# 2 de mayo | 2 mayo  (sin año)
-DATE_ES_NOYEAR_RE = re.compile(
-    r"\b(?P<d>\d{1,2})\s*(?:de\s+)?(?P<m>[a-záéíóúñ]+)\b",
-    re.IGNORECASE
-)
+def parse_status(line: str) -> str:
+    u = line.upper()
+    if "DESCALIFIC" in u or "DSQ" in u:
+        return "DSQ"
+    if "NO PRESENTADO" in u or "DNS" in u:
+        return "DNS"
+    if "BAJA" in u:
+        return "BAJA"
+    return "OK"
 
-TIME_RE = re.compile(r"\b\d{1,2}:\d{2}:\d{2}\b")  # ej 00:28:44
-TIME_TOKEN_RE = re.compile(r"^\d{1,2}:\d{2}:\d{2}$")
+def parse_points_from_line(line: str):
+    """
+    Devuelve puntos (int) si detecta un entero razonable al final de la fila.
+    Si no, None.
+    """
+    parts = normalize_spaces(line).split()
+    if not parts:
+        return None
 
-YEAR_RE = re.compile(r"\b\d{4}\b")
+    # típicamente los puntos van al final
+    last = parts[-1]
+    if last.isdigit():
+        val = int(last)
+        # protección para no confundir con año (4 dígitos)
+        if val < 1000:
+            return val
+    return None
 
-STATUS_RE = re.compile(
-    r"\b(Descalificado|Baja|No\s+Presentado|DNS|DNF)\b",
-    re.IGNORECASE
-)
-STATUS_TOKENS = {
-    "descalificado", "baja", "dns", "dnf",
-    "no", "presentado"  # para "No Presentado"
-}
+def athlete_id_from_name_year(name_norm: str, birth_year):
+    by = str(birth_year) if birth_year else "na"
+    return f"a_{slugify(name_norm)}_{by}"
 
-RANGE_RE = re.compile(
-    r"(?P<d1>\d{1,2})\s*(?:-|al|a)\s*(?P<d2>\d{1,2})\s+de\s+(?P<m>[a-záéíóúñ]+)\s+(?P<y>\d{4})",
-    re.IGNORECASE
-)
-
-CLUB_START_TOKENS = {
-    "club", "c.d.", "c.d.e", "cde", "c.n.", "cn", "real", "asociación", "asociacion"
-}
-
-TABLE_HEADER_KEYWORDS = (
-    "socorrista",
-    "lifeguard",
-    "año",
-    "year",
-    "club",
-    "team",
-    "elim.t",
-    "final.t",
-    "ptos",
-    "score"
-)
-
-EVENT_START_RE = re.compile(
-    r"""^(
-        (men's|women's)\s+
-        (4x\d+(\.\d+)?m\.|line\sthrow|\d+m\.)
-        |
-        (\d+\s*m\.|4x\d+(\.\d+)?\s*m\.|lanzamiento)
-    )""",
-    re.IGNORECASE | re.VERBOSE
-)
-
-CATEGORY_SEX_LINE_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$")
-
-LOWER_WORDS_ES = {
-    "de","del","la","las","los","y","e","en","con","sin","al","a","por","para"
-}
-
-DIST_PREFIX_RE = re.compile(
-    r"""^\s*(
-        (?:\d+(?:[.,]\d+)?\s*m\.)|
-        (?:4x\d+(?:[.,]\d+)?\s*m\.)
-    )\s+(.*)$""",
-    re.IGNORECASE | re.VERBOSE
-)
-
-
+def build_athlete_key_index(athletes_dim_list):
+    """
+    Crea índice: athlete_key(name) -> mejor athlete_id (prioriza con año).
+    """
+    idx = {}
+    for a in athletes_dim_list:
+        k = athlete_key(a["name"])
+        if not k:
+            continue
+        aid = a["id"]
+        by = a.get("birth_year")
+        # preferimos el que tiene año
+        if k not in idx:
+            idx[k] = (aid, by)
+        else:
+            prev_aid, prev_by = idx[k]
+            if prev_by is None and by is not None:
+                idx[k] = (aid, by)
+    # devolver solo id
+    return {k: v[0] for k, v in idx.items()}
 
 # ----------------------------
 # Fechas
@@ -1472,6 +1567,324 @@ def parse_events_from_pdf(pdf_path: str, debug=False):
     return events
 
 # ----------------------------
+# RESULTS
+# ----------------------------
+def flush_relay_results(
+    relay_ctx,
+    event_id,
+    competition_obj,
+    season_id,
+    athlete_index_by_key,
+    results_list
+):
+    club_name = relay_ctx["club_name"]
+    position = relay_ctx["position"]
+    points = relay_ctx["points"]
+    status = relay_ctx["status"]
+    t_raw = relay_ctx["time_raw"]
+
+    display, seconds = time_raw_to_display_seconds(t_raw)
+
+    comp_id = competition_obj["id"]
+    comp_date = competition_obj["date"]
+    comp_name = competition_obj["name"]
+    label_x = f"{comp_date}\n{comp_name}"
+
+    for idx, nm in enumerate(relay_ctx["components"], start=1):
+        nm_norm = normalize_athlete_name(nm)
+        k = athlete_key(nm_norm)
+        aid = athlete_index_by_key.get(k, athlete_id_from_name_year(nm_norm, None))
+
+        rid = "r_" + slugify(f"{comp_date}_{comp_id}_{event_id}_{aid}_R{idx}")
+
+        results_list.append({
+            "id": rid,
+            "date": comp_date,
+            "season_id": season_id,
+            "competition_id": comp_id,
+            "event_id": event_id,
+            "athlete_id": aid,
+            "club_id": f"club_{slugify(club_name)}",
+            "time": {
+                "display": display,
+                "seconds": seconds,
+                "raw": t_raw
+            },
+            "series_type": "Final",  # en relevos solo hay una serie
+            "status": status,
+            "position": position,
+            "points": points,
+            "labels": {"x": label_x}
+        })
+
+def parse_events_and_results_single_pass(
+    pdf_path: str,
+    competition_obj: dict,
+    season_id: str,
+    athlete_index_by_key: dict,
+    club_filters=None,
+    debug=False
+):
+    """
+    Devuelve:
+      - events_map: dict event_id -> event_obj
+      - results: list de results con schema Pacifico
+    Requiere:
+      - competition_obj: {id,name,date,...}
+      - season_id
+      - athlete_index_by_key: athlete_key(name)->athlete_id (prioriza con año)
+    """
+
+    club_filters_norm = [normalize_key(x) for x in (club_filters or []) if x]
+
+    def club_passes(club_name: str) -> bool:
+        if not club_filters_norm:
+            return True
+        ck = normalize_key(club_name)
+        return any(f in ck for f in club_filters_norm)
+
+    events_by_id = {}
+    results = []
+
+    current_event = None
+    current_event_id = None
+    open_for_grouping = False  # permitir categoría(sexo) tras cabecera de evento
+
+    current_relay_context = None
+    # estructura:
+    # {
+    #   "club_name": ...,
+    #   "position": ...,
+    #   "points": ...,
+    #   "status": ...,
+    #   "time_raw": ...,
+    #   "components": [ "Apellido, Nombre", ... ]
+    # }
+
+    comp_id = competition_obj["id"]
+    comp_date = competition_obj["date"]
+    comp_name = competition_obj["name"]
+    label_x = f"{comp_date}\n{comp_name}"
+
+    # ---- helper para cerrar event y registrar ----
+    def finalize_event():
+        nonlocal current_event, current_event_id, open_for_grouping
+        if not current_event:
+            return
+
+        if not current_event.get("category"):
+            current_event["category"] = "absoluto"
+        if current_event["category"] == "absoluta":
+            current_event["category"] = "absoluto"
+
+        # normalizar sexo
+        if current_event.get("sex") is None:
+            current_event["sex"] = "mixto" if current_event["relay"] else None
+
+        # capitalización final (según tu regla)
+        current_event["base"] = format_event_text(current_event["base"])
+        current_event["discipline"] = format_event_text(current_event["discipline"])
+        current_event["category"] = title_case_es(current_event["category"])
+        current_event["sex"] = title_case_es(current_event["sex"])
+
+        # id semántico en lower
+        eid = (
+            "e_" +
+            slugify(current_event["base"]) + "_" +
+            current_event["category"].lower() + "_" +
+            current_event["sex"].lower()
+        )
+        current_event["id"] = eid
+        events_by_id.setdefault(eid, current_event)
+
+        current_event_id = eid
+        open_for_grouping = False
+        # NO ponemos current_event=None aquí: mantenemos el event activo hasta el próximo.
+        # (pero si prefieres, puedes setearlo a None y reabrir; yo recomiendo mantenerlo)
+
+    with pdfplumber.open(pdf_path) as pdf:
+        for page in pdf.pages:
+            text = page.extract_text()
+            if not text:
+                continue
+            lines = [normalize_spaces(l) for l in text.split("\n") if l.strip()]
+
+            for ln in lines:
+
+                # --------- si estamos justo después del evento, capturar "Categoria (Sexo)" ----------
+                if current_event and open_for_grouping:
+                    cat2, sex2 = parse_category_sex_line(ln)
+                    if cat2 or sex2:
+                        if cat2:
+                            current_event["category"] = cat2
+                        if sex2:
+                            current_event["sex"] = sex2
+                        continue
+
+                    if looks_like_result_row(ln):
+                        open_for_grouping = False
+
+                # --------- bloquear cabeceras ----------
+                if is_headerish_line(ln) or is_table_header_line(ln):
+                    continue
+
+                # --------- inicio de evento ----------
+                if EVENT_START_RE.match(ln):
+                    # si veníamos de un evento, “finalízalo” (registra id y añade al mapa)
+                    finalize_event()
+
+                    raw = normalize_dashes(ln.lower())
+
+                    relay = ("4x" in raw) or ("lanzamiento" in raw) or ("line throw" in raw)
+
+                    distance_m = extract_distance_m(ln)
+
+                    sex = normalize_sex(raw)          # masculino/femenino/mixto (ya normalizado)
+                    category = normalize_category(raw) # juvenil/junior/absoluto
+
+                    base = extract_base_name(ln, distance_m)
+                    discipline = base
+
+                    current_event = {
+                        "id": None,
+                        "base": base,
+                        "discipline": discipline,
+                        "distance_m": distance_m,
+                        "relay": relay,
+                        "category": category,
+                        "sex": sex
+                    }
+
+                    open_for_grouping = True
+                    current_event_id = None  # se asignará al final
+                    continue
+
+                # --------- si hay resultados y no hay event activo, warning ----------
+                if debug and looks_like_result_row(ln) and not current_event:
+                    print("DEBUG WARNING: result row sin event activo:", ln)
+
+                # --------- crear results solo si tenemos event ----------
+                if not current_event:
+                    continue
+
+                # aseguramos que el event tiene id (al menos registrado) antes de usarlo
+                finalize_event()
+                eid = current_event_id
+
+                # -------------- INDIVIDUAL --------------
+                ind = parse_individual_result_line(ln)
+                if ind and ind.get("club"):
+                    club_name = ind["club"]
+                    if not club_passes(club_name):
+                        continue
+
+                    status = parse_status(ln)
+                    points = parse_points_from_line(ln)
+
+                    # atleta
+                    name_norm = normalize_athlete_name(ind["athlete_name"])
+                    birth_year = ind["birth_year"]
+                    aid = athlete_id_from_name_year(name_norm, birth_year)
+
+                    # tiempos (elim/final)
+                    times = TIME_RE.findall(ln)
+
+                    if len(times) >= 2:
+                        time_pairs = [("Serie preliminar", times[0]), ("Final", times[1])]
+                    elif len(times) == 1:
+                        time_pairs = [("Final", times[0])]
+                    else:
+                        time_pairs = [("Final", status)]
+
+                    for series_type, t_raw in time_pairs:
+                        display, seconds = time_raw_to_display_seconds(t_raw)
+
+                        rid = "r_" + slugify(
+                            f"{comp_date}_{comp_id}_{eid}_{aid}_{series_type}"
+                        )
+
+                        results.append({
+                            "id": rid,
+                            "date": comp_date,
+                            "season_id": season_id,
+                            "competition_id": comp_id,
+                            "event_id": eid,
+                            "athlete_id": aid,
+                            "club_id": f"club_{slugify(club_name)}",
+                            "time": {
+                                "display": display,
+                                "seconds": seconds,
+                                "raw": t_raw
+                            },
+                            "series_type": series_type,
+                            "status": status,
+                            "position": ind.get("position"),
+                            "points": points,
+                            "labels": {"x": label_x}
+                        })
+                    continue
+
+                # -------------- RELEVO --------------
+                rel = parse_relay_result_start_line(ln)
+                if rel and rel.get("club"):
+                    club_name = rel["club"]
+                    if not club_passes(club_name):
+                        continue
+
+                    # cerrar relevo anterior si estaba abierto
+                    if current_relay_context:
+                        flush_relay_results(
+                            current_relay_context,
+                            current_event_id,
+                            competition_obj,
+                            season_id,
+                            athlete_index_by_key,
+                            results
+                        )
+                        current_relay_context = None
+
+                    status = parse_status(ln)
+                    points = parse_points_from_line(ln)
+
+                    times = TIME_RE.findall(ln)
+                    time_raw = times[-1] if times else status
+
+                    current_relay_context = {
+                        "club_name": club_name,
+                        "position": rel.get("position"),
+                        "points": points,
+                        "status": status,
+                        "time_raw": time_raw,
+                        "components": []
+                    }
+                    continue
+
+                if current_relay_context:
+                    nm = parse_relay_athlete_continuation(ln)
+                    if nm:
+                        current_relay_context["components"].append(nm)
+                        continue
+
+            if current_relay_context:
+                flush_relay_results(
+                    current_relay_context,
+                    current_event_id,
+                    competition_obj,
+                    season_id,
+                    athlete_index_by_key,
+                    results
+                )
+                current_relay_context = None
+
+
+    # asegurar que el último evento queda registrado
+    finalize_event()
+
+    return events_by_id, results
+
+
+
+# ----------------------------
 # MAIN
 # ----------------------------
 def resolve_pdf_inputs(inputs, base_dir="./PDF", debug=False):
@@ -1569,10 +1982,10 @@ def main():
                 competition = parse_competition_from_header(header_lines, debug=args.debug)
                 season = parse_season_from_header(header_lines, competition=competition, debug=args.debug)
 
-            # Añadir season
+            # parsear season
             seasons_map[season["id"]] = {"id": season["id"], "label": season["label"]}
 
-            # Añadir competition (id provisional: c_XXX)
+            # parsear competition (id provisional: c_XXX)
             comp_id = f"c_{len(competitions)+1:03d}"
             competitions.append({
                 "id": comp_id,
@@ -1587,7 +2000,7 @@ def main():
                 "source_file": os.path.basename(pdf_path)
             })
 
-            # ---- results + clubs
+            # parsear results + clubs
             res, clubs_map = parse_results_and_clubs_from_pdf(
                 pdf_path,
                 competition_id=comp_id,
@@ -1600,7 +2013,7 @@ def main():
 
             processed.append(os.path.basename(pdf_path))
 
-            # ---- deportistas
+            # parsear deportistas
             ath_map = parse_athletes_from_pdf(
                 pdf_path,
                 debug=args.debug,
@@ -1609,10 +2022,27 @@ def main():
             for aid, aobj in ath_map.items():
                 athletes_map_global.setdefault(aid, aobj)
 
+            # parsear eventos + resultados en un único paso (para aprovechar el athlete_index global y capturar más atletas con año)
+            athlete_index = build_athlete_key_index(list(athletes_map_global.values()))
+
+            events_map, res = parse_events_and_results_single_pass(
+                pdf_path=pdf_path,
+                competition_obj={"id": comp_id, "date": competition["date"], "name": competition["name"]},
+                season_id=season["id"],
+                athlete_index_by_key=athlete_index,
+                club_filters=args.club_filter,
+                debug=args.debug
+            )
+
+            for eid, ev in events_map.items():
+                events_map_global.setdefault(eid, ev)
+
+            results_global.extend(res)
+
             # ---- events
-            evs = parse_events_from_pdf(pdf_path, debug=args.debug)
-            for e in evs:
-                events_map_global.setdefault(e["id"], e)
+#            evs = parse_events_from_pdf(pdf_path, debug=args.debug)
+#            for e in evs:
+#                events_map_global.setdefault(e["id"], e)
 
         except Exception as e:
             msg = f"{os.path.basename(pdf_path)} -> {e}"
