@@ -1882,6 +1882,121 @@ def parse_events_and_results_single_pass(
 
     return events_by_id, results
 
+# ----------------------------
+# TREE
+# ----------------------------
+def tree_sex_code(sex: str) -> str:
+    if not sex:
+        return None
+    s = sex.lower()
+    if s.startswith("m"):
+        return "M"
+    if s.startswith("f"):
+        return "F"
+    if s.startswith("x") or s.startswith("mixto"):
+        return "X"
+    return None
+
+def build_tree(dimensions: dict, results: list):
+    """
+    Construye el tree a partir de:
+      - dimensions: {seasons, competitions, events}
+      - results: lista de results (schema Pacifico)
+    Devuelve: tree (list)
+    """
+
+    # ---- índices base ----
+    seasons_by_id = {s["id"]: s for s in dimensions.get("seasons", [])}
+    competitions_by_id = {c["id"]: c for c in dimensions.get("competitions", [])}
+    events_by_id = {e["id"]: e for e in dimensions.get("events", [])}
+
+    # ---- estructura base del tree ----
+    tree_by_season = {}
+
+    for season_id, season in seasons_by_id.items():
+        tree_by_season[season_id] = {
+            "season_id": season_id,
+            "season_label": season.get("label"),
+            "competitions": []
+        }
+
+    # ---- añadir competitions a seasons ----
+    comp_nodes = {}
+
+    for comp_id, comp in competitions_by_id.items():
+        season_id = comp.get("season_id")
+        if season_id not in tree_by_season:
+            continue
+
+        comp_node = {
+            "competition_id": comp_id,
+            "season_id": season_id,
+            "date": comp.get("date"),
+            "name": comp.get("name"),
+            "name_clean": comp.get("name_clean", comp.get("name")),
+            "location": comp.get("location"),
+            "region": comp.get("region"),
+            "pool_type": comp.get("pool_type"),
+            "events": []
+        }
+
+        tree_by_season[season_id]["competitions"].append(comp_node)
+        comp_nodes[comp_id] = comp_node
+
+    # ---- añadir events a competitions ----
+    event_nodes = {}
+
+    for event_id, event in events_by_id.items():
+        # El event pertenece a una competition SOLO a través de results,
+        # así que aquí solo preparamos el nodo base.
+        event_nodes[event_id] = {
+            "event_id": event_id,
+            "base": event.get("base"),
+            "sex": tree_sex_code(event.get("sex")),
+            "category": event.get("category"),
+            "athletes": []
+        }
+
+    # ---- distribuir events dentro de competitions según results ----
+    for r in results:
+        comp_id = r.get("competition_id")
+        event_id = r.get("event_id")
+
+        if comp_id not in comp_nodes or event_id not in event_nodes:
+            continue
+
+        comp_node = comp_nodes[comp_id]
+        ev_node = event_nodes[event_id]
+
+        # asegurarnos de que el event está colgado de la competition
+        if ev_node not in comp_node["events"]:
+            comp_node["events"].append(ev_node)
+
+        # ---- construir atleta del tree ----
+        athlete_node = {
+            "athlete_id": r.get("athlete_id"),
+            "club_id": r.get("club_id"),
+            "status": r.get("status"),
+            "position": r.get("position"),
+            "series_type": r.get("series_type"),
+            "time": {
+                "display": r["time"].get("display"),
+                "seconds": r["time"].get("seconds"),
+                "raw": r["time"].get("raw"),
+            },
+            "converted_time": r["time"].get("display")
+        }
+
+        # heat es opcional
+        if "heat" in r and r["heat"] is not None:
+            athlete_node["heat"] = r["heat"]
+
+        ev_node["athletes"].append(athlete_node)
+
+    # ---- convertir dict → list ordenada ----
+    tree = list(tree_by_season.values())
+
+    return tree
 
 
 # ----------------------------
@@ -1918,7 +2033,6 @@ def resolve_pdf_inputs(inputs, base_dir="./PDF", debug=False):
     # dedup + sort
     resolved = sorted(set(resolved))
     return resolved
-
 
 def main():
     parser = argparse.ArgumentParser()
@@ -2099,6 +2213,18 @@ def main():
         "results": results_global
     }
 
+    tree = build_tree(
+        dimensions={
+            "seasons": data["dimensions"]["seasons"],
+            "competitions": data["dimensions"]["competitions"],
+            "events": data["dimensions"]["events"],
+        },
+        results=data["results"]
+    )
+
+    data["tree"] = tree
+
+    # ---- Escritura del JSON ----
     with open(args.output, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
 
