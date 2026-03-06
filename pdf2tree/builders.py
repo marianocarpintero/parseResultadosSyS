@@ -215,6 +215,11 @@ def build_tree(dimensions: Dict[str, Any], results: List[Dict[str, Any]]) -> Lis
             "club_id": r.get("club_id"),
             "status": r.get("status"),
             "position": r.get("position"),
+        }
+        # heat opcional
+        if "heat" in r and r.get("heat") is not None:
+            athlete_node["heat"] = r.get("heat")
+        athlete_node = {
             "series_type": r.get("series_type"),
             "time": {
                 "display": time_obj.get("display"),
@@ -224,10 +229,6 @@ def build_tree(dimensions: Dict[str, Any], results: List[Dict[str, Any]]) -> Lis
             # compat: muchos consumidores usan converted_time = display
             "converted_time": time_obj.get("display"),
         }
-
-        # heat opcional
-        if "heat" in r and r.get("heat") is not None:
-            athlete_node["heat"] = r.get("heat")
 
         ev_node["athletes"].append(athlete_node)
 

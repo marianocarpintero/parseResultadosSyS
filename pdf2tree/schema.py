@@ -47,7 +47,7 @@ class Event:
     category: str
     sex: str
     relay: bool
-    distance_m: Optional[float] = None
+    distance_m: Optional[str] = None
 
 
 @dataclass(frozen=True)

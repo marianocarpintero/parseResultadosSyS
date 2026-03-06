@@ -77,14 +77,21 @@ def category_code(raw: Optional[str]) -> str:
     return "absoluto"  # default si no se detecta
 
 
-def _normalize_distance_prefix(relay: bool, num_str: str) -> Tuple[str, float]:
+def _normalize_distance_prefix(relay: bool, num_str: str) -> Tuple[str, str]:
+    """
+    Devuelve:
+      - prefix_text: "200 m." / "4x12,5 m."
+      - distance_text: "200" / "4x12,5"
+    """
     num = float(num_str.replace(",", "."))
-    dist_val = int(num) if num.is_integer() else num
-    num_disp = str(int(num)) if float(num).is_integer() else str(num).replace(".", ",")
-    prefix = f"{'4x' if relay else ''}{num_disp} m."
-    return prefix, float(dist_val)
+    # display sin .0 y con coma decimal
+    num_disp = str(int(num)) if num.is_integer() else str(num).replace(".", ",")
+    prefix_text = f"{'4x' if relay else ''}{num_disp} m."
+    distance_text = f"{'4x' if relay else ''}{num_disp}"
+    return prefix_text, distance_text
 
-def extract_distance_from_title(event_title: str) -> Tuple[Optional[str], Optional[float]]:
+
+def extract_distance_from_title(event_title: str) -> Tuple[Optional[str], Optional[str]]:
     """
     Busca distancia en cualquier parte del título (EN o ES):
       - 200m / 200 m / 200m.
@@ -167,7 +174,7 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
         "base": base,
         "distance_m": distance_m,
         "relay": relay,
-        "category": category,
+        "category": category.capitalize(),
         "sex": sex,
         "id": event_id,
     }

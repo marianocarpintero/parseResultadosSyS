@@ -8,4 +8,5 @@ __all__ = [
     "schema",
     "trace",
     "headers",
+    "events",
 ]

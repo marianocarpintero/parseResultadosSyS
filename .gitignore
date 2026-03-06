@@ -5,9 +5,9 @@
 
 ## My Files to avoid
 
-/PDF
-/JSON
-/pdf2tree/__pycache__/
+PDF
+JSON
+pdf2tree/__pycache__
 
 
 # User-specific files
@@ -403,3 +403,4 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+
