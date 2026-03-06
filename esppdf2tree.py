@@ -19,6 +19,10 @@ HEADER_KEYWORDS = (
     "campeonato", "championship", "open", "cup", "pool", "piscina"
 )
 
+LOWER_WORDS_ES = {
+    "de","del","la","las","los","y","e","en","con","sin","al","a","por","para"
+}
+
 MONTHS_ES = {
     "enero": "01", "febrero": "02", "marzo": "03",
     "abril": "04","mayo": "05", "junio": "06",
@@ -57,12 +61,13 @@ TIME_TOKEN_RE = re.compile(r"^\d{1,2}:\d{2}:\d{2}$")
 YEAR_RE = re.compile(r"\b\d{4}\b")
 
 STATUS_RE = re.compile(
-    r"\b(Descalificado|Baja|No\s+Presentado|DNS|DNF)\b",
+    r"\b(Descalificado|Baja|No\s+Presentado|No\s+Finaliza|DNS|DNF)\b",
     re.IGNORECASE
 )
+
 STATUS_TOKENS = {
     "descalificado", "baja", "dns", "dnf",
-    "no", "presentado"  # para "No Presentado"
+    "no", "presentado", "finaliza"  # para "No Presentado" y "No Finaliza"
 }
 
 RANGE_RE = re.compile(
@@ -87,21 +92,38 @@ TABLE_HEADER_KEYWORDS = (
     "score"
 )
 
+TABLE_HEADER_RE = re.compile(r"^\s*Socorrista\s*/\s*Lifeguard\b", re.IGNORECASE)
+
 EVENT_START_RE = re.compile(
     r"""^(
-        (men's|women's)\s+
-        (4x\d+(\.\d+)?m\.|line\sthrow|\d+m\.)
+        # Inglés: Men's / Women's + (distancia | 4x... | Line Throw) + (palabras opcionales) + guion
+        (?:men's|women's)\s+
+        (?:
+            \d{1,3}m\.|
+            4x\d+(?:[.,]\d+)?m\.|
+            line\s*throw
+        )
+        (?:\s+\w+)*              # Open / Juvenil / Obstacle / Relay / etc.
+        \s*[-–—]\s*              # guion normal o en/em dash
+
         |
-        (\d+\s*m\.|4x\d+(\.\d+)?\s*m\.|lanzamiento)
+        # Español: distancia o relevo o lanzamiento al inicio
+        \d{1,3}\s*m\.|
+        4x\d+(?:[.,]\d+)?\s*m\.|
+        lanzamiento
     )""",
     re.IGNORECASE | re.VERBOSE
 )
 
 CATEGORY_SEX_LINE_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$")
 
-LOWER_WORDS_ES = {
-    "de","del","la","las","los","y","e","en","con","sin","al","a","por","para"
+SEX_MAP = {
+    "Femenino": "F",
+    "Masculino": "M",
+    "Mixto": "X"
 }
+
+ATH_YEAR_RE = re.compile(r"\b(19\d{2}|20\d{2})\b")
 
 DIST_PREFIX_RE = re.compile(
     r"""^\s*(
@@ -126,6 +148,9 @@ def strip_accents(s: str) -> str:
         if unicodedata.category(c) != "Mn"
     )
 
+def normalize_dashes(s: str) -> str:
+    return re.sub(r"[‐‑‒–—−]", "-", s)
+
 def normalize_title(s: str) -> str:
     """
     Title Case controlado, mantiene números romanos en mayúscula
@@ -146,9 +171,6 @@ def normalize_pool(pool_raw: str) -> str:
     if pool_raw in {"25M", "25E", "50M", "50E"}:
         return pool_raw
     return ""
-
-def normalize_dashes(s: str) -> str:
-    return re.sub(r"[‐‑‒–—−]", "-", s)
 
 def normalize_key(s: str) -> str:
     s = normalize_spaces(s)
@@ -190,11 +212,11 @@ def normalize_sex(raw: str):
         return None
     r = raw.lower()
     if "fem" in r or "women" in r:
-        return "femenino"
+        return "f"
     if "masc" in r or "men" in r:
-        return "masculino"
+        return "m"
     if "mixt" in r:
-        return "mixto"
+        return "x"
     return None
 
 def normalize_category(raw: str):
@@ -207,7 +229,7 @@ def normalize_category(raw: str):
     r = raw.lower()
     if "juvenil" in r:
         return "juvenil"
-    if "junior" in r or "júnior" in r:
+    if "junior" in r or "júnior" in r or "nior" in r:
         return "junior"
     if "absoluta" in r or "absoluto" in r:
         return "absoluto"
@@ -256,6 +278,8 @@ def parse_status(line: str) -> str:
         return "DSQ"
     if "NO PRESENTADO" in u or "DNS" in u:
         return "DNS"
+    if "NO FINALIZA" in u or "DNF" in u:
+        return "DNF"
     if "BAJA" in u:
         return "BAJA"
     return "OK"
@@ -569,6 +593,14 @@ def parse_season_from_header(header_lines, competition=None, debug=False):
 # ----------------------------
 # Cabecera PDF
 # ----------------------------
+def clean_competition_name(name: str) -> str:
+    if not name:
+        return name
+    s = normalize_dashes(name)
+    s = re.sub(r"\bFase Territorial\b", "", s, flags=re.IGNORECASE)
+    s = re.sub(r"\s*-\s*", " ", s)
+    s = normalize_spaces(s)
+    return normalize_title(s)
 
 def is_header_start(line: str) -> bool:
     u = normalize_spaces(line).strip().upper()
@@ -685,9 +717,11 @@ def parse_competition_from_header(lines, debug=False):
     # filtra por si hubiera alguna ordinal en medio (por seguridad)
     name_lines = [ln for ln in name_lines if not is_ordinal_only_line(ln)]
     name = normalize_title(" ".join(name_lines))
+    name_clean = clean_competition_name(name)
 
     if debug:
         print("DEBUG competition name:", name)
+        print("DEBUG competition name (clean):", name_clean)
         print("DEBUG location:", location)
         print("DEBUG region:", region)
         print("DEBUG pool:", pool_type)
@@ -696,6 +730,7 @@ def parse_competition_from_header(lines, debug=False):
 
     return {
         "name": name,
+        "name_clean": name_clean,
         "location": location,
         "region": region,
         "pool_type": pool_type,
@@ -754,7 +789,6 @@ def parse_location_region(loc_line: str, debug=False):
 # ----------------------------
 # CLUBES
 # ----------------------------
-
 def clean_club_name(raw: str) -> str:
     """
     Limpia el nombre del club:
@@ -771,7 +805,7 @@ def clean_club_name(raw: str) -> str:
 
 STATUS_TOKENS = {
     "descalificado", "baja", "dns", "dnf",
-    "no", "presentado"  # para "No Presentado"
+    "no", "presentado", "finaliza"  # para "No Presentado" y "No Finaliza"
 }
 
 def clean_club_name_strict(raw: str) -> str:
@@ -824,24 +858,13 @@ def looks_like_club(name: str) -> bool:
     return True
 
 def find_end_of_club(parts, start_idx):
-    """
-    Devuelve el índice donde termina el club (exclusivo).
-    Club = parts[start_idx:end_idx]
-    """
     for i in range(start_idx, len(parts)):
         t = parts[i]
         tl = t.lower()
-
-        # si llega un tiempo, ahí empieza otra columna -> fin de club
         if TIME_TOKEN_RE.fullmatch(t):
             return i
-
-        # si llega un estado, también fin de club
         if tl in STATUS_TOKENS:
             return i
-
-        # a veces aparece puntuación suelta al final; si está muy al final,
-        # puedes cortar también (opcional, más seguro al usar columnas)
     return len(parts)
 
 def parse_individual_result_line(line: str):
@@ -1016,14 +1039,18 @@ def parse_results_and_clubs_from_pdf(pdf_path: str, competition_id: str, debug=F
                     club_id = f"club_{slugify(club_name)}"
                     clubs_map.setdefault(club_id, {"id": club_id, "name": club_name, "slug": slugify(club_name)})
 
-                    rid = f"r_{competition_id}_{len(results)+1:06d}"
+                    ath_name_norm = normalize_athlete_name(ind.get("athlete_name", ""))
+                    ath_id = athlete_id_from_name_year(ath_name_norm, ind.get("birth_year"))
+
+                    rid = f"r_{competition_id}_{ath_id}"
                     results.append({
                         "id": rid,
                         "competition_id": competition_id,
                         "club_id": club_id,
                         "kind": "individual",
-                        "position": ind.get("position"),
-                        "athlete_name": ind.get("athlete_name"),
+                        "position": ind.get("position"),                   
+                        "athlete_id": ath_id,
+                        "athlete_name": ath_name_norm,
                         "birth_year": ind.get("birth_year"),
                         "time_raw": ind.get("time_raw"),
                         "status": ind.get("status"),
@@ -1042,7 +1069,7 @@ def parse_results_and_clubs_from_pdf(pdf_path: str, competition_id: str, debug=F
                     club_id = f"club_{slugify(club_name)}"
                     clubs_map.setdefault(club_id, {"id": club_id, "name": club_name, "slug": slugify(club_name)})
 
-                    rid = f"r_{competition_id}_{len(results)+1:06d}"
+                    rid = f"r_{competition_id}_{rel.get('athlete_id')}"
                     row = {
                         "id": rid,
                         "competition_id": competition_id,
@@ -1105,8 +1132,6 @@ def normalize_athlete_name(raw: str) -> str:
 def athlete_id(name: str, birth_year=None) -> str:
     by = str(birth_year) if birth_year else "na"
     return f"a_{slugify(name)}_{by}"
-
-ATH_YEAR_RE = re.compile(r"\b(19\d{2}|20\d{2})\b")
 
 def parse_individual_athlete_line(line: str):
     """
@@ -1372,8 +1397,7 @@ def extract_base_name(raw_line: str, distance_m):
     return s
 
 def is_table_header_line(line: str) -> bool:
-    l = line.lower()
-    return any(k in l for k in TABLE_HEADER_KEYWORDS)
+    return bool(TABLE_HEADER_RE.match(normalize_spaces(line)))
 
 def looks_like_result_row(line: str) -> bool:
     """
@@ -1460,9 +1484,8 @@ def parse_events_from_pdf(pdf_path: str, debug=False):
 
 
         # id semántico
-        event_id = ("e_" + slugify(current_event["base"]) + "_" + current_event["category"] + "_" + current_event["sex"])
+        event_id = "e_" + slugify(f"{current_event['discipline']}_{current_event['category']}_{current_event['sex']}")
         current_event["id"] = event_id
-
 
         current_event["base"] = format_event_text(current_event["base"])
         current_event["discipline"] = format_event_text(current_event["discipline"])
@@ -1517,9 +1540,18 @@ def parse_events_from_pdf(pdf_path: str, debug=False):
                     continue
 
                 # --- 3) Inicio de evento ---
-                if EVENT_START_RE.match(ln):
-                    finalize_and_store_event()
+                raw_l = normalize_dashes(ln.lower())
+                is_event_fallback = (
+                    ("men's" in raw_l or "women's" in raw_l)
+                    and ("-" in raw_l or "–" in ln or "—" in ln)
+                    and ("m." in raw_l or "line throw" in raw_l)
+                )
 
+#                if debug and (EVENT_START_RE.match(ln) or is_event_fallback):
+#                    print("DEBUG EVENT HEADER:", ln)
+
+                if EVENT_START_RE.match(ln) or is_event_fallback:
+                    finalize_and_store_event()
                     raw = normalize_dashes(ln.lower())
 
                     relay = (
@@ -1554,15 +1586,17 @@ def parse_events_from_pdf(pdf_path: str, debug=False):
                 if current_event and open_for_grouping and looks_like_result_row(ln):
                     open_for_grouping = False
                     continue
+        
+            current_event["sex"] = SEX_MAP.get(current_event["sex"], current_event["sex"])
 
     finalize_and_store_event()
 
     events = list(events_by_id.values())
 
-    if debug:
-        print(f"DEBUG events en {os.path.basename(pdf_path)}: {len(events)}")
-        for e in events[:30]:
-            print(" ", e)
+#    if debug:
+#        print(f"DEBUG events en {os.path.basename(pdf_path)}: {len(events)}")
+#        for e in events[:30]:
+#            print(" ", e)
 
     return events
 
@@ -1572,6 +1606,7 @@ def parse_events_from_pdf(pdf_path: str, debug=False):
 def flush_relay_results(
     relay_ctx,
     event_id,
+    event_discipline,
     competition_obj,
     season_id,
     athlete_index_by_key,
@@ -1587,15 +1622,14 @@ def flush_relay_results(
 
     comp_id = competition_obj["id"]
     comp_date = competition_obj["date"]
-    comp_name = competition_obj["name"]
-    label_x = f"{comp_date}\n{comp_name}"
+    label_x = f"{comp_date}\n{event_discipline}"
 
     for idx, nm in enumerate(relay_ctx["components"], start=1):
         nm_norm = normalize_athlete_name(nm)
         k = athlete_key(nm_norm)
         aid = athlete_index_by_key.get(k, athlete_id_from_name_year(nm_norm, None))
 
-        rid = "r_" + slugify(f"{comp_date}_{comp_id}_{event_id}_{aid}_R{idx}")
+        rid = "r_" + slugify(f"{comp_date}_{comp_id}_{event_id}_{aid}")
 
         results_list.append({
             "id": rid,
@@ -1625,6 +1659,11 @@ def parse_events_and_results_single_pass(
     club_filters=None,
     debug=False
 ):
+    
+    prev1 = None  # última línea no vacía
+    prev2 = None  # penúltima línea no vacía
+    last_full_event_title = None  # último título completo tipo "Women's 200m..."
+
     """
     Devuelve:
       - events_map: dict event_id -> event_obj
@@ -1662,9 +1701,23 @@ def parse_events_and_results_single_pass(
     # }
 
     comp_id = competition_obj["id"]
+    competition_id = competition_obj["id"]
     comp_date = competition_obj["date"]
-    comp_name = competition_obj["name"]
-    label_x = f"{comp_date}\n{comp_name}"
+
+    def flush_current_relay():
+        nonlocal current_relay_context
+        if not current_relay_context:
+            return
+        flush_relay_results(
+            current_relay_context,
+            current_relay_context["event_id"],
+            current_relay_context["event_discipline"],
+            competition_obj,
+            season_id,
+            athlete_index_by_key,
+            results
+        )
+        current_relay_context = None
 
     # ---- helper para cerrar event y registrar ----
     def finalize_event():
@@ -1681,7 +1734,7 @@ def parse_events_and_results_single_pass(
         if current_event.get("sex") is None:
             current_event["sex"] = "mixto" if current_event["relay"] else None
 
-        # capitalización final (según tu regla)
+        # capitalización final
         current_event["base"] = format_event_text(current_event["base"])
         current_event["discipline"] = format_event_text(current_event["discipline"])
         current_event["category"] = title_case_es(current_event["category"])
@@ -1701,6 +1754,7 @@ def parse_events_and_results_single_pass(
         open_for_grouping = False
         # NO ponemos current_event=None aquí: mantenemos el event activo hasta el próximo.
         # (pero si prefieres, puedes setearlo a None y reabrir; yo recomiendo mantenerlo)
+        #
 
     with pdfplumber.open(pdf_path) as pdf:
         for page in pdf.pages:
@@ -1709,8 +1763,7 @@ def parse_events_and_results_single_pass(
                 continue
             lines = [normalize_spaces(l) for l in text.split("\n") if l.strip()]
 
-            for ln in lines:
-
+            for ln in lines:   
                 # --------- si estamos justo después del evento, capturar "Categoria (Sexo)" ----------
                 if current_event and open_for_grouping:
                     cat2, sex2 = parse_category_sex_line(ln)
@@ -1724,24 +1777,149 @@ def parse_events_and_results_single_pass(
                     if looks_like_result_row(ln):
                         open_for_grouping = False
 
-                # --------- bloquear cabeceras ----------
-                if is_headerish_line(ln) or is_table_header_line(ln):
+                # bloquear cabeceras de página
+                if is_headerish_line(ln):
+                    # si hay un relevo abierto y te cruzas una cabecera, ciérralo
+                    if current_relay_context:
+                        flush_current_relay()
+                    continue
+                
+                # cabecera de tabla: también corta el relevo
+                if is_table_header_line(ln):
+                    # si hay relevo abierto, flush (cambio de tabla = corte duro)
+                    if current_relay_context:
+                        flush_current_relay()
+
+                    # Caso C: solo categoría(sexo) arriba -> sub-evento
+                    cat1, sex1 = parse_category_sex_line(prev1 or "")
+                    if (cat1 or sex1) and (prev2 is None or not (EVENT_START_RE.match(prev2) or ("men's" in (prev2 or "").lower()) or ("women's" in (prev2 or "").lower()))):
+                        if last_full_event_title:
+                            # construye evento desde last_full_event_title, pero con cat/sex de prev1
+                            title_line = last_full_event_title
+                            raw = normalize_dashes(title_line.lower())
+                            relay = ("4x" in raw) or ("lanzamiento" in raw) or ("line throw" in raw)
+                            distance_m = extract_distance_m(title_line)
+                            base = extract_base_name(title_line, distance_m)
+                            discipline = base
+
+                            current_event = {
+                                "id": None,
+                                "base": base,
+                                "discipline": discipline,
+                                "distance_m": distance_m,
+                                "relay": relay,
+                                "category": cat1,
+                                "sex": sex1
+                            }
+                            open_for_grouping = False
+                            finalize_event()
+                        continue
+
+                    # Caso A: título + categoría(sexo)
+                    cat2, sex2 = parse_category_sex_line(prev1 or "")
+                    if prev2 and (EVENT_START_RE.match(prev2) or ("men's" in prev2.lower()) or ("women's" in prev2.lower())) and (cat2 or sex2):
+                        title_line = prev2
+                        last_full_event_title = title_line
+                        raw = normalize_dashes(title_line.lower())
+                        relay = ("4x" in raw) or ("lanzamiento" in raw) or ("line throw" in raw)
+                        distance_m = extract_distance_m(title_line)
+                        base = extract_base_name(title_line, distance_m)
+                        discipline = base
+                        current_event = {
+                            "id": None,
+                            "base": base,
+                            "discipline": discipline,
+                            "distance_m": distance_m,
+                            "relay": relay,
+                            "category": cat2,
+                            "sex": sex2
+                        }
+                        open_for_grouping = False
+                        finalize_event()
+                        continue
+
+                    # Caso B: solo título
+                    if prev1 and (EVENT_START_RE.match(prev1) or ("men's" in prev1.lower()) or ("women's" in prev1.lower())):
+                        title_line = prev1
+                        last_full_event_title = title_line
+                        raw = normalize_dashes(title_line.lower())
+                        relay = ("4x" in raw) or ("lanzamiento" in raw) or ("line throw" in raw)
+                        distance_m = extract_distance_m(title_line)
+                        base = extract_base_name(title_line, distance_m)
+                        discipline = base
+                        current_event = {
+                            "id": None,
+                            "base": base,
+                            "discipline": discipline,
+                            "distance_m": distance_m,
+                            "relay": relay,
+                            "category": None,  # -> absoluto por default en finalize_event
+                            "sex": normalize_sex(raw)
+                        }
+                        open_for_grouping = False
+                        finalize_event()
+                        continue
                     continue
 
+#                # --- SUB-EVENT HEADER: "juvenil (femenina)" / "júnior (femenina)" ---
+#                # Si ya existe current_event y aparece una línea categoria(sexo) fuera del modo open_for_grouping,
+#                # entonces significa: nuevo listado (nuevo evento) reutilizando base/discipline/distance/relay.
+#                if current_event and (not open_for_grouping):
+#                    cat_sub, sex_sub = parse_category_sex_line(ln)
+#                    if cat_sub or sex_sub:
+#                        # Si había un relevo abierto, cerrarlo antes de cambiar de sub-evento
+#                        if current_relay_context:
+#                            flush_current_relay()
+#
+#                        # Cambiar SOLO category/sex y recalcular event_id
+#                        if cat_sub:
+#                            current_event["category"] = cat_sub
+#                        if sex_sub:
+#                            current_event["sex"] = sex_sub
+#
+#                        # Recalcular el id del evento (y actualizar current_event_id)
+#                        finalize_event()
+#                        # Abrimos grouping por si hubiera otra línea similar, pero normalmente no hace falta
+#                        open_for_grouping = False
+#                        continue
+
+                # Si hay un relevo abierto y llega una línea que parece inicio de fila de resultados,
+                # el relevo anterior ya terminó -> flush
+                if current_relay_context and looks_like_result_row(ln):
+                    flush_current_relay()
+
+                # Si hay un relevo abierto y empieza una nueva fila (empieza por número),
+                # el relevo anterior ha terminado -> flush
+                if current_relay_context and re.match(r"^\d+\b", normalize_spaces(ln)):
+                    flush_current_relay()
+
+
+
+
                 # --------- inicio de evento ----------
-                if EVENT_START_RE.match(ln):
+                raw_l = normalize_dashes(ln.lower())
+                is_event_fallback = (
+                    ("men's" in raw_l or "women's" in raw_l)
+                    and ("-" in raw_l or "–" in ln or "—" in ln)
+                    and ("m." in raw_l or "line throw" in raw_l)
+                )
+
+
+                if debug and (EVENT_START_RE.match(ln) or is_event_fallback):
+                    print("DEBUG EVENT HEADER:", ln)
+
+                if EVENT_START_RE.match(ln) or is_event_fallback:
+                    # Si cambia de evento y había un relevo abierto, flush antes de cambiar
+                    if current_relay_context:
+                        flush_current_relay()
                     # si veníamos de un evento, “finalízalo” (registra id y añade al mapa)
                     finalize_event()
 
                     raw = normalize_dashes(ln.lower())
-
                     relay = ("4x" in raw) or ("lanzamiento" in raw) or ("line throw" in raw)
-
                     distance_m = extract_distance_m(ln)
-
                     sex = normalize_sex(raw)          # masculino/femenino/mixto (ya normalizado)
                     category = normalize_category(raw) # juvenil/junior/absoluto
-
                     base = extract_base_name(ln, distance_m)
                     discipline = base
 
@@ -1784,13 +1962,16 @@ def parse_events_and_results_single_pass(
                     # atleta
                     name_norm = normalize_athlete_name(ind["athlete_name"])
                     birth_year = ind["birth_year"]
-                    aid = athlete_id_from_name_year(name_norm, birth_year)
-
+                    k = athlete_key(name_norm)
+                    aid = athlete_index_by_key.get(k)
+                    if not aid:
+                        aid = athlete_id_from_name_year(name_norm, birth_year)
+                    
                     # tiempos (elim/final)
                     times = TIME_RE.findall(ln)
 
                     if len(times) >= 2:
-                        time_pairs = [("Serie preliminar", times[0]), ("Final", times[1])]
+                        time_pairs = [("Serie Preliminar", times[0]), ("Final", times[1])]
                     elif len(times) == 1:
                         time_pairs = [("Final", times[0])]
                     else:
@@ -1799,9 +1980,8 @@ def parse_events_and_results_single_pass(
                     for series_type, t_raw in time_pairs:
                         display, seconds = time_raw_to_display_seconds(t_raw)
 
-                        rid = "r_" + slugify(
-                            f"{comp_date}_{comp_id}_{eid}_{aid}_{series_type}"
-                        )
+                        rid = "r_" + slugify(f"{competition_id}_{eid}_{aid}")
+                        label_x = f"{comp_date}\n{current_event['discipline']}"
 
                         results.append({
                             "id": rid,
@@ -1827,21 +2007,20 @@ def parse_events_and_results_single_pass(
                 # -------------- RELEVO --------------
                 rel = parse_relay_result_start_line(ln)
                 if rel and rel.get("club"):
-                    club_name = rel["club"]
-                    if not club_passes(club_name):
-                        continue
 
-                    # cerrar relevo anterior si estaba abierto
+                    # si había un relevo abierto, SIEMPRE se cierra al detectar un nuevo relevo
                     if current_relay_context:
-                        flush_relay_results(
-                            current_relay_context,
-                            current_event_id,
-                            competition_obj,
-                            season_id,
-                            athlete_index_by_key,
-                            results
-                        )
+                        flush_current_relay()
+
+                    disc_l = current_event["discipline"].lower()
+                    expected_size = 2 if "lanzamiento" in disc_l or "line throw" in disc_l else 4
+
+                    club_name = rel["club"]
+
+                    # si este relevo no pasa filtro, NO abrimos contexto y salimos
+                    if not club_passes(club_name):
                         current_relay_context = None
+                        continue
 
                     status = parse_status(ln)
                     points = parse_points_from_line(ln)
@@ -1849,37 +2028,45 @@ def parse_events_and_results_single_pass(
                     times = TIME_RE.findall(ln)
                     time_raw = times[-1] if times else status
 
+                    # IMPORTANTE: incluir el primer deportista del relevo (si viene en la misma línea)
+                    first_names = rel.get("relay_athletes", [])
+                    first_names = [n for n in first_names if n and n.strip()]
+
                     current_relay_context = {
                         "club_name": club_name,
                         "position": rel.get("position"),
                         "points": points,
                         "status": status,
                         "time_raw": time_raw,
-                        "components": []
+                        "components": first_names[:],  # <-- aquí ya metes el 1º
+                        "event_id": current_event_id,  # id del evento activo
+                        "event_discipline": current_event["discipline"],
+                        "expected_size": expected_size,
                     }
                     continue
 
+                # Continuaciones de relevo (líneas con "APELLIDO, NOMBRE")
                 if current_relay_context:
                     nm = parse_relay_athlete_continuation(ln)
                     if nm:
                         current_relay_context["components"].append(nm)
+                        exp = current_relay_context.get("expected_size")
+                        if exp and len(current_relay_context["components"]) >= exp:
+                            flush_current_relay()
                         continue
+            
+                lns = normalize_spaces(ln)
+                if lns and not is_table_header_line(ln):
+                    prev2, prev1 = prev1, lns
 
-            if current_relay_context:
-                flush_relay_results(
-                    current_relay_context,
-                    current_event_id,
-                    competition_obj,
-                    season_id,
-                    athlete_index_by_key,
-                    results
-                )
-                current_relay_context = None
 
+
+    # al finalizar el documento, si quedó un relevo abierto, flush
+    if current_relay_context:
+        flush_current_relay()
 
     # asegurar que el último evento queda registrado
     finalize_event()
-
     return events_by_id, results
 
 # ----------------------------
@@ -2100,11 +2287,12 @@ def main():
             seasons_map[season["id"]] = {"id": season["id"], "label": season["label"]}
 
             # parsear competition (id provisional: c_XXX)
-            comp_id = f"c_{len(competitions)+1:03d}"
+            comp_id = "c_" + slugify(f"{competition['date']}_{competition['location']}_{competition['name_clean']}")
             competitions.append({
                 "id": comp_id,
                 "season_id": season["id"],
                 "name": competition["name"],
+                "name_clean": competition["name_clean"],
                 "date": competition["date"],
                 "date_start": competition["date_start"],
                 "date_end": competition["date_end"],
@@ -2114,32 +2302,35 @@ def main():
                 "source_file": os.path.basename(pdf_path)
             })
 
-            # parsear results + clubs
-            res, clubs_map = parse_results_and_clubs_from_pdf(
+            # --- Clubs (y solo clubs) desde el parser antiguo ---
+            res_old, clubs_map = parse_results_and_clubs_from_pdf(
                 pdf_path,
                 competition_id=comp_id,
                 debug=args.debug,
                 club_filters=args.club_filter
             )
+
+            # Guardamos clubs (pero NO results_old)
             for cid, cobj in clubs_map.items():
                 clubs_map_global.setdefault(cid, cobj)
-            results_global.extend(res)
 
-            processed.append(os.path.basename(pdf_path))
+            # ✅ OJO: NO hacemos results_global.extend(res_old)
+            # (res_old no tiene event_id/time/labels y puede acabar con _None y duplicados)
 
-            # parsear deportistas
+            # --- Athletes (como ya haces) ---
             ath_map = parse_athletes_from_pdf(
                 pdf_path,
                 debug=args.debug,
-                club_filters=args.club_filter  # Pacífico
+                club_filters=args.club_filter
             )
             for aid, aobj in ath_map.items():
                 athletes_map_global.setdefault(aid, aobj)
 
-            # parsear eventos + resultados en un único paso (para aprovechar el athlete_index global y capturar más atletas con año)
+            # índice de atletas para resolver athlete_id “real” (prioriza con año)
             athlete_index = build_athlete_key_index(list(athletes_map_global.values()))
 
-            events_map, res = parse_events_and_results_single_pass(
+            # --- Events + Results en pasada única (results oficiales Pacifico) ---
+            events_map, res_new = parse_events_and_results_single_pass(
                 pdf_path=pdf_path,
                 competition_obj={"id": comp_id, "date": competition["date"], "name": competition["name"]},
                 season_id=season["id"],
@@ -2148,10 +2339,14 @@ def main():
                 debug=args.debug
             )
 
+            # Acumular events deduplicados por id
             for eid, ev in events_map.items():
                 events_map_global.setdefault(eid, ev)
 
-            results_global.extend(res)
+            # ✅ Solo estos results van al JSON final
+            results_global.extend(res_new)
+
+            processed.append(os.path.basename(pdf_path))
 
             # ---- events
 #            evs = parse_events_from_pdf(pdf_path, debug=args.debug)
