@@ -9,6 +9,8 @@ from .normalize import normalize_spaces, normalize_dashes
 
 TABLE_HEADER_RE = re.compile(r"^\s*Socorrista\s*/\s*Lifeguard\b", re.IGNORECASE)
 CATEGORY_SEX_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$")
+CAT_OK = re.compile(r"\b(juvenil|junior|júnior|absoluto|absoluta)\b", re.IGNORECASE)
+SEX_OK = re.compile(r"\b(femenin[oa]?|masculin[oa]?|mixt[oa]?|women|men)\b", re.IGNORECASE)
 ROW_START_RE = re.compile(r"^\d+\b")
 YEAR_RE = re.compile(r"\b(19\d{2}|20\d{2})\b")
 TIME_RE = re.compile(r"\b\d{1,2}:\d{2}:\d{2}\b")
@@ -52,10 +54,14 @@ class Tokenizer:
 
         m = CATEGORY_SEX_RE.match(norm)
         if m:
-            return Token(TokenType.CATEGORY_LINE, page, line_no, raw, norm, {
-                "cat_raw": m.group(1),
-                "sex_raw": m.group(2),
-            })
+            cat_raw = m.group(1)
+            sex_raw = m.group(2)
+            if CAT_OK.search(cat_raw) and SEX_OK.search(sex_raw):
+                return Token(TokenType.CATEGORY_LINE, page, line_no, raw, norm, {
+                    "cat_raw": cat_raw,
+                    "sex_raw": sex_raw
+                })
+            # si no pasa validación, NO es category_line
 
         # Filas de resultados
         if ROW_START_RE.match(norm):

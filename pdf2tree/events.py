@@ -124,8 +124,15 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     if category_line:
         m = CATEGORY_LINE_RE.match(category_line)
         if m:
-            cat = category_code(m.group(1))
-            sx = sex_code(m.group(2))
+            cat_candidate = category_code(m.group(1))
+            sx_candidate = sex_code(m.group(2))
+
+            # Validación: si el texto NO contiene categoría real, no lo uses
+            if re.search(r"\b(juvenil|junior|júnior|absolut)\b", m.group(1), re.IGNORECASE):
+                cat = cat_candidate
+            # Validación: si el texto NO contiene sexo real, no lo uses
+            if re.search(r"\b(femenin|masculin|mixt|women|men)\b", m.group(2), re.IGNORECASE):
+                sx = sx_candidate
 
     # fallback desde event_title si no vienen en category_line
     if not sx:
