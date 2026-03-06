@@ -148,6 +148,10 @@ class SinglePassParser:
                 distance_m=fields["distance_m"],
             ))
 
+        self.ctx.pending.title = None
+        self.ctx.pending.category_line = None
+        self.ctx.state = State.IN_RESULTS
+
     # -----------------------
     # Row parsing
     # -----------------------
