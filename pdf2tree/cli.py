@@ -287,7 +287,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     out = {
         "meta": {
-            "version": "1.0.0",
+            "version": "1.1.0",
             "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
             "timezone": "Europe/Madrid",
             "source": {
