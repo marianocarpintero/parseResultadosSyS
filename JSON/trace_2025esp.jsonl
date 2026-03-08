@@ -4,7 +4,6 @@
 {"page": 1, "line": 4, "token": "NOISE", "state": "SEEK_TABLE", "text": "Torrevieja (Alicante)", "event_id": null}
 {"page": 1, "line": 5, "token": "NOISE", "state": "SEEK_TABLE", "text": "nd th", "event_id": null}
 {"page": 1, "line": 6, "token": "INDIVIDUAL_ROW", "state": "SEEK_TABLE", "text": "02 May 2025 - 04 May 2025 / 2 de mayo - 4 de mayo (Pool/Piscina: 50 E)", "event_id": null}
-{"action": "WARN_INDIVIDUAL_WITHOUT_EVENT", "text": "02 May 2025 - 04 May 2025 / 2 de mayo - 4 de mayo (Pool/Piscina: 50 E)"}
 {"page": 1, "line": 7, "token": "EVENT_TITLE", "state": "SEEK_TABLE", "text": "Women's 200m. Obstacles Swim - natación con obstáculos femenino", "event_id": null}
 {"page": 1, "line": 8, "token": "TABLE_HEADER", "state": "SEEK_TABLE", "text": "Socorrista / Lifeguard Año/Year Club / Team Elim.T Final.T Score", "event_id": null}
 {"page": 1, "line": 9, "token": "INDIVIDUAL_ROW", "state": "IN_RESULTS", "text": "1 DIBELLONIA, ELISA 2005 Club Deportivo Natación Aldaia 02:15:20 02:13:58 20", "event_id": "e_200_m_natacion_con_obstaculos_absoluto_f"}

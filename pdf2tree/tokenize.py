@@ -7,10 +7,16 @@ import re
 
 from .normalize import normalize_spaces, normalize_dashes
 
+EVENT_TITLE_ES_RE = re.compile(r"^(?:4x)?\d+(?:[.,]\d+)?\s*m\.?\b", re.IGNORECASE)
+EVENT_TITLE_ES_START_RE = re.compile(r"^(?:4x)?\d+(?:[.,]\d+)?\s*m\.?\b", re.IGNORECASE)
+EVENT_TITLE_MASTER_START_RE = re.compile(r"^lanzamiento\s+de\s+cuerda\b", re.IGNORECASE)
+CAT_ES_RE = re.compile(r"\b(juvenil|junior|júnior|absoluto|absoluta|cadete|infantil|máster|master)\b", re.IGNORECASE)
+SEX_ES_RE = re.compile(r"\b(femen\w*|mascul\w*|mixt\w*)\b", re.IGNORECASE)
 TABLE_HEADER_RE = re.compile(r"^\s*Socorrista\s*/\s*Lifeguard\b", re.IGNORECASE)
+TABLE_HEADER_ANY_RE = re.compile(r"Socorrista\s*/\s*Lifeguard", re.IGNORECASE)
 CATEGORY_SEX_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$")
-CAT_OK = re.compile(r"\b(juvenil|junior|júnior|absoluto|absoluta)\b", re.IGNORECASE)
-SEX_OK = re.compile(r"\b(femenin[oa]?|masculin[oa]?|mixt[oa]?|women|men)\b", re.IGNORECASE)
+CAT_OK = re.compile(r"\b(infantil|cadete|juvenil|junior|júnior|absoluto|absoluta|m[áa]ster)\b", re.IGNORECASE)
+SEX_OK = re.compile(r"\b(femen\w*|mascul\w*|mixt\w*|women|men)\b", re.IGNORECASE)
 ROW_START_RE = re.compile(r"^\d+\b")
 YEAR_RE = re.compile(r"\b(19\d{2}|20\d{2})\b")
 TIME_RE = re.compile(r"\b\d{1,2}:\d{2}:\d{2}\b")
@@ -52,6 +58,11 @@ class Tokenizer:
         if TABLE_HEADER_RE.match(norm):
             return Token(TokenType.TABLE_HEADER, page, line_no, raw, norm, {})
 
+        mth = TABLE_HEADER_ANY_RE.search(norm)
+        if mth:
+            pre_title = norm[:mth.start()].strip(" *")
+            return Token(TokenType.TABLE_HEADER, page, line_no, raw, norm, {"pre_title": pre_title})
+
         m = CATEGORY_SEX_RE.match(norm)
         if m:
             cat_raw = m.group(1)
@@ -62,6 +73,16 @@ class Tokenizer:
                     "sex_raw": sex_raw
                 })
             # si no pasa validación, NO es category_line
+
+        # Cabecera de prueba en ES tipo: "50 m. ... categoría juvenil femenino"
+        if EVENT_TITLE_ES_RE.match(norm) and ("categor" in low) and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
+            return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {})
+
+        # Cabecera de prueba en ES tipo: "50 m. ... categoría juvenil femenino" o "Lanzamiento de Cuerda ... categoría junior masculino"
+        if (EVENT_TITLE_ES_START_RE.match(norm) or EVENT_TITLE_MASTER_START_RE.match(norm)) \
+        and CAT_ES_RE.search(norm) and SEX_ES_RE.search(norm) \
+        and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
+            return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {})
 
         # Filas de resultados
         if ROW_START_RE.match(norm):

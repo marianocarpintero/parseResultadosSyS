@@ -125,15 +125,34 @@ class SinglePassParser:
         title = self.ctx.pending.title
         catline = self.ctx.pending.category_line
         last_title = self.ctx.pending.last_full_title
-
         use_title = title or last_title or "unknown"
+
         if title:
             self.ctx.pending.last_full_title = title
 
+        # >>> DEBUG TEMPORAL (borra después) <<<
+        if "máster" in use_title.lower() or "master" in use_title.lower():
+                self.trace.emit({
+                    "action": "DEBUG_COMMIT_EVENT_MASTER",
+                    "use_title": use_title,
+                    "catline": catline,
+                })
+        # >>> FIN DEBUG TEMPORAL <<<
+
         fields = build_event_fields(use_title, catline)
 
+        dbg = fields.get("debug_info_1")
+        if dbg:
+            self.trace.emit({"action": "DEBUG_EVENT_FIELDS", "debug1": dbg})
+        dbg = fields.get("debug_info_2")
+        if dbg:
+            self.trace.emit({"action": "DEBUG_EVENT_FIELDS", "debug2": dbg})
+        dbg = fields.get("debug_info")
+        if dbg:
+            self.trace.emit({"action": "DEBUG_EVENT_FIELDS", "debug": dbg})
+
         self.ctx.current_event_id = fields["id"]
-        self.ctx.current_event_discipline = fields["base"]      # si quieres usar base como discipline en labels
+        self.ctx.current_event_discipline = fields["base"]
         self.ctx.current_event_relay = fields["relay"]
 
         # emitir Event a dimensions
@@ -142,7 +161,7 @@ class SinglePassParser:
                 id=fields["id"],
                 base=fields["base"],
                 discipline=fields["base"],
-                category=fields["category"],
+                category=fields.get("category_display", fields["category"]),
                 sex=fields["sex"],           # ya es F/M/X
                 relay=fields["relay"],
                 distance_m=fields["distance_m"],
@@ -256,7 +275,9 @@ class SinglePassParser:
             "expected_size": ctx.expected_size,
         })
 
-        for member_name in ctx.members:
+        members = ctx.members if ctx.members else ["Relevos"]
+
+        for member_name in members:
             athlete_id = "a_" + slugify(member_name) + "_na"
             # emitir atleta (relay sin año)
             self._emit_athlete(athlete_id, member_name, None)
@@ -428,6 +449,10 @@ class SinglePassParser:
         })
 
         if token.type == TokenType.EVENT_TITLE:
+            # si hay relevo abierto, lo cerramos antes de cambiar de prueba
+            if self.ctx.relay_ctx:
+                self._flush_relay_context(competition_id, season_id, date, reason="new_event_title")
+                self.ctx.state = State.IN_RESULTS
             self.ctx.pending.title = token.norm
             return
 
@@ -439,11 +464,18 @@ class SinglePassParser:
             # flush defensivo si quedó relay abierto
             if self.ctx.relay_ctx:
                 self._flush_relay_context(competition_id, season_id, date, reason="table_header")
-            self._commit_event_on_table()
-            self.ctx.state = State.IN_RESULTS
-            return
 
+            pre = token.meta.get("pre_title")
+            if pre:
+                self.ctx.pending.title = pre
+
+            # SIEMPRE commit aquí
+            self._commit_event_on_table()
+            return
+        
         if token.type == TokenType.TEAM_ROW:
+            if self.ctx.state != State.IN_RESULTS:
+                return
             if self.ctx.relay_ctx:
                 self._flush_relay_context(competition_id, season_id, date, reason="new_team_row")
             self._open_relay_from_team_row(token.norm)
@@ -483,9 +515,12 @@ class SinglePassParser:
             return
 
         if token.type == TokenType.INDIVIDUAL_ROW:
+            if self.ctx.state != State.IN_RESULTS:
+                # ignorar "falsos rows" en cabeceras (fechas, etc.)
+                return
             self._handle_individual_row(token.norm, competition_id, season_id, date)
             return
-
+        
         # NOISE: ignore
 
     def finalize(self, *, competition_id: Optional[str] = None, season_id: Optional[str] = None, date: Optional[str] = None) -> None:

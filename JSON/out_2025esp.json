@@ -1,7 +1,7 @@
 {
   "meta": {
     "version": "1.0.0",
-    "generated_at": "2026-03-06T22:03:48+01:00",
+    "generated_at": "2026-03-07T17:55:26+01:00",
     "timezone": "Europe/Madrid",
     "source": {
       "generator": "pdf2tree",
@@ -3072,6 +3072,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 46,
                   "series_type": "Final",
                   "time": {
                     "display": "02:33.490",
@@ -3081,6 +3085,10 @@
                   "converted_time": "02:33.490"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 47,
                   "series_type": "Final",
                   "time": {
                     "display": "02:33.570",
@@ -3090,6 +3098,10 @@
                   "converted_time": "02:33.570"
                 },
                 {
+                  "athlete_id": "a_mate_garcia_claudia_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 81,
                   "series_type": "Final",
                   "time": {
                     "display": "02:54.240",
@@ -3107,6 +3119,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "02:33.570",
@@ -3116,6 +3132,10 @@
                   "converted_time": "02:33.570"
                 },
                 {
+                  "athlete_id": "a_mate_garcia_claudia_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 37,
                   "series_type": "Final",
                   "time": {
                     "display": "02:54.240",
@@ -3133,6 +3153,10 @@
               "category": "Junior",
               "athletes": [
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 17,
                   "series_type": "Final",
                   "time": {
                     "display": "02:33.490",
@@ -3150,6 +3174,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_sanchez_martinez_alvaro_2004",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 35,
                   "series_type": "Final",
                   "time": {
                     "display": "02:13.040",
@@ -3159,6 +3187,10 @@
                   "converted_time": "02:13.040"
                 },
                 {
+                  "athlete_id": "a_castellanos_rodriguez_adrian_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 38,
                   "series_type": "Final",
                   "time": {
                     "display": "02:14.000",
@@ -3168,6 +3200,10 @@
                   "converted_time": "02:14.000"
                 },
                 {
+                  "athlete_id": "a_cuairan_garay_inaki_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 100,
                   "series_type": "Final",
                   "time": {
                     "display": "02:29.690",
@@ -3185,6 +3221,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_cuairan_garay_inaki_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 33,
                   "series_type": "Final",
                   "time": {
                     "display": "02:29.690",
@@ -3202,6 +3242,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DNF",
+                  "position": 10,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -3211,6 +3255,10 @@
                   "converted_time": null
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DNF",
+                  "position": 10,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -3228,6 +3276,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_murcia_conde_jorge_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DNF",
+                  "position": 15,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -3237,6 +3289,10 @@
                   "converted_time": null
                 },
                 {
+                  "athlete_id": "a_mendez_bodas_inigo_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DNF",
+                  "position": 15,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -3254,6 +3310,10 @@
               "category": "Junior",
               "athletes": [
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DNF",
+                  "position": 17,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -3263,6 +3323,10 @@
                   "converted_time": null
                 },
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DNF",
+                  "position": 17,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -3280,6 +3344,10 @@
               "category": "Junior",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "02:05.750",
@@ -3289,6 +3357,10 @@
                   "converted_time": "02:05.750"
                 },
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "02:05.750",
@@ -3298,6 +3370,10 @@
                   "converted_time": "02:05.750"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "02:05.750",
@@ -3307,6 +3383,10 @@
                   "converted_time": "02:05.750"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "02:05.750",
@@ -3324,6 +3404,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_cruz_gonzalez_maria_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "00:25.160",
@@ -3333,6 +3417,10 @@
                   "converted_time": "00:25.160"
                 },
                 {
+                  "athlete_id": "a_gonzalez_rodriguez_julia_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "00:25.160",
@@ -3350,6 +3438,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_castellanos_rodriguez_adrian_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 3,
                   "series_type": "Final",
                   "time": {
                     "display": "00:12.290",
@@ -3359,6 +3451,10 @@
                   "converted_time": "00:12.290"
                 },
                 {
+                  "athlete_id": "a_hernandez_ojeda_alejandro_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 3,
                   "series_type": "Final",
                   "time": {
                     "display": "00:12.290",
@@ -3376,6 +3472,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_mate_garcia_claudia_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "02:16.930",
@@ -3385,6 +3485,10 @@
                   "converted_time": "02:16.930"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "02:16.930",
@@ -3394,6 +3498,10 @@
                   "converted_time": "02:16.930"
                 },
                 {
+                  "athlete_id": "a_gonzalez_rodriguez_julia_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "02:16.930",
@@ -3403,6 +3511,10 @@
                   "converted_time": "02:16.930"
                 },
                 {
+                  "athlete_id": "a_cruz_gonzalez_maria_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "02:16.930",
@@ -3420,6 +3532,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_castellanos_rodriguez_adrian_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "01:56.900",
@@ -3429,6 +3545,10 @@
                   "converted_time": "01:56.900"
                 },
                 {
+                  "athlete_id": "a_sanchez_martinez_alvaro_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "01:56.900",
@@ -3438,6 +3558,10 @@
                   "converted_time": "01:56.900"
                 },
                 {
+                  "athlete_id": "a_hernandez_ojeda_alejandro_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "01:56.900",
@@ -3447,6 +3571,10 @@
                   "converted_time": "01:56.900"
                 },
                 {
+                  "athlete_id": "a_murcia_conde_jorge_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "01:56.900",
@@ -3464,6 +3592,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_cruz_gonzalez_maria_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 29,
                   "series_type": "Final",
                   "time": {
                     "display": "01:06.560",
@@ -3473,6 +3605,10 @@
                   "converted_time": "01:06.560"
                 },
                 {
+                  "athlete_id": "a_gonzalez_garcia_lucia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 60,
                   "series_type": "Final",
                   "time": {
                     "display": "01:10.570",
@@ -3482,6 +3618,10 @@
                   "converted_time": "01:10.570"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 76,
                   "series_type": "Final",
                   "time": {
                     "display": "01:12.740",
@@ -3491,6 +3631,10 @@
                   "converted_time": "01:12.740"
                 },
                 {
+                  "athlete_id": "a_gonzalez_rodriguez_julia_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 86,
                   "series_type": "Final",
                   "time": {
                     "display": "01:13.740",
@@ -3508,6 +3652,10 @@
               "category": "Junior",
               "athletes": [
                 {
+                  "athlete_id": "a_gonzalez_garcia_lucia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 15,
                   "series_type": "Final",
                   "time": {
                     "display": "01:10.570",
@@ -3517,6 +3665,10 @@
                   "converted_time": "01:10.570"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 21,
                   "series_type": "Final",
                   "time": {
                     "display": "01:12.740",
@@ -3534,6 +3686,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_mendez_bodas_inigo_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 94,
                   "series_type": "Final",
                   "time": {
                     "display": "01:06.030",
@@ -3543,6 +3699,10 @@
                   "converted_time": "01:06.030"
                 },
                 {
+                  "athlete_id": "a_cuairan_garay_inaki_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 107,
                   "series_type": "Final",
                   "time": {
                     "display": "01:10.390",
@@ -3560,6 +3720,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_mendez_bodas_inigo_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 22,
                   "series_type": "Final",
                   "time": {
                     "display": "01:06.030",
@@ -3569,6 +3733,10 @@
                   "converted_time": "01:06.030"
                 },
                 {
+                  "athlete_id": "a_cuairan_garay_inaki_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 35,
                   "series_type": "Final",
                   "time": {
                     "display": "01:10.390",
@@ -3586,6 +3754,10 @@
               "category": "Junior",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "01:30.660",
@@ -3595,6 +3767,10 @@
                   "converted_time": "01:30.660"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "01:30.660",
@@ -3604,6 +3780,10 @@
                   "converted_time": "01:30.660"
                 },
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "01:30.660",
@@ -3613,6 +3793,10 @@
                   "converted_time": "01:30.660"
                 },
                 {
+                  "athlete_id": "a_gonzalez_garcia_lucia_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "01:30.660",
@@ -3630,6 +3814,10 @@
               "category": "Junior",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "01:52.010",
@@ -3639,6 +3827,10 @@
                   "converted_time": "01:52.010"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "01:52.010",
@@ -3648,6 +3840,10 @@
                   "converted_time": "01:52.010"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "01:52.010",
@@ -3657,6 +3853,10 @@
                   "converted_time": "01:52.010"
                 },
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
                   "series_type": "Final",
                   "time": {
                     "display": "01:52.010",
@@ -3674,6 +3874,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 44,
                   "series_type": "Final",
                   "time": {
                     "display": "00:40.700",
@@ -3683,6 +3887,10 @@
                   "converted_time": "00:40.700"
                 },
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 45,
                   "series_type": "Final",
                   "time": {
                     "display": "00:40.740",
@@ -3692,6 +3900,10 @@
                   "converted_time": "00:40.740"
                 },
                 {
+                  "athlete_id": "a_gonzalez_garcia_lucia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 78,
                   "series_type": "Final",
                   "time": {
                     "display": "00:42.680",
@@ -3701,6 +3913,10 @@
                   "converted_time": "00:42.680"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 90,
                   "series_type": "Final",
                   "time": {
                     "display": "00:45.000",
@@ -3718,6 +3934,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 10,
                   "series_type": "Final",
                   "time": {
                     "display": "00:40.740",
@@ -3727,6 +3947,10 @@
                   "converted_time": "00:40.740"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 36,
                   "series_type": "Final",
                   "time": {
                     "display": "00:45.000",
@@ -3744,6 +3968,10 @@
               "category": "Junior",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 15,
                   "series_type": "Final",
                   "time": {
                     "display": "00:40.700",
@@ -3753,6 +3981,10 @@
                   "converted_time": "00:40.700"
                 },
                 {
+                  "athlete_id": "a_gonzalez_garcia_lucia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 25,
                   "series_type": "Final",
                   "time": {
                     "display": "00:42.680",
@@ -3770,6 +4002,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_castellanos_rodriguez_adrian_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 51,
                   "series_type": "Final",
                   "time": {
                     "display": "00:34.120",
@@ -3787,6 +4023,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_cruz_gonzalez_maria_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 48,
                   "series_type": "Final",
                   "time": {
                     "display": "02:51.500",
@@ -3796,6 +4036,10 @@
                   "converted_time": "02:51.500"
                 },
                 {
+                  "athlete_id": "a_gonzalez_rodriguez_julia_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 77,
                   "series_type": "Final",
                   "time": {
                     "display": "03:01.220",
@@ -3805,6 +4049,10 @@
                   "converted_time": "03:01.220"
                 },
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DSQ",
+                  "position": 108,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -3822,6 +4070,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DSQ",
+                  "position": 40,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -3839,6 +4091,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_hernandez_ojeda_alejandro_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 87,
                   "series_type": "Final",
                   "time": {
                     "display": "02:43.310",
@@ -3848,6 +4104,10 @@
                   "converted_time": "02:43.310"
                 },
                 {
+                  "athlete_id": "a_mendez_bodas_inigo_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 89,
                   "series_type": "Final",
                   "time": {
                     "display": "02:45.010",
@@ -3857,6 +4117,10 @@
                   "converted_time": "02:45.010"
                 },
                 {
+                  "athlete_id": "a_cuairan_garay_inaki_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 90,
                   "series_type": "Final",
                   "time": {
                     "display": "02:45.890",
@@ -3866,6 +4130,10 @@
                   "converted_time": "02:45.890"
                 },
                 {
+                  "athlete_id": "a_murcia_conde_jorge_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DSQ",
+                  "position": 109,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -3883,6 +4151,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_mendez_bodas_inigo_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 25,
                   "series_type": "Final",
                   "time": {
                     "display": "02:45.010",
@@ -3892,6 +4164,10 @@
                   "converted_time": "02:45.010"
                 },
                 {
+                  "athlete_id": "a_cuairan_garay_inaki_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 26,
                   "series_type": "Final",
                   "time": {
                     "display": "02:45.890",
@@ -3901,6 +4177,10 @@
                   "converted_time": "02:45.890"
                 },
                 {
+                  "athlete_id": "a_murcia_conde_jorge_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DSQ",
+                  "position": 36,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -3918,6 +4198,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 12,
                   "series_type": "Final",
                   "time": {
                     "display": "01:34.170",
@@ -3927,6 +4211,10 @@
                   "converted_time": "01:34.170"
                 },
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 12,
                   "series_type": "Final",
                   "time": {
                     "display": "01:34.170",
@@ -3936,6 +4224,10 @@
                   "converted_time": "01:34.170"
                 },
                 {
+                  "athlete_id": "a_gonzalez_garcia_lucia_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 12,
                   "series_type": "Final",
                   "time": {
                     "display": "01:34.170",
@@ -3945,6 +4237,10 @@
                   "converted_time": "01:34.170"
                 },
                 {
+                  "athlete_id": "a_cruz_gonzalez_maria_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 12,
                   "series_type": "Final",
                   "time": {
                     "display": "01:34.170",
@@ -3962,6 +4258,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_castellanos_rodriguez_adrian_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 19,
                   "series_type": "Final",
                   "time": {
                     "display": "01:27.660",
@@ -3971,6 +4271,10 @@
                   "converted_time": "01:27.660"
                 },
                 {
+                  "athlete_id": "a_sanchez_martinez_alvaro_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 19,
                   "series_type": "Final",
                   "time": {
                     "display": "01:27.660",
@@ -3980,6 +4284,10 @@
                   "converted_time": "01:27.660"
                 },
                 {
+                  "athlete_id": "a_cuairan_garay_inaki_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 19,
                   "series_type": "Final",
                   "time": {
                     "display": "01:27.660",
@@ -3989,6 +4297,10 @@
                   "converted_time": "01:27.660"
                 },
                 {
+                  "athlete_id": "a_mendez_bodas_inigo_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 19,
                   "series_type": "Final",
                   "time": {
                     "display": "01:27.660",
@@ -4006,6 +4318,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 13,
                   "series_type": "Final",
                   "time": {
                     "display": "01:55.680",
@@ -4015,6 +4331,10 @@
                   "converted_time": "01:55.680"
                 },
                 {
+                  "athlete_id": "a_gonzalez_rodriguez_julia_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 13,
                   "series_type": "Final",
                   "time": {
                     "display": "01:55.680",
@@ -4024,6 +4344,10 @@
                   "converted_time": "01:55.680"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 13,
                   "series_type": "Final",
                   "time": {
                     "display": "01:55.680",
@@ -4033,6 +4357,10 @@
                   "converted_time": "01:55.680"
                 },
                 {
+                  "athlete_id": "a_cruz_gonzalez_maria_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 13,
                   "series_type": "Final",
                   "time": {
                     "display": "01:55.680",
@@ -4050,6 +4378,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_castellanos_rodriguez_adrian_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 21,
                   "series_type": "Final",
                   "time": {
                     "display": "01:46.150",
@@ -4059,6 +4391,10 @@
                   "converted_time": "01:46.150"
                 },
                 {
+                  "athlete_id": "a_sanchez_martinez_alvaro_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 21,
                   "series_type": "Final",
                   "time": {
                     "display": "01:46.150",
@@ -4068,6 +4404,10 @@
                   "converted_time": "01:46.150"
                 },
                 {
+                  "athlete_id": "a_hernandez_ojeda_alejandro_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 21,
                   "series_type": "Final",
                   "time": {
                     "display": "01:46.150",
@@ -4077,6 +4417,10 @@
                   "converted_time": "01:46.150"
                 },
                 {
+                  "athlete_id": "a_murcia_conde_jorge_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 21,
                   "series_type": "Final",
                   "time": {
                     "display": "01:46.150",
@@ -4094,6 +4438,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 8,
                   "series_type": "Final",
                   "time": {
                     "display": "02:18.850",
@@ -4103,6 +4451,10 @@
                   "converted_time": "02:18.850"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 8,
                   "series_type": "Final",
                   "time": {
                     "display": "02:18.850",
@@ -4112,6 +4464,10 @@
                   "converted_time": "02:18.850"
                 },
                 {
+                  "athlete_id": "a_murcia_conde_jorge_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 8,
                   "series_type": "Final",
                   "time": {
                     "display": "02:18.850",
@@ -4121,6 +4477,10 @@
                   "converted_time": "02:18.850"
                 },
                 {
+                  "athlete_id": "a_cuairan_garay_inaki_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 8,
                   "series_type": "Final",
                   "time": {
                     "display": "02:18.850",
@@ -4138,6 +4498,10 @@
               "category": "Junior",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "BAJA",
+                  "position": 18,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -4155,6 +4519,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 38,
                   "series_type": "Final",
                   "time": {
                     "display": "01:23.060",
@@ -4164,6 +4532,10 @@
                   "converted_time": "01:23.060"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 59,
                   "series_type": "Final",
                   "time": {
                     "display": "01:26.720",
@@ -4173,6 +4545,10 @@
                   "converted_time": "01:26.720"
                 },
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 72,
                   "series_type": "Final",
                   "time": {
                     "display": "01:28.820",
@@ -4182,6 +4558,10 @@
                   "converted_time": "01:28.820"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 75,
                   "series_type": "Final",
                   "time": {
                     "display": "01:29.690",
@@ -4199,6 +4579,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_ibanez_gonzalez_andrea_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 19,
                   "series_type": "Final",
                   "time": {
                     "display": "01:26.720",
@@ -4208,6 +4592,10 @@
                   "converted_time": "01:26.720"
                 },
                 {
+                  "athlete_id": "a_huertas_sanchez_gabriela_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 25,
                   "series_type": "Final",
                   "time": {
                     "display": "01:28.820",
@@ -4225,6 +4613,10 @@
               "category": "Junior",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 14,
                   "series_type": "Final",
                   "time": {
                     "display": "01:23.060",
@@ -4234,6 +4626,10 @@
                   "converted_time": "01:23.060"
                 },
                 {
+                  "athlete_id": "a_ibanez_gonzalez_nerea_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 24,
                   "series_type": "Final",
                   "time": {
                     "display": "01:29.690",
@@ -4251,6 +4647,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_castellanos_rodriguez_adrian_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 57,
                   "series_type": "Final",
                   "time": {
                     "display": "01:13.280",
@@ -4260,6 +4660,10 @@
                   "converted_time": "01:13.280"
                 },
                 {
+                  "athlete_id": "a_murcia_conde_jorge_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 103,
                   "series_type": "Final",
                   "time": {
                     "display": "01:20.570",
@@ -4269,6 +4673,10 @@
                   "converted_time": "01:20.570"
                 },
                 {
+                  "athlete_id": "a_sanchez_martinez_alvaro_2004",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "BAJA",
+                  "position": 112,
                   "series_type": "Final",
                   "time": {
                     "display": null,
@@ -4286,6 +4694,10 @@
               "category": "Juvenil",
               "athletes": [
                 {
+                  "athlete_id": "a_murcia_conde_jorge_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 35,
                   "series_type": "Final",
                   "time": {
                     "display": "01:20.570",
@@ -4303,6 +4715,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_cruz_gonzalez_maria_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 39,
                   "series_type": "Final",
                   "time": {
                     "display": "01:01.710",
@@ -4312,6 +4728,10 @@
                   "converted_time": "01:01.710"
                 },
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 51,
                   "series_type": "Final",
                   "time": {
                     "display": "01:03.580",
@@ -4321,6 +4741,10 @@
                   "converted_time": "01:03.580"
                 },
                 {
+                  "athlete_id": "a_gonzalez_rodriguez_julia_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 95,
                   "series_type": "Final",
                   "time": {
                     "display": "01:09.790",
@@ -4330,6 +4754,10 @@
                   "converted_time": "01:09.790"
                 },
                 {
+                  "athlete_id": "a_gonzalez_garcia_lucia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 97,
                   "series_type": "Final",
                   "time": {
                     "display": "01:09.910",
@@ -4347,6 +4775,10 @@
               "category": "Junior",
               "athletes": [
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 18,
                   "series_type": "Final",
                   "time": {
                     "display": "01:03.580",
@@ -4356,6 +4788,10 @@
                   "converted_time": "01:03.580"
                 },
                 {
+                  "athlete_id": "a_gonzalez_garcia_lucia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 32,
                   "series_type": "Final",
                   "time": {
                     "display": "01:09.910",
@@ -4365,6 +4801,10 @@
                   "converted_time": "01:09.910"
                 },
                 {
+                  "athlete_id": "a_carpintero_moreno_ruth_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 18,
                   "series_type": "Final",
                   "time": {
                     "display": "01:03.580",
@@ -4374,6 +4814,10 @@
                   "converted_time": "01:03.580"
                 },
                 {
+                  "athlete_id": "a_gonzalez_garcia_lucia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 32,
                   "series_type": "Final",
                   "time": {
                     "display": "01:09.910",
@@ -4391,6 +4835,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_mendez_bodas_inigo_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 109,
                   "series_type": "Final",
                   "time": {
                     "display": "01:01.930",
@@ -4408,6 +4856,10 @@
               "category": "Absoluto",
               "athletes": [
                 {
+                  "athlete_id": "a_castellanos_rodriguez_adrian_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "02:09.070",
@@ -4417,6 +4869,10 @@
                   "converted_time": "02:09.070"
                 },
                 {
+                  "athlete_id": "a_hernandez_ojeda_alejandro_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "02:09.070",
@@ -4426,6 +4882,10 @@
                   "converted_time": "02:09.070"
                 },
                 {
+                  "athlete_id": "a_mate_garcia_claudia_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "02:09.070",
@@ -4435,6 +4895,10 @@
                   "converted_time": "02:09.070"
                 },
                 {
+                  "athlete_id": "a_gonzalez_rodriguez_julia_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
                   "series_type": "Final",
                   "time": {
                     "display": "02:09.070",

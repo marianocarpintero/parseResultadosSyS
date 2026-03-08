@@ -219,16 +219,16 @@ def build_tree(dimensions: Dict[str, Any], results: List[Dict[str, Any]]) -> Lis
         # heat opcional
         if "heat" in r and r.get("heat") is not None:
             athlete_node["heat"] = r.get("heat")
-        athlete_node = {
+        # resto de campos
+        athlete_node.update({
             "series_type": r.get("series_type"),
             "time": {
                 "display": time_obj.get("display"),
                 "seconds": time_obj.get("seconds"),
                 "raw": time_obj.get("raw"),
             },
-            # compat: muchos consumidores usan converted_time = display
             "converted_time": time_obj.get("display"),
-        }
+        })
 
         ev_node["athletes"].append(athlete_node)
 
