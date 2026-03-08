@@ -5,6 +5,8 @@ import unicodedata
 from typing import Optional, Tuple
 
 
+LOWER_WORDS_ES = {"de","del","la","las","los","y","e","en","con","sin","al","a","por","para","da","dos","das","do"}
+
 def normalize_spaces(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
@@ -50,6 +52,42 @@ def normalize_title(s: str) -> str:
         else:
             out.append(w.capitalize())
     return " ".join(out)
+
+
+def title_case_name_es(s: str) -> str:
+    s = re.sub(r"\s+", " ", (s or "").strip())
+    out = []
+    for i, w in enumerate(s.split()):
+        wl = w.lower()
+        if i > 0 and wl in LOWER_WORDS_ES:
+            out.append(wl)
+        else:
+            # respeta guiones en nombres/apellidos
+            parts = wl.split("-")
+            parts = [p[:1].upper() + p[1:] if p else p for p in parts]
+            out.append("-".join(parts))
+    return " ".join(out)
+
+
+def normalize_athlete_name(raw: str) -> str:
+    """
+    Convierte:
+      - 'APELLIDOS, NOMBRE' -> 'Nombre Apellidos'
+      - 'NOMBRE APELLIDOS'  -> Title Case sin reordenar (fallback)
+    """
+    s = re.sub(r"\s+", " ", (raw or "").strip())
+    # limpia dobles espacios alrededor de coma
+    s = re.sub(r"\s*,\s*", ", ", s)
+
+    if "," in s:
+        left, right = s.split(",", 1)
+        apellidos = left.strip()
+        nombres = right.strip()
+        if nombres and apellidos:
+            return title_case_name_es(f"{nombres} {apellidos}")
+
+    # fallback: no hay coma, no reordenamos, solo Title Case
+    return title_case_name_es(s)
 
 
 # ---- tiempo ----

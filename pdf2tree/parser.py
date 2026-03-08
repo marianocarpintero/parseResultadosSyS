@@ -11,6 +11,7 @@ from .normalize import (
     normalize_category,
     normalize_sex,
     normalize_key,
+    normalize_athlete_name,
     parse_status,
     slugify,
     time_raw_to_display_seconds,
@@ -130,35 +131,13 @@ class SinglePassParser:
         if title:
             self.ctx.pending.last_full_title = title
 
-        # >>> DEBUG TEMPORAL (borra después) <<<
-        if "máster" in use_title.lower() or "master" in use_title.lower():
-                self.trace.emit({
-                    "action": "DEBUG_COMMIT_EVENT_MASTER",
-                    "use_title": use_title,
-                    "catline": catline,
-                })
-        # >>> FIN DEBUG TEMPORAL <<<
-
         fields = build_event_fields(use_title, catline)
 
-
-
-
-        print("DEBUG COMMIT use_title:", use_title)
-        print("DEBUG fields.id:", fields["id"])
-        print("DEBUG fields.category:", fields["category"])
-        print("DEBUG fields.category_display:", fields.get("category_display"))
-
-        existing = None
-        if callable(self.on_event) and hasattr(self.on_event, "__self__"):
-            b = self.on_event.__self__
-            if hasattr(b, "events"):
-                existing = b.events.get(fields["id"])
-        print("DEBUG existing event for id?", bool(existing))
-        if existing:
-            print("DEBUG existing.category:", existing.category)
-
-
+#        existing = None
+#        if callable(self.on_event) and hasattr(self.on_event, "__self__"):
+#            b = self.on_event.__self__
+#            if hasattr(b, "events"):
+#                existing = b.events.get(fields["id"])
 
         dbg = fields.get("debug_info")
         if dbg:
@@ -174,7 +153,6 @@ class SinglePassParser:
                 id=fields["id"],
                 base=fields["base"],
                 discipline=fields["base"],
-#                category=fields.get("category_display", fields["category"]),
                 category=fields["category_display"],
                 sex=fields["sex"],           # ya es F/M/X
                 relay=fields["relay"],
@@ -227,6 +205,9 @@ class SinglePassParser:
             first_member = " ".join(parts[1:club_start]).strip()
         # Limpieza mínima: si por alguna razón queda vacío, lo ignoramos
         # (si el PDF NO trae atleta en la primera línea, first_member quedará "")
+
+        if first_member:
+            first_member = normalize_athlete_name(first_member)
 
         club_name_raw= " ".join(parts[club_start:cut_idx]).strip()
         club_name = self._clean_club_tail(club_name_raw) or "club_unknown"
@@ -290,8 +271,8 @@ class SinglePassParser:
         })
 
         members = ctx.members if ctx.members else ["Relevos"]
-
         for member_name in members:
+            member_name = normalize_athlete_name(member_name) if member_name != "Relevos" else "Relevos"
             athlete_id = "a_" + slugify(member_name) + "_na"
             # emitir atleta (relay sin año)
             self._emit_athlete(athlete_id, member_name, None)
@@ -338,7 +319,10 @@ class SinglePassParser:
             return
 
         position = int(parts[0])
-        athlete_name = " ".join(parts[1:yidx]).strip()
+
+        raw_name = " ".join(parts[1:yidx]).strip()
+        athlete_name = normalize_athlete_name(raw_name)
+
         birth_year = year
         status = parse_status(line)
         times = TIME_RE.findall(line)
@@ -500,7 +484,7 @@ class SinglePassParser:
                 self.trace.emit({"action": "WARN_RELAY_MEMBER_WITHOUT_CTX", "text": token.norm})
                 return
 
-            name = token.norm
+            name = normalize_athlete_name(token.norm)
             if not self._looks_like_person_name(name):
                 self.trace.emit({
                     "action": "REJECT_RELAY_MEMBER",
