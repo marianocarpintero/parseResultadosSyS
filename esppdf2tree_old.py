@@ -708,7 +708,7 @@ def parse_individual_result_line(line: str):
     times = TIME_RE.findall(ln)
     status = "OK"
     if STATUS_RE.search(ln):
-        status = STATUS_RE.search(ln).group(1).upper()
+        status = STATUS_RE.search(ln).group(1).upper() # type: ignore
     time_raw = times[-1] if times else ""
 
     return {
@@ -770,7 +770,7 @@ def parse_relay_result_start_line(line: str):
     times = TIME_RE.findall(ln)
     status = "OK"
     if STATUS_RE.search(ln):
-        status = STATUS_RE.search(ln).group(1).upper()
+        status = STATUS_RE.search(ln).group(1).upper() # type: ignore
     time_raw = times[-1] if times else ""
 
     return {
@@ -1053,4 +1053,4 @@ def main():
         print("DEBUG procesados:", len(processed), "omitidos:", len(skipped))
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()
