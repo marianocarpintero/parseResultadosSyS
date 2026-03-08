@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import json
 import argparse
+import unicodedata
 from glob import glob
 from datetime import datetime
 from typing import Optional, List, Tuple, Dict, Any
@@ -225,6 +226,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             # Ejecutar parser single-pass: páginas -> líneas -> tokens -> consume
             for page in iter_pdf_pages(pdf_path):
                 for line_no, line in enumerate(page.lines, start=1):
+                    line = unicodedata.normalize("NFC", line)
                     tok = tokenizer.classify(page.page_index, line_no, line)
                     parser_sp.consume(
                         tok,
@@ -252,6 +254,11 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     # Construir salida final
     dims_dict = dims.build()
+
+    if args.debug:
+        ev = next((e for e in dims_dict["events"] if e["id"].startswith("e_lanzamiento_de_cuerda_master_30_34")), None)
+        print("DEBUG after dims.build:", ev)
+
     results_list = resb.build()
 
     # Remapea _na a año si exite, para mejorar conciliación con atletas

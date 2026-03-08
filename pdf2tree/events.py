@@ -1,6 +1,6 @@
 import re
 from typing import Optional, Tuple, Dict
-from .normalize import slugify
+from .normalize import slugify, strip_accents
 
 
 LOWER_WORDS_ES = {"de","del","la","las","los","y","e","en","con","sin","al","a","por","para"}
@@ -12,7 +12,7 @@ MEN_EN_RE = re.compile(r"\bmen(?:'s)?\b", re.IGNORECASE)
 WOMEN_EN_RE = re.compile(r"\bwomen(?:'s)?\b", re.IGNORECASE)
 
 # Máster con acento o sin acento
-MASTER_WORD = r"ma[áa]ster"
+MASTER_WORD = re.compile(r"m[áa]ster", re.IGNORECASE).pattern
 
 # Máster rango: "Máster 30-34" / "Máster +70"
 MASTER_RANGE_RE = re.compile(
@@ -33,9 +33,13 @@ MASTER_R4_GLUE_RE = re.compile(
 )
 
 MASTER_BLOCK_RE = re.compile(
-    r"\bma[áa]ster(?:\s*r4|r4)?\s*(?:\+\s*\d{2,3}|\d{2}\s*-\s*\d{2}|\+\s*\d{2})\b",
+    r"\bm[áa]ster(?:\s*r4|r4)?\s*(?:\+\s*\d{2,3}|\d{2}\s*-\s*\d{2}|\+\s*\d{2})\b",
     re.IGNORECASE
 )
+
+MASTER_WORD_RE = re.compile(r"\bm[áa]ster\b", re.IGNORECASE)
+
+SEX_TAIL_RE = re.compile(r"\b(femen\w*|mascul\w*|mixt\w*)\b", re.IGNORECASE)
 
 # Detecta distancia en cualquier parte:
 # - 4x12,5 m. / 4x12.5m / 4x50m.
@@ -147,6 +151,66 @@ def category_display(cat: str) -> str:
     return "Absoluto"
 
 
+def extract_master_category_and_trim(title: str) -> tuple[Optional[str], str]:
+    """
+    Si encuentra 'máster/master' devuelve:
+      - category_display: p.ej. 'Máster 30-34' / 'Máster R4 +170'
+      - trimmed_title: título SIN la parte de máster en adelante (para construir base)
+    Si no encuentra máster: (None, title)
+    """
+    if not title:
+        return None, title
+
+    m = MASTER_WORD_RE.search(title)
+    
+    if not m:
+        return None, title
+
+    # segmento desde 'máster' hasta final
+    seg = title[m.start():].strip()
+
+    # quitar sexo dentro del segmento
+    seg = SEX_TAIL_RE.sub("", seg).strip()
+    seg = re.sub(r"\s+", " ", seg)
+
+    # normalizar MásterR4 / Máster R4
+    seg = re.sub(r"\bma[áa]ster\s*r4\b", "Máster R4", seg, flags=re.IGNORECASE)
+    seg = re.sub(r"\bma[áa]sterr4\b", "Máster R4", seg, flags=re.IGNORECASE)
+
+    # asegurar "Máster" con acento al inicio
+    seg = re.sub(r"^ma[áa]ster", "Máster", seg, flags=re.IGNORECASE)
+
+    # trimmed_title: todo lo anterior a 'máster'
+    trimmed = (title[:m.start()]).strip()
+    trimmed = re.sub(r"\s+", " ", trimmed)
+
+    return seg, trimmed
+
+
+def master_category_to_canonical(cat_display: str) -> str:
+    """
+    Convierte display 'Máster 30-34' / 'Máster R4 +170' a canónica:
+      - master_30-34
+      - master_r4_+170
+      - master_+70
+    """
+    s = (cat_display or "").strip()
+    s = s.replace("Máster", "master").replace("máster", "master")
+    s = s.replace("R4", "r4")
+    s = re.sub(r"\s+", " ", s)
+
+    # "master r4 +170" -> master_r4_+170
+    if s.lower().startswith("master r4"):
+        rest = s[9:].strip()  # quita "master r4"
+        rest = re.sub(r"\s+", "", rest)  # "+170"
+        return f"master_r4_{rest}"
+
+    # "master 30-34" o "master +70"
+    rest = s[6:].strip()  # quita "master"
+    rest = re.sub(r"\s+", "", rest)      # "30-34" / "+70"
+    return f"master_{rest}" if rest else "master"
+
+
 def _normalize_distance_prefix(relay: bool, num_str: str) -> Tuple[str, str]:
     """
     Devuelve:
@@ -187,19 +251,14 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     Construye:
       base (capitalized, sin cat/sex), distance_m, relay, category, sex (F/M/X), id
     """
-    # >>> DEBUG TEMPORAL (borra después) <<<
-    debug_info_1 = None
-    if "máster" in event_title.lower() or "master" in event_title.lower():
-        debug_info_1 = {
-            "event_title": event_title,
-        }
-    # >>> FIN DEBUG TEMPORAL <<<
     raw_title = event_title or ""
 
     # tramo ES tras el guion si existe
     es_part = raw_title
     if re.search(r"\s-\s", raw_title):
-        es_part = re.split(r"\s-\s", raw_title, maxsplit=1)[1].strip()
+        es_part = re.split(r"\s-\s", raw_title, 1)[1].strip()
+
+    master_display, base_source = extract_master_category_and_trim(es_part)
 
     # category/sex preferidos desde category_line
     cat = None
@@ -223,17 +282,11 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     # fallback desde event_title si no vienen en category_line
     if not sx:
         sx = sex_code(raw_title)
-
-    debug_info_2 = None
-    if not cat:
-        cat = category_code(raw_title)
-        # >>> DEBUG TEMPORAL (borra después) <<<
-        debug_info_2 = {
-            "category code": cat,
-        }
-        # >>> FIN DEBUG TEMPORAL <<<
-
-
+    if master_display:
+        cat = master_category_to_canonical(master_display)
+    else:
+        if not cat:
+            cat = category_code(raw_title)  # <-- usa raw_title, no es_part
 
     relay = infer_relay(raw_title + " " + es_part)
 
@@ -245,7 +298,7 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
         # extraer distancia en cualquier parte del título (EN o ES)
         prefix, distance_m = extract_distance_from_title(raw_title)
         # limpiar texto ES: quitar cat/sex y title case
-        rest = strip_category_sex_es(es_part)
+        rest = strip_category_sex_es(base_source if master_display else es_part)
         rest = title_case_es(rest)
         # Si el texto ES ya trae distancia al inicio ("50 m.", "4x25 m.", "4x12,5 m."),
         # la quitamos para no duplicarla al anteponer prefix.
@@ -267,6 +320,7 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
         debug_info = {
             "raw_title": raw_title,
             "es_part": es_part,
+            "master_display": master_display,
             "category_line": category_line,
             "cat": cat,
             "sex": sx,
@@ -282,10 +336,8 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
         "distance_m": distance_m,
         "relay": relay,
         "category": category,
-        "category_display": category_display(category),
+        "category_display": master_display if master_display else category_display(category),
         "sex": sex,
         "id": event_id,
-        "debug_info_1": debug_info_1,
-        "debug_info_2": debug_info_2,
         "debug_info": debug_info,
     }

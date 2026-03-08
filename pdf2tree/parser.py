@@ -141,12 +141,25 @@ class SinglePassParser:
 
         fields = build_event_fields(use_title, catline)
 
-        dbg = fields.get("debug_info_1")
-        if dbg:
-            self.trace.emit({"action": "DEBUG_EVENT_FIELDS", "debug1": dbg})
-        dbg = fields.get("debug_info_2")
-        if dbg:
-            self.trace.emit({"action": "DEBUG_EVENT_FIELDS", "debug2": dbg})
+
+
+
+        print("DEBUG COMMIT use_title:", use_title)
+        print("DEBUG fields.id:", fields["id"])
+        print("DEBUG fields.category:", fields["category"])
+        print("DEBUG fields.category_display:", fields.get("category_display"))
+
+        existing = None
+        if callable(self.on_event) and hasattr(self.on_event, "__self__"):
+            b = self.on_event.__self__
+            if hasattr(b, "events"):
+                existing = b.events.get(fields["id"])
+        print("DEBUG existing event for id?", bool(existing))
+        if existing:
+            print("DEBUG existing.category:", existing.category)
+
+
+
         dbg = fields.get("debug_info")
         if dbg:
             self.trace.emit({"action": "DEBUG_EVENT_FIELDS", "debug": dbg})
@@ -161,7 +174,8 @@ class SinglePassParser:
                 id=fields["id"],
                 base=fields["base"],
                 discipline=fields["base"],
-                category=fields.get("category_display", fields["category"]),
+#                category=fields.get("category_display", fields["category"]),
+                category=fields["category_display"],
                 sex=fields["sex"],           # ya es F/M/X
                 relay=fields["relay"],
                 distance_m=fields["distance_m"],
