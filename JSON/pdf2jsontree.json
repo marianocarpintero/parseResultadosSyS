@@ -1,0 +1,4254 @@
+{
+  "meta": {
+    "version": "1.0.0",
+    "generated_at": "2026-03-06T09:59:53+01:00",
+    "timezone": "Europe/Madrid",
+    "source": {
+      "generator": "pdf2tree.py",
+      "inputs": [
+        "2025*.pdf"
+      ],
+      "inputs_resolved": [
+        "2025esp.pdf"
+      ],
+      "skipped": []
+    }
+  },
+  "dimensions": {
+    "seasons": [
+      {
+        "id": "s_2024_2025",
+        "label": "Temporada 2024-2025"
+      }
+    ],
+    "clubs": [
+      {
+        "id": "club_c_d_e_pacifico_salvamento",
+        "name": "C.D.E Pacífico Salvamento",
+        "slug": "c_d_e_pacifico_salvamento"
+      }
+    ],
+    "athletes": [
+      {
+        "id": "a_nerea_ibanez_gonzalez_2008",
+        "name": "Nerea Ibañez Gonzalez",
+        "birth_year": 2008
+      },
+      {
+        "id": "a_andrea_ibanez_gonzalez_2009",
+        "name": "Andrea Ibáñez González",
+        "birth_year": 2009
+      },
+      {
+        "id": "a_claudia_mate_garcia_2010",
+        "name": "Claudia Mate García",
+        "birth_year": 2010
+      },
+      {
+        "id": "a_alvaro_sanchez_martinez_2004",
+        "name": "Alvaro Sánchez Martínez",
+        "birth_year": 2004
+      },
+      {
+        "id": "a_inaki_cuairan_garay_2009",
+        "name": "Iñaki Cuairán Garay",
+        "birth_year": 2009
+      },
+      {
+        "id": "a_maria_cruz_gonzalez_2000",
+        "name": "Maria Cruz Gonzalez",
+        "birth_year": 2000
+      },
+      {
+        "id": "a_lucia_gonzalez_garcia_2007",
+        "name": "Lucía González García",
+        "birth_year": 2007
+      },
+      {
+        "id": "a_julia_gonzalez_rodriguez_2006",
+        "name": "Julia Gonzalez Rodriguez",
+        "birth_year": 2006
+      },
+      {
+        "id": "a_inigo_mendez_bodas_2010",
+        "name": "Íñigo Méndez Bodas",
+        "birth_year": 2010
+      },
+      {
+        "id": "a_ruth_carpintero_moreno_2008",
+        "name": "Ruth Carpintero Moreno",
+        "birth_year": 2008
+      },
+      {
+        "id": "a_gabriela_huertas_sanchez_2009",
+        "name": "Gabriela Huertas Sánchez",
+        "birth_year": 2009
+      },
+      {
+        "id": "a_adrian_castellanos_rodriguez_2006",
+        "name": "Adrián Castellanos Rodriguez",
+        "birth_year": 2006
+      },
+      {
+        "id": "a_alejandro_hernandez_ojeda_2006",
+        "name": "Alejandro Hernández Ojeda",
+        "birth_year": 2006
+      },
+      {
+        "id": "a_jorge_murcia_conde_2009",
+        "name": "Jorge Murcia Conde",
+        "birth_year": 2009
+      }
+    ],
+    "competitions": [
+      {
+        "id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+        "season_id": "s_2024_2025",
+        "name": "XIII Spanish Open - VI Europe Cup XXXIX Campeonato De España Juvenil, Júnior Y Absoluto De Primavera",
+        "name_clean": "XIII Spanish Open VI Europe Cup XXXIX Campeonato De España Juvenil, Júnior Y Absoluto De Primavera",
+        "date": "2025-05-02",
+        "date_start": "2025-05-02",
+        "date_end": "2025-05-04",
+        "location": "Torrevieja",
+        "region": "Alicante",
+        "pool_type": "50E",
+        "source_file": "2025esp.pdf"
+      }
+    ],
+    "events": [
+      {
+        "id": "e_200_m_natacion_con_obstaculos_absoluto_f",
+        "base": "200 m. Natación con Obstáculos",
+        "discipline": "200 m. Natación con Obstáculos",
+        "distance_m": 200,
+        "relay": false,
+        "category": "Absoluto",
+        "sex": "F"
+      },
+      {
+        "id": "e_200_m_natacion_con_obstaculos_juvenil_f",
+        "base": "200 m. Natación con Obstáculos",
+        "discipline": "200 m. Natación con Obstáculos",
+        "distance_m": 200,
+        "relay": false,
+        "category": "Juvenil",
+        "sex": "F"
+      },
+      {
+        "id": "e_200_m_natacion_con_obstaculos_absoluto_m",
+        "base": "200 m. Natación con Obstáculos",
+        "discipline": "200 m. Natación con Obstáculos",
+        "distance_m": 200,
+        "relay": false,
+        "category": "Absoluto",
+        "sex": "M"
+      },
+      {
+        "id": "e_200_m_natacion_con_obstaculos_juvenil_m",
+        "base": "200 m. Natación con Obstáculos",
+        "discipline": "200 m. Natación con Obstáculos",
+        "distance_m": 200,
+        "relay": false,
+        "category": "Juvenil",
+        "sex": "M"
+      },
+      {
+        "id": "e_lanzamiento_de_cuerda_juvenil_f",
+        "base": "Lanzamiento de Cuerda",
+        "discipline": "Lanzamiento de Cuerda",
+        "distance_m": null,
+        "relay": true,
+        "category": "Juvenil",
+        "sex": "F"
+      },
+      {
+        "id": "e_lanzamiento_de_cuerda_juvenil_m",
+        "base": "Lanzamiento de Cuerda",
+        "discipline": "Lanzamiento de Cuerda",
+        "distance_m": null,
+        "relay": true,
+        "category": "Juvenil",
+        "sex": "M"
+      },
+      {
+        "id": "e_lanzamiento_de_cuerda_junior_f",
+        "base": "Lanzamiento de Cuerda",
+        "discipline": "Lanzamiento de Cuerda",
+        "distance_m": null,
+        "relay": true,
+        "category": "Junior",
+        "sex": "F"
+      },
+      {
+        "id": "e_lanzamiento_de_cuerda_junior_m",
+        "base": "Lanzamiento de Cuerda",
+        "discipline": "Lanzamiento de Cuerda",
+        "distance_m": null,
+        "relay": true,
+        "category": "Junior",
+        "sex": "M"
+      },
+      {
+        "id": "e_4x50_m_relevo_natacion_con_obstaculos_juvenil_f",
+        "base": "4x50 m. Relevo Natacion con Obstáculos",
+        "discipline": "4x50 m. Relevo Natacion con Obstáculos",
+        "distance_m": 50,
+        "relay": true,
+        "category": "Juvenil",
+        "sex": "F"
+      },
+      {
+        "id": "e_4x50_m_relevo_natacion_con_obstaculos_juvenil_m",
+        "base": "4x50 m. Relevo Natación con Obstáculos",
+        "discipline": "4x50 m. Relevo Natación con Obstáculos",
+        "distance_m": 50,
+        "relay": true,
+        "category": "Juvenil",
+        "sex": "M"
+      },
+      {
+        "id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_f",
+        "base": "4x50 m. Relevo Natación con Obstáculos",
+        "discipline": "4x50 m. Relevo Natación con Obstáculos",
+        "distance_m": 50,
+        "relay": true,
+        "category": "Junior",
+        "sex": "F"
+      },
+      {
+        "id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+        "base": "4x50 m. Relevo Natación con Obstáculos",
+        "discipline": "4x50 m. Relevo Natación con Obstáculos",
+        "distance_m": 50,
+        "relay": true,
+        "category": "Junior",
+        "sex": "M"
+      },
+      {
+        "id": "e_4x25_m_relevo_remolque_de_maniqui_juvenil_f",
+        "base": "4x25 m. Relevo Remolque de Maniquí",
+        "discipline": "4x25 m. Relevo Remolque de Maniquí",
+        "distance_m": 25,
+        "relay": true,
+        "category": "Juvenil",
+        "sex": "F"
+      },
+      {
+        "id": "e_4x25_m_relevo_remolque_de_maniqui_juvenil_m",
+        "base": "4x25 m. Relevo Remolque de Maniquí",
+        "discipline": "4x25 m. Relevo Remolque de Maniquí",
+        "distance_m": 25,
+        "relay": true,
+        "category": "Juvenil",
+        "sex": "M"
+      },
+      {
+        "id": "e_4x25_m_relevo_remolque_de_maniqui_junior_f",
+        "base": "4x25 m. Relevo Remolque de Maniquí",
+        "discipline": "4x25 m. Relevo Remolque de Maniquí",
+        "distance_m": 25,
+        "relay": true,
+        "category": "Junior",
+        "sex": "F"
+      },
+      {
+        "id": "e_4x25_m_relevo_remolque_de_maniqui_junior_m",
+        "base": "4x25 m. Relevo Remolque de Maniquí",
+        "discipline": "4x25 m. Relevo Remolque de Maniquí",
+        "distance_m": 25,
+        "relay": true,
+        "category": "Junior",
+        "sex": "M"
+      },
+      {
+        "id": "e_4x50_m_relevo_combinado_juvenil_f",
+        "base": "4x50 m. Relevo Combinado",
+        "discipline": "4x50 m. Relevo Combinado",
+        "distance_m": 50,
+        "relay": true,
+        "category": "Juvenil",
+        "sex": "F"
+      },
+      {
+        "id": "e_4x50_m_relevo_combinado_juvenil_m",
+        "base": "4x50 m. Relevo Combinado",
+        "discipline": "4x50 m. Relevo Combinado",
+        "distance_m": 50,
+        "relay": true,
+        "category": "Juvenil",
+        "sex": "M"
+      },
+      {
+        "id": "e_4x50_m_relevo_combinado_junior_f",
+        "base": "4x50 m. Relevo Combinado",
+        "discipline": "4x50 m. Relevo Combinado",
+        "distance_m": 50,
+        "relay": true,
+        "category": "Junior",
+        "sex": "F"
+      },
+      {
+        "id": "e_4x50_m_relevo_combinado_junior_m",
+        "base": "4x50 m. Relevo Combinado",
+        "discipline": "4x50 m. Relevo Combinado",
+        "distance_m": 50,
+        "relay": true,
+        "category": "Junior",
+        "sex": "M"
+      },
+      {
+        "id": "e_50_m_remolque_de_maniqui_absoluto_m",
+        "base": "50 m. Remolque de Maniquí",
+        "discipline": "50 m. Remolque de Maniquí",
+        "distance_m": 50,
+        "relay": false,
+        "category": "Absoluto",
+        "sex": "M"
+      },
+      {
+        "id": "e_50_m_remolque_de_maniqui_juvenil_m",
+        "base": "50 m. Remolque de Maniquí",
+        "discipline": "50 m. Remolque de Maniquí",
+        "distance_m": 50,
+        "relay": false,
+        "category": "Juvenil",
+        "sex": "M"
+      },
+      {
+        "id": "e_100_m_combinada_de_salvamento_absoluto_f",
+        "base": "100 m. Combinada de Salvamento",
+        "discipline": "100 m. Combinada de Salvamento",
+        "distance_m": 100,
+        "relay": false,
+        "category": "Absoluto",
+        "sex": "F"
+      },
+      {
+        "id": "e_100_m_combinada_de_salvamento_juvenil_f",
+        "base": "100 m. Combinada de Salvamento",
+        "discipline": "100 m. Combinada de Salvamento",
+        "distance_m": 100,
+        "relay": false,
+        "category": "Juvenil",
+        "sex": "F"
+      },
+      {
+        "id": "e_100_m_combinada_de_salvamento_absoluto_m",
+        "base": "100 m. Combinada de Salvamento",
+        "discipline": "100 m. Combinada de Salvamento",
+        "distance_m": 100,
+        "relay": false,
+        "category": "Absoluto",
+        "sex": "M"
+      },
+      {
+        "id": "e_100_m_combinada_de_salvamento_juvenil_m",
+        "base": "100 m. Combinada de Salvamento",
+        "discipline": "100 m. Combinada de Salvamento",
+        "distance_m": 100,
+        "relay": false,
+        "category": "Juvenil",
+        "sex": "M"
+      },
+      {
+        "id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_f",
+        "base": "100 m. Remolque de Maniquí con Aletas",
+        "discipline": "100 m. Remolque de Maniquí con Aletas",
+        "distance_m": 100,
+        "relay": false,
+        "category": "Absoluto",
+        "sex": "F"
+      },
+      {
+        "id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+        "base": "100 m. Remolque de Maniquí con Aletas",
+        "discipline": "100 m. Remolque de Maniquí con Aletas",
+        "distance_m": 100,
+        "relay": false,
+        "category": "Juvenil",
+        "sex": "F"
+      },
+      {
+        "id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_m",
+        "base": "100 m. Remolque de Maniquí con Aletas",
+        "discipline": "100 m. Remolque de Maniquí con Aletas",
+        "distance_m": 100,
+        "relay": false,
+        "category": "Absoluto",
+        "sex": "M"
+      }
+    ]
+  },
+  "results": [
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_200_m_natacion_con_obstaculos_absoluto_f_a_nerea_ibanez_gonzalez_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_200_m_natacion_con_obstaculos_absoluto_f",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:33.490",
+        "seconds": 153.49,
+        "raw": "02:33:49"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 46,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n200 m. Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_200_m_natacion_con_obstaculos_absoluto_f_a_andrea_ibanez_gonzalez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_200_m_natacion_con_obstaculos_absoluto_f",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:33.570",
+        "seconds": 153.57,
+        "raw": "02:33:57"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 47,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n200 m. Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_200_m_natacion_con_obstaculos_absoluto_f_a_claudia_mate_garcia_2010",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_200_m_natacion_con_obstaculos_absoluto_f",
+      "athlete_id": "a_claudia_mate_garcia_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:54.240",
+        "seconds": 174.24,
+        "raw": "02:54:24"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 81,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n200 m. Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_200_m_natacion_con_obstaculos_juvenil_f_a_andrea_ibanez_gonzalez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_200_m_natacion_con_obstaculos_juvenil_f",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:33.570",
+        "seconds": 153.57,
+        "raw": "02:33:57"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n200 m. Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_200_m_natacion_con_obstaculos_juvenil_f_a_claudia_mate_garcia_2010",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_200_m_natacion_con_obstaculos_juvenil_f",
+      "athlete_id": "a_claudia_mate_garcia_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:54.240",
+        "seconds": 174.24,
+        "raw": "02:54:24"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 37,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n200 m. Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_200_m_natacion_con_obstaculos_juvenil_f_a_nerea_ibanez_gonzalez_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_200_m_natacion_con_obstaculos_juvenil_f",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:33.490",
+        "seconds": 153.49,
+        "raw": "02:33:49"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 17,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n200 m. Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_200_m_natacion_con_obstaculos_absoluto_m_a_alvaro_sanchez_martinez_2004",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_200_m_natacion_con_obstaculos_absoluto_m",
+      "athlete_id": "a_alvaro_sanchez_martinez_2004",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:13.040",
+        "seconds": 133.04,
+        "raw": "02:13:04"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 35,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n200 m. Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_200_m_natacion_con_obstaculos_absoluto_m_a_inaki_cuairan_garay_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_200_m_natacion_con_obstaculos_absoluto_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:29.690",
+        "seconds": 149.69,
+        "raw": "02:29:69"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 100,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n200 m. Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_200_m_natacion_con_obstaculos_juvenil_m_a_inaki_cuairan_garay_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_200_m_natacion_con_obstaculos_juvenil_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:29.690",
+        "seconds": 149.69,
+        "raw": "02:29:69"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 33,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n200 m. Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_f_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_f",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:05.750",
+        "seconds": 125.75,
+        "raw": "02:05:75"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_f_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_f",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:05.750",
+        "seconds": 125.75,
+        "raw": "02:05:75"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_f_a_nerea_ibanez_gonzalez_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_f",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:05.750",
+        "seconds": 125.75,
+        "raw": "02:05:75"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_f_a_andrea_ibanez_gonzalez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_f",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:05.750",
+        "seconds": 125.75,
+        "raw": "02:05:75"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_maria_cruz_gonzalez_2000",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_maria_cruz_gonzalez_2000",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:25.160",
+        "seconds": 25.16,
+        "raw": "00:25:16"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": 14,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_julia_gonzalez_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:25.160",
+        "seconds": 25.16,
+        "raw": "00:25:16"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": 14,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_adrian_castellanos_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:12.290",
+        "seconds": 12.29,
+        "raw": "00:12:29"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 3,
+      "points": 16,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_alejandro_hernandez_ojeda_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:12.290",
+        "seconds": 12.29,
+        "raw": "00:12:29"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 3,
+      "points": 16,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_claudia_mate_garcia_2010",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_claudia_mate_garcia_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:16.930",
+        "seconds": 136.93,
+        "raw": "02:16:93"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_andrea_ibanez_gonzalez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:16.930",
+        "seconds": 136.93,
+        "raw": "02:16:93"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_julia_gonzalez_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:16.930",
+        "seconds": 136.93,
+        "raw": "02:16:93"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_maria_cruz_gonzalez_2000",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_maria_cruz_gonzalez_2000",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:16.930",
+        "seconds": 136.93,
+        "raw": "02:16:93"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_adrian_castellanos_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:56.900",
+        "seconds": 116.9,
+        "raw": "01:56:90"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_alvaro_sanchez_martinez_2004",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_alvaro_sanchez_martinez_2004",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:56.900",
+        "seconds": 116.9,
+        "raw": "01:56:90"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_alejandro_hernandez_ojeda_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:56.900",
+        "seconds": 116.9,
+        "raw": "01:56:90"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_jorge_murcia_conde_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_jorge_murcia_conde_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:56.900",
+        "seconds": 116.9,
+        "raw": "01:56:90"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_maria_cruz_gonzalez_2000",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_maria_cruz_gonzalez_2000",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:06.560",
+        "seconds": 66.56,
+        "raw": "01:06:56"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 29,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_lucia_gonzalez_garcia_2007",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_lucia_gonzalez_garcia_2007",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:10.570",
+        "seconds": 70.57,
+        "raw": "01:10:57"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 60,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_nerea_ibanez_gonzalez_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:12.740",
+        "seconds": 72.74,
+        "raw": "01:12:74"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 76,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_julia_gonzalez_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:13.740",
+        "seconds": 73.74,
+        "raw": "01:13:74"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 86,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_lucia_gonzalez_garcia_2007",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_lucia_gonzalez_garcia_2007",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:10.570",
+        "seconds": 70.57,
+        "raw": "01:10:57"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 15,
+      "points": 2,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_nerea_ibanez_gonzalez_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:12.740",
+        "seconds": 72.74,
+        "raw": "01:12:74"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 21,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_inigo_mendez_bodas_2010",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_inigo_mendez_bodas_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:06.030",
+        "seconds": 66.03,
+        "raw": "01:06:03"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 94,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_inaki_cuairan_garay_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:10.390",
+        "seconds": 70.39,
+        "raw": "01:10:39"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 107,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_inigo_mendez_bodas_2010",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_inigo_mendez_bodas_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:06.030",
+        "seconds": 66.03,
+        "raw": "01:06:03"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 22,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_natacion_con_obstaculos_junior_m_a_inaki_cuairan_garay_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:10.390",
+        "seconds": 70.39,
+        "raw": "01:10:39"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 35,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Natación con Obstáculos"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x25_m_relevo_remolque_de_maniqui_junior_f_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_junior_f",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:30.660",
+        "seconds": 90.66,
+        "raw": "01:30:66"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x25 m. Relevo Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x25_m_relevo_remolque_de_maniqui_junior_f_a_nerea_ibanez_gonzalez_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_junior_f",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:30.660",
+        "seconds": 90.66,
+        "raw": "01:30:66"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x25 m. Relevo Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x25_m_relevo_remolque_de_maniqui_junior_f_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_junior_f",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:30.660",
+        "seconds": 90.66,
+        "raw": "01:30:66"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x25 m. Relevo Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x25_m_relevo_remolque_de_maniqui_junior_f_a_lucia_gonzalez_garcia_2007",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_junior_f",
+      "athlete_id": "a_lucia_gonzalez_garcia_2007",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:30.660",
+        "seconds": 90.66,
+        "raw": "01:30:66"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x25 m. Relevo Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_f_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_f",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:52.010",
+        "seconds": 112.01,
+        "raw": "01:52:01"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_f_a_nerea_ibanez_gonzalez_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_f",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:52.010",
+        "seconds": 112.01,
+        "raw": "01:52:01"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_f_a_andrea_ibanez_gonzalez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_f",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:52.010",
+        "seconds": 112.01,
+        "raw": "01:52:01"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_f_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_f",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:52.010",
+        "seconds": 112.01,
+        "raw": "01:52:01"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 4,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_m_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_m",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:40.700",
+        "seconds": 40.7,
+        "raw": "00:40:70"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 44,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_m_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_m",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:40.740",
+        "seconds": 40.74,
+        "raw": "00:40:74"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 45,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_m_a_lucia_gonzalez_garcia_2007",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_m",
+      "athlete_id": "a_lucia_gonzalez_garcia_2007",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:42.680",
+        "seconds": 42.68,
+        "raw": "00:42:68"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 78,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_m_a_andrea_ibanez_gonzalez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_m",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:45.000",
+        "seconds": 45.0,
+        "raw": "00:45:00"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 90,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_m_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_m",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:40.740",
+        "seconds": 40.74,
+        "raw": "00:40:74"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 10,
+      "points": 7,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_m_a_andrea_ibanez_gonzalez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_m",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:45.000",
+        "seconds": 45.0,
+        "raw": "00:45:00"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 36,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_m_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_m",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:40.700",
+        "seconds": 40.7,
+        "raw": "00:40:70"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 15,
+      "points": 2,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_4x50_m_relevo_combinado_junior_m_a_lucia_gonzalez_garcia_2007",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_4x50_m_relevo_combinado_junior_m",
+      "athlete_id": "a_lucia_gonzalez_garcia_2007",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:42.680",
+        "seconds": 42.68,
+        "raw": "00:42:68"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 25,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n4x50 m. Relevo Combinado"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_absoluto_m_a_adrian_castellanos_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_absoluto_m",
+      "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:34.120",
+        "seconds": 34.12,
+        "raw": "00:34:12"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 51,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_maria_cruz_gonzalez_2000",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_maria_cruz_gonzalez_2000",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:51.500",
+        "seconds": 171.5,
+        "raw": "02:51:50"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 48,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_julia_gonzalez_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "03:01.220",
+        "seconds": 181.22,
+        "raw": "03:01:22"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 77,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "DSQ",
+        "seconds": null,
+        "raw": "DSQ"
+      },
+      "series_type": "Final",
+      "status": "DSQ",
+      "position": 108,
+      "points": 34,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "DSQ",
+        "seconds": null,
+        "raw": "DSQ"
+      },
+      "series_type": "Final",
+      "status": "DSQ",
+      "position": 40,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_alejandro_hernandez_ojeda_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:43.310",
+        "seconds": 163.31,
+        "raw": "02:43:31"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 87,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_inigo_mendez_bodas_2010",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_inigo_mendez_bodas_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:45.010",
+        "seconds": 165.01,
+        "raw": "02:45:01"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 89,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_inaki_cuairan_garay_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:45.890",
+        "seconds": 165.89,
+        "raw": "02:45:89"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 90,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_jorge_murcia_conde_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_jorge_murcia_conde_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "DSQ",
+        "seconds": null,
+        "raw": "DSQ"
+      },
+      "series_type": "Final",
+      "status": "DSQ",
+      "position": 109,
+      "points": 34,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_inigo_mendez_bodas_2010",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_inigo_mendez_bodas_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:45.010",
+        "seconds": 165.01,
+        "raw": "02:45:01"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 25,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_inaki_cuairan_garay_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:45.890",
+        "seconds": 165.89,
+        "raw": "02:45:89"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 26,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_jorge_murcia_conde_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_jorge_murcia_conde_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "DSQ",
+        "seconds": null,
+        "raw": "DSQ"
+      },
+      "series_type": "Final",
+      "status": "DSQ",
+      "position": 36,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:34.170",
+        "seconds": 94.17,
+        "raw": "01:34:17"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 12,
+      "points": 5,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:34.170",
+        "seconds": 94.17,
+        "raw": "01:34:17"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 12,
+      "points": 5,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_lucia_gonzalez_garcia_2007",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_lucia_gonzalez_garcia_2007",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:34.170",
+        "seconds": 94.17,
+        "raw": "01:34:17"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 12,
+      "points": 5,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_maria_cruz_gonzalez_2000",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_maria_cruz_gonzalez_2000",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:34.170",
+        "seconds": 94.17,
+        "raw": "01:34:17"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 12,
+      "points": 5,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_adrian_castellanos_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:27.660",
+        "seconds": 87.66,
+        "raw": "01:27:66"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 19,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_alvaro_sanchez_martinez_2004",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_alvaro_sanchez_martinez_2004",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:27.660",
+        "seconds": 87.66,
+        "raw": "01:27:66"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 19,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_inaki_cuairan_garay_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:27.660",
+        "seconds": 87.66,
+        "raw": "01:27:66"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 19,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_inigo_mendez_bodas_2010",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_inigo_mendez_bodas_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:27.660",
+        "seconds": 87.66,
+        "raw": "01:27:66"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 19,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:55.680",
+        "seconds": 115.68,
+        "raw": "01:55:68"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 13,
+      "points": 4,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_julia_gonzalez_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:55.680",
+        "seconds": 115.68,
+        "raw": "01:55:68"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 13,
+      "points": 4,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_nerea_ibanez_gonzalez_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:55.680",
+        "seconds": 115.68,
+        "raw": "01:55:68"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 13,
+      "points": 4,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_maria_cruz_gonzalez_2000",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_maria_cruz_gonzalez_2000",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:55.680",
+        "seconds": 115.68,
+        "raw": "01:55:68"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 13,
+      "points": 4,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_adrian_castellanos_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:46.150",
+        "seconds": 106.15,
+        "raw": "01:46:15"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 21,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_alvaro_sanchez_martinez_2004",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_alvaro_sanchez_martinez_2004",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:46.150",
+        "seconds": 106.15,
+        "raw": "01:46:15"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 21,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_alejandro_hernandez_ojeda_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:46.150",
+        "seconds": 106.15,
+        "raw": "01:46:15"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 21,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_jorge_murcia_conde_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_jorge_murcia_conde_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:46.150",
+        "seconds": 106.15,
+        "raw": "01:46:15"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 21,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:18.850",
+        "seconds": 138.85,
+        "raw": "02:18:85"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 8,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_andrea_ibanez_gonzalez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:18.850",
+        "seconds": 138.85,
+        "raw": "02:18:85"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 8,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_jorge_murcia_conde_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_jorge_murcia_conde_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:18.850",
+        "seconds": 138.85,
+        "raw": "02:18:85"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 8,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_inaki_cuairan_garay_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:18.850",
+        "seconds": 138.85,
+        "raw": "02:18:85"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 8,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_50_m_remolque_de_maniqui_juvenil_m_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "BAJA",
+        "seconds": null,
+        "raw": "BAJA"
+      },
+      "series_type": "Final",
+      "status": "BAJA",
+      "position": 18,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n50 m. Remolque de Maniquí"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_absoluto_f_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_absoluto_f",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:23.060",
+        "seconds": 83.06,
+        "raw": "01:23:06"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 38,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_absoluto_f_a_andrea_ibanez_gonzalez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_absoluto_f",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:26.720",
+        "seconds": 86.72,
+        "raw": "01:26:72"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 59,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_absoluto_f_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_absoluto_f",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:28.820",
+        "seconds": 88.82,
+        "raw": "01:28:82"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 72,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_absoluto_f_a_nerea_ibanez_gonzalez_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_absoluto_f",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:29.690",
+        "seconds": 89.69,
+        "raw": "01:29:69"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 75,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_juvenil_f_a_andrea_ibanez_gonzalez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_juvenil_f",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:26.720",
+        "seconds": 86.72,
+        "raw": "01:26:72"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 19,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_juvenil_f_a_gabriela_huertas_sanchez_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_juvenil_f",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:28.820",
+        "seconds": 88.82,
+        "raw": "01:28:82"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 25,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_juvenil_f_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_juvenil_f",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:23.060",
+        "seconds": 83.06,
+        "raw": "01:23:06"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 14,
+      "points": 3,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_juvenil_f_a_nerea_ibanez_gonzalez_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_juvenil_f",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:29.690",
+        "seconds": 89.69,
+        "raw": "01:29:69"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 24,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_absoluto_m_a_adrian_castellanos_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_absoluto_m",
+      "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:13.280",
+        "seconds": 73.28,
+        "raw": "01:13:28"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 57,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_absoluto_m_a_jorge_murcia_conde_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_absoluto_m",
+      "athlete_id": "a_jorge_murcia_conde_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:20.570",
+        "seconds": 80.57,
+        "raw": "01:20:57"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 103,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_absoluto_m_a_alvaro_sanchez_martinez_2004",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_absoluto_m",
+      "athlete_id": "a_alvaro_sanchez_martinez_2004",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "BAJA",
+        "seconds": null,
+        "raw": "BAJA"
+      },
+      "series_type": "Final",
+      "status": "BAJA",
+      "position": 112,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_combinada_de_salvamento_juvenil_m_a_jorge_murcia_conde_2009",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_combinada_de_salvamento_juvenil_m",
+      "athlete_id": "a_jorge_murcia_conde_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:20.570",
+        "seconds": 80.57,
+        "raw": "01:20:57"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 35,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Combinada de Salvamento"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_absoluto_f_a_maria_cruz_gonzalez_2000",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_f",
+      "athlete_id": "a_maria_cruz_gonzalez_2000",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:01.710",
+        "seconds": 61.71,
+        "raw": "01:01:71"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 39,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_absoluto_f_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_f",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:03.580",
+        "seconds": 63.58,
+        "raw": "01:03:58"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 51,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_absoluto_f_a_julia_gonzalez_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_f",
+      "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:09.790",
+        "seconds": 69.79,
+        "raw": "01:09:79"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 95,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_absoluto_f_a_lucia_gonzalez_garcia_2007",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_f",
+      "athlete_id": "a_lucia_gonzalez_garcia_2007",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:09.910",
+        "seconds": 69.91,
+        "raw": "01:09:91"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 97,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_juvenil_f_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:03.580",
+        "seconds": 63.58,
+        "raw": "01:03:58"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 18,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_juvenil_f_a_lucia_gonzalez_garcia_2007",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+      "athlete_id": "a_lucia_gonzalez_garcia_2007",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:09.910",
+        "seconds": 69.91,
+        "raw": "01:09:91"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 32,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_absoluto_m_a_inigo_mendez_bodas_2010",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_m",
+      "athlete_id": "a_inigo_mendez_bodas_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:01.930",
+        "seconds": 61.93,
+        "raw": "01:01:93"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 109,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_juvenil_f_a_ruth_carpintero_moreno_2008",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+      "athlete_id": "a_ruth_carpintero_moreno_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:03.580",
+        "seconds": 63.58,
+        "raw": "01:03:58"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 18,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_juvenil_f_a_lucia_gonzalez_garcia_2007",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+      "athlete_id": "a_lucia_gonzalez_garcia_2007",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:09.910",
+        "seconds": 69.91,
+        "raw": "01:09:91"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 32,
+      "points": null,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_juvenil_f_a_adrian_castellanos_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+      "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:09.070",
+        "seconds": 129.07,
+        "raw": "02:09:07"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_juvenil_f_a_alejandro_hernandez_ojeda_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+      "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:09.070",
+        "seconds": 129.07,
+        "raw": "02:09:07"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_juvenil_f_a_claudia_mate_garcia_2010",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+      "athlete_id": "a_claudia_mate_garcia_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:09.070",
+        "seconds": 129.07,
+        "raw": "02:09:07"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    },
+    {
+      "id": "r_2025_05_02_c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera_e_100_m_remolque_de_maniqui_con_aletas_juvenil_f_a_julia_gonzalez_rodriguez_2006",
+      "date": "2025-05-02",
+      "season_id": "s_2024_2025",
+      "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+      "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:09.070",
+        "seconds": 129.07,
+        "raw": "02:09:07"
+      },
+      "series_type": "Final",
+      "status": "OK",
+      "position": 16,
+      "points": 1,
+      "labels": {
+        "x": "2025-05-02\n100 m. Remolque de Maniquí con Aletas"
+      }
+    }
+  ],
+  "tree": [
+    {
+      "season_id": "s_2024_2025",
+      "season_label": "Temporada 2024-2025",
+      "competitions": [
+        {
+          "competition_id": "c_2025_05_02_torrevieja_xiii_spanish_open_vi_europe_cup_xxxix_campeonato_de_espana_juvenil_junior_y_absoluto_de_primavera",
+          "season_id": "s_2024_2025",
+          "date": "2025-05-02",
+          "name": "XIII Spanish Open - VI Europe Cup XXXIX Campeonato De España Juvenil, Júnior Y Absoluto De Primavera",
+          "name_clean": "XIII Spanish Open VI Europe Cup XXXIX Campeonato De España Juvenil, Júnior Y Absoluto De Primavera",
+          "location": "Torrevieja",
+          "region": "Alicante",
+          "pool_type": "50E",
+          "events": [
+            {
+              "event_id": "e_200_m_natacion_con_obstaculos_absoluto_f",
+              "base": "200 m. Natación con Obstáculos",
+              "sex": "F",
+              "category": "Absoluto",
+              "athletes": [
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 46,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:33.490",
+                    "seconds": 153.49,
+                    "raw": "02:33:49"
+                  },
+                  "converted_time": "02:33.490"
+                },
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 47,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:33.570",
+                    "seconds": 153.57,
+                    "raw": "02:33:57"
+                  },
+                  "converted_time": "02:33.570"
+                },
+                {
+                  "athlete_id": "a_claudia_mate_garcia_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 81,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:54.240",
+                    "seconds": 174.24,
+                    "raw": "02:54:24"
+                  },
+                  "converted_time": "02:54.240"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_natacion_con_obstaculos_juvenil_f",
+              "base": "200 m. Natación con Obstáculos",
+              "sex": "F",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:33.570",
+                    "seconds": 153.57,
+                    "raw": "02:33:57"
+                  },
+                  "converted_time": "02:33.570"
+                },
+                {
+                  "athlete_id": "a_claudia_mate_garcia_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 37,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:54.240",
+                    "seconds": 174.24,
+                    "raw": "02:54:24"
+                  },
+                  "converted_time": "02:54.240"
+                },
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 17,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:33.490",
+                    "seconds": 153.49,
+                    "raw": "02:33:49"
+                  },
+                  "converted_time": "02:33.490"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_natacion_con_obstaculos_absoluto_m",
+              "base": "200 m. Natación con Obstáculos",
+              "sex": "M",
+              "category": "Absoluto",
+              "athletes": [
+                {
+                  "athlete_id": "a_alvaro_sanchez_martinez_2004",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 35,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:13.040",
+                    "seconds": 133.04,
+                    "raw": "02:13:04"
+                  },
+                  "converted_time": "02:13.040"
+                },
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 100,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:29.690",
+                    "seconds": 149.69,
+                    "raw": "02:29:69"
+                  },
+                  "converted_time": "02:29.690"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_natacion_con_obstaculos_juvenil_m",
+              "base": "200 m. Natación con Obstáculos",
+              "sex": "M",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 33,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:29.690",
+                    "seconds": 149.69,
+                    "raw": "02:29:69"
+                  },
+                  "converted_time": "02:29.690"
+                }
+              ]
+            },
+            {
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_f",
+              "base": "4x50 m. Relevo Natación con Obstáculos",
+              "sex": "F",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:05.750",
+                    "seconds": 125.75,
+                    "raw": "02:05:75"
+                  },
+                  "converted_time": "02:05.750"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:05.750",
+                    "seconds": 125.75,
+                    "raw": "02:05:75"
+                  },
+                  "converted_time": "02:05.750"
+                },
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:05.750",
+                    "seconds": 125.75,
+                    "raw": "02:05:75"
+                  },
+                  "converted_time": "02:05.750"
+                },
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:05.750",
+                    "seconds": 125.75,
+                    "raw": "02:05:75"
+                  },
+                  "converted_time": "02:05.750"
+                }
+              ]
+            },
+            {
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_junior_m",
+              "base": "4x50 m. Relevo Natación con Obstáculos",
+              "sex": "M",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_maria_cruz_gonzalez_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:25.160",
+                    "seconds": 25.16,
+                    "raw": "00:25:16"
+                  },
+                  "converted_time": "00:25.160"
+                },
+                {
+                  "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:25.160",
+                    "seconds": 25.16,
+                    "raw": "00:25:16"
+                  },
+                  "converted_time": "00:25.160"
+                },
+                {
+                  "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 3,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:12.290",
+                    "seconds": 12.29,
+                    "raw": "00:12:29"
+                  },
+                  "converted_time": "00:12.290"
+                },
+                {
+                  "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 3,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:12.290",
+                    "seconds": 12.29,
+                    "raw": "00:12:29"
+                  },
+                  "converted_time": "00:12.290"
+                },
+                {
+                  "athlete_id": "a_claudia_mate_garcia_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:16.930",
+                    "seconds": 136.93,
+                    "raw": "02:16:93"
+                  },
+                  "converted_time": "02:16.930"
+                },
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:16.930",
+                    "seconds": 136.93,
+                    "raw": "02:16:93"
+                  },
+                  "converted_time": "02:16.930"
+                },
+                {
+                  "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:16.930",
+                    "seconds": 136.93,
+                    "raw": "02:16:93"
+                  },
+                  "converted_time": "02:16.930"
+                },
+                {
+                  "athlete_id": "a_maria_cruz_gonzalez_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:16.930",
+                    "seconds": 136.93,
+                    "raw": "02:16:93"
+                  },
+                  "converted_time": "02:16.930"
+                },
+                {
+                  "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:56.900",
+                    "seconds": 116.9,
+                    "raw": "01:56:90"
+                  },
+                  "converted_time": "01:56.900"
+                },
+                {
+                  "athlete_id": "a_alvaro_sanchez_martinez_2004",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:56.900",
+                    "seconds": 116.9,
+                    "raw": "01:56:90"
+                  },
+                  "converted_time": "01:56.900"
+                },
+                {
+                  "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:56.900",
+                    "seconds": 116.9,
+                    "raw": "01:56:90"
+                  },
+                  "converted_time": "01:56.900"
+                },
+                {
+                  "athlete_id": "a_jorge_murcia_conde_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:56.900",
+                    "seconds": 116.9,
+                    "raw": "01:56:90"
+                  },
+                  "converted_time": "01:56.900"
+                },
+                {
+                  "athlete_id": "a_maria_cruz_gonzalez_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 29,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:06.560",
+                    "seconds": 66.56,
+                    "raw": "01:06:56"
+                  },
+                  "converted_time": "01:06.560"
+                },
+                {
+                  "athlete_id": "a_lucia_gonzalez_garcia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 60,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:10.570",
+                    "seconds": 70.57,
+                    "raw": "01:10:57"
+                  },
+                  "converted_time": "01:10.570"
+                },
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 76,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:12.740",
+                    "seconds": 72.74,
+                    "raw": "01:12:74"
+                  },
+                  "converted_time": "01:12.740"
+                },
+                {
+                  "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 86,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:13.740",
+                    "seconds": 73.74,
+                    "raw": "01:13:74"
+                  },
+                  "converted_time": "01:13.740"
+                },
+                {
+                  "athlete_id": "a_lucia_gonzalez_garcia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 15,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:10.570",
+                    "seconds": 70.57,
+                    "raw": "01:10:57"
+                  },
+                  "converted_time": "01:10.570"
+                },
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 21,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:12.740",
+                    "seconds": 72.74,
+                    "raw": "01:12:74"
+                  },
+                  "converted_time": "01:12.740"
+                },
+                {
+                  "athlete_id": "a_inigo_mendez_bodas_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 94,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:06.030",
+                    "seconds": 66.03,
+                    "raw": "01:06:03"
+                  },
+                  "converted_time": "01:06.030"
+                },
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 107,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:10.390",
+                    "seconds": 70.39,
+                    "raw": "01:10:39"
+                  },
+                  "converted_time": "01:10.390"
+                },
+                {
+                  "athlete_id": "a_inigo_mendez_bodas_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 22,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:06.030",
+                    "seconds": 66.03,
+                    "raw": "01:06:03"
+                  },
+                  "converted_time": "01:06.030"
+                },
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 35,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:10.390",
+                    "seconds": 70.39,
+                    "raw": "01:10:39"
+                  },
+                  "converted_time": "01:10.390"
+                }
+              ]
+            },
+            {
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_junior_f",
+              "base": "4x25 m. Relevo Remolque de Maniquí",
+              "sex": "F",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:30.660",
+                    "seconds": 90.66,
+                    "raw": "01:30:66"
+                  },
+                  "converted_time": "01:30.660"
+                },
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:30.660",
+                    "seconds": 90.66,
+                    "raw": "01:30:66"
+                  },
+                  "converted_time": "01:30.660"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:30.660",
+                    "seconds": 90.66,
+                    "raw": "01:30:66"
+                  },
+                  "converted_time": "01:30.660"
+                },
+                {
+                  "athlete_id": "a_lucia_gonzalez_garcia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:30.660",
+                    "seconds": 90.66,
+                    "raw": "01:30:66"
+                  },
+                  "converted_time": "01:30.660"
+                }
+              ]
+            },
+            {
+              "event_id": "e_4x50_m_relevo_combinado_junior_f",
+              "base": "4x50 m. Relevo Combinado",
+              "sex": "F",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:52.010",
+                    "seconds": 112.01,
+                    "raw": "01:52:01"
+                  },
+                  "converted_time": "01:52.010"
+                },
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:52.010",
+                    "seconds": 112.01,
+                    "raw": "01:52:01"
+                  },
+                  "converted_time": "01:52.010"
+                },
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:52.010",
+                    "seconds": 112.01,
+                    "raw": "01:52:01"
+                  },
+                  "converted_time": "01:52.010"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:52.010",
+                    "seconds": 112.01,
+                    "raw": "01:52:01"
+                  },
+                  "converted_time": "01:52.010"
+                }
+              ]
+            },
+            {
+              "event_id": "e_4x50_m_relevo_combinado_junior_m",
+              "base": "4x50 m. Relevo Combinado",
+              "sex": "M",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 44,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:40.700",
+                    "seconds": 40.7,
+                    "raw": "00:40:70"
+                  },
+                  "converted_time": "00:40.700"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 45,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:40.740",
+                    "seconds": 40.74,
+                    "raw": "00:40:74"
+                  },
+                  "converted_time": "00:40.740"
+                },
+                {
+                  "athlete_id": "a_lucia_gonzalez_garcia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 78,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:42.680",
+                    "seconds": 42.68,
+                    "raw": "00:42:68"
+                  },
+                  "converted_time": "00:42.680"
+                },
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 90,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:45.000",
+                    "seconds": 45.0,
+                    "raw": "00:45:00"
+                  },
+                  "converted_time": "00:45.000"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 10,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:40.740",
+                    "seconds": 40.74,
+                    "raw": "00:40:74"
+                  },
+                  "converted_time": "00:40.740"
+                },
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 36,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:45.000",
+                    "seconds": 45.0,
+                    "raw": "00:45:00"
+                  },
+                  "converted_time": "00:45.000"
+                },
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 15,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:40.700",
+                    "seconds": 40.7,
+                    "raw": "00:40:70"
+                  },
+                  "converted_time": "00:40.700"
+                },
+                {
+                  "athlete_id": "a_lucia_gonzalez_garcia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 25,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:42.680",
+                    "seconds": 42.68,
+                    "raw": "00:42:68"
+                  },
+                  "converted_time": "00:42.680"
+                }
+              ]
+            },
+            {
+              "event_id": "e_50_m_remolque_de_maniqui_absoluto_m",
+              "base": "50 m. Remolque de Maniquí",
+              "sex": "M",
+              "category": "Absoluto",
+              "athletes": [
+                {
+                  "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 51,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:34.120",
+                    "seconds": 34.12,
+                    "raw": "00:34:12"
+                  },
+                  "converted_time": "00:34.120"
+                }
+              ]
+            },
+            {
+              "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+              "base": "50 m. Remolque de Maniquí",
+              "sex": "M",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_maria_cruz_gonzalez_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 48,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:51.500",
+                    "seconds": 171.5,
+                    "raw": "02:51:50"
+                  },
+                  "converted_time": "02:51.500"
+                },
+                {
+                  "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 77,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "03:01.220",
+                    "seconds": 181.22,
+                    "raw": "03:01:22"
+                  },
+                  "converted_time": "03:01.220"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DSQ",
+                  "position": 108,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "DSQ",
+                    "seconds": null,
+                    "raw": "DSQ"
+                  },
+                  "converted_time": "DSQ"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DSQ",
+                  "position": 40,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "DSQ",
+                    "seconds": null,
+                    "raw": "DSQ"
+                  },
+                  "converted_time": "DSQ"
+                },
+                {
+                  "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 87,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:43.310",
+                    "seconds": 163.31,
+                    "raw": "02:43:31"
+                  },
+                  "converted_time": "02:43.310"
+                },
+                {
+                  "athlete_id": "a_inigo_mendez_bodas_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 89,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:45.010",
+                    "seconds": 165.01,
+                    "raw": "02:45:01"
+                  },
+                  "converted_time": "02:45.010"
+                },
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 90,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:45.890",
+                    "seconds": 165.89,
+                    "raw": "02:45:89"
+                  },
+                  "converted_time": "02:45.890"
+                },
+                {
+                  "athlete_id": "a_jorge_murcia_conde_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DSQ",
+                  "position": 109,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "DSQ",
+                    "seconds": null,
+                    "raw": "DSQ"
+                  },
+                  "converted_time": "DSQ"
+                },
+                {
+                  "athlete_id": "a_inigo_mendez_bodas_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 25,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:45.010",
+                    "seconds": 165.01,
+                    "raw": "02:45:01"
+                  },
+                  "converted_time": "02:45.010"
+                },
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 26,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:45.890",
+                    "seconds": 165.89,
+                    "raw": "02:45:89"
+                  },
+                  "converted_time": "02:45.890"
+                },
+                {
+                  "athlete_id": "a_jorge_murcia_conde_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DSQ",
+                  "position": 36,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "DSQ",
+                    "seconds": null,
+                    "raw": "DSQ"
+                  },
+                  "converted_time": "DSQ"
+                },
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 12,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:34.170",
+                    "seconds": 94.17,
+                    "raw": "01:34:17"
+                  },
+                  "converted_time": "01:34.170"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 12,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:34.170",
+                    "seconds": 94.17,
+                    "raw": "01:34:17"
+                  },
+                  "converted_time": "01:34.170"
+                },
+                {
+                  "athlete_id": "a_lucia_gonzalez_garcia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 12,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:34.170",
+                    "seconds": 94.17,
+                    "raw": "01:34:17"
+                  },
+                  "converted_time": "01:34.170"
+                },
+                {
+                  "athlete_id": "a_maria_cruz_gonzalez_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 12,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:34.170",
+                    "seconds": 94.17,
+                    "raw": "01:34:17"
+                  },
+                  "converted_time": "01:34.170"
+                },
+                {
+                  "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 19,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:27.660",
+                    "seconds": 87.66,
+                    "raw": "01:27:66"
+                  },
+                  "converted_time": "01:27.660"
+                },
+                {
+                  "athlete_id": "a_alvaro_sanchez_martinez_2004",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 19,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:27.660",
+                    "seconds": 87.66,
+                    "raw": "01:27:66"
+                  },
+                  "converted_time": "01:27.660"
+                },
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 19,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:27.660",
+                    "seconds": 87.66,
+                    "raw": "01:27:66"
+                  },
+                  "converted_time": "01:27.660"
+                },
+                {
+                  "athlete_id": "a_inigo_mendez_bodas_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 19,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:27.660",
+                    "seconds": 87.66,
+                    "raw": "01:27:66"
+                  },
+                  "converted_time": "01:27.660"
+                },
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 13,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:55.680",
+                    "seconds": 115.68,
+                    "raw": "01:55:68"
+                  },
+                  "converted_time": "01:55.680"
+                },
+                {
+                  "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 13,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:55.680",
+                    "seconds": 115.68,
+                    "raw": "01:55:68"
+                  },
+                  "converted_time": "01:55.680"
+                },
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 13,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:55.680",
+                    "seconds": 115.68,
+                    "raw": "01:55:68"
+                  },
+                  "converted_time": "01:55.680"
+                },
+                {
+                  "athlete_id": "a_maria_cruz_gonzalez_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 13,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:55.680",
+                    "seconds": 115.68,
+                    "raw": "01:55:68"
+                  },
+                  "converted_time": "01:55.680"
+                },
+                {
+                  "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 21,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:46.150",
+                    "seconds": 106.15,
+                    "raw": "01:46:15"
+                  },
+                  "converted_time": "01:46.150"
+                },
+                {
+                  "athlete_id": "a_alvaro_sanchez_martinez_2004",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 21,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:46.150",
+                    "seconds": 106.15,
+                    "raw": "01:46:15"
+                  },
+                  "converted_time": "01:46.150"
+                },
+                {
+                  "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 21,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:46.150",
+                    "seconds": 106.15,
+                    "raw": "01:46:15"
+                  },
+                  "converted_time": "01:46.150"
+                },
+                {
+                  "athlete_id": "a_jorge_murcia_conde_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 21,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:46.150",
+                    "seconds": 106.15,
+                    "raw": "01:46:15"
+                  },
+                  "converted_time": "01:46.150"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 8,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:18.850",
+                    "seconds": 138.85,
+                    "raw": "02:18:85"
+                  },
+                  "converted_time": "02:18.850"
+                },
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 8,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:18.850",
+                    "seconds": 138.85,
+                    "raw": "02:18:85"
+                  },
+                  "converted_time": "02:18.850"
+                },
+                {
+                  "athlete_id": "a_jorge_murcia_conde_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 8,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:18.850",
+                    "seconds": 138.85,
+                    "raw": "02:18:85"
+                  },
+                  "converted_time": "02:18.850"
+                },
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 8,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:18.850",
+                    "seconds": 138.85,
+                    "raw": "02:18:85"
+                  },
+                  "converted_time": "02:18.850"
+                },
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "BAJA",
+                  "position": 18,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "BAJA",
+                    "seconds": null,
+                    "raw": "BAJA"
+                  },
+                  "converted_time": "BAJA"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_combinada_de_salvamento_absoluto_f",
+              "base": "100 m. Combinada de Salvamento",
+              "sex": "F",
+              "category": "Absoluto",
+              "athletes": [
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 38,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:23.060",
+                    "seconds": 83.06,
+                    "raw": "01:23:06"
+                  },
+                  "converted_time": "01:23.060"
+                },
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 59,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:26.720",
+                    "seconds": 86.72,
+                    "raw": "01:26:72"
+                  },
+                  "converted_time": "01:26.720"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 72,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:28.820",
+                    "seconds": 88.82,
+                    "raw": "01:28:82"
+                  },
+                  "converted_time": "01:28.820"
+                },
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 75,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:29.690",
+                    "seconds": 89.69,
+                    "raw": "01:29:69"
+                  },
+                  "converted_time": "01:29.690"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_combinada_de_salvamento_juvenil_f",
+              "base": "100 m. Combinada de Salvamento",
+              "sex": "F",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 19,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:26.720",
+                    "seconds": 86.72,
+                    "raw": "01:26:72"
+                  },
+                  "converted_time": "01:26.720"
+                },
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 25,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:28.820",
+                    "seconds": 88.82,
+                    "raw": "01:28:82"
+                  },
+                  "converted_time": "01:28.820"
+                },
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 14,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:23.060",
+                    "seconds": 83.06,
+                    "raw": "01:23:06"
+                  },
+                  "converted_time": "01:23.060"
+                },
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 24,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:29.690",
+                    "seconds": 89.69,
+                    "raw": "01:29:69"
+                  },
+                  "converted_time": "01:29.690"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_combinada_de_salvamento_absoluto_m",
+              "base": "100 m. Combinada de Salvamento",
+              "sex": "M",
+              "category": "Absoluto",
+              "athletes": [
+                {
+                  "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 57,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:13.280",
+                    "seconds": 73.28,
+                    "raw": "01:13:28"
+                  },
+                  "converted_time": "01:13.280"
+                },
+                {
+                  "athlete_id": "a_jorge_murcia_conde_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 103,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:20.570",
+                    "seconds": 80.57,
+                    "raw": "01:20:57"
+                  },
+                  "converted_time": "01:20.570"
+                },
+                {
+                  "athlete_id": "a_alvaro_sanchez_martinez_2004",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "BAJA",
+                  "position": 112,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "BAJA",
+                    "seconds": null,
+                    "raw": "BAJA"
+                  },
+                  "converted_time": "BAJA"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_combinada_de_salvamento_juvenil_m",
+              "base": "100 m. Combinada de Salvamento",
+              "sex": "M",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_jorge_murcia_conde_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 35,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:20.570",
+                    "seconds": 80.57,
+                    "raw": "01:20:57"
+                  },
+                  "converted_time": "01:20.570"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_f",
+              "base": "100 m. Remolque de Maniquí con Aletas",
+              "sex": "F",
+              "category": "Absoluto",
+              "athletes": [
+                {
+                  "athlete_id": "a_maria_cruz_gonzalez_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 39,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:01.710",
+                    "seconds": 61.71,
+                    "raw": "01:01:71"
+                  },
+                  "converted_time": "01:01.710"
+                },
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 51,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:03.580",
+                    "seconds": 63.58,
+                    "raw": "01:03:58"
+                  },
+                  "converted_time": "01:03.580"
+                },
+                {
+                  "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 95,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:09.790",
+                    "seconds": 69.79,
+                    "raw": "01:09:79"
+                  },
+                  "converted_time": "01:09.790"
+                },
+                {
+                  "athlete_id": "a_lucia_gonzalez_garcia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 97,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:09.910",
+                    "seconds": 69.91,
+                    "raw": "01:09:91"
+                  },
+                  "converted_time": "01:09.910"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+              "base": "100 m. Remolque de Maniquí con Aletas",
+              "sex": "F",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 18,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:03.580",
+                    "seconds": 63.58,
+                    "raw": "01:03:58"
+                  },
+                  "converted_time": "01:03.580"
+                },
+                {
+                  "athlete_id": "a_lucia_gonzalez_garcia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 32,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:09.910",
+                    "seconds": 69.91,
+                    "raw": "01:09:91"
+                  },
+                  "converted_time": "01:09.910"
+                },
+                {
+                  "athlete_id": "a_ruth_carpintero_moreno_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 18,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:03.580",
+                    "seconds": 63.58,
+                    "raw": "01:03:58"
+                  },
+                  "converted_time": "01:03.580"
+                },
+                {
+                  "athlete_id": "a_lucia_gonzalez_garcia_2007",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 32,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:09.910",
+                    "seconds": 69.91,
+                    "raw": "01:09:91"
+                  },
+                  "converted_time": "01:09.910"
+                },
+                {
+                  "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:09.070",
+                    "seconds": 129.07,
+                    "raw": "02:09:07"
+                  },
+                  "converted_time": "02:09.070"
+                },
+                {
+                  "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:09.070",
+                    "seconds": 129.07,
+                    "raw": "02:09:07"
+                  },
+                  "converted_time": "02:09.070"
+                },
+                {
+                  "athlete_id": "a_claudia_mate_garcia_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:09.070",
+                    "seconds": 129.07,
+                    "raw": "02:09:07"
+                  },
+                  "converted_time": "02:09.070"
+                },
+                {
+                  "athlete_id": "a_julia_gonzalez_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 16,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:09.070",
+                    "seconds": 129.07,
+                    "raw": "02:09:07"
+                  },
+                  "converted_time": "02:09.070"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_m",
+              "base": "100 m. Remolque de Maniquí con Aletas",
+              "sex": "M",
+              "category": "Absoluto",
+              "athletes": [
+                {
+                  "athlete_id": "a_inigo_mendez_bodas_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 109,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:01.930",
+                    "seconds": 61.93,
+                    "raw": "01:01:93"
+                  },
+                  "converted_time": "01:01.930"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
