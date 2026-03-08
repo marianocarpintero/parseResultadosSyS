@@ -7,10 +7,7 @@
 
 PDF
 JSON
-pdf2tree/__pycache__
-pdf2tree/__pycache__/*
-pdf2tree\__pycache__
-pdf2tree\__pycache__\*
+
 
 
 # User-specific files
