@@ -73,8 +73,6 @@ class DimensionsBuilder:
 
 
     def add_event(self, event):
-        if event.id.startswith("e_lanzamiento_de_cuerda_master"):
-            print("DEBUG add_event got:", event.id, "category=", event.category)
         self.events.setdefault(event.id, event)
 
 

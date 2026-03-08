@@ -120,12 +120,16 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument("--strict", action="store_true", help="Si un PDF falla, detiene el proceso.")
     parser.add_argument(
         "--output",
-        default="./JSON/pdf2jsontree.json",
+        default="pdf2jsontree.json",
         help="Ruta de salida JSON (por defecto ./JSON/pdf2jsontree.json)"
     )
 
     # Trazabilidad
-    parser.add_argument("--trace", default=None, help="Ruta de salida para trace en JSONL (opcional).")
+    parser.add_argument(
+        "--trace",
+        default="./JSON/trace/trace.jsonl",
+        help="Ruta de salida para trace en JSONL (opcional)."
+    )
 
     # Dump de extract_text (golden dump)
     parser.add_argument("--dump-text", action="store_true", help="Vuelca extract_text() por página.")
@@ -144,6 +148,12 @@ def main(argv: Optional[List[str]] = None) -> int:
     )
 
     args = parser.parse_args(argv)
+    # --- Forzar salida en ./JSON si --output no trae carpeta ---
+    if not os.path.isabs(args.output) and os.path.dirname(args.output) == "":
+        args.output = os.path.join("./JSON", args.output)
+    if args.trace and (not os.path.isabs(args.trace)) and os.path.dirname(args.trace) == "":
+        args.trace = os.path.join("./JSON", args.trace)
+
     ensure_dirs(args.output)
     os.makedirs("./JSON", exist_ok=True)
     os.makedirs(args.dump_text_dir, exist_ok=True)
