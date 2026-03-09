@@ -5,8 +5,8 @@
 
 ## My Files to avoid
 
-PDF
-JSON
+/PDF
+/JSON
 
 
 
@@ -404,3 +404,14 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
+
+
+
+# Disciplina:
+# Relevo Combinado.
+# campo categoria del json: será siempre en femenino, es decir (absoluta en lugar de absoluto, combinada en lugar de combinado...)
+# Asegurarse de que las pruebas tipo aletas de goma, etc, también se capitalizan.
+# Decidir cómo poner las pruebas que cambian por se categoría infantil o categoría cadete
+# El nombre de la prueba socorrista mixto es socorrista mixto. disciplina es Socorrista Mixto. y el sexo debe ser Mixto.
+# Hay una prueba que es 4x50 natación con aletas cuya disciplina debería ser Relevo Natación con Aletas para no confundir.
+# Para relevos, poner C.D.E. Pacífico Salvamento en lugar de Relevos.

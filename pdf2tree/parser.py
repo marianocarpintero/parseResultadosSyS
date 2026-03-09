@@ -25,6 +25,11 @@ YEAR_RE = re.compile(r"\b(19\d{2}|20\d{2})\b")
 TIME_RE = re.compile(r"\b\d{1,2}:\d{2}:\d{2}\b")
 CATEGORY_LINE_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$", re.IGNORECASE)
 CLUB_START_TOKENS = {"club", "c.d.", "c.d.e", "cde", "c.n.", "cn", "real", "asociación", "asociacion"}
+DISTANCE_PREFIX_RE = re.compile(
+    r"^(25|50|100|200|4x12,5|4x12\.5|4x25|4x50)\s+m\.\s*",
+    re.IGNORECASE
+)
+
 
 
 class State(Enum):
@@ -103,6 +108,17 @@ class SinglePassParser:
     def _clean_club_tail(self, club_name: str) -> str:
         # quita "(juvenil)" "(absoluta)" etc. al final
         return re.sub(r"\s*\([^()]*\)\s*$", "", club_name or "").strip()
+    
+
+    def strip_distance_prefix(self, base: str) -> str:
+        """
+        Elimina el prefijo '<distancia> m.' del campo base.
+        Si no hay coincidencia, devuelve base sin cambios.
+        """
+        if not base:
+            return base
+        return DISTANCE_PREFIX_RE.sub("", base).strip()
+
 
     def _parse_points_from_tokens(self, parts: List[str]) -> Optional[int]:
         for t in reversed(parts):
@@ -144,17 +160,22 @@ class SinglePassParser:
             self.trace.emit({"action": "DEBUG_EVENT_FIELDS", "debug": dbg})
 
         self.ctx.current_event_id = fields["id"]
-        self.ctx.current_event_discipline = fields["base"]
+#        self.ctx.current_event_discipline = fields["base"]
         self.ctx.current_event_relay = fields["relay"]
 
         # emitir Event a dimensions
+        base = fields["base"]
+        discipline = self.strip_distance_prefix(base)
+
+        self.ctx.current_event_discipline = discipline
+
         if callable(self.on_event):
             self.on_event(Event(
                 id=fields["id"],
-                base=fields["base"],
-                discipline=fields["base"],
+                base=base,
+                discipline=discipline,
                 category=fields["category_display"],
-                sex=fields["sex"],           # ya es F/M/X
+                sex=fields["sex"],
                 relay=fields["relay"],
                 distance_m=fields["distance_m"],
             ))
