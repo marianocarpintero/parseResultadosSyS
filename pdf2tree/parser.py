@@ -291,9 +291,9 @@ class SinglePassParser:
             "expected_size": ctx.expected_size,
         })
 
-        members = ctx.members if ctx.members else ["Relevos"]
+        members = ctx.members if ctx.members else ["C.D.E. Pacífico Salvamento"]
         for member_name in members:
-            member_name = normalize_athlete_name(member_name) if member_name != "Relevos" else "Relevos"
+            member_name = normalize_athlete_name(member_name) if member_name != "C.D.E. Pacífico Salvamento" else "C.D.E. Pacífico Salvamento"
             athlete_id = "a_" + slugify(member_name) + "_na"
             # emitir atleta (relay sin año)
             self._emit_athlete(athlete_id, member_name, None)

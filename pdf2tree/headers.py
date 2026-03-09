@@ -45,7 +45,8 @@ DATE_ES_NOYEAR_RE = re.compile(
     r"\b(?P<d>\d{1,2})\s*(?:de\s+)?(?P<m>[a-záéíóúñ]+)\b",
     re.IGNORECASE
 )
-
+# TODO Problema entendiendo cabeceras. El un fichero tipo 202502master, no toma la fecha cuando aparece como "ARGANDA \n 30 noviembre 2024 (Piscina/Pool: 25 M)" en la cabecera
+# TODO Problema entendiendo cabeceras. El un fichero tipo 202502master, no calcula la temporada cuando aparece como "ARGANDA \n 30 noviembre 2024 (Piscina/Pool: 25 M)" en la cabecera
 
 # ----------------------------
 # Cabecera: detección
