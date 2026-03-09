@@ -1,3 +1,14 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Copyright (c) 2026 Mariano Carpintero
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+
 from __future__ import annotations
 
 import re
@@ -45,8 +56,8 @@ DATE_ES_NOYEAR_RE = re.compile(
     r"\b(?P<d>\d{1,2})\s*(?:de\s+)?(?P<m>[a-záéíóúñ]+)\b",
     re.IGNORECASE
 )
-# TODO Problema entendiendo cabeceras. El un fichero tipo 202502master, no toma la fecha cuando aparece como "ARGANDA \n 30 noviembre 2024 (Piscina/Pool: 25 M)" en la cabecera
-# TODO Problema entendiendo cabeceras. El un fichero tipo 202502master, no calcula la temporada cuando aparece como "ARGANDA \n 30 noviembre 2024 (Piscina/Pool: 25 M)" en la cabecera
+# TODO #13 Problema entendiendo cabeceras. El un fichero tipo 202502master, no toma la fecha cuando aparece como "ARGANDA \n 30 noviembre 2024 (Piscina/Pool: 25 M)" en la cabecera
+# TODO #12 Problema entendiendo cabeceras. El un fichero tipo 202502master, no calcula la temporada cuando aparece como "ARGANDA \n 30 noviembre 2024 (Piscina/Pool: 25 M)" en la cabecera
 
 # ----------------------------
 # Cabecera: detección
