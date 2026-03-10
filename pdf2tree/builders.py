@@ -64,8 +64,10 @@ class DimensionsBuilder:
             best = self.athletes.get(best_id)
             best_has_year = best and best.birth_year is not None
 
-            # Si ya tenemos con año, ignorar el "_na"
+            # Si ya tenemos con año, NO ignorar el "_na" todavía.
+            # Lo guardamos temporalmente para poder remapear results, y luego se podará.
             if best_has_year and not incoming_has_year:
+                self.athletes.setdefault(athlete.id, athlete)
                 return
 
             # Si llega con año y el mejor era "_na", reemplazar
@@ -161,6 +163,8 @@ def build_tree(dimensions: Dict[str, Any], results: List[Dict[str, Any]]) -> Lis
     seasons_by_id = {s["id"]: s for s in dimensions.get("seasons", [])}
     competitions_by_id = {c["id"]: c for c in dimensions.get("competitions", [])}
     events_by_id = {e["id"]: e for e in dimensions.get("events", [])}
+    athletes_by_id = {a["id"]: a for a in dimensions.get("athletes", [])}
+    clubs_by_id = {c["id"]: c for c in dimensions.get("clubs", [])}
 
     # --------------------------------------------------
     # ---- estructura base del tree (por temporada) ----
@@ -226,9 +230,9 @@ def build_tree(dimensions: Dict[str, Any], results: List[Dict[str, Any]]) -> Lis
         if event_id not in event_nodes:
             continue
 
-    # --------------------------------------------------
+        # --------------------------------------------------
         # colgar event en competition si no está
-    # --------------------------------------------------
+        # --------------------------------------------------
         comp_node = comp_nodes[comp_id]
 
         key = (comp_id, event_id)
@@ -248,10 +252,18 @@ def build_tree(dimensions: Dict[str, Any], results: List[Dict[str, Any]]) -> Lis
         # --------------------------------------------------
         # ---- construir nodo de atleta en el tree ----
         # --------------------------------------------------
+# TODO #15 No siempre salen los atletas del equipo en json aunque estén en pdf
         time_obj = r.get("time") or {}
+        athlete_id = r.get("athlete_id")
+        ath = athletes_by_id.get(athlete_id, {})
+        club_id = r.get("club_id")
+        club = clubs_by_id.get(club_id, {})
+
         athlete_node = {
-            "athlete_id": r.get("athlete_id"),
-            "club_id": r.get("club_id"),
+            "athlete_id": athlete_id,
+#            "name": ath.get("name") or athlete_id,
+            "club_id": club_id,
+#            "club_name": club.get("name"),
             "status": r.get("status"),
             "position": r.get("position"),
         }
