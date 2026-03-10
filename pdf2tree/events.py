@@ -213,7 +213,7 @@ def extract_master_category_and_trim(title: str) -> tuple[Optional[str], str]:
     seg = re.sub(r"^ma[áa]ster", "Máster", seg, flags=re.IGNORECASE)
 
     # Si el segmento es solo "Máster/Master M|F|X" (sin rango), NO lo tratamos como categoría máster
-    if re.fullmatch(r"(?:Máster|master)\s+[MFX]", seg, flags=re.IGNORECASE):
+    if re.fullmatch(r"(?:Máster|master)(?:\s+[MFX])?", seg, flags=re.IGNORECASE):
         return None, title    
 
     # trimmed_title: todo lo anterior a 'máster'

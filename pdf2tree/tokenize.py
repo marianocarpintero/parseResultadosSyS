@@ -41,7 +41,8 @@ NAME_COMMA_RE = re.compile(r"^[^,]{2,},\s*[^,]{2,}$")  # exactamente 1 coma, 2+ 
 HEADER_BAD_WORDS = (
     "campeonato", "championship", "resultados", "final results",
     "socorrista", "lifeguard", "club / team", "club/team",
-    "elim.t", "final.t", "ptos", "score"
+    "elim.t", "final.t", "ptos", "score",
+     "fase territorial", "sesion", "sesión", "jornada", "liga", "menores", "mayores"
 )
 
 class TokenType(Enum):
@@ -52,6 +53,8 @@ class TokenType(Enum):
     TEAM_ROW = auto()
     RELAY_MEMBER = auto()
     NOISE = auto()
+    DATE_POOL = auto()
+    COMPETITION_LINE = auto()
 
 @dataclass(frozen=True)
 class Token:
@@ -83,6 +86,10 @@ class Tokenizer:
             pre_title = norm[:mth.start()].strip(" *")
             return Token(TokenType.TABLE_HEADER, page, line_no, raw, norm, {"pre_title": pre_title})
 
+        # Línea de cabecera con fecha y piscina: no es fila de resultados
+        if ("(piscina" in low) or ("pool:" in low):
+            return Token(TokenType.DATE_POOL, page, line_no, raw, norm, {})
+
         # ----------------------------------
         # --- CATEGORÍA
         # ----------------------------------
@@ -96,6 +103,12 @@ class Tokenizer:
                     "sex_raw": sex_raw
                 })
             # si no pasa validación, NO es category_line
+
+        # Título de prueba con distancia + categoría abreviada + sexo en letra (Cad F / Inf M / etc.)
+        if EVENT_TITLE_ES_START_RE.match(norm) and (CAT_ES_RE.search(norm) or CAT_ABBR_RE.search(low)) and SEX_LETTER_RE.search(low) \
+        and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
+            return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {})
+
 
         # ----------------------------------
         # --- CABECERA 2
@@ -123,10 +136,6 @@ class Tokenizer:
         # ----------------------------------
         # --- RESULTADOS
         # ----------------------------------
-        # Título de prueba con distancia + categoría abreviada + sexo en letra (Cad F / Inf M / etc.)
-        if EVENT_TITLE_ES_START_RE.match(norm) and (CAT_ES_RE.search(norm) or CAT_ABBR_RE.search(low)) and SEX_LETTER_RE.search(low) \
-        and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
-            return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {})
         # Filas de resultados
         if ROW_START_RE.match(norm):
             parts = norm.split()
@@ -137,6 +146,11 @@ class Tokenizer:
         # Miembro de relevo: normalmente "APELLIDO, NOMBRE" en su propia línea
         if (not ROW_START_RE.match(norm)) and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
             low = norm_d.lower()
+            if re.search(r"\d+\s*[ªº]", norm):
+                return Token(TokenType.NOISE, page, line_no, raw, norm, {})
+            # Cabeceras tipo "1ª sesión ... , 2ª sesión ..." NO son miembros de relevo aunque tengan coma
+            if re.search(r"\d+\s*[ªº]", norm):
+                return Token(TokenType.COMPETITION_LINE, page, line_no, raw, norm, {})
             if NAME_COMMA_RE.match(norm) and not any(w in low for w in HEADER_BAD_WORDS):
                 return Token(TokenType.RELAY_MEMBER, page, line_no, raw, norm, {})
 
