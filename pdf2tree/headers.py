@@ -32,6 +32,7 @@ MONTHS_ES = {
     "julio": "07", "agosto": "08", "septiembre": "09", "setiembre": "09",
     "octubre": "10", "noviembre": "11", "diciembre": "12"
 }
+
 MONTHS_EN = {
     "january": "01", "february": "02", "march": "03",
     "april": "04", "may": "05", "june": "06",
@@ -43,8 +44,19 @@ DATE_RE = re.compile(
     r"(?P<d1>\d{1,2})\s*(?:de)?\s*(?P<m>[a-záéíóúñ]+)\s*(?:de)?\s*(?P<y>\d{4})",
     re.IGNORECASE
 )
+
 RANGE_RE = re.compile(
     r"(?P<d1>\d{1,2})\s*(?:-|al|a)\s*(?P<d2>\d{1,2})\s+de\s+(?P<m>[a-záéíóúñ]+)\s+(?P<y>\d{4})",
+    re.IGNORECASE
+)
+
+DATE_ES_SIMPLE_RE = re.compile(
+    r"\b(?P<d>\d{1,2})\s+(?P<m>[a-záéíóúñ]+)\s+(?P<y>\d{4})\b",
+    re.IGNORECASE
+)
+
+DATE_ES_NOYEAR_RE = re.compile(
+    r"\b(?P<d>\d{1,2})\s*(?:de\s+)?(?P<m>[a-záéíóúñ]+)\b",
     re.IGNORECASE
 )
 
@@ -52,10 +64,7 @@ DATE_EN_RE = re.compile(
     r"\b(?P<d>\d{1,2})(?:st|nd|rd|th)?\s+(?P<m>[A-Za-z]+)\s+(?P<y>\d{4})\b",
     re.IGNORECASE
 )
-DATE_ES_NOYEAR_RE = re.compile(
-    r"\b(?P<d>\d{1,2})\s*(?:de\s+)?(?P<m>[a-záéíóúñ]+)\b",
-    re.IGNORECASE
-)
+
 # TODO #13 Problema entendiendo cabeceras. El un fichero tipo 202502master, no toma la fecha cuando aparece como "ARGANDA \n 30 noviembre 2024 (Piscina/Pool: 25 M)" en la cabecera
 # TODO #12 Problema entendiendo cabeceras. El un fichero tipo 202502master, no calcula la temporada cuando aparece como "ARGANDA \n 30 noviembre 2024 (Piscina/Pool: 25 M)" en la cabecera
 
@@ -71,7 +80,8 @@ def is_header_start(line: str) -> bool:
         u.startswith("FINAL RESULTS") or
         u.startswith("RESULTADOS FINAL") or
         u.startswith("RESULTADOS DEFINITIVOS") or
-        u.startswith("DEFINITIVE RESULTS")
+        u.startswith("DEFINITIVE RESULTS") or
+        u.startswith("SERIES PRELIMINARES")
     )
 
 
@@ -88,8 +98,9 @@ def is_ordinal_only_line(line: str) -> bool:
 
 def is_date_line(line: str) -> bool:
     ln = normalize_dashes(line)
+    ln_norm = normalize_spaces(ln)
     # ES con año / ES compacto
-    if DATE_RE.search(ln.lower()) or RANGE_RE.search(ln.lower()):
+    if DATE_RE.search(ln_norm.lower()) or DATE_ES_SIMPLE_RE.search(ln_norm.lower()) or RANGE_RE.search(ln_norm.lower()):
         return True
     # EN
     if DATE_EN_RE.search(ln):
@@ -99,6 +110,9 @@ def is_date_line(line: str) -> bool:
         left = ln.split("/", 1)[0]
         if DATE_EN_RE.search(left) or DATE_RE.search(ln.lower()):
             return True
+    
+    # Fecha con sólo un día, no un rango.
+
     return False
 
 
@@ -137,7 +151,7 @@ def extract_header_lines(pdf, debug: bool = False) -> List[str]:
 
 
 # ----------------------------
-# Fechas
+# Parseado de Fechas
 # ----------------------------
 
 def parse_date_en(text: str) -> Optional[str]:
@@ -260,7 +274,7 @@ def parse_dates(text: str, debug: bool = False) -> Tuple[Optional[str], Optional
 
 
 # ----------------------------
-# Competition
+# Parseado de Competition
 # ----------------------------
 
 def parse_location_region(loc_line: str, debug: bool = False) -> Tuple[str, str]:
@@ -347,7 +361,7 @@ def parse_competition_from_header(lines: List[str], debug: bool = False) -> Dict
 
 
 # ----------------------------
-# Season
+# Parseado de Season
 # ----------------------------
 
 def season_end_year_from_date_iso(date_iso: str) -> Optional[int]:
