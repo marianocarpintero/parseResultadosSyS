@@ -17,8 +17,10 @@ from .normalize import slugify, strip_accents
 
 LOWER_WORDS_ES = {"de","del","la","las","los","y","e","en","con","sin","al","a","por","para"}
 
-# IMPORTANTE: usar | (no saltos de línea)
-CAT_WORDS_RE = re.compile(r"\b(infantil|cadete|juvenil|junior|júnior|absoluto|absoluta|master|máster)\b", re.IGNORECASE)
+CAT_WORDS_RE = re.compile(
+    r"\b(infantil|inf\.?|cadete|cad\.?|juvenil|juv\.?|junior|júnior|jun\.?|absoluto|absoluta|abs\.?|master|máster)\b",
+    re.IGNORECASE
+)
 SEX_WORDS_RE = re.compile(r"\b(masculino|masculina|femenino|femenina|mixto|mixta)\b", re.IGNORECASE)
 MEN_EN_RE = re.compile(r"\bmen(?:'s)?\b", re.IGNORECASE)
 WOMEN_EN_RE = re.compile(r"\bwomen(?:'s)?\b", re.IGNORECASE)
@@ -85,6 +87,10 @@ def strip_category_sex_es(s: str) -> str:
     # Quitar palabras de categorías estándar (incluye cadete/infantil/master/máster)
     s = CAT_WORDS_RE.sub("", s or "")
     s = SEX_WORDS_RE.sub("", s)
+
+    # Quitar sufijos sueltos de sexo en letra: " M", " F", " X" (típico en títulos "Master M/F")
+    s = re.sub(r"\s+\b([mfx])\b\s*$", "", s, flags=re.IGNORECASE)
+    
     return re.sub(r"\s+", " ", s).strip()
 
 
@@ -121,10 +127,30 @@ def sex_code(raw: Optional[str]) -> str:
 def category_code(raw: Optional[str]) -> str:
     r = (raw or "").lower()
 
-    if "cadete" in r:
+
+    # Palabras completas
+    if re.search(r"\bcadete\b", r):
         return "cadete"
-    if "infantil" in r:
+    if re.search(r"\binfantil\b", r):
         return "infantil"
+    if re.search(r"\bjuvenil\b", r):
+        return "juvenil"
+    if re.search(r"\bjunior\b", r) or re.search(r"\bjúnior\b", r):
+        return "junior"
+    if re.search(r"\babsolut[oa]?\b", r):
+        return "absoluto"
+
+  # Abreviaturas
+    if re.search(r"\bcad\.?\b", r):
+        return "cadete"
+    if re.search(r"\binf\.?\b", r):
+        return "infantil"
+    if re.search(r"\bjuv\.?\b", r):
+        return "juvenil"
+    if re.search(r"\bjun\.?\b", r):
+        return "junior"
+    if re.search(r"\babs\.?\b", r):
+        return "absoluto"
 
     # Máster R4 +xxx (con o sin espacio)
     m = MASTER_R4_RE.search(r) or MASTER_R4_GLUE_RE.search(r)
@@ -137,13 +163,7 @@ def category_code(raw: Optional[str]) -> str:
     if m:
         val = re.sub(r"\s+", "", m.group("range"))  # "45-49" o "+70"
         return f"master_{val}"
-
-    if "juvenil" in r:
-        return "juvenil"
-    if "junior" in r or "júnior" in r or "nior" in r:
-        return "junior"
-    if "absolut" in r:
-        return "absoluto"
+    
     return "absoluto"
 
 
@@ -191,6 +211,10 @@ def extract_master_category_and_trim(title: str) -> tuple[Optional[str], str]:
 
     # asegurar "Máster" con acento al inicio
     seg = re.sub(r"^ma[áa]ster", "Máster", seg, flags=re.IGNORECASE)
+
+    # Si el segmento es solo "Máster/Master M|F|X" (sin rango), NO lo tratamos como categoría máster
+    if re.fullmatch(r"(?:Máster|master)\s+[MFX]", seg, flags=re.IGNORECASE):
+        return None, title    
 
     # trimmed_title: todo lo anterior a 'máster'
     trimmed = (title[:m.start()]).strip()
@@ -267,6 +291,9 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     Construye:
       base (capitalized, sin cat/sex), distance_m, relay, category, sex (F/M/X), id
     """
+    # -------------------------------------
+    # --- EVENT TITLE
+    # -------------------------------------
     raw_title = event_title or ""
 
     # tramo ES tras el guion si existe
@@ -276,6 +303,9 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
 
     master_display, base_source = extract_master_category_and_trim(es_part)
 
+    # -------------------------------------
+    # --- CATEGORY LINE
+    # -------------------------------------
     # category/sex preferidos desde category_line
     cat = None
     sex_source = " ".join([raw_title, es_part, category_line or ""])
@@ -286,14 +316,17 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
             cat_candidate = category_code(m.group(1)) or cat
             sx_candidate = sex_code(m.group(2))
             if sx_candidate != "X":  # si detecta sexo válido en category_line, lo usamos (sobrescribe sex)
-                sx = sx_candidate
+               sx = sx_candidate
 
             # Validación: si el texto NO contiene categoría real, no lo uses
-            if re.search(r"\b(infantil|cadete|juvenil|junior|júnior|absolut|m[aá]ster)\b", m.group(1), re.IGNORECASE):
+#            if re.search(r"\b(infantil|inf\.?|cadete|cad\.?|juvenil|juv\.?|j[uú]nior|j[uú]n\.?|absolut|abs\.?|m[aá]ster)\b", m.group(1), re.IGNORECASE):
+            if cat_candidate:
                 cat = cat_candidate
             # Validación: si el texto NO contiene sexo real, no lo uses
             if re.search(r"\b(femen\w*|mascul\w*|mixt\w*|women|men)\b", m.group(2), re.IGNORECASE):
                 sx = sx_candidate
+
+# TODO: #16 hay una prueba que se identifica como "e_4x50_m_<categoría>_x". Debería tener un nombre de prueba, que falta. En el PDF no está. Se supone que se debe tomar el nombre de prueba del event_title justo anterior.
 
     # fallback desde event_title si no vienen en category_line
     if not sx:
@@ -306,6 +339,9 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
 
     relay = infer_relay(raw_title + " " + es_part)
 
+    # -------------------------------------
+    # --- RELEVOS
+    # -------------------------------------
     # Lanzamiento de cuerda: relevo sin distancia
     if is_line_throw(es_part) or is_line_throw(raw_title):
         base = "Lanzamiento de Cuerda"

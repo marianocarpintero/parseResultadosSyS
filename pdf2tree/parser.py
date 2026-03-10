@@ -55,6 +55,7 @@ class PendingHeader:
     title: Optional[str] = None
     category_line: Optional[str] = None
     last_full_title: Optional[str] = None
+    sex_hint: Optional[str] = None
 
 
 @dataclass
@@ -167,6 +168,9 @@ class SinglePassParser:
             self.ctx.pending.last_full_title = title
 
         fields = build_event_fields(use_title, catline)
+        hint = self.ctx.pending.sex_hint
+        if hint and fields.get("sex") in (None, "", "X"):
+            fields["sex"] = hint
 
 #        existing = None
 #        if callable(self.on_event) and hasattr(self.on_event, "__self__"):
@@ -199,9 +203,11 @@ class SinglePassParser:
                 distance_m=fields["distance_m"],
             ))
 
+        # Limpia contextos
         self.ctx.pending.title = None
         self.ctx.pending.category_line = None
         self.ctx.state = State.IN_RESULTS
+        self.ctx.pending.sex_hint = None
 
     # -----------------------
     # Row parsing
@@ -529,6 +535,7 @@ class SinglePassParser:
                 self._flush_relay_context(competition_id, season_id, date, reason="new_event_title")
                 self.ctx.state = State.IN_RESULTS
             self.ctx.pending.title = token.norm
+            self.ctx.pending.sex_hint = token.meta.get("sex_hint")
             return
 
         # ---------------------------------

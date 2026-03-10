@@ -1,3 +1,15 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Copyright (c) 2026 Mariano Carpintero
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -10,8 +22,13 @@ from .normalize import normalize_spaces, normalize_dashes
 EVENT_TITLE_ES_RE = re.compile(r"^(?:4x)?\d+(?:[.,]\d+)?\s*m\.?\b", re.IGNORECASE)
 EVENT_TITLE_ES_START_RE = re.compile(r"^(?:4x)?\d+(?:[.,]\d+)?\s*m\.?\b", re.IGNORECASE)
 EVENT_TITLE_MASTER_START_RE = re.compile(r"^lanzamiento\s+de\s+cuerda\b", re.IGNORECASE)
+EVENT_TITLE_MASTER_SEX_LETTER_RE = re.compile(r"\bmaster\s+[mfx]\b", re.IGNORECASE)
 CAT_ES_RE = re.compile(r"\b(juvenil|junior|júnior|absoluto|absoluta|cadete|infantil|máster|master)\b", re.IGNORECASE)
 SEX_ES_RE = re.compile(r"\b(femen\w*|mascul\w*|mixt\w*)\b", re.IGNORECASE)
+
+CAT_ABBR_RE = re.compile(r"\b(cad|inf|juv|jun|abs)\b", re.IGNORECASE)
+SEX_LETTER_RE = re.compile(r"\b([mfx])\b", re.IGNORECASE)
+
 TABLE_HEADER_RE = re.compile(r"^\s*Socorrista\s*/\s*Lifeguard\b", re.IGNORECASE)
 TABLE_HEADER_ANY_RE = re.compile(r"Socorrista\s*/\s*Lifeguard", re.IGNORECASE)
 CATEGORY_SEX_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$")
@@ -53,8 +70,11 @@ class Tokenizer:
         raw = line
         norm = normalize_spaces(line)
         norm_d = normalize_dashes(norm)
-        low = norm_d.lower()
+        low = norm.lower()
 
+        # ----------------------------------
+        # --- CABECERA
+        # ----------------------------------
         if TABLE_HEADER_RE.match(norm):
             return Token(TokenType.TABLE_HEADER, page, line_no, raw, norm, {})
 
@@ -63,6 +83,9 @@ class Tokenizer:
             pre_title = norm[:mth.start()].strip(" *")
             return Token(TokenType.TABLE_HEADER, page, line_no, raw, norm, {"pre_title": pre_title})
 
+        # ----------------------------------
+        # --- CATEGORÍA
+        # ----------------------------------
         m = CATEGORY_SEX_RE.match(norm)
         if m:
             cat_raw = m.group(1)
@@ -74,6 +97,9 @@ class Tokenizer:
                 })
             # si no pasa validación, NO es category_line
 
+        # ----------------------------------
+        # --- CABECERA 2
+        # ----------------------------------
         # Cabecera de prueba en ES tipo: "50 m. ... categoría juvenil femenino"
         if EVENT_TITLE_ES_RE.match(norm) and ("categor" in low) and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
             return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {})
@@ -84,6 +110,23 @@ class Tokenizer:
         and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
             return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {})
 
+        # Caso especial: títulos "Lanzamiento de cuerda Master M/F" donde el sexo viene en la CATEGORY_LINE siguiente
+        if EVENT_TITLE_MASTER_START_RE.match(norm) and CAT_ES_RE.search(norm) and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
+            return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {})
+
+        # Caso: "Lanzamiento de cuerda Master M/F/X" (sexo en letra), el detalle de rango viene en la CATEGORY_LINE siguiente
+        msex = re.search(r"\bmaster\s+([mfx])\b", low)
+        if EVENT_TITLE_MASTER_START_RE.match(norm) and msex and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
+            sex_hint = msex.group(1).upper()  # M / F / X
+            return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {"sex_hint": sex_hint})
+
+        # ----------------------------------
+        # --- RESULTADOS
+        # ----------------------------------
+        # Título de prueba con distancia + categoría abreviada + sexo en letra (Cad F / Inf M / etc.)
+        if EVENT_TITLE_ES_START_RE.match(norm) and (CAT_ES_RE.search(norm) or CAT_ABBR_RE.search(low)) and SEX_LETTER_RE.search(low) \
+        and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
+            return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {})
         # Filas de resultados
         if ROW_START_RE.match(norm):
             parts = norm.split()
@@ -96,7 +139,10 @@ class Tokenizer:
             low = norm_d.lower()
             if NAME_COMMA_RE.match(norm) and not any(w in low for w in HEADER_BAD_WORDS):
                 return Token(TokenType.RELAY_MEMBER, page, line_no, raw, norm, {})
-            
+
+         # ----------------------------------
+        # --- CABECERA 3
+        # ----------------------------------           
         # Título de prueba (muy permisivo; se confirma al llegar TABLE_HEADER)
         if ("men's" in low) or ("women's" in low) or ("line throw" in low) or ("4x" in low):
             return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {})
