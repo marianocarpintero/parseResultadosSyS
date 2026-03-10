@@ -1,3 +1,15 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Copyright (c) 2026 Mariano Carpintero
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+
 from __future__ import annotations
 from dataclasses import asdict
 from typing import Dict, List, Optional, Any
@@ -143,12 +155,16 @@ def build_tree(dimensions: Dict[str, Any], results: List[Dict[str, Any]]) -> Lis
     - Por eso, los events se cuelgan bajo cada competition según aparezcan en results.
     """
 
+    # --------------------------------------------------
     # ---- índices base ----
+    # --------------------------------------------------
     seasons_by_id = {s["id"]: s for s in dimensions.get("seasons", [])}
     competitions_by_id = {c["id"]: c for c in dimensions.get("competitions", [])}
     events_by_id = {e["id"]: e for e in dimensions.get("events", [])}
 
+    # --------------------------------------------------
     # ---- estructura base del tree (por temporada) ----
+    # --------------------------------------------------
     tree_by_season: Dict[str, Dict[str, Any]] = {}
     for season_id, season in seasons_by_id.items():
         tree_by_season[season_id] = {
@@ -157,7 +173,9 @@ def build_tree(dimensions: Dict[str, Any], results: List[Dict[str, Any]]) -> Lis
             "competitions": []
         }
 
+    # --------------------------------------------------
     # ---- añadir competitions a seasons ----
+    # --------------------------------------------------
     comp_nodes: Dict[str, Dict[str, Any]] = {}
     for comp_id, comp in competitions_by_id.items():
         season_id = comp.get("season_id")
@@ -179,7 +197,9 @@ def build_tree(dimensions: Dict[str, Any], results: List[Dict[str, Any]]) -> Lis
         tree_by_season[season_id]["competitions"].append(comp_node)
         comp_nodes[comp_id] = comp_node
 
+    # --------------------------------------------------------
     # ---- preparar nodos de events (únicos por event_id) ----
+    # --------------------------------------------------------
     # Ojo: se reutiliza el mismo objeto event_node cuando cuelga en varias competitions.
     # Esto está bien si un event_id solo aparece en una competition (lo normal).
     event_nodes: Dict[str, Dict[str, Any]] = {}
@@ -192,24 +212,42 @@ def build_tree(dimensions: Dict[str, Any], results: List[Dict[str, Any]]) -> Lis
             "athletes": []
         }
 
+    # ----------------------------------------------------------------
     # ---- distribuir events dentro de competitions según results ----
+    # ----------------------------------------------------------------
     for r in results:
         comp_id = r.get("competition_id")
         event_id = r.get("event_id")
+        # nodos de evento por competición: (comp_id, event_id) -> node
+        comp_event_nodes: Dict[tuple[str, str], Dict[str, Any]] = {}
 
         if comp_id not in comp_nodes:
             continue
         if event_id not in event_nodes:
             continue
 
-        comp_node = comp_nodes[comp_id]
-        ev_node = event_nodes[event_id]
-
+    # --------------------------------------------------
         # colgar event en competition si no está
-        if ev_node not in comp_node["events"]:
+    # --------------------------------------------------
+        comp_node = comp_nodes[comp_id]
+
+        key = (comp_id, event_id)
+        ev_node = comp_event_nodes.get(key)
+        if ev_node is None:
+            event = events_by_id.get(event_id, {})
+            ev_node = {
+                "event_id": event_id,
+                "base": event.get("base"),
+                "sex": tree_sex_code(event.get("sex")),
+                "category": event.get("category"),
+                "athletes": []
+            }
+            comp_event_nodes[key] = ev_node
             comp_node["events"].append(ev_node)
 
+        # --------------------------------------------------
         # ---- construir nodo de atleta en el tree ----
+        # --------------------------------------------------
         time_obj = r.get("time") or {}
         athlete_node = {
             "athlete_id": r.get("athlete_id"),

@@ -9,7 +9,6 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
-
 from __future__ import annotations
 
 import re
@@ -38,7 +37,7 @@ TIME_RE = re.compile(r"\b\d{1,2}:\d{2}:\d{2}\b")
 CATEGORY_LINE_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$", re.IGNORECASE)
 CLUB_START_TOKENS = {"club", "c.d.", "c.d.e", "cde", "c.n.", "cn", "real", "asociación", "asociacion"}
 DISTANCE_PREFIX_RE = re.compile(
-    r"^(25|50|100|200|4x12,5|4x12\.5|4x25|4x50)\s+m\.\s*",
+    r"^(25|50|100|200|4x12,5|4x12\.5|4x25|4x50)(?:\u202F|\s)m\s*\.?\s*",
     re.IGNORECASE
 )
 
@@ -303,9 +302,9 @@ class SinglePassParser:
             "expected_size": ctx.expected_size,
         })
 
-        members = ctx.members if ctx.members else ["C.D.E. Pacífico Salvamento"]
+        members = ctx.members if ctx.members else [ctx.club_name]
         for member_name in members:
-            member_name = normalize_athlete_name(member_name) if member_name != "C.D.E. Pacífico Salvamento" else "C.D.E. Pacífico Salvamento"
+            member_name = normalize_athlete_name(member_name) if member_name == "C.D.E Pacífico Salvamento" else "C.D.E. Pacífico Salvamento"
             athlete_id = "a_" + slugify(member_name) + "_na"
             # emitir atleta (relay sin año)
             self._emit_athlete(athlete_id, member_name, None)
@@ -479,6 +478,9 @@ class SinglePassParser:
             "event_id": self.ctx.current_event_id,
         })
 
+        # ---------------------------------
+        # ---   TITLE ROW
+        # ---------------------------------        
         if token.type == TokenType.EVENT_TITLE:
             # si hay relevo abierto, lo cerramos antes de cambiar de prueba
             if self.ctx.relay_ctx:
@@ -487,6 +489,9 @@ class SinglePassParser:
             self.ctx.pending.title = token.norm
             return
 
+        # ---------------------------------
+        # ---   CATEGORY ROW
+        # ---------------------------------        
         if token.type == TokenType.CATEGORY_LINE:
             self.ctx.pending.category_line = token.norm
             return
@@ -503,15 +508,40 @@ class SinglePassParser:
             # SIEMPRE commit aquí
             self._commit_event_on_table()
             return
-        
+
+        # ---------------------------------
+        # ---   TEAM ROW
+        # ---------------------------------        
         if token.type == TokenType.TEAM_ROW:
-            if self.ctx.state != State.IN_RESULTS:
-                return
+            # Si había un relevo abierto, lo cerramos siempre al empezar una nueva fila de equipo
             if self.ctx.relay_ctx:
                 self._flush_relay_context(competition_id, season_id, date, reason="new_team_row")
-            self._open_relay_from_team_row(token.norm)
+
+            # Abrimos un nuevo relevo SOLO si estamos ya en resultados.
+            # Si estabas en SEEK_TABLE, ignora.
+            if self.ctx.state == State.IN_RESULTS:
+                self._open_relay_from_team_row(token.norm)
+
+                # Si es Lanzamiento de Cuerda (expected_size=2) y NO viene ningún miembro en la misma fila,
+                # entonces el "deportista" es el club y NO debemos esperar más líneas.
+                if self.ctx.relay_ctx and self.ctx.relay_ctx.expected_size == 2 and len(self.ctx.relay_ctx.members) == 0:
+                    # el atleta será el club
+                    self.ctx.relay_ctx.members = [self.ctx.relay_ctx.club_name]
+                    # cerramos inmediatamente para evitar que "chupe" nombres de otras pruebas
+                    self._flush_relay_context(competition_id, season_id, date, reason="line_throw_single_line_no_members")
+                    self.ctx.state = State.IN_RESULTS
+                    return
+            
+            # Si estabas en IN_RELAY_MEMBERS, la TEAM_ROW actúa como boundary:
+            # cerramos el anterior (hecho arriba) y volvemos a IN_RESULTS.
+            if self.ctx.state == State.IN_RELAY_MEMBERS:
+                self.ctx.state = State.IN_RESULTS
+
             return
 
+        # ---------------------------------
+        # ---   RELAY MEMBERS
+        # ---------------------------------        
         if token.type == TokenType.RELAY_MEMBER and self.ctx.state == State.IN_RELAY_MEMBERS:
             if not self.ctx.relay_ctx:
                 self.trace.emit({"action": "WARN_RELAY_MEMBER_WITHOUT_CTX", "text": token.norm})
@@ -538,6 +568,9 @@ class SinglePassParser:
                 self.ctx.state = State.IN_RESULTS
                 return
             
+        # ---------------------------------
+        # ---   INDIVIDUAL ROW en RELAY
+        # ---------------------------------        
         if token.type == TokenType.INDIVIDUAL_ROW and self.ctx.current_event_relay:
             # En relays la primera fila trae nombre+año+club => es TEAM_ROW real
             if self.ctx.relay_ctx:
@@ -545,6 +578,9 @@ class SinglePassParser:
             self._open_relay_from_team_row(token.norm)
             return
 
+        # ---------------------------------
+        # ---   INDIVIDUAL ROW
+        # ---------------------------------        
         if token.type == TokenType.INDIVIDUAL_ROW:
             if self.ctx.state != State.IN_RESULTS:
                 # ignorar "falsos rows" en cabeceras (fechas, etc.)
@@ -558,3 +594,9 @@ class SinglePassParser:
         if self.ctx.relay_ctx and competition_id and season_id and date:
             self._flush_relay_context(competition_id, season_id, date, reason="finalize")
             self.ctx.state = State.IN_RESULTS
+            self.ctx.relay_ctx = None
+            self.ctx.pending = PendingHeader()
+            self.ctx.current_event_id = None
+            self.ctx.current_event_discipline = None
+            self.ctx.current_event_relay = False
+            self.ctx.state = State.SEEK_TABLE

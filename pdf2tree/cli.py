@@ -1,3 +1,15 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Copyright (c) 2026 Mariano Carpintero
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+
 from __future__ import annotations
 
 import os
@@ -180,6 +192,11 @@ def main(argv: Optional[List[str]] = None) -> int:
     comp_counter = 0
 
     for pdf_path in pdf_files:
+        parser_sp = None
+        comp_id = None
+        season_id = None
+        comp_date = None
+
         try:
             parser_sp = SinglePassParser(
                 trace=trace_sink,
@@ -196,7 +213,6 @@ def main(argv: Optional[List[str]] = None) -> int:
                 print("DEBUG procesando:", os.path.basename(pdf_path))
                 print("========================================")
 
-            # Dump reproducible de extract_text()
             if args.dump_text:
                 dump_name = os.path.splitext(os.path.basename(pdf_path))[0] + "_dump.txt"
                 dump_path = os.path.join(args.dump_text_dir, dump_name)
@@ -204,21 +220,17 @@ def main(argv: Optional[List[str]] = None) -> int:
                 if args.debug:
                     print("DEBUG dump extract_text ->", dump_path)
 
-            # Parsear cabecera (real si existe headers.py, si no fallback)
             competition, season = try_parse_header(pdf_path, debug=args.debug)
 
-            # Construir ids deterministas (si no hay header real, será suficientemente estable)
             season_id = season.get("id", "s_unknown")
             season_label = season.get("label", "Temporada (desconocida)")
             dims.add_season(Season(id=season_id, label=season_label))
 
-            # competition_id: preferimos una slug semántica si hay datos
             comp_date = competition.get("date") or competition.get("date_start") or datetime.now().date().isoformat()
             comp_loc = competition.get("location", "")
             comp_name_clean = competition.get("name_clean", competition.get("name", f"comp_{comp_counter:03d}"))
             comp_id = "c_" + slugify(f"{comp_date}_{comp_loc}_{comp_name_clean}")
 
-            # Registrar competition en dims
             dims.add_competition(Competition(
                 id=comp_id,
                 season_id=season_id,
@@ -233,7 +245,6 @@ def main(argv: Optional[List[str]] = None) -> int:
                 source_file=os.path.basename(pdf_path),
             ))
 
-            # Ejecutar parser single-pass: páginas -> líneas -> tokens -> consume
             for page in iter_pdf_pages(pdf_path):
                 for line_no, line in enumerate(page.lines, start=1):
                     line = unicodedata.normalize("NFC", line)
@@ -245,9 +256,6 @@ def main(argv: Optional[List[str]] = None) -> int:
                         date=comp_date
                     )
 
-            # Finalizar (flush de relay si queda abierto)
-            parser_sp.finalize(competition_id=comp_id, season_id=season_id, date=comp_date)
-
             processed.append(os.path.basename(pdf_path))
 
         except Exception as e:
@@ -255,12 +263,20 @@ def main(argv: Optional[List[str]] = None) -> int:
             if args.debug:
                 print("DEBUG ERROR:", msg)
             skipped.append({"file": os.path.basename(pdf_path), "reason": str(e)})
+
             if args.strict:
-                # cierre trace si aplica
                 if args.trace and hasattr(trace_sink, "close"):
                     trace_sink.close()
                 raise
             continue
+
+        finally:
+            # Cerrar/flush SIEMPRE el parser de este PDF
+            if parser_sp is not None and comp_id and season_id and comp_date:
+                try:
+                    parser_sp.finalize(competition_id=comp_id, season_id=season_id, date=comp_date)
+                except Exception:
+                    pass 
 
     # Construir salida final
     dims_dict = dims.build()

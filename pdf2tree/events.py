@@ -1,3 +1,15 @@
+# SPDX-License-Identifier: AGPL-3.0-or-later
+# Copyright (c) 2026 Mariano Carpintero
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU Affero General Public License as published
+# by the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# You should have received a copy of the GNU Affero General Public License
+# along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+
 import re
 from typing import Optional, Tuple, Dict
 from .normalize import slugify, strip_accents
@@ -214,14 +226,18 @@ def master_category_to_canonical(cat_display: str) -> str:
 def _normalize_distance_prefix(relay: bool, num_str: str) -> Tuple[str, str]:
     """
     Devuelve:
-      - prefix_text: "200 m." / "4x12,5 m."
+      - prefix_text: "200 m" / "4x12,5 m"
       - distance_text: "200" / "4x12,5"
     """
     num = float(num_str.replace(",", "."))
     # display sin .0 y con coma decimal
     num_disp = str(int(num)) if num.is_integer() else str(num).replace(".", ",")
-    prefix_text = f"{'4x' if relay else ''}{num_disp} m."
+
+    # Formato ES correcto: número + espacio corto (U+202F) + "m" sin punto + espacio normal
+    prefix_text = f"{'4x' if relay else ''}{num_disp}\u202Fm"
+
     distance_text = f"{'4x' if relay else ''}{num_disp}"
+
     return prefix_text, distance_text
 
 
@@ -297,12 +313,36 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     else:
         # extraer distancia en cualquier parte del título (EN o ES)
         prefix, distance_m = extract_distance_from_title(raw_title)
+
         # limpiar texto ES: quitar cat/sex y title case
         rest = strip_category_sex_es(base_source if master_display else es_part)
         rest = title_case_es(rest)
+
         # Si el texto ES ya trae distancia al inicio ("50 m.", "4x25 m.", "4x12,5 m."),
         # la quitamos para no duplicarla al anteponer prefix.
-        rest = re.sub(r"^(?:4x)?\s*\d+(?:[.,]\d+)?\s*m\.?\s*", "", rest, flags=re.IGNORECASE).strip()
+        rest = re.sub(r"^(?:4x)?\s*\d+(?:[.,]\d+)?\s*(?:\u202F|\s)?m\s*\.?\s*", "", rest, flags=re.IGNORECASE).strip()
+        # Normaliza patrones OCR tipo " . " o "m ."
+        rest = re.sub(r"\s*\.\s*", " ", rest).strip()
+
+        # --- Reglas de "Relevo" ---
+        # 1) Deduplicar si el PDF trae "Relevo" más de una vez al inicio.
+        #    (por ejemplo: "Relevo Relevo Remolque de Maniquí")
+        rest = re.sub(r"^(?:\s*Relevo\b\s*){2,}", "Relevo ", rest, flags=re.IGNORECASE).strip()
+
+        # 2) Forzar que TODAS las pruebas relay lleven "Relevo" (excepto Lanzamiento de Cuerda, que ya se trata aparte)
+        if relay and rest:
+            if not re.match(r"^\s*relevo\b", rest, flags=re.IGNORECASE):
+                rest = f"Relevo {rest}".strip()
+
+        # --- Normalización de relevos: forzar prefijo "Relevo " en el nombre base ---
+        # En los PDFs a veces aparece "Relevo ..." y otras veces no.
+        # Queremos consistencia: para cualquier relay, el "rest" debe empezar por "Relevo ".
+#        if relay and rest:
+            # Evitar duplicar si ya viene con "Relevo"
+#            if not re.match(r"^\s*relevo\b", rest, flags=re.IGNORECASE):
+#                rest = f"Relevo {rest}".strip()
+
+# TODO #14 Las distancias se expresan <distancia><espacio corto><m sin punto><espacio normal>
 
         if prefix:
             base = f"{prefix} {rest}".strip()
