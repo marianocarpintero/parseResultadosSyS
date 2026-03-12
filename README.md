@@ -1,4 +1,4 @@
-# esppdf2tree — Generador de JSON de temporada (PDF → Árbol + Results)
+# pdf2json — Generador de JSON de temporada (PDF → Árbol + Results)
 
 Este proyecto convierte **uno o varios PDFs de resultados deportivos** en un **único JSON** preparado para consumo por un frontend (dashboards, gráficas, comparativas).
 
@@ -37,13 +37,13 @@ El proyecto trabaja **en rutas relativas** y crea carpetas si no existen:
 
 ```text
 .
-├── esppdf2tree.py        # entrypoint (wrapper CLI)
+├── pdf2json.py        # entrypoint (wrapper CLI)
 ├── pdf2tree/             # paquete con toda la lógica
 ├── PDF/                  # entrada (PDFs)
 └── JSON/                 # salida (JSON, trazas, dumps)
 ```
 
-*   `esppdf2tree.py` es un wrapper que invoca el CLI real del paquete.
+*   `pdf2json.py` es un wrapper que invoca el CLI real del paquete.
 *   Todo el procesamiento vive en `pdf2tree/`.
 
 ***
@@ -58,13 +58,13 @@ Si no se pasa ningún argumento, se procesa `*.pdf`.
 ### 2.1 Procesar varios PDFs por patrón (modo batch recomendado)
 
 ```bash
-python3 esppdf2tree.py "2026*.pdf"
+python3 pdf2json.py "2026*.pdf"
 ```
 
 También se admiten comodines genéricos:
 
 ```bash
-python3 esppdf2tree.py "*.pdf"
+python3 pdf2json.py "*.pdf"
 ```
 
 Notas sobre resolución de entradas:
@@ -77,7 +77,7 @@ Notas sobre resolución de entradas:
 ### 2.2 Procesar uno o varios PDFs indicando nombres
 
 ```bash
-python3 esppdf2tree.py 202601menores.pdf 202602menores.pdf
+python3 pdf2json.py 202601menores.pdf 202602menores.pdf
 ```
 
 > Los nombres se buscan en `./PDF/`.  
@@ -95,7 +95,7 @@ Por defecto:
 Ejemplo:
 
 ```bash
-python3 esppdf2tree.py "2026*.pdf" --output temporada_2025_2026.json
+python3 pdf2json.py "2026*.pdf" --output temporada_2025_2026.json
 ```
 
 Resultado:
@@ -111,7 +111,7 @@ Resultado:
 Activa salida detallada por consola:
 
 ```bash
-python3 esppdf2tree.py "2026*.pdf" --debug
+python3 pdf2json.py "2026*.pdf" --debug
 ```
 
 Útil para:
@@ -132,7 +132,7 @@ Por defecto, si un PDF falla:
 Con `--strict`, cualquier error **detiene el proceso completo**:
 
 ```bash
-python3 esppdf2tree.py "2026*.pdf" --strict
+python3 pdf2json.py "2026*.pdf" --strict
 ```
 
 ***
@@ -143,7 +143,7 @@ Limita los resultados a clubes que contengan el texto indicado
 (se puede repetir el parámetro):
 
 ```bash
-python3 esppdf2tree.py "2026*.pdf" \
+python3 pdf2json.py "2026*.pdf" \
   --club-filter "Pacifico" \
   --club-filter "Laguna"
 ```
@@ -160,7 +160,7 @@ El filtrado:
 Genera un fichero **JSONL** (un evento por línea) con el detalle interno del parser:
 
 ```bash
-python3 esppdf2tree.py "2026*.pdf" \
+python3 pdf2json.py "2026*.pdf" \
   --trace ./JSON/trace/trace.jsonl
 ```
 
@@ -181,7 +181,7 @@ Muy útil para **debug avanzado**.
 Para inspeccionar exactamente qué devuelve `pdfplumber` por página:
 
 ```bash
-python3 esppdf2tree.py "2026*.pdf" \
+python3 pdf2json.py "2026*.pdf" \
   --dump-text \
   --dump-text-dir ./JSON/dumps
 ```
@@ -388,21 +388,21 @@ Pensado para navegación directa en frontend.
 ### 10.1 JSON completo de temporada
 
 ```bash
-python3 esppdf2tree.py "*.pdf" \
+python3 pdf2json.py "*.pdf" \
   --output ./JSON/temporada.json
 ```
 
 ### 10.2 Solo dos PDFs
 
 ```bash
-python3 esppdf2tree.py 202601menores.pdf 202602menores.pdf \
+python3 pdf2json.py 202601menores.pdf 202602menores.pdf \
   --output ./JSON/menores.json
 ```
 
 ### 10.3 Filtrado por club con trazas
 
 ```bash
-python3 esppdf2tree.py "2026*.pdf" \
+python3 pdf2json.py "2026*.pdf" \
   --club-filter "Pacifico" \
   --trace ./JSON/trace/trace.jsonl \
   --output ./JSON/pacifico_2026.json

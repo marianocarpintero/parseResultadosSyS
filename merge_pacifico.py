@@ -20,7 +20,7 @@ def index_by_id(items):
 # Cargar ficheros
 # ----------------------------
 pacifico = load_json("./JSON/Pacifico.json")
-out_all = load_json("./JSON/2025ddcc.json")
+out_all = load_json("./JSON/2025-2026.json")
 
 # ----------------------------
 # MERGE: dimensions.seasons

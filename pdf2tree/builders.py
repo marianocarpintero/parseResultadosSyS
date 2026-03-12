@@ -85,10 +85,8 @@ class DimensionsBuilder:
         self.athletes[athlete.id] = athlete
         self.athlete_best_by_name[key] = athlete.id
 
-
     def add_event(self, event):
         self.events.setdefault(event.id, event)
-
 
     def build(self) -> Dict[str, Any]:
         """

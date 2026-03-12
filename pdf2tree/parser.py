@@ -79,6 +79,7 @@ class ParseContext:
     current_event_discipline: Optional[str] = None
     current_event_relay: bool = False
     relay_ctx: Optional[RelayContext] = None
+    competition_name_clean: Optional[str] = None
 
 
 class SinglePassParser:
@@ -154,6 +155,12 @@ class SinglePassParser:
         ck = normalize_key(club_name)
         return any(f in ck for f in self.club_filters_norm)
 
+    def _label_x(self, date: str) -> str:
+        """
+        label.x = 'competition.date\\ncompetition.name_clean'
+        """
+        name_clean = (self.ctx.competition_name_clean or "").strip()
+        return f"{date}\n{name_clean}".strip()
 
     # -----------------------
     # Event commit (A/B/C)
@@ -312,8 +319,7 @@ class SinglePassParser:
             self.ctx.relay_ctx = None
             return
 
-        discipline = self.ctx.current_event_discipline or ""
-        label_x = f"{date}\n{discipline}"
+        label_x = self._label_x(date)
         display, seconds = time_raw_to_display_seconds(ctx.time_raw or "")
 
         self.trace.emit({
@@ -432,14 +438,13 @@ class SinglePassParser:
 
         # tiempos: 2 => preliminar+final; 1 => final; 0 => status
         if len(times) >= 2:
-            time_pairs = [("Serie Preliminar", times[0]), ("Final", times[1])]
+            time_pairs = [("Preliminar", times[0]), ("Final", times[1])]
         elif len(times) == 1:
             time_pairs = [("Final", times[0])]
         else:
             time_pairs = [("Final", None)]
 
-        discipline = self.ctx.current_event_discipline or ""
-        label_x = f"{date}\n{discipline}"
+        label_x = self._label_x(date)
 
         for series_type, t_raw in time_pairs:
             display, seconds = time_raw_to_display_seconds(t_raw or "")
@@ -516,7 +521,7 @@ class SinglePassParser:
     # -----------------------
     # Public API
     # -----------------------
-    def consume(self, token: Token, *, competition_id: str, season_id: str, date: str) -> None:
+    def consume(self, token: Token, *, competition_id: str, season_id: str, date: str, competition_name_clean: str = "") -> None:
         self.trace.emit({
             "page": token.page,
             "line": token.line_no,
@@ -525,6 +530,9 @@ class SinglePassParser:
             "text": token.norm,
             "event_id": self.ctx.current_event_id,
         })
+
+        if competition_name_clean:
+            self.ctx.competition_name_clean = competition_name_clean
 
         # ---------------------------------
         # ---   EVENT TITLE

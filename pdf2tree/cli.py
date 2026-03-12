@@ -32,7 +32,7 @@ from .schema import Season, Competition
 # ------------------------------------------------------------
 # Utilidades CLI
 # ------------------------------------------------------------
-def resolve_pdf_inputs(inputs: List[str], base_dir: str = "./PDF", debug: bool = False) -> List[str]:
+def resolve_pdf_inputs(inputs: List[str], debug: bool = False) -> List[str]:
     """
     inputs: lista de strings que pueden ser:
       - nombre directo: "2026ddcc.pdf" o "2026ddcc"
@@ -52,10 +52,9 @@ def resolve_pdf_inputs(inputs: List[str], base_dir: str = "./PDF", debug: bool =
         else:
             pattern = raw
 
-        full_pattern = os.path.join(base_dir, pattern)
-        matches = glob(full_pattern)
+        matches = glob(pattern)
         if debug:
-            print(f"DEBUG resolve pattern: {raw} -> {full_pattern} -> {len(matches)} matches")
+            print(f"DEBUG resolve pattern: {raw} -> {pattern} -> {len(matches)} matches")
         resolved.extend(matches)
 
     return sorted(set(resolved))
@@ -116,7 +115,7 @@ def try_parse_header(pdf_path: str, debug: bool = False) -> Tuple[Dict[str, Any]
             "label": "Temporada (desconocida)",
         }
         return competition, season
-
+# TODO #28 quitar parse_header de aquí y moverlo a headers.py
 
 # ------------------------------------------------------------
 # MAIN
@@ -126,7 +125,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument(
         "pdf_inputs",
         nargs="*",
-        help="PDF(s) o patrones. Ej: 2026ddcc.pdf 2025* *.pdf"
+        help="PDF(s) o patrones. Ej: ./PDF/2026ddcc.pdf ./PDF/2025* ./PDF/*.pdf"
     )
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--strict", action="store_true", help="Si un PDF falla, detiene el proceso.")
@@ -172,7 +171,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     # Resolver inputs
     inputs = args.pdf_inputs if args.pdf_inputs else ["*.pdf"]
-    pdf_files = resolve_pdf_inputs(inputs, base_dir="./PDF", debug=args.debug)
+    pdf_files = resolve_pdf_inputs(inputs, debug=args.debug)
     if not pdf_files:
         raise SystemExit("No se encontraron PDFs con los patrones indicados en ./PDF")
 
@@ -253,7 +252,8 @@ def main(argv: Optional[List[str]] = None) -> int:
                         tok,
                         competition_id=comp_id,
                         season_id=season_id,
-                        date=comp_date
+                        date=comp_date,
+                        competition_name_clean=comp_name_clean
                     )
 
             processed.append(os.path.basename(pdf_path))

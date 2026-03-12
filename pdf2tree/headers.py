@@ -84,7 +84,6 @@ def is_header_start(line: str) -> bool:
         u.startswith("SERIES PRELIMINARES")
     )
 
-
 def is_ordinal_only_line(line: str) -> bool:
     """
     Detecta líneas que solo contienen sufijos ordinales ingleses:
@@ -94,7 +93,6 @@ def is_ordinal_only_line(line: str) -> bool:
         return False
     s = normalize_spaces(line).lower()
     return bool(re.fullmatch(r"(st|nd|rd|th)(\s+(st|nd|rd|th))*", s))
-
 
 def is_date_line(line: str) -> bool:
     ln = normalize_dashes(line)
@@ -114,7 +112,6 @@ def is_date_line(line: str) -> bool:
     # Fecha con sólo un día, no un rango.
 
     return False
-
 
 def extract_header_lines(pdf, debug: bool = False) -> List[str]:
     """
@@ -165,7 +162,6 @@ def parse_date_en(text: str) -> Optional[str]:
         return None
     return f"{y}-{mm}-{d:02d}"
 
-
 def parse_range_en(text: str) -> Tuple[Optional[str], Optional[str]]:
     text = normalize_dashes(text.strip())
     parts = [p.strip() for p in re.split(r"\s*-\s*", text, maxsplit=1)]
@@ -174,7 +170,6 @@ def parse_range_en(text: str) -> Tuple[Optional[str], Optional[str]]:
     a = parse_date_en(parts[0])
     b = parse_date_en(parts[1])
     return a, b
-
 
 def parse_range_es_no_year(text: str):
     text = normalize_dashes(text.strip().lower())
@@ -194,7 +189,6 @@ def parse_range_es_no_year(text: str):
     if mon2.isdigit() or mon2 in {"", None}:
         mon2 = mon1
     return (d1, mon1), (d2, mon2)
-
 
 def parse_dates(text: str, debug: bool = False) -> Tuple[Optional[str], Optional[str]]:
     """
@@ -300,6 +294,36 @@ def parse_location_region(loc_line: str, debug: bool = False) -> Tuple[str, str]
 
     return normalize_title(loc_line), ""
 
+def clean_name_clean(name: str) -> str:
+    """
+    Normaliza guiones y elimina el bloque 'Fase Territorial' cuando aparece
+    como segmento separado por guiones (dash/en-dash/em-dash).
+    Deja separadores uniformes como ' - '.
+    """
+    if not name:
+        return ""
+
+    # 1) Normalizar variantes de guiones a "-"
+    s = normalize_dashes(name)
+
+    # 2) Unificar espacios alrededor del guion separador a " - "
+    #    (soporta " - ", "- ", " -", "--" ocasionales, etc.)
+    s = re.sub(r"\s*-\s*", " - ", s).strip()
+
+    # 3) Eliminar el segmento "Fase Territorial" si está delimitado por separadores
+    #    Casos típicos:
+    #      "A - Fase Territorial - B"  -> "A - B"
+    #      "Fase Territorial - B"      -> "B"
+    #      "A - Fase Territorial"      -> "A"
+    #    Nota: lo hacemos por "segmentos" para no romper otros textos.
+    parts = [p.strip() for p in s.split(" - ") if p.strip()]
+    parts = [p for p in parts if p.lower() != "fase territorial"]
+
+    # 4) Reconstruir
+    s = " - ".join(parts)
+
+    # 5) Limpieza final por si queda algo raro (dobles separadores ya quedan resueltos por parts)
+    return s.strip()
 
 def parse_competition_from_header(lines: List[str], debug: bool = False) -> Dict[str, Any]:
     """
@@ -325,9 +349,7 @@ def parse_competition_from_header(lines: List[str], debug: bool = False) -> Dict
     m_pool = re.search(r"\(([^)]+)\)", date_line)
     if m_pool:
         pool_raw = m_pool.group(1)
-        m_size = re.search(r"(25|50)\s*[EM]", pool_raw.upper())
-        if m_size:
-            pool_type = normalize_pool(m_size.group(0))
+        pool_type = normalize_pool(pool_raw)
         date_line = date_line.replace(m_pool.group(0), "").strip()
 
     date_start, date_end = parse_dates(date_line, debug=debug)
@@ -346,7 +368,7 @@ def parse_competition_from_header(lines: List[str], debug: bool = False) -> Dict
     name = normalize_title(" ".join(name_lines))
 
     # name_clean (si no tienes reglas específicas, usa name)
-    name_clean = name
+    name_clean = clean_name_clean(name)
 
     return {
         "name": name,
@@ -378,11 +400,9 @@ def season_end_year_from_date_iso(date_iso: str) -> Optional[int]:
     yyyy, mm, _ = map(int, m.groups())
     return yyyy + 1 if mm >= 10 else yyyy
 
-
 def season_label_from_end_year(end_year: int) -> str:
     start_year = end_year - 1
     return f"Temporada {start_year}-{end_year}"
-
 
 def season_id_from_label(label: str) -> str:
     m = re.search(r"(\d{4})-(\d{4})", label)
@@ -390,7 +410,6 @@ def season_id_from_label(label: str) -> str:
         return "s_unknown"
     a, b = m.groups()
     return f"s_{a}_{b}"
-
 
 def infer_season_label_from_text(text: str) -> Optional[str]:
     """
@@ -413,7 +432,6 @@ def infer_season_label_from_text(text: str) -> Optional[str]:
         return f"Temporada {a}-{b}"
 
     return None
-
 
 def parse_season_from_header(header_lines: List[str], competition: Optional[Dict[str, Any]] = None, debug: bool = False) -> Dict[str, Any]:
     """

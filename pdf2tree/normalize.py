@@ -22,36 +22,50 @@ LOWER_WORDS_ES = {"de","del","la","las","los","y","e","en","con","sin","al","a",
 def normalize_spaces(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip()
 
-
 def strip_accents(s: str) -> str:
     return "".join(
         c for c in unicodedata.normalize("NFD", s)
         if unicodedata.category(c) != "Mn"
     )
 
-
-def normalize_pool(pool_raw: str) -> str:
-    pool_raw = pool_raw.replace(" ", "").upper()
-    if pool_raw in {"25M", "25E", "50M", "50E"}:
-        return pool_raw
-    return ""
-
-
 def normalize_dashes(s: str) -> str:
     # normaliza guiones unicode a "-"
     return re.sub(r"[‐‑‒–—−]", "-", s)
-
 
 def normalize_key(s: str) -> str:
     s = normalize_spaces(s)
     return strip_accents(s).lower()
 
+def normalize_pool(pool_raw: str) -> str:
+    """
+    Acepta '25 M', '25M', '50E', 'M 25', 'E50' (y variantes con espacios).
+    Devuelve SIEMPRE: '[EM]\\u202F[25|50]' (ej. 'M 25', 'E 50').
+    """
+    if not pool_raw:
+        return ""
+
+    s = pool_raw.upper()
+
+    # Caso A: "25 M" / "25M" / "50 E" / "50E"
+    m1 = re.search(r"\b(25|50)\s*([EM])\b", s)
+    if m1:
+        size = m1.group(1)
+        mode = m1.group(2)
+        return f"{mode}\u202F{size}"
+
+    # Caso B: "M 25" / "M25" / "E 50" / "E50"
+    m2 = re.search(r"\b([EM])\s*(25|50)\b", s)
+    if m2:
+        mode = m2.group(1)
+        size = m2.group(2)
+        return f"{mode}\u202F{size}"
+
+    return ""
 
 def slugify(s: str) -> str:
     s = normalize_key(s)
     s = re.sub(r"[^a-z0-9]+", "_", s).strip("_")
     return s or "na"
-
 
 def normalize_title(s: str) -> str:
     """Title Case controlado (mantiene romanos)."""
@@ -64,7 +78,6 @@ def normalize_title(s: str) -> str:
         else:
             out.append(w.capitalize())
     return " ".join(out)
-
 
 def title_case_name_es(s: str) -> str:
     s = re.sub(r"\s+", " ", (s or "").strip())
@@ -79,7 +92,6 @@ def title_case_name_es(s: str) -> str:
             parts = [p[:1].upper() + p[1:] if p else p for p in parts]
             out.append("-".join(parts))
     return " ".join(out)
-
 
 def normalize_athlete_name(raw: str) -> str:
     """
