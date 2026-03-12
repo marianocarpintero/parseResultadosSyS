@@ -574,6 +574,10 @@ class SinglePassParser:
         # ---   TEAM ROW
         # ---------------------------------        
         if token.type == TokenType.TEAM_ROW:
+            # TEAM_ROW solo tiene sentido en pruebas de relevo.
+            # Evita que tablas de clasificación (pos/score) contaminen clubs/athletes.
+            if not self.ctx.current_event_relay:
+                return
             prev_state = self.ctx.state
 
             # Boundary: si había relevo abierto, flush

@@ -50,6 +50,8 @@ class DimensionsBuilder:
     def add_club(self, club: Club) -> None:
         self.clubs.setdefault(club.id, club)
 
+# TODO #29 Está incluyendo clubes raros, al menos en 2026mad, 202601master, 202602master   con pacífico salvamento y basura.
+
     def add_athlete(self, athlete: Athlete) -> None:
         key = athlete_name_key(athlete.name)
         incoming_has_year = athlete.birth_year is not None

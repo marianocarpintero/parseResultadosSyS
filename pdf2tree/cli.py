@@ -245,6 +245,13 @@ def main(argv: Optional[List[str]] = None) -> int:
             ))
 
             for page in iter_pdf_pages(pdf_path):
+                # --- IGNORAR PÁGINAS DE CLASIFICACIÓN GENERAL (no son resultados) ---
+                page_text_low = (page.text or "").lower()
+                if "clasificación general" in page_text_low or "clasificacion general" in page_text_low:
+                    if args.debug:
+                        print(f"DEBUG skip page {page.page_index} (clasificación general) en {os.path.basename(pdf_path)}")
+                    continue
+
                 for line_no, line in enumerate(page.lines, start=1):
                     line = unicodedata.normalize("NFC", line)
                     tok = tokenizer.classify(page.page_index, line_no, line)
