@@ -1,0 +1,40 @@
+# CODEOWNERS
+# Define los responsables de cada parte del repositorio
+# Sintaxis: <ruta> <usuario | equipo>
+
+# ─────────────────────────────────────────────
+# Regla por defecto
+# ─────────────────────────────────────────────
+* @marianocarpintero
+
+# ─────────────────────────────────────────────
+# Núcleo del parser (zona crítica)
+# ─────────────────────────────────────────────
+/pdf2json.py            @marianocarpintero
+/pdf2tree/              @marianocarpintero
+
+# ─────────────────────────────────────────────
+# Contrato de datos (no romper sin revisión)
+# ─────────────────────────────────────────────
+/JSON_CONTRACT.md       @marianocarpintero
+/docs/JSON_CONTRACT.md  @marianocarpintero
+
+# ─────────────────────────────────────────────
+# Documentación técnica
+# ─────────────────────────────────────────────
+/TECHNICAL_REFERENCE.md @marianocarpintero
+/docs/TECHNICAL_REFERENCE.md @marianocarpintero
+
+# ─────────────────────────────────────────────
+# Documentación general
+# ─────────────────────────────────────────────
+/README.md              @marianocarpintero
+/docs/                  @marianocarpintero
+
+# ─────────────────────────────────────────────
+# Configuración y gobierno del proyecto
+# ─────────────────────────────────────────────
+/.github/               @marianocarpintero
+/LICENSE                @marianocarpintero
+/CONTRIBUTING.md        @marianocarpintero
+/CODE_OF_CONDUCT.md     @marianocarpintero
