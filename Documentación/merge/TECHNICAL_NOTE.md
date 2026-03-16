@@ -17,19 +17,44 @@ Esta separación facilita mantenimiento, test y KT.
 
 ---
 
-## 2. Merge
+## 2. Diagrama de flujo general del sistema
 
-### 2.1 Dimensions
+```mermaid
+graph TD
+  A[Inicio ejecución] --> B[Carga argumentos CLI]
+  B --> C[Resolución de PDFs]
+  C --> D[Iteración por PDF]
+  D --> E[Iteración por página]
+  E --> F{¿Página relevante?}
+
+  F -- No --> E
+  F -- Sí --> G[Parseo de cabecera]
+
+  G --> H[Parseo de filas]
+  H --> I[Normalización]
+  I --> J[Construcción del modelo]
+  J --> E
+
+  D --> K[Postprocesado global]
+  K --> L[Generación JSON]
+  L --> M[Fin]
+```
+
+---
+
+## 3. Merge
+
+### 3.1 Dimensions
 
 Merge por `id` en:
 
 - `seasons`, `clubs`, `athletes`, `competitions`, `events`.
 
-### 2.2 Results
+### 3.2 Results
 
 Merge por `result.id`.
 
-### 2.3 Tree
+### 3.3 Tree
 
 - Indexación para evitar búsquedas lineales repetidas.
 - Deduplicación por clave compuesta:
@@ -40,7 +65,7 @@ Merge por `result.id`.
 
 ---
 
-## 3. Validación
+## 4. Validación
 
 - Duplicados en IDs (dimensions/results).
 - Referencias cruzadas de results a dimensions.
@@ -48,7 +73,7 @@ Merge por `result.id`.
 
 ---
 
-## 4. Extensiones futuras sugeridas
+## 5. Extensiones futuras sugeridas
 
 - Subir a **error** (no warning) la ausencia de `series_type`/`heat` cuando se cierre la compatibilidad histórica.
 - Añadir `--fix` (reconstrucción opcional de tree desde results si se decide que tree sea derivado).
