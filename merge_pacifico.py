@@ -1,137 +1,96 @@
-import json
+#!/usr/bin/env python3
+"""merge_pacifico.py
+
+CLI para fusionar (merge) dos JSONs del proyecto Pacifico.
+
+Características:
+- Merge por ID en dimensions (seasons, clubs, athletes, competitions, events)
+- Merge por ID en results
+- Merge de tree con indexación (rápido) y deduplicación por atleta + serie + heat
+- Validación post-merge (estructura + referencias cruzadas)
+
+Uso típico:
+  python merge_pacifico.py --base ./JSON/Pacifico.json --new ./JSON/2025-2026.json --out ./JSON/Pacifico_merged.json
+"""
+
+from __future__ import annotations
+
+import argparse
+import sys
 from pathlib import Path
 
-
-def load_json(path):
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
+from pacifico_merge.merger import merge_pacifico
+from pacifico_merge.validate import validate_pacifico
 
 
-def save_json(path, data):
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+def build_parser() -> argparse.ArgumentParser:
+    p = argparse.ArgumentParser(
+        prog='merge_pacifico.py',
+        description='Fusiona (merge) dos datasets JSON de Pacifico, evitando duplicados por id.'
+    )
+
+    p.add_argument('--base', type=Path, required=True,
+                   help='Ruta al JSON base/histórico (p.ej. ./JSON/Pacifico.json)')
+    p.add_argument('--new', dest='new_json', type=Path, required=True,
+                   help='Ruta al JSON nuevo a integrar (p.ej. ./JSON/2025-2026.json)')
+    p.add_argument('--out', type=Path, required=True,
+                   help='Ruta del JSON de salida (p.ej. ./JSON/Pacifico_merged.json)')
+
+    p.add_argument('--no-merge-tree', action='store_true',
+                   help='No fusionar el bloque tree (solo dimensions + results).')
+
+    p.add_argument('--validate', action='store_true', default=True,
+                   help='Ejecutar validación post-merge (por defecto: activado).')
+    p.add_argument('--no-validate', action='store_true',
+                   help='Desactivar validación post-merge.')
+
+    p.add_argument('--strict', action='store_true',
+                   help='Modo estricto: cualquier error de validación devuelve exit code != 0.')
+
+    p.add_argument('--report', type=Path, default=None,
+                   help='Opcional: ruta donde guardar un informe JSON de merge/validación.')
+
+    return p
 
 
-def index_by_id(items):
-    return {item["id"]: item for item in items}
+def main(argv: list[str]) -> int:
+    parser = build_parser()
+    args = parser.parse_args(argv)
+
+    do_merge_tree = not args.no_merge_tree
+    do_validate = args.validate and not args.no_validate
+
+    merged, merge_report = merge_pacifico(
+        base_path=args.base,
+        new_path=args.new_json,
+        out_path=args.out,
+        merge_tree=do_merge_tree,
+    )
+
+    validation_report = None
+    if do_validate:
+        validation_report = validate_pacifico(merged)
+
+    if args.report:
+        from pacifico_merge.utils import save_json
+        report_obj = {'merge': merge_report, 'validation': validation_report}
+        save_json(args.report, report_obj)
+
+    print('Merge completado →', str(args.out))
+    print('Resumen:')
+    for k, v in merge_report.get('counts', {}).items():
+        print(f'  - {k}: +{v.get("added", 0)} (total={v.get("total", "?")})')
+
+    if do_validate and validation_report is not None:
+        errors = validation_report.get('errors', [])
+        warnings = validation_report.get('warnings', [])
+        print(f'Validación: {len(errors)} errores, {len(warnings)} warnings')
+        if errors and args.strict:
+            print('ERROR: validación fallida en modo --strict. Revisa el reporte.', file=sys.stderr)
+            return 2
+
+    return 0
 
 
-# ----------------------------
-# Cargar ficheros
-# ----------------------------
-pacifico = load_json("./JSON/Pacifico.json")
-out_all = load_json("./JSON/2025-2026.json")
-
-# ----------------------------
-# MERGE: dimensions.seasons
-# ----------------------------
-pacifico_seasons = index_by_id(pacifico["dimensions"]["seasons"])
-for season in out_all["dimensions"].get("seasons", []):
-    if season["id"] not in pacifico_seasons:
-        pacifico["dimensions"]["seasons"].append(season)
-
-# ----------------------------
-# MERGE: dimensions.athletes
-# ----------------------------
-pacifico_athletes = index_by_id(pacifico["dimensions"]["athletes"])
-for athlete in out_all["dimensions"].get("athletes", []):
-    if athlete["id"] not in pacifico_athletes:
-        pacifico["dimensions"]["athletes"].append(athlete)
-
-# ----------------------------
-# MERGE: dimensions.competitions
-# ----------------------------
-pacifico_competitions = index_by_id(pacifico["dimensions"]["competitions"])
-for competition in out_all["dimensions"].get("competitions", []):
-    if competition["id"] not in pacifico_competitions:
-        pacifico["dimensions"]["competitions"].append(competition)
-
-# ----------------------------
-# MERGE: dimensions.events
-# ----------------------------
-pacifico_events = index_by_id(pacifico["dimensions"]["events"])
-for event in out_all["dimensions"].get("events", []):
-    if event["id"] not in pacifico_events:
-        pacifico["dimensions"]["events"].append(event)
-
-# ----------------------------
-# MERGE: results
-# ----------------------------
-pacifico_results = index_by_id(pacifico.get("results", []))
-for result in out_all.get("results", []):
-    if result["id"] not in pacifico_results:
-        pacifico.setdefault("results", []).append(result)
-
-# ----------------------------
-# MERGE: tree (árbol con raíz en LISTA)
-# ----------------------------
-pacifico_tree = pacifico.setdefault("tree", [])
-out_tree = out_all.get("tree", [])
-
-def find_by_id(items, key, value):
-    for item in items:
-        if item.get(key) == value:
-            return item
-    return None
-
-
-for out_season in out_tree:
-    season_id = out_season.get("season_id")
-    if not season_id:
-        continue
-
-    pac_season = find_by_id(pacifico_tree, "season_id", season_id)
-
-    # 1️⃣ Season
-    if pac_season is None:
-        pacifico_tree.append(out_season)
-        continue
-
-    pac_competitions = pac_season.setdefault("competitions", [])
-
-    for out_comp in out_season.get("competitions", []):
-        comp_id = out_comp.get("competition_id")
-        if not comp_id:
-            continue
-
-        pac_comp = find_by_id(pac_competitions, "competition_id", comp_id)
-
-        # 2️⃣ Competition
-        if pac_comp is None:
-            pac_competitions.append(out_comp)
-            continue
-
-        pac_events = pac_comp.setdefault("events", [])
-
-        for out_event in out_comp.get("events", []):
-            event_id = out_event.get("event_id")
-            if not event_id:
-                continue
-
-            pac_event = find_by_id(pac_events, "event_id", event_id)
-
-            # 3️⃣ Event
-            if pac_event is None:
-                pac_events.append(out_event)
-                continue
-
-            pac_athletes = pac_event.setdefault("athletes", [])
-
-            existing_athletes = {
-                a.get("athlete_id") for a in pac_athletes
-            }
-
-            # 4️⃣ Athletes
-            for out_athlete in out_event.get("athletes", []):
-                athlete_id = out_athlete.get("athlete_id")
-                if athlete_id not in existing_athletes:
-                    pac_athletes.append(out_athlete)
-                    existing_athletes.add(athlete_id)
-
-
-# ----------------------------
-# Guardar resultado
-# ----------------------------
-save_json("./JSON/Pacifico_merged.json", pacifico)
-
-print("Merge completado → JSON/Pacifico_merged.json")
+if __name__ == '__main__':
+    raise SystemExit(main(sys.argv[1:]))

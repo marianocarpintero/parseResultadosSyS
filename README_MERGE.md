@@ -1,32 +1,40 @@
-# merge_pacifico.py
+# Documentación
 
-Herramienta para **fusionar (merge) datasets JSON** del proyecto Pacifico.
+Este directorio contiene documentación del proyecto.
 
-Este script toma un JSON base (histórico) y un JSON nuevo (p. ej. una temporada recién generada) y produce un JSON combinado **sin duplicar** elementos ya existentes (por `id`).
+## Índice
 
-> Nota: el script actual usa **rutas fijas** (hardcodeadas). Si tus ficheros están en otra ubicación o tienen otro nombre, consulta la guía de usuario.
+- [`README_MERGE.md`] — Resumen del Merge CLI. Este fichero.
+- [`documentación/merge/USER_GUIDE.md`] — Guía de usuario (detallada)
+- [`documentación/merge/TECHNICAL_NOTE.md`] — Nota técnica breve
+- [`diagram_flujo_general.md`](diagram_flujo_general.md) — Diagrama de flujo general del sistema
 
-## ¿Qué fusiona?
+# Merge CLI — `merge_pacifico.py`
 
-- `dimensions.seasons`
-- `dimensions.athletes`
-- `dimensions.competitions`
-- `dimensions.events`
-- `results`
-- `tree` (merge jerárquico por `season_id → competition_id → event_id → athlete_id`)
+Herramienta de línea de comandos para **fusionar (merge) dos datasets JSON** del proyecto Pacifico.
 
-## ¿Qué NO fusiona? (limitación actual)
+A diferencia de la versión inicial (rutas fijas), esta versión:
 
-- `dimensions.clubs` (no hay bloque de merge para clubes)
+- acepta **argumentos CLI** (`--base`, `--new`, `--out`, etc.),
+- fusiona `dimensions` incluyendo **`clubs`**,
+- fusiona `tree` con **indexación** (rendimiento),
+- deduplica entradas de `tree.event.athletes` por **`athlete_id + series_type + heat`**, y
+- ejecuta **validación post-merge** opcional.
+
+> Nota: `series_type` y `heat` se consideran **campos obligatorios del contrato actual** en `tree.event.athletes`. La validación los reporta como **warnings** si faltan (para compatibilidad), pero la deduplicación de `tree` asume que existen.
+
+## Archivos
+
+- Entry-point: `merge_pacifico.py`
+- Módulos: `pacifico_merge/`
 
 ## Uso rápido
 
 ```bash
-python merge_pacifico.py
+python merge_pacifico.py   --base ./JSON/Pacifico.json   --new ./JSON/2025-2026.json   --out ./JSON/Pacifico_merged.json   --report ./JSON/merge_report.json   --strict
 ```
 
-Entradas/salida por defecto:
+## Documentación
 
-*   Base: `./JSON/Pacifico.json`
-*   Nuevo: `./JSON/2025-2026.json`
-*   Salida: `./JSON/Pacifico_merged.json`
+- **Guía de usuario (completa)**: `USER_GUIDE.md`
+- **Nota técnica (breve)**: `TECHNICAL_NOTE.md`
