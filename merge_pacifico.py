@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""merge_pacifico.py
+"""
+merge_pacifico.py
 
 CLI para fusionar (merge) dos JSONs del proyecto Pacifico.
 

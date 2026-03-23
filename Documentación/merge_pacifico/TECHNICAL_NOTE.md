@@ -78,3 +78,4 @@ Merge por `result.id`.
 - Subir a **error** (no warning) la ausencia de `series_type`/`heat` cuando se cierre la compatibilidad histórica.
 - Añadir `--fix` (reconstrucción opcional de tree desde results si se decide que tree sea derivado).
 - Tests unitarios mínimos para merger/validate.
+

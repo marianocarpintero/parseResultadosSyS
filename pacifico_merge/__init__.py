@@ -1,1 +1,5 @@
-pacifico_merge: utilidades de merge/validación para JSON Pacifico.
+__all__ = [
+    "merger",
+    "utils",
+    "validate"
+]

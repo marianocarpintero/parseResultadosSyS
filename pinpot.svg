@@ -1,0 +1,59 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect x="0" y="0" width="1440" height="900" fill="#f5f6f8"/>
+
+  <!-- Container (1200px centered) -->
+  <g id="Container" transform="translate(120,24)">
+    <rect x="0" y="0" width="1200" height="852" rx="12" fill="#ffffff"/>
+
+    <!-- Header -->
+    <g id="Header" transform="translate(0,0)">
+      <rect x="0" y="0" width="1200" height="104" fill="#e9ecef"/>
+      <text x="24" y="62" font-family="Roboto" font-size="20" fill="#333">
+        Header / Logo
+      </text>
+      <text x="1050" y="62" font-family="Roboto" font-size="14" fill="#666">
+        Actions
+      </text>
+    </g>
+
+    <!-- Body -->
+    <g id="Body" transform="translate(0,120)">
+      <!-- Nav (30%) -->
+      <g id="Nav">
+        <rect x="0" y="0" width="360" height="708" fill="#f1f3f5"/>
+        <text x="16" y="36" font-family="Roboto" font-size="16" fill="#333">
+          Navigation
+        </text>
+        <text x="16" y="68" font-family="Roboto" font-size="14" fill="#666">
+          • Home
+        </text>
+        <text x="16" y="92" font-family="Roboto" font-size="14" fill="#666">
+          • Features
+        </text>
+        <text x="16" y="116" font-family="Roboto" font-size="14" fill="#666">
+          • Pricing
+        </text>
+        <text x="16" y="140" font-family="Roboto" font-size="14" fill="#666">
+          • Contact
+        </text>
+      </g>
+
+      <!-- Content (70%) -->
+      <g id="Content" transform="translate(384,0)">
+        <rect x="0" y="0" width="816" height="708" fill="#ffffff"/>
+        <text x="16" y="40" font-family="Oswald" font-size="28" fill="#222">
+          Landing content
+        </text>
+        <text x="16" y="80" font-family="Roboto" font-size="16" fill="#555">
+          Hero, sections, cards, tables…
+        </text>
+
+        <!-- Example cards -->
+        <rect x="16" y="120" width="240" height="120" rx="8" fill="#e9ecef"/>
+        <rect x="272" y="120" width="240" height="120" rx="8" fill="#e9ecef"/>
+        <rect x="528" y="120" width="240" height="120" rx="8" fill="#e9ecef"/>
+      </g>
+    </g>
+  </g>
+</svg>
