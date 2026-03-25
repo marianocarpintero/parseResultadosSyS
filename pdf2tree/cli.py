@@ -129,11 +129,6 @@ def main(argv: Optional[List[str]] = None) -> int:
     )
     parser.add_argument("--debug", action="store_true")
     parser.add_argument("--strict", action="store_true", help="Si un PDF falla, detiene el proceso.")
-    parser.add_argument(
-        "--output",
-        default="pdf2jsontree.json",
-        help="Ruta de salida JSON (por defecto ./JSON/pdf2jsontree.json)"
-    )
 
     # Trazabilidad
     parser.add_argument(
@@ -143,31 +138,40 @@ def main(argv: Optional[List[str]] = None) -> int:
     )
 
     # Dump de extract_text (golden dump)
-    parser.add_argument("--dump-text", action="store_true", help="Vuelca extract_text() por página.")
     parser.add_argument(
-        "--dump-text-dir",
-        default="./JSON/dumps",
-        help="Directorio donde guardar dumps (por defecto ./JSON/dumps)"
+        "--dump-text",
+        action="store_true",
+        help="Vuelca extract_text() por página."
     )
 
     # Filtros
     parser.add_argument(
         "--club-filter",
         action="append",
-        default=None,
+        default=["pacifico"],
         help="Filtra clubes por subcadena (repetible). Ej: --club-filter Pacifico"
     )
 
     args = parser.parse_args(argv)
-    # --- Forzar salida en ./JSON si --output no trae carpeta ---
-    if not os.path.isabs(args.output) and os.path.dirname(args.output) == "":
-        args.output = os.path.join("./JSON", args.output)
+    # ------------------------------------------------------------
+    # Salida JSON: SIEMPRE en ./JSON/updatePacifico<fecha_ejecución>.json
+    # No se expone como argumento (sin override de carpeta/nombre).
+    # ------------------------------------------------------------
+    os.makedirs("./JSON", exist_ok=True)
+
+    run_stamp = datetime.now().astimezone().strftime("%Y%m%d_%H%M%S")
+    output_path = os.path.join("./JSON", f"updatePacifico{run_stamp}.json")
+
+    # Asegura también carpetas auxiliares usadas por el CLI
+    ensure_dirs(output_path)
+
+    # Trace: se mantiene configurable, pero si no trae carpeta -> ./JSON
     if args.trace and (not os.path.isabs(args.trace)) and os.path.dirname(args.trace) == "":
         args.trace = os.path.join("./JSON", args.trace)
 
-    ensure_dirs(args.output)
-    os.makedirs("./JSON", exist_ok=True)
-    os.makedirs(args.dump_text_dir, exist_ok=True)
+    dump_dir = os.path.join("./JSON", "dump")
+    os.makedirs(dump_dir, exist_ok=True)
+
 
     # Resolver inputs
     inputs = args.pdf_inputs if args.pdf_inputs else ["*.pdf"]
@@ -315,8 +319,10 @@ def main(argv: Optional[List[str]] = None) -> int:
             "timezone": "Europe/Madrid",
             "source": {
                 "generator": "pdf2tree",
+                "club_filter": args.club_filter,
                 "inputs": inputs,
                 "inputs_resolved": processed,
+                "output": output_path,
                 "skipped": skipped,
             },
         },
@@ -325,11 +331,25 @@ def main(argv: Optional[List[str]] = None) -> int:
         "tree": tree,
     }
 
-    with open(args.output, "w", encoding="utf-8") as f:
+    with open(output_path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
+        # Dump opcional: se guarda en ./JSON/dump/<nombre_del_json>.txt
+        if args.dump_text:
+            dump_name = os.path.basename(output_path) + ".txt"   # p.ej. updatePacifico20260324_153210.json.txt
+            dump_path = os.path.join(dump_dir, dump_name)
+
+            # Sobrescribe una vez y luego concatena
+            first = True
+            for pdf_path in pdf_files:
+                dump_extract_text(pdf_path, dump_path, mode=("w" if first else "a"))
+                first = False
+            if args.debug:
+                print("DEBUG dump extract_text ->", dump_path)
+
+
 
     if args.debug:
-        print(f"\nDEBUG JSON generado en {args.output}")
+        print(f"\nDEBUG JSON generado en {output_path}")
         print("DEBUG procesados:", len(processed), "omitidos:", len(skipped))
 
     # cerrar trace si aplica

@@ -90,6 +90,7 @@ Qué ocurre:
 
 *   se procesa el PDF,
 *   se genera un fichero JSON de salida.
+*   * el JSON se guarda en `./JSON/updatePacifico<fecha_ejecución>.json`.
 
 ***
 
@@ -155,6 +156,28 @@ Modo normal (sin `--strict`):
 
 *   es tolerante a errores,
 *   siempre intenta generar salida.
+
+***
+
+### 5.3 Filtro de club (`--club-filter`)
+Puedes filtrar la salida para quedarte solo con los resultados de uno o varios clubes. Por defecto se filtra sólo para Pacifico.
+
+Ejemplo 1 (si no se especifica el argumento se filtra para Pacifico):
+```bash
+python pdf2json.py data/PDFs/*.pdf
+```
+
+Ejemplo 2 (un club):
+```bash
+python pdf2json.py data/PDFs/*.pdf --club-filter Pacifico
+```
+
+El resultado de los ejemplos 1 y 2 es el mismo.
+
+Ejemplo 3 (varios filtros; se aceptan múltiples ocurrencias):
+```bash
+python pdf2json.py data/PDFs/*.pdf --club-filter Pacifico --club-filter Canoe
+```
 
 ***
 
@@ -240,6 +263,17 @@ Incluye, entre otros:
 *   visualización en webs.
 
 ⚠️ No se recomienda usarla para cálculos o cruces complejos.
+
+***
+
+### 6.6 Ubicación y nombre del fichero generado (importante)
+El programa genera **siempre** el JSON en esta ruta:
+
+- `./JSON/updatePacifico<fecha_ejecución>.json`
+
+Donde `<fecha_ejecución>` corresponde al momento de ejecución (por ejemplo: `20260324_142530`).
+
+⚠️ **No existe un argumento para cambiar el nombre o la carpeta de salida.**
 
 ***
 

@@ -25,11 +25,11 @@ def iter_pdf_pages(pdf_path: str) -> Iterator[PageText]:
             yield PageText(page_index=idx, text=txt, lines=lines)
 
 
-def dump_extract_text(pdf_path: str, out_path: str) -> None:
+def dump_extract_text(pdf_path: str, out_path: str, mode: str = "w") -> None:
     """
     Vuelca EXACTAMENTE lo que devuelve extract_text() por página.
     """
-    with open(out_path, "w", encoding="utf-8") as out:
+    with open(out_path, mode, encoding="utf-8") as out:
         with pdfplumber.open(pdf_path) as pdf:
             for idx, page in enumerate(pdf.pages, start=1):
                 txt = page.extract_text() or ""

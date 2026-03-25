@@ -55,13 +55,16 @@ El proyecto está diseñado para ser **determinista, trazable y mantenible**, in
 
 ## Uso rápido
 
+### Por defecto (filtrado a Pacífico)
 ```bash
 python pdf2json.py data/PDFs/*.pdf
+
 ```
 
 Resultado:
 
 *   un fichero JSON con:
+    *   resultados para el club Pacífico
     *   entidades normalizadas (temporadas, competiciones, clubes, atletas),
     *   resultados individuales y de relevos,
     *   estructura jerárquica para navegación.

@@ -68,6 +68,7 @@ graph TD
 ### Explicación detallada del flujo
 
 - **Carga argumentos CLI**: se interpretan rutas, comodines y flags (`--strict`).
+- **Filtro por defecto**: si no se proporciona `--club-filter`, el CLI aplica `Pacifico` por defecto para reducir ruido en `dimensions`/`results`.
 - **Resolución de PDFs**: se determina el conjunto real de archivos a procesar.
 - **Iteración por página**: cada página se evalúa de forma independiente.
 - **Página relevante**: se descartan páginas administrativas (ej. "clasificación general").
@@ -77,6 +78,7 @@ graph TD
 - **Construcción del modelo**: se crean o reutilizan entidades canónicas.
 - **Postprocesado global**: deduplicaciones y remapeos finales.
 - **Generación JSON**: se emite el contrato definitivo.
+- **Salida JSON**: el fichero se escribe siempre en `./JSON/updatePacifico<fecha_ejecución>.json` (no configurable por argumentos).
 
 ---
 
@@ -132,8 +134,9 @@ graph TD
   - resolver rutas y comodines,
   - inicializar el contexto de ejecución,
   - orquestar el pipeline completo.
-
-No contiene lógica de negocio.
+- No contiene lógica de negocio.
+- La salida JSON tiene ruta y nombre fijados por convención (`./JSON/updatePacifico<fecha_ejecución>.json`).
+- - **Filtro por defecto**: si no se proporciona `--club-filter`, el CLI aplica `Pacifico` por defecto para reducir ruido en `dimensions`/`results`.
 
 #### `pdf2tree/` (núcleo del sistema)
 

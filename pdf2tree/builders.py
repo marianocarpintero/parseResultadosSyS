@@ -14,7 +14,7 @@ from __future__ import annotations
 from dataclasses import asdict
 from typing import Dict, List, Optional, Any
 from .schema import Season, Competition, Club, Athlete, Event, Result
-from .normalize import strip_accents, normalize_spaces
+from .normalize import strip_accents, normalize_spaces, slugify
 import re
 
 
@@ -23,6 +23,32 @@ def athlete_name_key(name: str) -> str:
     s = re.sub(r"[^a-z0-9\s]", " ", s)   # quita puntuación (incluye coma rara)
     s = normalize_spaces(s)
     return s
+
+
+def _remap_result_id_with_new_athlete_id(result: Dict[str, Any], old_aid: str, new_aid: str) -> None:
+    rid = result.get("id") or ""
+    comp_id = result.get("competition_id") or ""
+    event_id = result.get("event_id") or ""
+    series_type = result.get("series_type") or ""
+
+    old_aid_slug = slugify(old_aid)
+    st_slug = slugify(series_type) if series_type else ""
+
+    # Caso 1: ID con series_type al final (estilo individual)
+    if st_slug and rid.endswith(f"_{old_aid_slug}_{st_slug}"):
+        new_raw = f"{comp_id}_{event_id}_{new_aid}_{series_type}"
+        result["id"] = "r_" + slugify(new_raw).lower()
+        return
+
+    # Caso 2: ID sin series_type (estilo relay)
+    if rid.endswith(f"_{old_aid_slug}"):
+        new_raw = f"{comp_id}_{event_id}_{new_aid}"
+        result["id"] = "r_" + slugify(new_raw).lower()
+        return
+
+    # Fallback conservador: si no podemos inferir el patrón, NO tocamos el id.
+    # TODO: aquí podrías loggear si quieres auditar inconsistencias.
+    return
 
 
 class DimensionsBuilder:
@@ -342,9 +368,13 @@ def reconcile_athletes_and_results(dims_dict: Dict[str, Any], results_list: List
 
     if remap:
         for r in results_list:
-            aid = r.get("athlete_id")
-            if aid in remap:
-                r["athlete_id"] = remap[aid]
+            old_aid = r.get("athlete_id")
+            if old_aid in remap:
+                new_aid = remap[old_aid]
+                r["athlete_id"] = new_aid
+
+                # 🔧 NUEVO: mantener coherencia de ids al cambiar athlete_id
+                _remap_result_id_with_new_athlete_id(r, old_aid, new_aid)
 
         # Podar athletes que ya no se usan
         used = {r["athlete_id"] for r in results_list if r.get("athlete_id")}
