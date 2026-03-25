@@ -55,10 +55,18 @@ El proyecto está diseñado para ser **determinista, trazable y mantenible**, in
 
 ## Uso rápido
 
-### Por defecto (filtrado a Pacífico)
+### Uso habitual (orientado a Pacífico)
 ```bash
 python pdf2json.py *.pdf
 ```
+
+Por defecto:
+
+Los PDFs de entrada se buscan **siempre** bajo el directorio `./PDF`. No es necesario incluir esa ruta al ejecutar el comando.
+Si no se especifica --club, se filtra automáticamente por el club Pacífico.
+El resultado se guarda en:
+
+./JSON/updatePacifico<fecha_ejecución>.json
 
 Resultado:
 
@@ -67,6 +75,16 @@ Resultado:
     *   entidades normalizadas (temporadas, competiciones, clubes, atletas),
     *   resultados individuales y de relevos,
     *   estructura jerárquica para navegación.
+
+### Con opciones de depuración
+```bash
+python pdf2json.py 2025-2026/*.pdf --trace --dump --debug
+```
+
+Genera además:
+
+trace en ./JSON/trace/<salida>.jsonl
+dump de texto en ./JSON/dump/<salida>.txt
 
 ***
 

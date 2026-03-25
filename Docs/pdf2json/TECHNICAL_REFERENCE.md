@@ -129,14 +129,21 @@ graph TD
 #### `pdf2json.py` (CLI)
 
 - Punto de entrada del sistema.
-- Responsabilidades:
-  - parsear argumentos de línea de comandos,
-  - resolver rutas y comodines,
-  - inicializar el contexto de ejecución,
-  - orquestar el pipeline completo.
+
+Responsabilidades:
+- Parsear argumentos de línea de comandos.
+- Resolver PDFs **siempre bajo `./PDF`**.
+- Orquestar el pipeline completo de parsing y normalización.
+- Generar un único JSON de salida en `./JSON`.
+
+Convenciones adoptadas:
+- La ruta y nombre de salida JSON **no son configurables**.
+- El filtrado por club aplica por defecto `pacifico`.
+- El trace y el dump son opcionales y se activan mediante flags.
+
 - No contiene lógica de negocio.
 - La salida JSON tiene ruta y nombre fijados por convención (`./JSON/updatePacifico<fecha_ejecución>.json`).
-- - **Filtro por defecto**: si no se proporciona `--club`, el CLI aplica `Pacifico` por defecto para reducir ruido en `dimensions`/`results`.
+- **Filtro por defecto**: si no se proporciona `--club`, el CLI aplica `Pacifico` por defecto para reducir ruido en `dimensions`/`results`.
 
 #### `pdf2tree/` (núcleo del sistema)
 
@@ -159,6 +166,21 @@ Responsabilidades:
 
 - Serializa el modelo en el contrato definido.
 - No modifica datos, solo los representa.
+
+#### Trazabilidad y dumps
+
+El CLI soporta dos mecanismos opcionales de depuración:
+
+- **Trace (`--trace`)**
+  - Genera un fichero JSONL con eventos internos del parser.
+  - Ubicación: `./JSON/trace/<salida>.jsonl`
+
+- **Dump (`--dump`)**
+  - Vuelca el texto devuelto por `extract_text()` para los PDFs procesados.
+  - Ubicación: `./JSON/dump/<salida>.txt`
+  - El dump concatena el contenido de todos los PDFs en una ejecución.
+
+Si no se activan explícitamente estos flags, no se generan ficheros auxiliares.
 
 ---
 
@@ -1015,6 +1037,17 @@ base="4x50 m Relevo Natación con Obstáculos"
 discipline="Relevo Natación con Obstáculos"
 sex="X"
 ```
+
+#### B.13 Normalización del campo `category`
+
+El campo `category` del JSON representa una **categoría deportiva** y su valor:
+
+- Se expresa siempre en **femenino** (por concordancia gramatical).
+  - Ej.: `Absoluta`, `Combinada`
+- Las categorías Máster se representan siempre como:
+  - `Máster …` (con mayúscula inicial y tilde).
+
+El género no depende del sexo de la prueba (`sex`), sino del sustantivo “categoría”.
 
 ---
 

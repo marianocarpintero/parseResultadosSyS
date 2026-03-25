@@ -40,9 +40,24 @@ Si ejecutas el programa varias veces con los mismos PDFs:
 
 ***
 
-## 3. Archivos de entrada
+## 3. Directorio base de entrada (PDF)
 
-### 3.1 Qué archivos se pueden usar como entrada
+Todos los PDFs de entrada se buscan **siempre** bajo el directorio:
+
+- `./PDF`
+
+Ejemplos válidos de ejecución:
+```bash
+python pdf2json.py 2026mad.pdf
+python pdf2json.py 2025-2026/2026mad.pdf
+python pdf2json.py 2025-2026/*.pdf
+```
+
+***
+
+## 4. Archivos de entrada
+
+### 4.1 Qué archivos se pueden usar como entrada
 
 *   Archivos **PDF**
 *   Deben contener **resultados oficiales de competiciones**
@@ -62,7 +77,7 @@ data/PDFs/
 
 ***
 
-### 3.2 Qué contenido se ignora automáticamente
+### 4.2 Qué contenido se ignora automáticamente
 
 El programa ignora sin que tengas que hacer nada:
 
@@ -72,13 +87,13 @@ El programa ignora sin que tengas que hacer nada:
 
 ***
 
-## 4. Cómo ejecutar el programa
+## 5. Cómo ejecutar el programa
 
 > ⚠️ Antes de continuar, asegúrate de haber seguido **INSTALLATION\_GUIDE.md**
 
 ***
 
-### 4.1 Ejecución básica (un PDF)
+### 5.1 Ejecución básica (un PDF)
 
 Desde la carpeta del proyecto:
 
@@ -94,7 +109,7 @@ Qué ocurre:
 
 ***
 
-### 4.2 Ejecutar varios PDFs a la vez
+### 5.2 Ejecutar varios PDFs a la vez
 
 Puedes procesar varios PDFs en una sola ejecución.
 
@@ -117,11 +132,11 @@ Resultado:
 
 ***
 
-## 5. Argumentos del programa
+## 6. Argumentos del programa
 
 El programa se ejecuta desde línea de comandos y acepta varios argumentos.
 
-### 5.1 PDFs de entrada (obligatorio)
+### 6.1 PDFs de entrada (obligatorio)
 
 ```text
 python pdf2json.py <pdf1> <pdf2> ...
@@ -136,7 +151,59 @@ python pdf2json.py <pdf1> <pdf2> ...
 
 ***
 
-### 5.2 Modo estricto (`--strict`)
+### 6.2 Filtro de club (`--club`)
+
+(opcional) Filtra los resultados por club (argumento repetible).
+Puedes filtrar la salida para quedarte solo con los resultados de uno o varios clubes. Por defecto se filtra sólo para Pacifico.
+
+Ejemplo 1 (si no se especifica el argumento se filtra para Pacifico):
+```bash
+python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/202501mayores.pdf o python pdf2json.py 2025-2026/*.pdf
+```
+
+Ejemplo 2 (un club):
+```bash
+python pdf2json.py 2026mad.pdf --club Pacifico
+```
+
+El resultado de los ejemplos 1 y 2 es el mismo.
+
+Ejemplo 3 (varios filtros; se aceptan múltiples ocurrencias):
+```bash
+python pdf2json.py 2026mad.pdf --club Pacifico --club Canoe
+```
+
+***
+
+### 6.3 Trace (`--trace`) (opcional)
+
+(opcional) Genera un fichero de trazabilidad del parsing.
+Si activas `--trace`, se genera un fichero de trazabilidad en:
+
+- `./JSON/trace/<salida>.jsonl`
+
+donde `<salida>` es el nombre del JSON de salida sin `.json`.
+
+Si no se especifica `--trace`, no se genera ningún fichero.
+
+***
+
+### 6.4 Dump del texto extraído (`--dump`)
+
+(opcional) Genera un dump del texto extraído del PDF (extract_text).
+Si necesitas depurar qué texto leyó el extractor del PDF, puedes generar un dump:
+
+```bash
+python pdf2json.py 2026mad.pdf --club Pacifico --dump
+```
+Se generará un fichero en:
+*   ./JSON/dump/<nombre_json_salida>.txt
+
+***
+
+### 6.5 Modo estricto (`--strict`)
+
+(opcional) Si un PDF provoca un error de parsing, el programa se detiene y no genera salida parcial.
 
 ```bash
 python pdf2json.py 2026mad.pdf --strict
@@ -159,51 +226,24 @@ Modo normal (sin `--strict`):
 
 ***
 
-### 5.3 Filtro de club (`--club`)
-Puedes filtrar la salida para quedarte solo con los resultados de uno o varios clubes. Por defecto se filtra sólo para Pacifico.
+### 6.6 Modo depuración (`--debug`)
 
-Ejemplo 1 (si no se especifica el argumento se filtra para Pacifico):
-```bash
-python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/202501mayores.pdf o python pdf2json.py 2025-2026/*.pdf
-```
-
-Ejemplo 2 (un club):
-```bash
-python pdf2json.py 2026mad.pdf --club Pacifico
-```
-
-El resultado de los ejemplos 1 y 2 es el mismo.
-
-Ejemplo 3 (varios filtros; se aceptan múltiples ocurrencias):
-```bash
-python pdf2json.py 2026mad.pdf --club Pacifico --club Canoe
-```
-
-### 5.4 Dump del texto extraído (`--dump`)
-Si necesitas depurar qué texto leyó el extractor del PDF, puedes generar un dump:
-
-```bash
-python pdf2json.py 2026mad.pdf --club Pacifico --dump
-```
-Se generará un fichero en:
-*   ./JSON/dump/<nombre_json_salida>.txt
-
-### 5.5 Trace (`--trace`) (opcional)
-Si activas `--trace`, se genera un fichero de trazabilidad en:
-
-- `./JSON/trace/<salida>.jsonl`
-
-donde `<salida>` es el nombre del JSON de salida sin `.json`.
-
-Si no se especifica `--trace`, no se genera ningún fichero.
+(opcional) Muestra información detallada por consola durante la ejecución (útil para depuración).
 
 ***
 
-## 6. Archivo de salida
+## 7. Archivo de salida
 
-### 6.1 Qué se genera como salida
+### 7.1 Qué se genera como salida
 
-El programa genera un **fichero JSON** con esta estructura general:
+El programa genera un **fichero JSON** en:
+
+  `./JSON/updatePacifico<fecha_ejecución>.json`
+
+El nombre incluye la fecha y hora de ejecución para evitar sobrescrituras.
+No existe ningún argumento para cambiar el nombre o la carpeta de salida.
+
+El fichero JSON tiene esta esta estructura general:
 
 ```json
 {
@@ -216,7 +256,7 @@ El programa genera un **fichero JSON** con esta estructura general:
 
 ***
 
-### 6.2 `meta`
+### 7.2 `meta`
 
 Contiene información descriptiva:
 
@@ -232,7 +272,7 @@ Sirve para:
 
 ***
 
-### 6.3 `dimensions`
+### 7.3 `dimensions`
 
 Incluye los elementos “globales”:
 
@@ -250,7 +290,7 @@ Características importantes:
 
 ***
 
-### 6.4 `results` (la parte más importante)
+### 7.4 `results` (la parte más importante)
 
 Cada elemento de `results` representa:
 
@@ -269,7 +309,7 @@ Incluye, entre otros:
 
 ***
 
-### 6.5 `tree`
+### 7.5 `tree`
 
 `tree` es una vista jerárquica pensada para interfaces gráficas:
 
@@ -284,7 +324,7 @@ Incluye, entre otros:
 
 ***
 
-### 6.6 Ubicación y nombre del fichero generado (importante)
+### 7.6 Ubicación y nombre del fichero generado (importante)
 El programa genera **siempre** el JSON en esta ruta:
 
 - `./JSON/updatePacifico<fecha_ejecución>.json`
@@ -295,9 +335,9 @@ Donde `<fecha_ejecución>` corresponde al momento de ejecución (por ejemplo: `2
 
 ***
 
-## 7. Interpretación de resultados
+## 8. Interpretación de resultados
 
-### 7.1 Pruebas individuales
+### 8.1 Pruebas individuales
 
 *   Cada fila del PDF genera un resultado.
 *   El deportista tiene año de nacimiento.
@@ -307,7 +347,7 @@ Donde `<fecha_ejecución>` corresponde al momento de ejecución (por ejemplo: `2
 
 ***
 
-### 7.2 Pruebas de relevos
+### 8.2 Pruebas de relevos
 
 En relevos:
 
@@ -328,7 +368,7 @@ Esto permite:
 
 ***
 
-### 7.3 Estados de un resultado
+### 8.3 Estados de un resultado
 
 Valores habituales:
 
@@ -347,7 +387,7 @@ En resultados no válidos:
 
 ***
 
-## 8. Identificadores (IDs): lo que debes saber
+## 9. Identificadores (IDs): lo que debes saber
 
 Como usuario, puedes confiar en que:
 
@@ -363,7 +403,7 @@ Ejemplos:
 
 ***
 
-## 9. Actualizar datos con nuevas competiciones
+## 10. Actualizar datos con nuevas competiciones
 
 Uso típico:
 
@@ -380,7 +420,7 @@ Garantías:
 
 ***
 
-## 10. Errores y advertencias comunes
+## 11. Errores y advertencias comunes
 
 *   PDFs mal escaneados pueden producir resultados incompletos
 *   Si un dato no existe en el PDF, **no se inventa**
@@ -388,7 +428,7 @@ Garantías:
 
 ***
 
-## 11. Documentación relacionada
+## 12. Documentación relacionada
 
 | Documento                | Para qué sirve                    |
 | ------------------------ | --------------------------------- |
@@ -399,7 +439,7 @@ Garantías:
 
 ***
 
-## 12. Resumen rápido
+## 13. Resumen rápido
 
 ✅ Ejecutas el programa con PDFs  
 ✅ Obtienes un JSON estructurado  
