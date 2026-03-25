@@ -101,13 +101,13 @@ Puedes procesar varios PDFs en una sola ejecución.
 #### Windows (PowerShell)
 
 ```powershell
-python pdf2json.py data\PDFs\*.pdf
+python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/*.pdf (si quieres usar patrones)
 ```
 
 #### Linux / macOS
 
 ```bash
-python pdf2json.py data/PDFs/*.pdf
+python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/*.pdf (si quieres usar patrones)
 ```
 
 Resultado:
@@ -139,7 +139,7 @@ python pdf2json.py <pdf1> <pdf2> ...
 ### 5.2 Modo estricto (`--strict`)
 
 ```bash
-python pdf2json.py data/PDFs/*.pdf --strict
+python pdf2json.py 2026mad.pdf --strict
 ```
 
 Qué hace:
@@ -159,25 +159,43 @@ Modo normal (sin `--strict`):
 
 ***
 
-### 5.3 Filtro de club (`--club-filter`)
+### 5.3 Filtro de club (`--club`)
 Puedes filtrar la salida para quedarte solo con los resultados de uno o varios clubes. Por defecto se filtra sólo para Pacifico.
 
 Ejemplo 1 (si no se especifica el argumento se filtra para Pacifico):
 ```bash
-python pdf2json.py data/PDFs/*.pdf
+python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/202501mayores.pdf o python pdf2json.py 2025-2026/*.pdf
 ```
 
 Ejemplo 2 (un club):
 ```bash
-python pdf2json.py data/PDFs/*.pdf --club-filter Pacifico
+python pdf2json.py 2026mad.pdf --club Pacifico
 ```
 
 El resultado de los ejemplos 1 y 2 es el mismo.
 
 Ejemplo 3 (varios filtros; se aceptan múltiples ocurrencias):
 ```bash
-python pdf2json.py data/PDFs/*.pdf --club-filter Pacifico --club-filter Canoe
+python pdf2json.py 2026mad.pdf --club Pacifico --club Canoe
 ```
+
+### 5.4 Dump del texto extraído (`--dump`)
+Si necesitas depurar qué texto leyó el extractor del PDF, puedes generar un dump:
+
+```bash
+python pdf2json.py 2026mad.pdf --club Pacifico --dump
+```
+Se generará un fichero en:
+*   ./JSON/dump/<nombre_json_salida>.txt
+
+### 5.5 Trace (`--trace`) (opcional)
+Si activas `--trace`, se genera un fichero de trazabilidad en:
+
+- `./JSON/trace/<salida>.jsonl`
+
+donde `<salida>` es el nombre del JSON de salida sin `.json`.
+
+Si no se especifica `--trace`, no se genera ningún fichero.
 
 ***
 

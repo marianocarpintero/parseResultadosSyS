@@ -144,8 +144,8 @@ Limita los resultados a clubes que contengan el texto indicado
 
 ```bash
 python3 pdf2json.py "2026*.pdf" \
-  --club-filter "Pacifico" \
-  --club-filter "Laguna"
+  --club "Pacifico" \
+  --club "Laguna"
 ```
 
 El filtrado:
@@ -403,7 +403,7 @@ python3 pdf2json.py 202601menores.pdf 202602menores.pdf \
 
 ```bash
 python3 pdf2json.py "2026*.pdf" \
-  --club-filter "Pacifico" \
+  --club "Pacifico" \
   --trace ./JSON/trace/trace.jsonl \
   --output ./JSON/pacifico_2026.json
 ```

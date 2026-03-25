@@ -68,7 +68,7 @@ graph TD
 ### Explicación detallada del flujo
 
 - **Carga argumentos CLI**: se interpretan rutas, comodines y flags (`--strict`).
-- **Filtro por defecto**: si no se proporciona `--club-filter`, el CLI aplica `Pacifico` por defecto para reducir ruido en `dimensions`/`results`.
+- **Filtro por defecto**: si no se proporciona `--club`, el CLI aplica `Pacifico` por defecto para reducir ruido en `dimensions`/`results`.
 - **Resolución de PDFs**: se determina el conjunto real de archivos a procesar.
 - **Iteración por página**: cada página se evalúa de forma independiente.
 - **Página relevante**: se descartan páginas administrativas (ej. "clasificación general").
@@ -136,7 +136,7 @@ graph TD
   - orquestar el pipeline completo.
 - No contiene lógica de negocio.
 - La salida JSON tiene ruta y nombre fijados por convención (`./JSON/updatePacifico<fecha_ejecución>.json`).
-- - **Filtro por defecto**: si no se proporciona `--club-filter`, el CLI aplica `Pacifico` por defecto para reducir ruido en `dimensions`/`results`.
+- - **Filtro por defecto**: si no se proporciona `--club`, el CLI aplica `Pacifico` por defecto para reducir ruido en `dimensions`/`results`.
 
 #### `pdf2tree/` (núcleo del sistema)
 
@@ -1699,7 +1699,7 @@ Este anexo describe **cómo extender el sistema de forma segura**, sin romper co
 Nunca modificar directamente el modelo para adaptarlo a un PDF concreto.
 
 * Añadir nuevas pruebas → `events.py`  
-* PDFs nuevos → usar `--dump-text`  
+* PDFs nuevos → usar `--dump`  
 * Bugs → usar `--trace`  
 * Cambios de contrato → incrementar `meta.version`
 

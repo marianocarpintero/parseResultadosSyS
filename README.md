@@ -57,8 +57,7 @@ El proyecto está diseñado para ser **determinista, trazable y mantenible**, in
 
 ### Por defecto (filtrado a Pacífico)
 ```bash
-python pdf2json.py data/PDFs/*.pdf
-
+python pdf2json.py *.pdf
 ```
 
 Resultado:

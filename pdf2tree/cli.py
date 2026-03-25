@@ -35,22 +35,39 @@ from .schema import Season, Competition
 def resolve_pdf_inputs(inputs: List[str], debug: bool = False) -> List[str]:
     """
     inputs: lista de strings que pueden ser:
-      - nombre directo: "2026ddcc.pdf" o "2026ddcc"
-      - patrón: "2025*" o "*.pdf" o "2025*.pdf"
-    Devuelve lista de rutas completas dentro de base_dir.
+    - nombre directo: "2026mad.pdf" o "2026mad"
+    - ruta relativa dentro de ./PDF: "2025-2026/2026mad.pdf"
+    - patrón: "2025*" o "*.pdf" o "2025*.pdf"
+    La base SIEMPRE es ./PDF salvo que se pase una ruta absoluta.
     """
+    base_dir = os.path.normpath("./PDF")
+
     resolved: List[str] = []
     for raw in inputs:
-        raw = raw.strip()
+        raw = (raw or "").strip()
+        if not raw:
+            continue
 
-        # Si no tiene extensión pero tiene wildcard -> asumimos ".pdf"
-        if ("*" in raw or "?" in raw) and not raw.lower().endswith(".pdf"):
-            pattern = raw + ".pdf"
-        # Si no tiene wildcard y no tiene extensión -> añadimos ".pdf"
-        elif ("*" not in raw and "?" not in raw) and not raw.lower().endswith(".pdf"):
-            pattern = raw + ".pdf"
+        # Normalizar separadores (soporta Windows/Linux)
+        raw_norm = raw.replace("\\", "/")
+
+        # Construir path relativo a ./PDF salvo que sea absoluto o ya apunte a ./PDF
+        if os.path.isabs(raw_norm):
+            base_pattern = raw_norm
         else:
-            pattern = raw
+            # permitir que el usuario escriba explícitamente ./PDF/... y no duplicarlo
+            if raw_norm.startswith("./PDF/") or raw_norm.startswith("PDF/"):
+                base_pattern = raw_norm
+            else:
+                base_pattern = os.path.join(base_dir, raw_norm)
+
+        # Reglas existentes: añadir .pdf cuando no viene extensión
+        if ("*" in base_pattern or "?" in base_pattern) and not base_pattern.lower().endswith(".pdf"):
+            pattern = base_pattern + ".pdf"
+        elif ("*" not in base_pattern and "?" not in base_pattern) and not base_pattern.lower().endswith(".pdf"):
+            pattern = base_pattern + ".pdf"
+        else:
+            pattern = base_pattern
 
         matches = glob(pattern)
         if debug:
@@ -125,31 +142,40 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument(
         "pdf_inputs",
         nargs="*",
-        help="PDF(s) o patrones. Ej: ./PDF/2026ddcc.pdf ./PDF/2025* ./PDF/*.pdf"
+        help="PDF(s) o patrones de entrada. Ej: ./PDF/2026ddcc.pdf ./PDF/2025* ./PDF/*.pdf"
     )
-    parser.add_argument("--debug", action="store_true")
-    parser.add_argument("--strict", action="store_true", help="Si un PDF falla, detiene el proceso.")
 
-    # Trazabilidad
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="(opcional) Muestra logs detallados por consola durante el procesamiento."
+    )
+
+    parser.add_argument(
+        "--strict",
+        action="store_true",
+        help="(opcional) Modo estricto: si un PDF falla, se detiene el proceso con error."
+    )
+
     parser.add_argument(
         "--trace",
-        default="./JSON/trace/trace.jsonl",
-        help="Ruta de salida para trace en JSONL (opcional)."
-    )
-
-    # Dump de extract_text (golden dump)
-    parser.add_argument(
-        "--dump-text",
         action="store_true",
-        help="Vuelca extract_text() por página."
+        help="(opcional) Genera un trace JSONL con la trazabilidad del parsing en ./JSON/trace/<salida>.jsonl."
     )
 
-    # Filtros
     parser.add_argument(
-        "--club-filter",
+        "--dump",
+        action="store_true",
+        help="(opcional) Genera un dump del texto extraído (extract_text) en ./JSON/dump/<salida>.txt."
+    )
+
+    parser.add_argument(
+        "--club",
         action="append",
         default=["pacifico"],
-        help="Filtra clubes por subcadena (repetible). Ej: --club-filter Pacifico"
+        help="(opcional) Filtra resultados por club (repetible). "
+            "Si no se especifica, se aplica por defecto: pacifico. "
+            "Ej: --club Pacifico  (o varios: --club Pacifico --club Canoe)"
     )
 
     args = parser.parse_args(argv)
@@ -161,17 +187,26 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     run_stamp = datetime.now().astimezone().strftime("%Y%m%d_%H%M%S")
     output_path = os.path.join("./JSON", f"updatePacifico{run_stamp}.json")
-
     # Asegura también carpetas auxiliares usadas por el CLI
     ensure_dirs(output_path)
 
-    # Trace: se mantiene configurable, pero si no trae carpeta -> ./JSON
-    if args.trace and (not os.path.isabs(args.trace)) and os.path.dirname(args.trace) == "":
-        args.trace = os.path.join("./JSON", args.trace)
+    # ------------------------------------------------------------
+    # Trace opcional (flag):
+    # - Si NO se especifica --trace => no se crea trace.
+    # - Si se especifica --trace => ./JSON/trace/<salida>.jsonl
+    #   donde <salida> es el nombre del JSON de salida sin ".json".
+    # ------------------------------------------------------------
+    trace_path = None
+    if args.trace:
+        out_base = os.path.basename(output_path)         # updatePacificoYYYYMMDD_HHMMSS.json
+        out_stem = os.path.splitext(out_base)[0]         # updatePacificoYYYYMMDD_HHMMSS
+        trace_dir = os.path.join("./JSON", "trace")
+        os.makedirs(trace_dir, exist_ok=True)            # crea ./JSON/trace si no existe
+        trace_path = os.path.join(trace_dir, f"{out_stem}.jsonl")
 
+    # Dump-text
     dump_dir = os.path.join("./JSON", "dump")
     os.makedirs(dump_dir, exist_ok=True)
-
 
     # Resolver inputs
     inputs = args.pdf_inputs if args.pdf_inputs else ["*.pdf"]
@@ -180,7 +215,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         raise SystemExit("No se encontraron PDFs con los patrones indicados en ./PDF")
 
     # Trace sink
-    trace_sink = JsonlTrace(args.trace) if args.trace else NullTrace()
+    trace_sink = JsonlTrace(trace_path) if trace_path else NullTrace()
 
     # Builders
     dims = DimensionsBuilder()
@@ -276,7 +311,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             skipped.append({"file": os.path.basename(pdf_path), "reason": str(e)})
 
             if args.strict:
-                if args.trace and hasattr(trace_sink, "close"):
+                if trace_path and hasattr(trace_sink, "close"):
                     trace_sink.close()
                 raise
             continue
@@ -338,6 +373,10 @@ def main(argv: Optional[List[str]] = None) -> int:
             dump_name = os.path.basename(output_path) + ".txt"   # p.ej. updatePacifico20260324_153210.json.txt
             dump_path = os.path.join(dump_dir, dump_name)
 
+            out_base = os.path.basename(output_path)
+            out_stem = os.path.splitext(out_base)[0]
+            dump_path = os.path.join(dump_dir, f"{out_stem}.txt")
+
             # Sobrescribe una vez y luego concatena
             first = True
             for pdf_path in pdf_files:
@@ -345,8 +384,6 @@ def main(argv: Optional[List[str]] = None) -> int:
                 first = False
             if args.debug:
                 print("DEBUG dump extract_text ->", dump_path)
-
-
 
     if args.debug:
         print(f"\nDEBUG JSON generado en {output_path}")

@@ -28,6 +28,9 @@ def iter_pdf_pages(pdf_path: str) -> Iterator[PageText]:
 def dump_extract_text(pdf_path: str, out_path: str, mode: str = "w") -> None:
     """
     Vuelca EXACTAMENTE lo que devuelve extract_text() por página.
+    mode:
+      - "w": sobrescribe (por defecto)
+      - "a": añade al final (para concatenar varios PDFs)
     """
     with open(out_path, mode, encoding="utf-8") as out:
         with pdfplumber.open(pdf_path) as pdf:

@@ -258,13 +258,13 @@ Salida esperada:
 #### Windows (PowerShell)
 
 ```powershell
-python pdf2json.py data\PDFs\*.pdf
+python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/*.pdf (si quieres usar patrones)
 ```
 
 #### Linux / macOS
 
 ```bash
-python pdf2json.py data/PDFs/*.pdf
+python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/*.pdf (si quieres usar patrones)
 ```
 
 Todos los PDFs se procesan y se combinan en **un único JSON**.
