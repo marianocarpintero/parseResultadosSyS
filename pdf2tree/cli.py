@@ -146,15 +146,24 @@ def main(argv: Optional[List[str]] = None) -> int:
     )
 
     parser.add_argument(
-        "--debug",
-        action="store_true",
-        help="(opcional) Muestra logs detallados por consola durante el procesamiento."
+        "--club",
+        action="append",
+        default=["pacifico"],
+        help="(opcional) Filtra resultados por club (repetible). "
+            "Si no se especifica, se aplica por defecto: pacifico. "
+            "Ej: --club Pacifico  (o varios: --club Pacifico --club Canoe)"
     )
 
     parser.add_argument(
         "--strict",
         action="store_true",
         help="(opcional) Modo estricto: si un PDF falla, se detiene el proceso con error."
+    )
+
+    parser.add_argument(
+        "--debug",
+        action="store_true",
+        help="(opcional) Muestra logs detallados por consola durante el procesamiento."
     )
 
     parser.add_argument(
@@ -167,15 +176,6 @@ def main(argv: Optional[List[str]] = None) -> int:
         "--dump",
         action="store_true",
         help="(opcional) Genera un dump del texto extraído (extract_text) en ./JSON/dump/<salida>.txt."
-    )
-
-    parser.add_argument(
-        "--club",
-        action="append",
-        default=["pacifico"],
-        help="(opcional) Filtra resultados por club (repetible). "
-            "Si no se especifica, se aplica por defecto: pacifico. "
-            "Ej: --club Pacifico  (o varios: --club Pacifico --club Canoe)"
     )
 
     args = parser.parse_args(argv)
