@@ -543,6 +543,11 @@
         "birth_year": 1975
       },
       {
+        "id": "a_edgar_diaz_hernandez_na",
+        "name": "Edgar Diaz Hernandez",
+        "birth_year": null
+      },
+      {
         "id": "a_manuela_caceres_manzano_1976",
         "name": "Manuela Cáceres Manzano",
         "birth_year": 1976
@@ -941,14 +946,14 @@
       {
         "id": "c_2026_03_15_centro_deportivo_m86_vi_abierto_de_madrid_de_salvamento_y_socorrismo",
         "season_id": "s_2025_2026",
-        "name": "VI Abierto De Madrid De Salvamento Y Socorrismo",
+        "name": "VI Abierto De Madrid De Salvamento Y Socorrismo –",
         "name_clean": "VI Abierto De Madrid De Salvamento Y Socorrismo",
         "date": "2026-03-15",
         "date_start": "2026-03-15",
         "date_end": null,
         "location": "Centro Deportivo M86",
-        "region": "Madrid",
-        "pool_type": "E 50",
+        "region": "",
+        "pool_type": "",
         "source_file": "2026m86.pdf"
       }
     ],
@@ -4042,7 +4047,7 @@
         "id": "e_100_m_natacion_con_obstaculos_master_60_64_m",
         "base": "100 m Natación con Obstáculos",
         "discipline": "Natación con Obstáculos",
-        "category": "máster 60-64",
+        "category": "Máster 60-64",
         "sex": "M",
         "relay": false,
         "distance_m": "100"
@@ -4051,73 +4056,19 @@
         "id": "e_lanzamiento_de_cuerda_master_50_54_f",
         "base": "Lanzamiento de Cuerda",
         "discipline": "Lanzamiento de Cuerda",
-        "category": "máster 50-54",
+        "category": "Máster 50-54",
         "sex": "F",
         "relay": true,
         "distance_m": null
       },
       {
-        "id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_f",
-        "base": "4x50 m Relevo Natación con Obstáculos",
-        "discipline": "Relevo Natación con Obstáculos",
-        "category": "máster +120",
-        "sex": "F",
-        "relay": true,
-        "distance_m": "4x50"
-      },
-      {
-        "id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_f",
-        "base": "4x50 m Relevo Natación con Obstáculos",
-        "discipline": "Relevo Natación con Obstáculos",
-        "category": "máster +200",
-        "sex": "F",
-        "relay": true,
-        "distance_m": "4x50"
-      },
-      {
-        "id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_m",
-        "base": "4x50 m Relevo Natación con Obstáculos",
-        "discipline": "Relevo Natación con Obstáculos",
-        "category": "máster +120",
+        "id": "e_lanzamiento_de_cuerda_master_35_39_m",
+        "base": "Lanzamiento de Cuerda",
+        "discipline": "Lanzamiento de Cuerda",
+        "category": "Máster 35-39",
         "sex": "M",
         "relay": true,
-        "distance_m": "4x50"
-      },
-      {
-        "id": "e_4x50_m_relevo_natacion_con_obstaculos_master_140_m",
-        "base": "4x50 m Relevo Natación con Obstáculos",
-        "discipline": "Relevo Natación con Obstáculos",
-        "category": "máster +140",
-        "sex": "M",
-        "relay": true,
-        "distance_m": "4x50"
-      },
-      {
-        "id": "e_4x50_m_relevo_natacion_con_obstaculos_master_170_m",
-        "base": "4x50 m Relevo Natación con Obstáculos",
-        "discipline": "Relevo Natación con Obstáculos",
-        "category": "máster +170",
-        "sex": "M",
-        "relay": true,
-        "distance_m": "4x50"
-      },
-      {
-        "id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_m",
-        "base": "4x50 m Relevo Natación con Obstáculos",
-        "discipline": "Relevo Natación con Obstáculos",
-        "category": "máster +200",
-        "sex": "M",
-        "relay": true,
-        "distance_m": "4x50"
-      },
-      {
-        "id": "e_4x50_m_relevo_natacion_con_obstaculos_master_230_m",
-        "base": "4x50 m Relevo Natación con Obstáculos",
-        "discipline": "Relevo Natación con Obstáculos",
-        "category": "máster +230",
-        "sex": "M",
-        "relay": true,
-        "distance_m": "4x50"
+        "distance_m": null
       },
       {
         "id": "e_100_m_socorrista_master_30_34_f",
@@ -4222,7 +4173,7 @@
         "id": "e_100_m_socorrista_master_60_64_m",
         "base": "100 m Socorrista",
         "discipline": "Socorrista",
-        "category": "máster 60-64",
+        "category": "Máster 60-64",
         "sex": "M",
         "relay": false,
         "distance_m": "100"
@@ -4330,52 +4281,52 @@
         "id": "e_50_m_remolque_de_maniqui_master_60_64_m",
         "base": "50 m Remolque de Maniquí",
         "discipline": "Remolque de Maniquí",
-        "category": "máster 60-64",
+        "category": "Máster 60-64",
         "sex": "M",
         "relay": false,
         "distance_m": "50"
       },
       {
-        "id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_f",
+        "id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f",
         "base": "4x25 m Relevo Remolque de Maniquí",
         "discipline": "Relevo Remolque de Maniquí",
-        "category": "máster +120",
+        "category": "Máster R4 +120",
         "sex": "F",
         "relay": true,
         "distance_m": "4x25"
       },
       {
-        "id": "e_4x25_m_relevo_remolque_de_maniqui_master_170_f",
+        "id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f",
         "base": "4x25 m Relevo Remolque de Maniquí",
         "discipline": "Relevo Remolque de Maniquí",
-        "category": "máster +170",
+        "category": "Máster R4 +170",
         "sex": "F",
         "relay": true,
         "distance_m": "4x25"
       },
       {
-        "id": "e_4x25_m_relevo_remolque_de_maniqui_master_200_f",
+        "id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f",
         "base": "4x25 m Relevo Remolque de Maniquí",
         "discipline": "Relevo Remolque de Maniquí",
-        "category": "máster +200",
+        "category": "Máster R4 +200",
         "sex": "F",
         "relay": true,
         "distance_m": "4x25"
       },
       {
-        "id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_m",
+        "id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m",
         "base": "4x25 m Relevo Remolque de Maniquí",
         "discipline": "Relevo Remolque de Maniquí",
-        "category": "máster +120",
+        "category": "Máster R4 +120",
         "sex": "M",
         "relay": true,
         "distance_m": "4x25"
       },
       {
-        "id": "e_4x25_m_relevo_remolque_de_maniqui_master_140_m",
+        "id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m",
         "base": "4x25 m Relevo Remolque de Maniquí",
         "discipline": "Relevo Remolque de Maniquí",
-        "category": "máster +140",
+        "category": "Máster R4 +140",
         "sex": "M",
         "relay": true,
         "distance_m": "4x25"
@@ -4510,25 +4461,16 @@
         "id": "e_100_m_remolque_de_maniqui_con_aletas_master_60_64_m",
         "base": "100 m Remolque de Maniquí con Aletas",
         "discipline": "Remolque de Maniquí con Aletas",
-        "category": "máster 60-64",
+        "category": "Máster 60-64",
         "sex": "M",
         "relay": false,
         "distance_m": "100"
       },
       {
-        "id": "e_4x50_m_relevo_combinado_master_120_f",
+        "id": "e_4x50_m_relevo_combinado_master_r4_170_f",
         "base": "4x50 m Relevo Combinado",
         "discipline": "Relevo Combinado",
-        "category": "máster +120",
-        "sex": "F",
-        "relay": true,
-        "distance_m": "4x50"
-      },
-      {
-        "id": "e_4x50_m_relevo_combinado_master_170_f",
-        "base": "4x50 m Relevo Combinado",
-        "discipline": "Relevo Combinado",
-        "category": "máster +170",
+        "category": "Máster R4 +170",
         "sex": "F",
         "relay": true,
         "distance_m": "4x50"
@@ -4543,19 +4485,10 @@
         "distance_m": "4x50"
       },
       {
-        "id": "e_4x50_m_relevo_combinado_master_120_m",
+        "id": "e_4x50_m_relevo_combinado_master_r4_120_m",
         "base": "4x50 m Relevo Combinado",
         "discipline": "Relevo Combinado",
-        "category": "máster +120",
-        "sex": "M",
-        "relay": true,
-        "distance_m": "4x50"
-      },
-      {
-        "id": "e_4x50_m_relevo_combinado_master_140_m",
-        "base": "4x50 m Relevo Combinado",
-        "discipline": "Relevo Combinado",
-        "category": "máster +140",
+        "category": "Máster R4 +120",
         "sex": "M",
         "relay": true,
         "distance_m": "4x50"
@@ -20453,6 +20386,50 @@
       "heat": null
     },
     {
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_35_39_m_a_edgar_diaz_hernandez_na",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
+      "event_id": "e_lanzamiento_de_cuerda_master_35_39_m",
+      "athlete_id": "a_edgar_diaz_hernandez_na",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:23.320",
+        "seconds": 23.32,
+        "raw": "00:23:32"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 20,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\nXIII Campeonato De España Máster De Piscina"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_35_39_m_a_sergio_vadillo_sanz_na",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
+      "event_id": "e_lanzamiento_de_cuerda_master_35_39_m",
+      "athlete_id": "a_sergio_vadillo_sanz_1987",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:23.320",
+        "seconds": 23.32,
+        "raw": "00:23:32"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 20,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\nXIII Campeonato De España Máster De Piscina"
+      },
+      "heat": null
+    },
+    {
       "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_40_44_m_a_david_caceres_manzano_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
@@ -20673,11 +20650,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_120_f_a_maria_marin_ramirez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_maria_marin_ramirez_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_f",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f",
       "athlete_id": "a_maria_marin_ramirez_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20695,11 +20672,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_120_f_a_maria_gallego_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_maria_gallego_martin_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_f",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f",
       "athlete_id": "a_maria_gallego_martin_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20717,11 +20694,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_120_f_a_victoria_munoz_bartolome_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_victoria_munoz_bartolome_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_f",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f",
       "athlete_id": "a_victoria_munoz_bartolome_1996",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20739,11 +20716,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_120_f_a_patricia_pilar_perez_mohand_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_patricia_pilar_perez_mohand_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_f",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f",
       "athlete_id": "a_patricia_pilar_perez_mohand_1991",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20761,11 +20738,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_200_f_a_monica_magdalena_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_monica_magdalena_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_f",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f",
       "athlete_id": "a_monica_magdalena_1972",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20783,11 +20760,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_200_f_a_patricia_pilar_perez_mohand_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_patricia_pilar_perez_mohand_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_f",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f",
       "athlete_id": "a_patricia_pilar_perez_mohand_1991",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20805,11 +20782,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_200_f_a_erica_perez_prada_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_erica_perez_prada_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_f",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f",
       "athlete_id": "a_erica_perez_prada_1979",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20827,11 +20804,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_200_f_a_rosario_segura_martinez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_rosario_segura_martinez_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_f",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f",
       "athlete_id": "a_rosario_segura_martinez_1972",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20849,11 +20826,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_120_m_a_daniel_nieto_carrasco_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_daniel_nieto_carrasco_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m",
       "athlete_id": "a_daniel_nieto_carrasco_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20871,11 +20848,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_120_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_sergio_vadillo_sanz_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m",
       "athlete_id": "a_sergio_vadillo_sanz_1987",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20893,11 +20870,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_120_m_a_gonzalo_parrilla_mesas_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_gonzalo_parrilla_mesas_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m",
       "athlete_id": "a_gonzalo_parrilla_mesas_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20915,11 +20892,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_120_m_a_alvaro_moreno_diaz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_alvaro_moreno_diaz_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m",
       "athlete_id": "a_alvaro_moreno_diaz_1995",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20937,11 +20914,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_140_m_a_mario_tamayo_cuadrado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_mario_tamayo_cuadrado_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_140_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m",
       "athlete_id": "a_mario_tamayo_cuadrado_1980",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20959,11 +20936,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_140_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_sergio_vadillo_sanz_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_140_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m",
       "athlete_id": "a_sergio_vadillo_sanz_1987",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -20981,11 +20958,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_140_m_a_juan_pablo_hernandez_perez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_juan_pablo_hernandez_perez_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_140_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m",
       "athlete_id": "a_juan_pablo_hernandez_perez_1991",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21003,11 +20980,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_140_m_a_daniel_nieto_carrasco_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_daniel_nieto_carrasco_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_140_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m",
       "athlete_id": "a_daniel_nieto_carrasco_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21025,11 +21002,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_170_m_a_david_caceres_manzano_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_david_caceres_manzano_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_170_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m",
       "athlete_id": "a_david_caceres_manzano_1983",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21047,11 +21024,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_170_m_a_juan_pablo_hernandez_perez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_juan_pablo_hernandez_perez_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_170_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m",
       "athlete_id": "a_juan_pablo_hernandez_perez_1991",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21069,11 +21046,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_170_m_a_jose_luis_echarri_tornero_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_jose_luis_echarri_tornero_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_170_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m",
       "athlete_id": "a_jose_luis_echarri_tornero_1975",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21091,11 +21068,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_170_m_a_mario_tamayo_cuadrado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_mario_tamayo_cuadrado_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_170_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m",
       "athlete_id": "a_mario_tamayo_cuadrado_1980",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21113,11 +21090,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_200_m_a_attila_varga_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_attila_varga_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m",
       "athlete_id": "a_attila_varga_1976",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21135,11 +21112,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_200_m_a_andres_gordon_moreno_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_andres_gordon_moreno_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m",
       "athlete_id": "a_andres_gordon_moreno_1969",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21157,11 +21134,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_200_m_a_alberto_velasco_torres_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_alberto_velasco_torres_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m",
       "athlete_id": "a_alberto_velasco_torres_1977",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21179,11 +21156,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_200_m_a_jose_vazquez_troncoso_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_jose_vazquez_troncoso_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m",
       "athlete_id": "a_jose_vazquez_troncoso_1974",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21201,11 +21178,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_230_m_a_mariano_carpintero_arranz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_mariano_carpintero_arranz_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_230_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m",
       "athlete_id": "a_mariano_carpintero_arranz_1969",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21223,11 +21200,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_230_m_a_marcial_garcia_liberal_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_marcial_garcia_liberal_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_230_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m",
       "athlete_id": "a_marcial_garcia_liberal_1963",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21245,11 +21222,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_230_m_a_andres_culebras_moreno_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_andres_culebras_moreno_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_230_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m",
       "athlete_id": "a_andres_culebras_moreno_1965",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -21267,11 +21244,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_230_m_a_carlos_lazaro_crespo_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_carlos_lazaro_crespo_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_230_m",
+      "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m",
       "athlete_id": "a_carlos_lazaro_crespo_1966",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -22873,11 +22850,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_120_f_a_maria_gallego_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_maria_gallego_martin_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f",
       "athlete_id": "a_maria_gallego_martin_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -22895,11 +22872,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_120_f_a_maria_marin_ramirez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_maria_marin_ramirez_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f",
       "athlete_id": "a_maria_marin_ramirez_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -22917,11 +22894,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_120_f_a_victoria_munoz_bartolome_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_victoria_munoz_bartolome_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f",
       "athlete_id": "a_victoria_munoz_bartolome_1996",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -22939,11 +22916,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_120_f_a_patricia_pilar_perez_mohand_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_patricia_pilar_perez_mohand_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f",
       "athlete_id": "a_patricia_pilar_perez_mohand_1991",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -22961,11 +22938,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_f_a_maria_gallego_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_maria_gallego_martin_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_170_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f",
       "athlete_id": "a_maria_gallego_martin_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -22983,11 +22960,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_f_a_erica_perez_prada_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_erica_perez_prada_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_170_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f",
       "athlete_id": "a_erica_perez_prada_1979",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23005,11 +22982,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_f_a_monica_magdalena_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_monica_magdalena_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_170_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f",
       "athlete_id": "a_monica_magdalena_1972",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23027,11 +23004,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_f_a_maria_victoria_martinez_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_maria_victoria_martinez_martin_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_170_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f",
       "athlete_id": "a_maria_victoria_martinez_martin_1970",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23049,11 +23026,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_f_a_laura_rodriguez_calleja_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_laura_rodriguez_calleja_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_200_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f",
       "athlete_id": "a_laura_rodriguez_calleja_1977",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23071,11 +23048,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_f_a_rosario_segura_martinez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_rosario_segura_martinez_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_200_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f",
       "athlete_id": "a_rosario_segura_martinez_1972",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23093,11 +23070,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_f_a_monica_magdalena_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_monica_magdalena_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_200_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f",
       "athlete_id": "a_monica_magdalena_1972",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23115,11 +23092,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_f_a_erica_perez_prada_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_erica_perez_prada_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_200_f",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f",
       "athlete_id": "a_erica_perez_prada_1979",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23137,11 +23114,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_120_m_a_jorge_serrano_salado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_jorge_serrano_salado_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_m",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m",
       "athlete_id": "a_jorge_serrano_salado_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23159,11 +23136,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_120_m_a_daniel_nieto_carrasco_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_daniel_nieto_carrasco_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_m",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m",
       "athlete_id": "a_daniel_nieto_carrasco_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23181,11 +23158,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_120_m_a_gonzalo_parrilla_mesas_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_gonzalo_parrilla_mesas_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_m",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m",
       "athlete_id": "a_gonzalo_parrilla_mesas_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23203,11 +23180,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_120_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_sergio_vadillo_sanz_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_m",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m",
       "athlete_id": "a_sergio_vadillo_sanz_1987",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23225,11 +23202,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_140_m_a_david_caceres_manzano_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_david_caceres_manzano_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_140_m",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m",
       "athlete_id": "a_david_caceres_manzano_1983",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23247,11 +23224,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_140_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_sergio_vadillo_sanz_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_140_m",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m",
       "athlete_id": "a_sergio_vadillo_sanz_1987",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23269,11 +23246,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_140_m_a_mario_tamayo_cuadrado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_mario_tamayo_cuadrado_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_140_m",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m",
       "athlete_id": "a_mario_tamayo_cuadrado_1980",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -23291,11 +23268,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_140_m_a_juan_pablo_hernandez_perez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_juan_pablo_hernandez_perez_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_140_m",
+      "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m",
       "athlete_id": "a_juan_pablo_hernandez_perez_1991",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24369,11 +24346,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_120_f_a_maria_gallego_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_maria_gallego_martin_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_120_f",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_120_f",
       "athlete_id": "a_maria_gallego_martin_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24391,11 +24368,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_120_f_a_maria_marin_ramirez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_maria_marin_ramirez_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_120_f",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_120_f",
       "athlete_id": "a_maria_marin_ramirez_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24413,11 +24390,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_120_f_a_patricia_pilar_perez_mohand_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_patricia_pilar_perez_mohand_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_120_f",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_120_f",
       "athlete_id": "a_patricia_pilar_perez_mohand_1991",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24435,11 +24412,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_120_f_a_victoria_munoz_bartolome_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_victoria_munoz_bartolome_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_120_f",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_120_f",
       "athlete_id": "a_victoria_munoz_bartolome_1996",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24457,11 +24434,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_f_a_monica_magdalena_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_monica_magdalena_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_170_f",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_170_f",
       "athlete_id": "a_monica_magdalena_1972",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24479,11 +24456,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_f_a_maria_victoria_martinez_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_maria_victoria_martinez_martin_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_170_f",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_170_f",
       "athlete_id": "a_maria_victoria_martinez_martin_1970",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24501,11 +24478,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_f_a_erica_perez_prada_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_erica_perez_prada_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_170_f",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_170_f",
       "athlete_id": "a_erica_perez_prada_1979",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24523,11 +24500,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_f_a_maria_gallego_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_maria_gallego_martin_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_170_f",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_170_f",
       "athlete_id": "a_maria_gallego_martin_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24633,11 +24610,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_120_m_a_jorge_serrano_salado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_jorge_serrano_salado_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_120_m",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_120_m",
       "athlete_id": "a_jorge_serrano_salado_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24655,11 +24632,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_120_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_sergio_vadillo_sanz_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_120_m",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_120_m",
       "athlete_id": "a_sergio_vadillo_sanz_1987",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24677,11 +24654,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_120_m_a_daniel_nieto_carrasco_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_daniel_nieto_carrasco_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_120_m",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_120_m",
       "athlete_id": "a_daniel_nieto_carrasco_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24699,11 +24676,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_120_m_a_gonzalo_parrilla_mesas_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_gonzalo_parrilla_mesas_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_120_m",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_120_m",
       "athlete_id": "a_gonzalo_parrilla_mesas_1994",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24721,11 +24698,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_140_m_a_juan_pablo_hernandez_perez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_juan_pablo_hernandez_perez_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_140_m",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_140_m",
       "athlete_id": "a_juan_pablo_hernandez_perez_1991",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24743,11 +24720,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_140_m_a_david_caceres_manzano_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_david_caceres_manzano_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_140_m",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_140_m",
       "athlete_id": "a_david_caceres_manzano_1983",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24765,11 +24742,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_140_m_a_mario_tamayo_cuadrado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_mario_tamayo_cuadrado_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_140_m",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_140_m",
       "athlete_id": "a_mario_tamayo_cuadrado_1980",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -24787,11 +24764,11 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_140_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_sergio_vadillo_sanz_na",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
-      "event_id": "e_4x50_m_relevo_combinado_master_140_m",
+      "event_id": "e_4x50_m_relevo_combinado_master_r4_140_m",
       "athlete_id": "a_sergio_vadillo_sanz_1987",
       "club_id": "club_c_d_e_pacifico_salvamento",
       "time": {
@@ -25090,7 +25067,7 @@
       "points": 20,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25112,7 +25089,7 @@
       "points": 3,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25134,7 +25111,7 @@
       "points": 4,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25156,7 +25133,7 @@
       "points": 8,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25178,7 +25155,7 @@
       "points": 10,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25200,7 +25177,7 @@
       "points": 11,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25222,7 +25199,7 @@
       "points": 43,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25244,7 +25221,7 @@
       "points": 9,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25266,7 +25243,7 @@
       "points": 19,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25288,7 +25265,7 @@
       "points": 5,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25310,7 +25287,7 @@
       "points": 8,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25332,7 +25309,7 @@
       "points": 9,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25354,7 +25331,7 @@
       "points": 15,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25376,7 +25353,7 @@
       "points": 50,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25398,7 +25375,7 @@
       "points": 52,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25420,7 +25397,7 @@
       "points": 7,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25442,7 +25419,7 @@
       "points": 13,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25464,7 +25441,7 @@
       "points": 15,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25486,7 +25463,7 @@
       "points": 12,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25508,7 +25485,7 @@
       "points": 29,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25530,7 +25507,7 @@
       "points": 31,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25552,7 +25529,7 @@
       "points": 34,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25574,7 +25551,7 @@
       "points": 35,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25596,7 +25573,7 @@
       "points": 2,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25618,7 +25595,7 @@
       "points": 4,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25640,7 +25617,7 @@
       "points": 5,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25662,7 +25639,7 @@
       "points": 30,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25684,7 +25661,7 @@
       "points": 15,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25706,7 +25683,7 @@
       "points": 19,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25728,7 +25705,7 @@
       "points": 20,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25750,7 +25727,7 @@
       "points": 31,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25772,7 +25749,7 @@
       "points": 34,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25794,7 +25771,7 @@
       "points": 37,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25816,7 +25793,7 @@
       "points": 41,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25838,7 +25815,7 @@
       "points": 43,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25860,7 +25837,7 @@
       "points": 45,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25882,7 +25859,7 @@
       "points": 6,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25904,7 +25881,7 @@
       "points": 16,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25926,7 +25903,7 @@
       "points": 2,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25948,7 +25925,7 @@
       "points": 12,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25970,7 +25947,7 @@
       "points": 16,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -25992,7 +25969,7 @@
       "points": 18,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26014,7 +25991,7 @@
       "points": 24,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26036,7 +26013,7 @@
       "points": 33,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26058,7 +26035,7 @@
       "points": 5,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26080,7 +26057,7 @@
       "points": 11,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26102,7 +26079,7 @@
       "points": 33,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26124,7 +26101,7 @@
       "points": 65,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26146,7 +26123,7 @@
       "points": 12,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26168,7 +26145,7 @@
       "points": 14,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26190,7 +26167,7 @@
       "points": 22,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26212,7 +26189,7 @@
       "points": 11,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26234,7 +26211,7 @@
       "points": 28,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26256,7 +26233,7 @@
       "points": 35,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26278,7 +26255,7 @@
       "points": 37,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26300,7 +26277,7 @@
       "points": 60,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26322,7 +26299,7 @@
       "points": 10,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26344,7 +26321,7 @@
       "points": 14,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26366,7 +26343,7 @@
       "points": 35,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26388,7 +26365,7 @@
       "points": 16,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26410,7 +26387,7 @@
       "points": 34,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26432,7 +26409,7 @@
       "points": 36,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     },
@@ -26454,7 +26431,7 @@
       "points": 37,
       "series_type": "Final",
       "labels": {
-        "x": "2026-03-15\nDefinitivos VI Abierto De Madrid De Salvamento Y Socorrismo -"
+        "x": "2026-03-15\nVI Abierto De Madrid De Salvamento Y Socorrismo"
       },
       "heat": null
     }
@@ -75121,7 +75098,7 @@
               "event_id": "e_100_m_natacion_con_obstaculos_master_60_64_m",
               "base": "100 m Natación con Obstáculos",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_carlos_lazaro_crespo_1966",
@@ -75142,7 +75119,7 @@
               "event_id": "e_100_m_natacion_con_obstaculos_master_60_64_m",
               "base": "100 m Natación con Obstáculos",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_luis_cruz_gonzalez_1965",
@@ -75163,7 +75140,7 @@
               "event_id": "e_100_m_natacion_con_obstaculos_master_60_64_m",
               "base": "100 m Natación con Obstáculos",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_marcial_garcia_liberal_1963",
@@ -75184,7 +75161,7 @@
               "event_id": "e_100_m_natacion_con_obstaculos_master_60_64_m",
               "base": "100 m Natación con Obstáculos",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_andres_culebras_moreno_1965",
@@ -75205,7 +75182,7 @@
               "event_id": "e_100_m_natacion_con_obstaculos_master_60_64_m",
               "base": "100 m Natación con Obstáculos",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_alberto_perez_fernandez_1966",
@@ -75226,7 +75203,7 @@
               "event_id": "e_100_m_natacion_con_obstaculos_master_70_74_m",
               "base": "100 m Natación con Obstáculos",
               "sex": "M",
-              "category": "máster 70-74",
+              "category": "Máster 70-74",
               "athletes": [
                 {
                   "athlete_id": "a_alejandro_reyeros_medina_1954",
@@ -75247,7 +75224,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_30_34_f",
               "base": "Lanzamiento de Cuerda",
               "sex": "F",
-              "category": "máster 30-34",
+              "category": "Máster 30-34",
               "athletes": [
                 {
                   "athlete_id": "a_maria_marin_ramirez_1994",
@@ -75268,7 +75245,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_30_34_f",
               "base": "Lanzamiento de Cuerda",
               "sex": "F",
-              "category": "máster 30-34",
+              "category": "Máster 30-34",
               "athletes": [
                 {
                   "athlete_id": "a_victoria_munoz_bartolome_1996",
@@ -75289,7 +75266,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_35_39_f",
               "base": "Lanzamiento de Cuerda",
               "sex": "F",
-              "category": "máster 35-39",
+              "category": "Máster 35-39",
               "athletes": [
                 {
                   "athlete_id": "a_patricia_pilar_perez_mohand_1991",
@@ -75310,7 +75287,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_35_39_f",
               "base": "Lanzamiento de Cuerda",
               "sex": "F",
-              "category": "máster 35-39",
+              "category": "Máster 35-39",
               "athletes": [
                 {
                   "athlete_id": "a_erica_perez_prada_1979",
@@ -75331,7 +75308,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_45_49_f",
               "base": "Lanzamiento de Cuerda",
               "sex": "F",
-              "category": "máster 45-49",
+              "category": "Máster 45-49",
               "athletes": [
                 {
                   "athlete_id": "a_laura_rodriguez_calleja_1977",
@@ -75352,7 +75329,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_45_49_f",
               "base": "Lanzamiento de Cuerda",
               "sex": "F",
-              "category": "máster 45-49",
+              "category": "Máster 45-49",
               "athletes": [
                 {
                   "athlete_id": "a_mercedes_pascual_chorro_1977",
@@ -75373,7 +75350,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_50_54_f",
               "base": "Lanzamiento de Cuerda",
               "sex": "F",
-              "category": "máster 50-54",
+              "category": "Máster 50-54",
               "athletes": [
                 {
                   "athlete_id": "a_monica_magdalena_1972",
@@ -75394,7 +75371,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_50_54_f",
               "base": "Lanzamiento de Cuerda",
               "sex": "F",
-              "category": "máster 50-54",
+              "category": "Máster 50-54",
               "athletes": [
                 {
                   "athlete_id": "a_rosario_segura_martinez_1972",
@@ -75415,7 +75392,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_55_59_f",
               "base": "Lanzamiento de Cuerda",
               "sex": "F",
-              "category": "máster 55-59",
+              "category": "Máster 55-59",
               "athletes": [
                 {
                   "athlete_id": "a_maria_victoria_martinez_martin_1970",
@@ -75436,7 +75413,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_55_59_f",
               "base": "Lanzamiento de Cuerda",
               "sex": "F",
-              "category": "máster 55-59",
+              "category": "Máster 55-59",
               "athletes": [
                 {
                   "athlete_id": "a_maria_teresa_velasco_arribas_1967",
@@ -75457,7 +75434,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_30_34_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 30-34",
+              "category": "Máster 30-34",
               "athletes": [
                 {
                   "athlete_id": "a_jorge_serrano_salado_1994",
@@ -75478,7 +75455,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_30_34_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 30-34",
+              "category": "Máster 30-34",
               "athletes": [
                 {
                   "athlete_id": "a_alvaro_moreno_diaz_1995",
@@ -75496,10 +75473,52 @@
               ]
             },
             {
+              "event_id": "e_lanzamiento_de_cuerda_master_35_39_m",
+              "base": "Lanzamiento de Cuerda",
+              "sex": "M",
+              "category": "Máster 35-39",
+              "athletes": [
+                {
+                  "athlete_id": "a_edgar_diaz_hernandez_na",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:23.320",
+                    "seconds": 23.32,
+                    "raw": "00:23:32"
+                  },
+                  "converted_time": "00:23.320"
+                }
+              ]
+            },
+            {
+              "event_id": "e_lanzamiento_de_cuerda_master_35_39_m",
+              "base": "Lanzamiento de Cuerda",
+              "sex": "M",
+              "category": "Máster 35-39",
+              "athletes": [
+                {
+                  "athlete_id": "a_sergio_vadillo_sanz_1987",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:23.320",
+                    "seconds": 23.32,
+                    "raw": "00:23:32"
+                  },
+                  "converted_time": "00:23.320"
+                }
+              ]
+            },
+            {
               "event_id": "e_lanzamiento_de_cuerda_master_40_44_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 40-44",
+              "category": "Máster 40-44",
               "athletes": [
                 {
                   "athlete_id": "a_david_caceres_manzano_1983",
@@ -75520,7 +75539,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_40_44_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 40-44",
+              "category": "Máster 40-44",
               "athletes": [
                 {
                   "athlete_id": "a_mariano_carpintero_arranz_1969",
@@ -75541,7 +75560,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_45_49_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 45-49",
+              "category": "Máster 45-49",
               "athletes": [
                 {
                   "athlete_id": "a_alberto_velasco_torres_1977",
@@ -75562,7 +75581,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_45_49_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 45-49",
+              "category": "Máster 45-49",
               "athletes": [
                 {
                   "athlete_id": "a_mario_tamayo_cuadrado_1980",
@@ -75583,7 +75602,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_50_54_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 50-54",
+              "category": "Máster 50-54",
               "athletes": [
                 {
                   "athlete_id": "a_jose_vazquez_troncoso_1974",
@@ -75604,7 +75623,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_50_54_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 50-54",
+              "category": "Máster 50-54",
               "athletes": [
                 {
                   "athlete_id": "a_luis_miguel_gonzalez_aguero_1976",
@@ -75625,7 +75644,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_55_59_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 55-59",
+              "category": "Máster 55-59",
               "athletes": [
                 {
                   "athlete_id": "a_andres_gordon_moreno_1969",
@@ -75646,7 +75665,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_55_59_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 55-59",
+              "category": "Máster 55-59",
               "athletes": [
                 {
                   "athlete_id": "a_carlos_lazaro_crespo_1966",
@@ -75667,7 +75686,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_60_64_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_andres_culebras_moreno_1965",
@@ -75688,7 +75707,7 @@
               "event_id": "e_lanzamiento_de_cuerda_master_60_64_m",
               "base": "Lanzamiento de Cuerda",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_marcial_garcia_liberal_1963",
@@ -75706,10 +75725,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_f",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_maria_marin_ramirez_1994",
@@ -75727,10 +75746,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_f",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_maria_gallego_martin_1994",
@@ -75748,10 +75767,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_f",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_victoria_munoz_bartolome_1996",
@@ -75769,10 +75788,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_f",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_patricia_pilar_perez_mohand_1991",
@@ -75790,10 +75809,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_f",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "F",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_monica_magdalena_1972",
@@ -75811,10 +75830,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_f",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "F",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_patricia_pilar_perez_mohand_1991",
@@ -75832,10 +75851,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_f",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "F",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_erica_perez_prada_1979",
@@ -75853,10 +75872,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_f",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "F",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_rosario_segura_martinez_1972",
@@ -75874,10 +75893,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_daniel_nieto_carrasco_1994",
@@ -75895,10 +75914,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_sergio_vadillo_sanz_1987",
@@ -75916,10 +75935,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_gonzalo_parrilla_mesas_1994",
@@ -75937,10 +75956,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_120_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_alvaro_moreno_diaz_1995",
@@ -75958,10 +75977,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_140_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_mario_tamayo_cuadrado_1980",
@@ -75979,10 +75998,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_140_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_sergio_vadillo_sanz_1987",
@@ -76000,10 +76019,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_140_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_juan_pablo_hernandez_perez_1991",
@@ -76021,10 +76040,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_140_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_daniel_nieto_carrasco_1994",
@@ -76042,10 +76061,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_170_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_david_caceres_manzano_1983",
@@ -76063,10 +76082,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_170_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_juan_pablo_hernandez_perez_1991",
@@ -76084,10 +76103,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_170_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_jose_luis_echarri_tornero_1975",
@@ -76105,10 +76124,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_170_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_mario_tamayo_cuadrado_1980",
@@ -76126,10 +76145,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_attila_varga_1976",
@@ -76147,10 +76166,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_andres_gordon_moreno_1969",
@@ -76168,10 +76187,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_alberto_velasco_torres_1977",
@@ -76189,10 +76208,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_200_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_jose_vazquez_troncoso_1974",
@@ -76210,10 +76229,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_230_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +230",
+              "category": "Máster R4 +230",
               "athletes": [
                 {
                   "athlete_id": "a_mariano_carpintero_arranz_1969",
@@ -76231,10 +76250,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_230_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +230",
+              "category": "Máster R4 +230",
               "athletes": [
                 {
                   "athlete_id": "a_marcial_garcia_liberal_1963",
@@ -76252,10 +76271,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_230_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +230",
+              "category": "Máster R4 +230",
               "athletes": [
                 {
                   "athlete_id": "a_andres_culebras_moreno_1965",
@@ -76273,10 +76292,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_230_m",
+              "event_id": "e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m",
               "base": "4x50 m Relevo Natación con Obstáculos",
               "sex": "M",
-              "category": "máster +230",
+              "category": "Máster R4 +230",
               "athletes": [
                 {
                   "athlete_id": "a_carlos_lazaro_crespo_1966",
@@ -76927,7 +76946,7 @@
               "event_id": "e_100_m_socorrista_master_60_64_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_carlos_lazaro_crespo_1966",
@@ -76948,7 +76967,7 @@
               "event_id": "e_100_m_socorrista_master_60_64_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_andres_culebras_moreno_1965",
@@ -76969,7 +76988,7 @@
               "event_id": "e_100_m_socorrista_master_60_64_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_luis_cruz_gonzalez_1965",
@@ -76990,7 +77009,7 @@
               "event_id": "e_100_m_socorrista_master_60_64_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_alberto_perez_fernandez_1966",
@@ -77011,7 +77030,7 @@
               "event_id": "e_100_m_socorrista_master_60_64_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_marcial_garcia_liberal_1963",
@@ -77032,7 +77051,7 @@
               "event_id": "e_100_m_socorrista_master_70_74_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "máster 70-74",
+              "category": "Máster 70-74",
               "athletes": [
                 {
                   "athlete_id": "a_alejandro_reyeros_medina_1954",
@@ -77683,7 +77702,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_master_60_64_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_carlos_lazaro_crespo_1966",
@@ -77704,7 +77723,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_master_60_64_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_luis_cruz_gonzalez_1965",
@@ -77725,7 +77744,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_master_60_64_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_marcial_garcia_liberal_1963",
@@ -77746,7 +77765,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_master_60_64_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_andres_culebras_moreno_1965",
@@ -77767,7 +77786,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_master_60_64_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_alberto_perez_fernandez_1966",
@@ -77788,7 +77807,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_master_70_74_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "máster 70-74",
+              "category": "Máster 70-74",
               "athletes": [
                 {
                   "athlete_id": "a_alejandro_reyeros_medina_1954",
@@ -77806,10 +77825,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_maria_gallego_martin_1994",
@@ -77827,10 +77846,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_maria_marin_ramirez_1994",
@@ -77848,10 +77867,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_victoria_munoz_bartolome_1996",
@@ -77869,10 +77888,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_patricia_pilar_perez_mohand_1991",
@@ -77890,10 +77909,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_170_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_maria_gallego_martin_1994",
@@ -77911,10 +77930,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_170_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_erica_perez_prada_1979",
@@ -77932,10 +77951,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_170_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_monica_magdalena_1972",
@@ -77953,10 +77972,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_170_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_maria_victoria_martinez_martin_1970",
@@ -77974,10 +77993,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_200_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_laura_rodriguez_calleja_1977",
@@ -77995,10 +78014,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_200_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_rosario_segura_martinez_1972",
@@ -78016,10 +78035,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_200_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_monica_magdalena_1972",
@@ -78037,10 +78056,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_200_f",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "F",
-              "category": "máster +200",
+              "category": "Máster R4 +200",
               "athletes": [
                 {
                   "athlete_id": "a_erica_perez_prada_1979",
@@ -78058,10 +78077,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_m",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_jorge_serrano_salado_1994",
@@ -78079,10 +78098,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_m",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_daniel_nieto_carrasco_1994",
@@ -78100,10 +78119,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_m",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_gonzalo_parrilla_mesas_1994",
@@ -78121,10 +78140,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_120_m",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_sergio_vadillo_sanz_1987",
@@ -78142,10 +78161,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_140_m",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_david_caceres_manzano_1983",
@@ -78163,10 +78182,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_140_m",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_sergio_vadillo_sanz_1987",
@@ -78184,10 +78203,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_140_m",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_mario_tamayo_cuadrado_1980",
@@ -78205,10 +78224,10 @@
               ]
             },
             {
-              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_140_m",
+              "event_id": "e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m",
               "base": "4x25 m Relevo Remolque de Maniquí",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_juan_pablo_hernandez_perez_1991",
@@ -79111,7 +79130,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_master_60_64_m",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_andres_culebras_moreno_1965",
@@ -79132,7 +79151,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_master_60_64_m",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_luis_cruz_gonzalez_1965",
@@ -79153,7 +79172,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_master_60_64_m",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_carlos_lazaro_crespo_1966",
@@ -79174,7 +79193,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_master_60_64_m",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_marcial_garcia_liberal_1963",
@@ -79195,7 +79214,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_master_60_64_m",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "M",
-              "category": "máster 60-64",
+              "category": "Máster 60-64",
               "athletes": [
                 {
                   "athlete_id": "a_alberto_perez_fernandez_1966",
@@ -79216,7 +79235,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_master_70_74_m",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "M",
-              "category": "máster 70-74",
+              "category": "Máster 70-74",
               "athletes": [
                 {
                   "athlete_id": "a_alejandro_reyeros_medina_1954",
@@ -79234,10 +79253,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_120_f",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_120_f",
               "base": "4x50 m Relevo Combinado",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_maria_gallego_martin_1994",
@@ -79255,10 +79274,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_120_f",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_120_f",
               "base": "4x50 m Relevo Combinado",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_maria_marin_ramirez_1994",
@@ -79276,10 +79295,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_120_f",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_120_f",
               "base": "4x50 m Relevo Combinado",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_patricia_pilar_perez_mohand_1991",
@@ -79297,10 +79316,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_120_f",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_120_f",
               "base": "4x50 m Relevo Combinado",
               "sex": "F",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_victoria_munoz_bartolome_1996",
@@ -79318,10 +79337,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_170_f",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_170_f",
               "base": "4x50 m Relevo Combinado",
               "sex": "F",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_monica_magdalena_1972",
@@ -79339,10 +79358,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_170_f",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_170_f",
               "base": "4x50 m Relevo Combinado",
               "sex": "F",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_maria_victoria_martinez_martin_1970",
@@ -79360,10 +79379,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_170_f",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_170_f",
               "base": "4x50 m Relevo Combinado",
               "sex": "F",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_erica_perez_prada_1979",
@@ -79381,10 +79400,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_170_f",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_170_f",
               "base": "4x50 m Relevo Combinado",
               "sex": "F",
-              "category": "máster +170",
+              "category": "Máster R4 +170",
               "athletes": [
                 {
                   "athlete_id": "a_maria_gallego_martin_1994",
@@ -79486,10 +79505,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_120_m",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_120_m",
               "base": "4x50 m Relevo Combinado",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_jorge_serrano_salado_1994",
@@ -79507,10 +79526,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_120_m",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_120_m",
               "base": "4x50 m Relevo Combinado",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_sergio_vadillo_sanz_1987",
@@ -79528,10 +79547,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_120_m",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_120_m",
               "base": "4x50 m Relevo Combinado",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_daniel_nieto_carrasco_1994",
@@ -79549,10 +79568,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_120_m",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_120_m",
               "base": "4x50 m Relevo Combinado",
               "sex": "M",
-              "category": "máster +120",
+              "category": "Máster R4 +120",
               "athletes": [
                 {
                   "athlete_id": "a_gonzalo_parrilla_mesas_1994",
@@ -79570,10 +79589,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_140_m",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_140_m",
               "base": "4x50 m Relevo Combinado",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_juan_pablo_hernandez_perez_1991",
@@ -79591,10 +79610,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_140_m",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_140_m",
               "base": "4x50 m Relevo Combinado",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_david_caceres_manzano_1983",
@@ -79612,10 +79631,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_140_m",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_140_m",
               "base": "4x50 m Relevo Combinado",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_mario_tamayo_cuadrado_1980",
@@ -79633,10 +79652,10 @@
               ]
             },
             {
-              "event_id": "e_4x50_m_relevo_combinado_master_140_m",
+              "event_id": "e_4x50_m_relevo_combinado_master_r4_140_m",
               "base": "4x50 m Relevo Combinado",
               "sex": "M",
-              "category": "máster +140",
+              "category": "Máster R4 +140",
               "athletes": [
                 {
                   "athlete_id": "a_sergio_vadillo_sanz_1987",
@@ -79912,7 +79931,7 @@
           "season_id": "s_2025_2026",
           "date": "2026-03-15",
           "name": "VI Abierto De Madrid De Salvamento Y Socorrismo –",
-          "name_clean": "VI Abierto De Madrid De Salvamento Y Socorrismo -",
+          "name_clean": "VI Abierto De Madrid De Salvamento Y Socorrismo",
           "location": "Centro Deportivo M86",
           "region": "",
           "pool_type": "",

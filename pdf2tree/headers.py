@@ -323,6 +323,9 @@ def clean_name_clean(name: str) -> str:
     s = " - ".join(parts)
 
     # 5) Limpieza final por si queda algo raro (dobles separadores ya quedan resueltos por parts)
+    # Quitar separador final huérfano: "..." + "-" (tras normalizar dashes)
+    s = s.rstrip(" -").strip()
+
     return s.strip()
 
 def parse_competition_from_header(lines: List[str], debug: bool = False) -> Dict[str, Any]:
@@ -365,6 +368,20 @@ def parse_competition_from_header(lines: List[str], debug: bool = False) -> Dict
     # nombre: desde la línea 1 hasta antes de la localización real
     name_lines = lines[1:loc_idx] if loc_idx > 1 else []
     name_lines = [ln for ln in name_lines if not is_ordinal_only_line(ln)]
+
+    # Eliminar líneas de estado que no forman parte del nombre de la competición
+    # (en algunos PDFs aparece como línea suelta: "DEFINITIVOS", "PROVISIONALES", etc.)
+    BAD_NAME_ONLY_LINES = {
+        "definitivos",
+        "provisionales",
+        "finales",
+        "final",
+    }
+    name_lines = [
+        ln for ln in name_lines
+        if normalize_spaces(ln).strip().lower() not in BAD_NAME_ONLY_LINES
+    ]
+
     name = normalize_title(" ".join(name_lines))
 
     # name_clean (si no tienes reglas específicas, usa name)

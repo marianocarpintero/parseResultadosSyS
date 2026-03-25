@@ -80,6 +80,7 @@ class ParseContext:
     current_event_relay: bool = False
     relay_ctx: Optional[RelayContext] = None
     competition_name_clean: Optional[str] = None
+    last_position_seen: Optional[int] = None
 
 
 class SinglePassParser:
@@ -219,15 +220,38 @@ class SinglePassParser:
     # -----------------------
     # Row parsing
     # -----------------------
-    def _open_relay_from_team_row(self, line: str) -> None:
+    def _open_relay_from_team_row(self, line: str, *, implicit_position: bool = False) -> None:
         parts = line.split()
-        position = int(parts[0]) if parts and parts[0].isdigit() else None
+
+        # 1) Posición explícita si existe
+        has_pos = bool(parts and parts[0].isdigit())
+        position = int(parts[0]) if has_pos else None
+        # 2) Si falta la posición y estamos al inicio de bloque, deducimos 1.
+        #    Inicio de bloque = no hemos visto ninguna posición explícita desde el último TABLE_HEADER/CATEGORY_LINE/EVENT_TITLE.
+        if position is None and implicit_position and self.ctx.last_position_seen is None:
+            position = 1
+            self.trace.emit({
+                "action": "DEDUCED_POSITION",
+                "value": 1,
+                "reason": "missing_pos_at_block_start",
+                "text": line
+            })
+        # 3) Actualiza last_position_seen SOLO si la posición es explícita o deducida de forma segura (como arriba).
+        if position is not None:
+            self.ctx.last_position_seen = position
+    
+        # Si no hay posición, el nombre empieza en 0
+        name_start = 1 if has_pos else 0
 
         status = parse_status(line)
         times = TIME_RE.findall(line)
         time_raw = times[-1] if times else None
-
         points = self._parse_points_from_tokens(parts)
+
+        if position is None and implicit_position:
+            # caso típico: en la extracción falta el "1"
+            position = 1
+            self.trace.emit({"action": "IMPLICIT_POSITION", "value": 1, "text": line})
 
         cut_idx = len(parts)
         for i, t in enumerate(parts):
@@ -246,16 +270,15 @@ class SinglePassParser:
                     cut_idx = i
                     break
 
-        club_start = 1
-        for i in range(1, min(len(parts), cut_idx)):
+        club_start = name_start
+        for i in range(name_start, min(len(parts), cut_idx)):
             if parts[i].lower() in CLUB_START_TOKENS:
                 club_start = i
                 break
 
-        # 1er miembro del relevo: tokens entre posición y el inicio del club
         first_member = ""
-        if club_start > 1:
-            first_member = " ".join(parts[1:club_start]).strip()
+        if club_start > name_start:
+            first_member = " ".join(parts[name_start:club_start]).strip()
         # Limpieza mínima: si por alguna razón queda vacío, lo ignoramos
         # (si el PDF NO trae atleta en la primera línea, first_member quedará "")
 
@@ -544,6 +567,9 @@ class SinglePassParser:
                 self.ctx.state = State.IN_RESULTS
             self.ctx.pending.title = token.norm
             self.ctx.pending.sex_hint = token.meta.get("sex_hint")
+
+            # Nuevo bloque potencial: resetea contador de posiciones vistas
+            self.ctx.last_position_seen = None
             return
 
         # ---------------------------------
@@ -555,8 +581,14 @@ class SinglePassParser:
                 self._flush_relay_context(competition_id, season_id, date, reason="category_line")
                 self.ctx.state = State.IN_RESULTS
             self.ctx.pending.category_line = token.norm
+
+            # Nueva categoría => nuevo bloque de posiciones
+            self.ctx.last_position_seen = None
             return
 
+        # ---------------------------------
+        # ---   TABLE HEADER
+        # ---------------------------------        
         if token.type == TokenType.TABLE_HEADER:
             # flush defensivo si quedó relay abierto
             if self.ctx.relay_ctx:
@@ -568,6 +600,9 @@ class SinglePassParser:
 
             # SIEMPRE commit aquí
             self._commit_event_on_table()
+
+            # Inicio de tabla => inicio de bloque de posiciones
+            self.ctx.last_position_seen = None
             return
 
         # ---------------------------------
@@ -590,10 +625,12 @@ class SinglePassParser:
 
             # Abrimos nuevo relevo (solo si estamos en resultados)
             if self.ctx.state == State.IN_RESULTS:
-                self._open_relay_from_team_row(token.norm)
-
+                self._open_relay_from_team_row(
+                    token.norm,
+                    implicit_position=bool(token.meta.get("implicit_position"))
+                )
             return
-
+        
         # ---------------------------------
         # ---   RELAY MEMBER
         # ---------------------------------        
@@ -605,16 +642,16 @@ class SinglePassParser:
             # Validar con el formato original del PDF (APELLIDOS, NOMBRE), antes de normalizar
             raw = (token.norm or "").strip()
             if not self._looks_like_person_name(raw):
+                # Antes: esto cerraba el relevo (flush) y perdíamos miembros en saltos de página.
+                # Ahora: tratamos el token como ruido y lo ignoramos, manteniendo IN_RELAY_MEMBERS.
                 self.trace.emit({
                     "action": "REJECT_RELAY_MEMBER",
                     "text": raw,
-                    "reason": "not_person_like",
+                    "reason": "not_person_like_ignored",
                     "club": self.ctx.relay_ctx.club_name if self.ctx.relay_ctx else None,
                 })
-                if self.ctx.relay_ctx:
-                    self._flush_relay_context(competition_id, season_id, date, reason="incomplete_relay_boundary")
-                self.ctx.state = State.IN_RESULTS
                 return
+            
             raw = TRAILING_YEAR_RE.sub("",raw).strip()
             name = normalize_athlete_name(raw)
             self.ctx.relay_ctx.members.append(name)
@@ -631,7 +668,7 @@ class SinglePassParser:
             # En relays la primera fila trae nombre+año+club => es TEAM_ROW real
             if self.ctx.relay_ctx:
                 self._flush_relay_context(competition_id, season_id, date, reason="new_team_row")
-            self._open_relay_from_team_row(token.norm)
+            self._open_relay_from_team_row(token.norm, implicit_position=bool(token.meta.get("implicit_position")))
             return
 
         # ---------------------------------

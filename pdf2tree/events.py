@@ -247,6 +247,30 @@ def master_category_to_canonical(cat_display: str) -> str:
     return f"master_{rest}" if rest else "master"
 
 
+def _is_multi_master_display(master_display: Optional[str]) -> bool:
+    """
+    Devuelve True si el segmento 'Máster ...' contiene MÁS de un rango/suma.
+    Ejemplos:
+    - "Máster 60-64 y 70-74" -> True
+    - "Máster +120 y +140"  -> True
+    """
+    if not master_display:
+        return False
+
+    s = master_display.lower()
+
+    # cuenta rangos tipo 60-64
+    ranges = re.findall(r"\b\d{2}\s*-\s*\d{2}\b", s)
+    # cuenta sumas tipo +120 / +140 / +200
+    sums = re.findall(r"\+\s*\d{2,3}\b", s)
+
+    has_two_ranges = len(ranges) >= 2
+    has_two_sums = len(sums) >= 2
+    has_y_with_any = (" y " in s) and ((len(ranges) > 0) or (len(sums) > 0))
+
+    return has_two_ranges or has_two_sums or has_y_with_any
+
+
 def _normalize_distance_prefix(relay: bool, num_str: str) -> Tuple[str, str]:
     """
     Devuelve:
@@ -331,17 +355,27 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     # fallback desde event_title si no vienen en category_line
     if not sx:
         sx = sex_code(raw_title)
-    if master_display:
-        cat = master_category_to_canonical(master_display)
-    else:
-        if not cat:
-            cat = category_code(raw_title)  # <-- usa raw_title, no es_part
 
-    relay = infer_relay(raw_title + " " + es_part)
+    cat_display_override = None  # solo para mostrar "Máster ..." cuando viene del título
+
+    # 1) Si category_line ya nos dio cat, NUNCA la pisamos con master_display del título.
+    # 2) Si no hay cat, podemos usar master_display SOLO si no es múltiple (+120 y +140 / 60-64 y 70-74).
+    if not cat:
+        if master_display and (not _is_multi_master_display(master_display)):
+            cat = master_category_to_canonical(master_display)
+            cat_display_override = master_display
+        else:
+            cat = category_code(raw_title)  # fallback final (juvenil/junior/absoluto/master_...)
+
+    # Si por cualquier razón cat sigue vacío, protege con absoluto
+    if not cat:
+        cat = "absoluto"
 
     # -------------------------------------
     # --- RELEVOS
     # -------------------------------------
+    relay = infer_relay(raw_title + " " + es_part)
+
     # Lanzamiento de cuerda: relevo sin distancia
     if is_line_throw(es_part) or is_line_throw(raw_title):
         base = "Lanzamiento de Cuerda"
@@ -412,7 +446,7 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
         "distance_m": distance_m,
         "relay": relay,
         "category": category,
-        "category_display": master_display if master_display else category_display(category),
+        "category_display": cat_display_override if cat_display_override else category_display(category),
         "sex": sex,
         "id": event_id,
         "debug_info": debug_info,

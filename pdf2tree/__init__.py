@@ -9,4 +9,5 @@ __all__ = [
     "trace",
     "headers",
     "events",
+    "test_tokenizer_manual"
 ]
