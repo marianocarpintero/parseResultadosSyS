@@ -1,0 +1,21 @@
+================================================================================
+PAGE 1/1
+================================================================================
+RESULTADOS
+TEST RELEVO FLUSH EVENTO
+MADRID
+21 MARZO 2026 (Piscina/Pool: 25 E)
+
+4x50 m. relevo natación con obstáculos máster masculina
+máster R4 +170 (masculina)
+Socorrista / Lifeguard Año/Year Club/ Team Final.T Ptos/Score
+1 CÁCERES MANZANO, DAVID C.D.E Pacífico Salvamento (máster R4 +170) 02:41:73 6
+HERNÁNDEZ PÉREZ, JUAN PABLO
+ECHARRI TORNERO, JOSÉ LUIS
+
+# Aquí falta el 4º miembro a propósito.
+# Aparece un nuevo evento: debe forzar flush del relevo incompleto.
+50 m. Socorrista categoría absoluta masculina
+Absoluta (Masculina)
+Socorrista / Lifeguard Año/Year Club/ Team Final.T Ptos/Score
+1 GARCIA LOPEZ, ANA 2005 C.D.E Pacífico Salvamento 00:31:93 20
