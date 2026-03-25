@@ -9,6 +9,14 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
+############################################################
+# cli.py se encargar de:
+# 
+# - parsear argumentos
+# - resolver rutas de entrada/salida
+# - orquestar el pipeline (crear tokenizer/parser/builders, iterar PDFs/páginas)
+############################################################
+
 
 from __future__ import annotations
 
@@ -27,6 +35,7 @@ from .builders import DimensionsBuilder, ResultsBuilder, build_tree, prune_dimen
 from .trace import JsonlTrace, NullTrace
 from .normalize import slugify, normalize_spaces
 from .schema import Season, Competition
+from .headers import try_parse_header
 
 
 # ------------------------------------------------------------
@@ -84,57 +93,6 @@ def ensure_dirs(output_path: str) -> None:
 
 
 # ------------------------------------------------------------
-# Header parsing hook (para que el CLI funcione ya)
-# ------------------------------------------------------------
-def try_parse_header(pdf_path: str, debug: bool = False) -> Tuple[Dict[str, Any], Dict[str, Any]]:
-    """
-    Intenta usar un parser de cabecera real si existe (recomendado).
-    Si no existe todavía en tu refactor, hace fallback a valores mínimos.
-
-    Devuelve:
-      competition: dict con campos básicos
-      season: dict con {id,label}
-    """
-    # Hook opcional:
-    # - Si has movido tus funciones de cabecera a pdf2tree.headers, las usamos.
-    # - Si no, fallback.
-    try:
-        # Si creas pdf2tree/headers.py con estas funciones, esto se activará.
-        from .headers import extract_header_lines, parse_competition_from_header, parse_season_from_header  # type: ignore
-        import pdfplumber  # local import para no obligar a headers.py a importarlo aquí
-
-        with pdfplumber.open(pdf_path) as pdf:
-            header_lines = extract_header_lines(pdf, debug=debug)
-        competition = parse_competition_from_header(header_lines, debug=debug)
-        season = parse_season_from_header(header_lines, competition=competition, debug=debug)
-        return competition, season
-
-    except Exception as e:
-        if debug:
-            print("DEBUG header fallback (no headers module o fallo parseando):", str(e))
-
-        # Fallback mínimo: todo lo demás seguirá funcionando.
-        # Date: hoy (mejor que None)
-        today = datetime.now().date().isoformat()
-        competition = {
-            "name": os.path.basename(pdf_path),
-            "name_clean": os.path.splitext(os.path.basename(pdf_path))[0],
-            "location": "",
-            "region": "",
-            "pool_type": "",
-            "date": today,
-            "date_start": today,
-            "date_end": None,
-        }
-        # Season fallback
-        season = {
-            "id": "s_unknown",
-            "label": "Temporada (desconocida)",
-        }
-        return competition, season
-# TODO #28 quitar parse_header de aquí y moverlo a headers.py
-
-# ------------------------------------------------------------
 # MAIN
 # ------------------------------------------------------------
 def main(argv: Optional[List[str]] = None) -> int:
@@ -142,7 +100,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     parser.add_argument(
         "pdf_inputs",
         nargs="*",
-        help="PDF(s) o patrones de entrada. Ej: ./PDF/2026ddcc.pdf ./PDF/2025* ./PDF/*.pdf"
+        help="PDF(s) o patrones dentro de ./PDF. Ej: 2026mad.pdf 2025-2026/2026mad.pdf 2025* *.pdf"
     )
 
     parser.add_argument(
@@ -242,7 +200,7 @@ def main(argv: Optional[List[str]] = None) -> int:
                 on_result=resb.add,
                 on_club=dims.add_club,
                 on_athlete=dims.add_athlete,
-                club_filters=args.club_filter
+                club_filters=args.club
             )
 
             comp_counter += 1
@@ -250,13 +208,6 @@ def main(argv: Optional[List[str]] = None) -> int:
                 print("\n========================================")
                 print("DEBUG procesando:", os.path.basename(pdf_path))
                 print("========================================")
-
-            if args.dump_text:
-                dump_name = os.path.splitext(os.path.basename(pdf_path))[0] + "_dump.txt"
-                dump_path = os.path.join(args.dump_text_dir, dump_name)
-                dump_extract_text(pdf_path, dump_path)
-                if args.debug:
-                    print("DEBUG dump extract_text ->", dump_path)
 
             competition, season = try_parse_header(pdf_path, debug=args.debug)
 
@@ -354,7 +305,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             "timezone": "Europe/Madrid",
             "source": {
                 "generator": "pdf2tree",
-                "club_filter": args.club_filter,
+                "club": args.club,
                 "inputs": inputs,
                 "inputs_resolved": processed,
                 "output": output_path,
@@ -369,10 +320,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
         # Dump opcional: se guarda en ./JSON/dump/<nombre_del_json>.txt
-        if args.dump_text:
-            dump_name = os.path.basename(output_path) + ".txt"   # p.ej. updatePacifico20260324_153210.json.txt
-            dump_path = os.path.join(dump_dir, dump_name)
-
+        if args.dump:
             out_base = os.path.basename(output_path)
             out_stem = os.path.splitext(out_base)[0]
             dump_path = os.path.join(dump_dir, f"{out_stem}.txt")

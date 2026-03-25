@@ -408,6 +408,8 @@ Un relevo genera **N resultados**, uno por miembro, replicando los datos de equi
 }
 ```
 
+category es una representación textual **siempre en femenino**, ya que concuerda con el sustantivo _categoría_. No depende del sexo de la prueba.
+
 ---
 
 ##### Resultados (`results`)
@@ -475,6 +477,8 @@ Los otros tres miembros del relevo tendrán **el mismo tiempo y posición**, per
 }
 ```
 
+category es una representación textual **siempre en femenino**, ya que concuerda con el sustantivo _categoría_. No depende del sexo de la prueba.
+
 ---
 
 #### `Ejemplo de lanzamiento de cuerda (relevo especial de 2 miembros)`
@@ -501,6 +505,8 @@ Los otros tres miembros del relevo tendrán **el mismo tiempo y posición**, per
   "distance_m": null
 }
 ```
+
+category es una representación textual **siempre en femenino**, ya que concuerda con el sustantivo _categoría_. No depende del sexo de la prueba.
 
 ---
 
@@ -551,6 +557,7 @@ MORENO GOMEZ, IVAN
   "distance_m": "4x50"
 }
 ```
+category es una representación textual **siempre en femenino**, ya que concuerda con el sustantivo _categoría_. No depende del sexo de la prueba.
 
 ---
 
@@ -941,7 +948,7 @@ Se esperan:
 
 ##### Reglas
 
-*   Siempre en **masculino singular**
+*   Siempre en **femenino singular**
 *   Abreviaturas soportadas:
     *   `cad`, `inf`, `juv`, `jun`, `abs`
 

@@ -208,6 +208,8 @@ Define los **catálogos globales** de entidades reutilizables.
 | `relay`      | boolean              | ✅           | Es relevo   |
 | `distance_m` | string / null        | ❌           | Distancia   |
 
+category es una representación textual **siempre en femenino**, ya que concuerda con el sustantivo _categoría_. No depende del sexo de la prueba.
+
 ***
 
 ## 4. `results`

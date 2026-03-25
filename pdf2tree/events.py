@@ -168,19 +168,42 @@ def category_code(raw: Optional[str]) -> str:
 
 
 def category_display(cat: str) -> str:
+    """
+    Devuelve la representación textual de la categoría:
+    - SIEMPRE en femenino (concuerda con el campo 'categoría')
+    - 'Máster' siempre capitalizado y con tilde
+    """
+    if not cat:
+        return "Absoluta"
+
+    # Categorías invariables en género
+    if cat in {"infantil", "juvenil", "junior"}:
+        return cat.capitalize()
+
+    # Cadete -> Cadete (invariable en uso deportivo)
     if cat == "cadete":
         return "Cadete"
-    if cat == "infantil":
-        return "Infantil"
+
+    # Absoluto -> Absoluta
+    if cat == "absoluto":
+        return "Absoluta"
+
+    # Combinado -> Combinada (si lo tienes en algún PDF)
+    if cat == "combinado":
+        return "Combinada"
+
+    # Máster R4 (+xxx)
     if cat.startswith("master_r4_"):
-        return "Máster R4 " + cat.split("master_r4_", 1)[1].replace("_", "")
+        val = cat.split("master_r4_", 1)[1].replace("_", "")
+        return f"Máster R4 {val}"
+
+    # Máster rangos / sumas
     if cat.startswith("master_"):
-        return "Máster " + cat.split("master_", 1)[1].replace("_", "")
-    if cat == "juvenil":
-        return "Juvenil"
-    if cat == "junior":
-        return "Junior"
-    return "Absoluto"
+        val = cat.split("master_", 1)[1].replace("_", "")
+        return f"Máster {val}"
+
+    # Fallback defensivo
+    return "Absoluta"
 
 
 def extract_master_category_and_trim(title: str) -> tuple[Optional[str], str]:
