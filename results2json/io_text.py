@@ -10,7 +10,7 @@
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 
-# pdf2tree/io_text.py
+# results2json/io_text.py
 from __future__ import annotations
 
 import re

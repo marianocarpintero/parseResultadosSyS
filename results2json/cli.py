@@ -151,7 +151,7 @@ def ensure_dirs(output_path: str) -> None:
 # MAIN
 # ------------------------------------------------------------
 def main(argv: Optional[List[str]] = None) -> int:
-    parser = argparse.ArgumentParser(prog="pdf2tree")
+    parser = argparse.ArgumentParser(prog="results2json")
     parser.add_argument(
         "inputs",
         nargs="*",
@@ -389,7 +389,7 @@ def main(argv: Optional[List[str]] = None) -> int:
             "generated_at": datetime.now().astimezone().isoformat(timespec="seconds"),
             "timezone": "Europe/Madrid",
             "source": {
-                "generator": "pdf2tree",
+                "generator": "results2json",
                 "club": args.club,
                 "inputs": inputs,
                 "inputs_resolved": processed,

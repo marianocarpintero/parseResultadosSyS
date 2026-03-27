@@ -22,7 +22,7 @@ Describe claramente qué funcionalidad propones.
 
 Marca lo que aplique:
 
-- [ ] Parser (`pdf2tree`)
+- [ ] Parser (`results2json`)
 - [ ] Normalización
 - [ ] Modelo canónico
 - [ ] Contrato JSON

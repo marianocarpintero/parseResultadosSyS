@@ -10,7 +10,7 @@
 # along with this program. If not, see <https://www.gnu.org/licenses/>.
 
 
-# pdf2tree/io_xls.py
+# results2json/io_xls.py
 from __future__ import annotations
 
 from dataclasses import asdict

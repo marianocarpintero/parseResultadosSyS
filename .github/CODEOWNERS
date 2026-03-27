@@ -11,7 +11,7 @@
 # Núcleo del parser (zona crítica)
 # ─────────────────────────────────────────────
 /pdf2json.py            @marianocarpintero
-/pdf2tree/              @marianocarpintero
+/results2json/              @marianocarpintero
 
 # ─────────────────────────────────────────────
 # Contrato de datos (no romper sin revisión)
