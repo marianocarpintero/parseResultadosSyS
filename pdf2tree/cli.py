@@ -29,6 +29,7 @@ from datetime import datetime
 from typing import Optional, List, Tuple, Dict, Any
 
 from .io_pdf import iter_pdf_pages, dump_extract_text
+from .io_text import iter_text_pages
 from .tokenize import Tokenizer
 from .parser import SinglePassParser
 from .builders import DimensionsBuilder, ResultsBuilder, build_tree, prune_dimensions_by_results, reconcile_athletes_and_results
@@ -60,6 +61,35 @@ def resolve_pdf_inputs(inputs: List[str], debug: bool = False) -> List[str]:
         # Normalizar separadores (soporta Windows/Linux)
         raw_norm = raw.replace("\\", "/")
 
+        # ################################################
+        #  
+        # --- NUEVO: TXT fixture ---
+        # --- Se usa para probar nuevos formatos de PDF simulándolos con TXT ---
+        #
+        # #################################################
+        if raw_norm.lower().endswith(".txt") or raw_norm.lower().endswith("*.txt"):
+            # patrón con wildcards
+            if "*" in raw_norm or "?" in raw_norm:
+                matches = glob(raw_norm)
+                if debug:
+                    print(f"DEBUG resolve TXT pattern: {raw} -> {raw_norm} -> {len(matches)} matches")
+                resolved.extend(matches)
+            else:
+                # fichero directo
+                if os.path.exists(raw_norm):
+                    resolved.append(raw_norm)
+                    if debug:
+                        print(f"DEBUG resolve TXT file: {raw} -> OK")
+                else:
+                    if debug:
+                        print(f"DEBUG resolve TXT file: {raw} -> NOT FOUND")
+            continue
+
+        # ################################################
+        #  
+        # --- Proceso habitual de PDF ---
+        #
+        # #################################################
         # Construir path relativo a ./PDF salvo que sea absoluto o ya apunte a ./PDF
         if os.path.isabs(raw_norm):
             base_pattern = raw_norm
@@ -234,7 +264,8 @@ def main(argv: Optional[List[str]] = None) -> int:
                 source_file=os.path.basename(pdf_path),
             ))
 
-            for page in iter_pdf_pages(pdf_path):
+            page_iter = iter_text_pages(pdf_path) if pdf_path.lower().endswith(".txt") else iter_pdf_pages(pdf_path)
+            for page in page_iter:
                 # --- IGNORAR PÁGINAS DE CLASIFICACIÓN GENERAL (no son resultados) ---
                 page_text_low = (page.text or "").lower()
                 if "clasificación general" in page_text_low or "clasificacion general" in page_text_low:
@@ -319,19 +350,26 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     with open(output_path, "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
-        # Dump opcional: se guarda en ./JSON/dump/<nombre_del_json>.txt
-        if args.dump:
-            out_base = os.path.basename(output_path)
-            out_stem = os.path.splitext(out_base)[0]
-            dump_path = os.path.join(dump_dir, f"{out_stem}.txt")
 
-            # Sobrescribe una vez y luego concatena
-            first = True
-            for pdf_path in pdf_files:
-                dump_extract_text(pdf_path, dump_path, mode=("w" if first else "a"))
-                first = False
-            if args.debug:
-                print("DEBUG dump extract_text ->", dump_path)
+        # Dump opcional: se guarda en ./JSON/dump/<salida>.txt
+        # Requisito: si el input es TXT, --dump NO hace nada.
+        if args.dump:
+            pdf_only = [p for p in pdf_files if p.lower().endswith(".pdf")]
+            if pdf_only:
+                out_base = os.path.basename(output_path)
+                out_stem = os.path.splitext(out_base)[0]
+                dump_path = os.path.join(dump_dir, f"{out_stem}.txt")
+
+                first = True
+                for p in pdf_only:
+                    dump_extract_text(p, dump_path, mode=("w" if first else "a"))
+                    first = False
+
+                if args.debug:
+                    print("DEBUG dump extract_text ->", dump_path)
+            else:
+                if args.debug:
+                    print("DEBUG dump omitido: no hay PDFs (solo TXT).")
 
     if args.debug:
         print(f"\nDEBUG JSON generado en {output_path}")

@@ -93,7 +93,9 @@ def is_header_start(line: str) -> bool:
         u.startswith("RESULTADOS FINAL") or
         u.startswith("RESULTADOS DEFINITIVOS") or
         u.startswith("DEFINITIVE RESULTS") or
-        u.startswith("SERIES PRELIMINARES")
+        u.startswith("SERIES PRELIMINARES") or
+        u.startswith("FINALES") or
+        u.startswith("FINALS")
     )
 
 def is_ordinal_only_line(line: str) -> bool:
@@ -158,13 +160,45 @@ def extract_header_lines(pdf, debug: bool = False) -> List[str]:
 
     return []
 
+def extract_header_lines_from_text(txt_path: str, debug: bool = False) -> List[str]:
+    """
+    Devuelve las líneas de cabecera detectadas desde un fixture TXT (formato dump con PAGE X/Y),
+    recorriendo páginas con iter_text_pages() y aplicando las mismas reglas de cabecera.
+    """
+    # import local para no forzar dependencias al importar headers.py
+    from .io_text import iter_text_pages
+
+    for page in iter_text_pages(txt_path):
+        lines = page.lines  # ya vienen normalizadas como iter_pdf_pages() [1](https://myoffice.accenture.com/personal/mariano_carpintero_accenture_com/Documents/Microsoft%20Copilot%20Chat%20Files/tokenize.py)
+
+        for i, ln in enumerate(lines):
+            if is_header_start(ln):
+                header: List[str] = []
+                for j in range(i, len(lines)):
+                    header.append(lines[j])
+                    if is_date_line(lines[j]):
+                        if debug:
+                            print("DEBUG cabecera TXT detectada:")
+                            for x in header:
+                                print(" ", x)
+                        return header
+
+                # fallback: si no detecta fecha, devuelve primeras líneas tras el inicio
+                if debug:
+                    print("DEBUG cabecera TXT (sin fecha detectada, fallback):")
+                    for x in lines[i:i + 12]:
+                        print(" ", x)
+                return lines[i:i + 12]
+
+    return []
+
 
 # ------------------------------------------------------------
 # Header parsing hook
 # ------------------------------------------------------------
 def try_parse_header(pdf_path: str, debug: bool = False) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     """
-    Intenta usar un parser de cabecera real si existe (recomendado).
+    Intenta usar un parser de cabecera real si existe desde un PDF o un TXT (los .txt se usan para pruebas).
     Si no existe todavía en tu refactor, hace fallback a valores mínimos.
 
     Devuelve:
@@ -175,6 +209,23 @@ def try_parse_header(pdf_path: str, debug: bool = False) -> Tuple[Dict[str, Any]
     # - Si has movido tus funciones de cabecera a pdf2tree.headers, las usamos.
     # - Si no, fallback.
     try:
+        # ################################################
+        #  
+        # --- NUEVO: TXT fixture ---
+        # --- Se usa para probar nuevos formatos de PDF simulándolos con TXT ---
+        #
+        # #################################################
+        if (pdf_path or "").lower().endswith(".txt"):
+            header_lines = extract_header_lines_from_text(pdf_path, debug=debug)
+            competition = parse_competition_from_header(header_lines, debug=debug)
+            season = parse_season_from_header(header_lines, competition=competition, debug=debug)
+            return competition, season
+
+        # ################################################
+        #  
+        # --- Proceso habitual de PDF ---
+        #
+        # #################################################
         with pdfplumber.open(pdf_path) as pdf:
             header_lines = extract_header_lines(pdf, debug=debug)
         competition = parse_competition_from_header(header_lines, debug=debug)
