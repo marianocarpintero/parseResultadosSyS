@@ -7,6 +7,10 @@
 
 /PDF
 /JSON
+/tests
+/results2json/__pycache__
+/tools/__pycache__
+/pacifico_merge/__pycache__
 
 
 

@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-from pdf2tree.cli import main
+import sys
+from results2json.cli import main
 
 if __name__ == "__main__":
+    argv = sys.argv[1:]
+    if "--allow-txt" not in argv:
+        argv = ["--allow-txt"] + argv
     raise SystemExit(main())

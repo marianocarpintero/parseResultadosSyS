@@ -6,7 +6,7 @@
 **Audiencia**: Desarrolladores, mantenedores, responsables de datos  
 **Objetivo**: Transferencia de conocimiento completa sobre arquitectura, flujos, decisiones de diseño y reglas internas  
 **Nivel técnico**: Medio–Alto  
-**Versión del documento**: 1.3.1
+**Versión del documento**: 1.4.0
 
 ---
 
@@ -15,11 +15,11 @@
 Este documento está diseñado como **material de Knowledge Transfer (KT)**. Su objetivo es que una persona que no ha participado en el desarrollo pueda:
 
 - entender la **arquitectura completa del sistema**,
-- comprender **cómo fluye la información** desde un PDF hasta el JSON final,
+- comprender **cómo fluye la información** desde un fichero de entrada hasta el JSON final,
 - conocer **las decisiones de diseño clave** y los compromisos asumidos,
 - poder **modificar, extender o depurar** el sistema con seguridad y criterio.
 
-Este documento **no sustituye al código**, pero sí explica el *porqué* de su estructura y comportamiento.
+Este documento **no sustituye al código**, pero sí explica el *por qué* de su estructura y comportamiento.
 
 ---
 
@@ -27,14 +27,17 @@ Este documento **no sustituye al código**, pero sí explica el *porqué* de su 
 
 El proyecto sigue una arquitectura de tipo **pipeline secuencial**, donde cada fase transforma los datos y añade contexto, sin perder trazabilidad.
 
-Fases principales:
+Fases principales (pipeline por páginas, aplicable a fuentes textuales):
 
-1. **Entrada**: PDFs oficiales de resultados.
+1. **Entrada**: fuentes textuales oficiales (PDF).
 2. **Parseo estructural**: lectura página a página, detección de cabeceras y filas.
 3. **Normalización**: limpieza lingüística, semántica y tipográfica.
 4. **Modelado canónico**: construcción de entidades (`dimensions`) y resultados (`results`).
 5. **Postprocesado**: deduplicación y remapeos.
 6. **Salida**: generación del JSON contractual.
+
+> **Nota**: no todas las fuentes de entrada siguen este pipeline completo.  
+> Algunas fuentes estructuradas (por ejemplo Excel) utilizan flujos de ingestión alternativos que desembocan directamente en el modelado canónico.
 
 Principios de diseño fundamentales:
 
@@ -47,10 +50,13 @@ Principios de diseño fundamentales:
 
 ### 2.1 Diagrama de flujo general del sistema
 
+Este diagrama representa el **flujo de parsing por páginas**, aplicable a fuentes textuales (principalmente PDFs).
+Las fuentes estructuradas (como hojas Excel) no pasan por las fases de iteración de páginas ni parseo de cabeceras, y utilizan un flujo alternativo de ingestión directa hacia el modelo canónico.
+
 ```mermaid
 graph TD
   A[Inicio ejecución] --> B[Carga argumentos CLI]
-  B --> C[Resolución de PDFs]
+  B --> C[Resolución de entradas]
   C --> D[Iteración por PDF]
   D --> E[Iteración por página]
   E --> F{Página relevante?}
@@ -69,7 +75,10 @@ graph TD
 
 - **Carga argumentos CLI**: se interpretan rutas, comodines y flags (`--strict`).
 - **Filtro por defecto**: si no se proporciona `--club`, el CLI aplica `Pacifico` por defecto para reducir ruido en `dimensions`/`results`.
-- **Resolución de PDFs**: se determina el conjunto real de archivos a procesar.
+- **Resolución de entradas**:
+  - Los PDFs se resuelven siempre bajo el directorio base `./PDF`.
+  - Los ficheros Excel se resuelven por ruta directa o patrón indicado.
+  - Los ficheros TXT no se consideran una fuente de entrada normal y solo se admiten en modos de prueba explícitos.
 - **Iteración por página**: cada página se evalúa de forma independiente.
 - **Página relevante**: se descartan páginas administrativas (ej. "clasificación general").
 - **Parseo de cabecera**: se extrae contexto de competición, prueba y serie.
@@ -79,6 +88,20 @@ graph TD
 - **Postprocesado global**: deduplicaciones y remapeos finales.
 - **Generación JSON**: se emite el contrato definitivo.
 - **Salida JSON**: el fichero se escribe siempre en `./JSON/updatePacifico<fecha_ejecución>.json` (no configurable por argumentos).
+
+### Tipos de entrada soportados
+
+El sistema admite múltiples tipos de entrada, con distintos flujos de procesamiento:
+
+- **PDF**  
+  Fuente principal histórica. Se procesa mediante el pipeline completo de parsing por páginas, detección de cabeceras y normalización.
+
+- **Excel (`.xls`, `.xlsx`, `.xlsm`)**  
+  Fuente estructurada equivalente. Los datos se ingieren directamente mediante lectura tabular y se transforman en entidades canónicas sin pasar por el pipeline de parsing por páginas.
+
+- **TXT (solo pruebas)**  
+  Los ficheros `.txt` se utilizan exclusivamente como *fixtures de test*, simulando la salida de `extract_text()` de un PDF.  
+  No representan una fuente de datos real y no forman parte del uso normal del sistema.
 
 ---
 
@@ -117,16 +140,16 @@ graph LR
 
 ### 3.2 C4 – Containers
 
-``` mermaid
+```mermaid
 graph TD
-  CLI["pdf2json.py<br/>(CLI)"] --> Core["pdf2tree<br/>(Parser & Normalización)"]
+  CLI["jsonResultados.py<br/>(CLI)"] --> Core["results2json<br/>(Parser & Normalización)"]
   Core --> Model["Modelo canónico<br/>(dimensions / results)"]
   Model --> Output[Writer JSON]
 ```
 
 #### Explicación detallada
 
-#### `pdf2json.py` (CLI)
+#### `jsonResultados.py` (CLI)
 
 - Punto de entrada del sistema.
 
@@ -145,7 +168,7 @@ Convenciones adoptadas:
 - La salida JSON tiene ruta y nombre fijados por convención (`./JSON/updatePacifico<fecha_ejecución>.json`).
 - **Filtro por defecto**: si no se proporciona `--club`, el CLI aplica `Pacifico` por defecto para reducir ruido en `dimensions`/`results`.
 
-#### `pdf2tree/` (núcleo del sistema)
+#### `results2json/` (núcleo del sistema)
 
 Contiene **toda la lógica de parsing y normalización**. Es el corazón del proyecto.
 
@@ -184,19 +207,19 @@ Si no se activan explícitamente estos flags, no se generan ficheros auxiliares.
 
 ---
 
-### 3.3 C4 – Components (detalle de `pdf2tree`)
+### 3.3 C4 – Components (detalle de `results2json`)
 
 ```mermaid
 graph TD
-  PageIterator[PageIterator] --> HeaderParser
-  PageIterator --> RowParser
-
-  HeaderParser --> Context
-  Context --> RowParser
-
-  RowParser --> Normalizer
-  Normalizer --> Builders
-  Builders --> Model[Modelo canónico]
+  CLI["CLI (jsonResultados.py)"] --> Resolver[Resolver entradas]
+  Resolver --> PageIter["PageIterator (PDF/TXT)"]
+  Resolver --> ExcelIn["Excel Ingestion (pandas)"]
+  PageIter --> Tokenizer["Tokenizer.classify()"]
+  Tokenizer --> Parser["SinglePassParser.consume()"]
+  Parser --> Builders[DimensionsBuilder + ResultsBuilder]
+  ExcelIn --> Builders
+  Builders --> Post["Postprocesado (reconcile/prune/build_tree)"]
+  Post --> Output[JSON Writer]
 ```
 
 #### Componentes principales
@@ -250,25 +273,18 @@ graph TD
 
 Este diagrama describe **exactamente** la lógica de `SinglePassParser`.
 
-``` Mermaid
+```mermaid
 stateDiagram-v2
-  [*] --> Idle
-
-  Idle --> ReadingPage : Nueva página
-  ReadingPage --> SkippedPage : Página irrelevante
-  SkippedPage --> ReadingPage : Siguiente página
-
-  ReadingPage --> ParsingHeader : Cabecera detectada
-  ParsingHeader --> ParsingRows
-
-  ParsingRows --> NormalizingRow : Fila leída
-  NormalizingRow --> BuildingEntities
-  BuildingEntities --> ParsingRows : Siguiente fila
-
-  ParsingRows --> EndOfPage : Fin de página
-  EndOfPage --> ReadingPage : Siguiente página
-
-  ReadingPage --> [*] : Fin de PDFs
+  [*] --> SEEK_TABLE
+  SEEK_TABLE --> IN_RESULTS: TABLE_HEADER (commit event)
+  IN_RESULTS --> IN_RESULTS: INDIVIDUAL_ROW (emit result)
+  IN_RESULTS --> IN_RELAY_MEMBERS: TEAM_ROW (open relay ctx)
+  IN_RELAY_MEMBERS --> IN_RELAY_MEMBERS: RELAY_MEMBER (append)
+  IN_RELAY_MEMBERS --> IN_RESULTS: expected_size (flush relay)
+  IN_RELAY_MEMBERS --> IN_RESULTS: EVENT_TITLE / CATEGORY_LINE / TABLE_HEADER (flush defensive)
+  IN_RESULTS --> IN_RESULTS: EVENT_TITLE / CATEGORY_LINE (update pending header)
+  IN_RESULTS --> [*]: finalize()
+  IN_RELAY_MEMBERS --> [*]: finalize() (flush)
 ```
 
 #### Lectura del diagrama, estados explicados
@@ -336,24 +352,6 @@ Siempre se emiten resultados consistentes
 
 ---
 
-### 3.6 C4 - Flujo de control de errores y fallback
-
-```mermaid
-graph TD
-  A[Error detectado] --> B{Modo strict?}
-  B -- Sí --> C[Abortar ejecución]
-  B -- No --> D[Registrar warning]
-  D --> E[Continuar parsing]
-```
-
-#### Explicación
-
-- En **modo normal**, el sistema intenta continuar siempre que sea posible.
-- En **modo estricto**, cualquier error estructural invalida la ejecución.
-- Los errores no fatales quedan registrados para auditoría.
-
----
-
 
 ### 3.5 C4 - Diagramas de secuencia
 
@@ -361,20 +359,41 @@ graph TD
 
 ```mermaid
 sequenceDiagram
-  participant PDF
-  participant Parser
-  participant Normalizer
-  participant Model
+  participant CLI as CLI (jsonResultados.py)
+  participant IO as IO (iter_pdf_pages / iter_text_pages)
+  participant Tok as Tokenizer.classify()
+  participant SP as SinglePassParser.consume()
+  participant D as DimensionsBuilder
+  participant R as ResultsBuilder
+  participant Post as Postprocesado (reconcile/prune/build_tree)
+  participant Out as JSON writer
 
-  PDF->>Parser: Página válida
-  Parser->>Parser: Extraer fila
-  Parser->>Normalizer: Datos crudos
-  Normalizer->>Model: Datos normalizados
-  Model->>Model: Resolver atleta / club / evento
-  Model->>Model: Crear resultado
+  CLI->>CLI: try_parse_header(input) (Competition/Season)
+  CLI->>D: add_season(), add_competition()
+
+  CLI->>IO: Iterar páginas
+  loop Por cada página
+    IO->>CLI: PageText (lines)
+    loop Por cada línea
+      CLI->>Tok: classify(page, line_no, line)
+      Tok-->>CLI: Token (TokenType + meta)
+      CLI->>SP: consume(token, competition_id, season_id, date, name_clean)
+      note right of SP: En INDIVIDUAL_ROW emite club/athlete/result\nvía callbacks
+      SP->>D: on_club(), on_athlete(), on_event() (si TABLE_HEADER commit)
+      SP->>R: on_result() (Result)
+    end
+  end
+
+  CLI->>SP: finalize() (flush defensivo si quedaba algo)
+  CLI->>D: build() (dimensions)
+  CLI->>R: build() (results)
+  CLI->>Post: reconcile_athletes_and_results()
+  CLI->>Post: prune_dimensions_by_results()
+  CLI->>Post: build_tree()
+  CLI->>Out: json.dump(meta + dimensions + results + tree)
 ```
 
-#### `Explicación`
+##### `Explicación`
 
 Cada fila del PDF genera **exactamente un resultado**, asociado a un atleta real.
 
@@ -384,21 +403,47 @@ Cada fila del PDF genera **exactamente un resultado**, asociado a un atleta real
 
 ```mermaid
 sequenceDiagram
-  participant PDF
-  participant Parser
-  participant Normalizer
-  participant Model
+  participant CLI as CLI
+  participant IO as IO (pages)
+  participant Tok as Tokenizer.classify()
+  participant SP as SinglePassParser.consume()
+  participant D as DimensionsBuilder
+  participant R as ResultsBuilder
 
-  PDF->>Parser: Fila de relevo
-  Parser->>Normalizer: Datos de equipo
-  Normalizer->>Model: Resultado base del relevo
-  loop Miembros del relevo
-    Model->>Model: Resolver / crear athlete_id sintético
-    Model->>Model: Crear resultado replicado
+  CLI->>CLI: try_parse_header(input) (Competition/Season)
+  CLI->>D: add_season(), add_competition()
+
+  CLI->>IO: Iterar páginas/líneas
+  loop Por cada línea
+    CLI->>Tok: classify(...)
+    Tok-->>CLI: Token
+    CLI->>SP: consume(token,...)
+
+    alt TABLE_HEADER
+      note right of SP: Commit de evento al detectar TABLE_HEADER
+      SP->>D: on_event(Event)
+    else TEAM_ROW (inicio de relevo)
+      note right of SP: Abre RelayContext (club, time, position, expected_size)
+      SP->>D: on_club(Club)
+    else RELAY_MEMBER
+      note right of SP: Añade miembro al RelayContext
+    else expected_size alcanzado
+      note right of SP: flush_relay_context() -> emite N results (uno por miembro)
+      loop Por cada miembro
+        SP->>D: on_athlete(Athlete _na)
+        SP->>R: on_result(Result) (mismo tiempo/pos/status para todos)
+      end
+    else EVENT_TITLE / CATEGORY_LINE / TABLE_HEADER mientras relay abierto
+      note right of SP: Flush defensivo del relevo (aunque incompleto)
+      SP->>R: on_result(Result) (parcial si aplica)
+    end
   end
+
+  CLI->>SP: finalize()
+  note right of SP: finalize() también hace flush si quedó un relevo abierto
 ```
 
-#### `Explicación`
+##### `Explicación`
 
 Un relevo genera **N resultados**, uno por miembro, replicando los datos de equipo.
 
@@ -703,7 +748,7 @@ graph TD
 
 ---
 
-## 4. Anexos técnicos
+## Anexos técnicos
 
 ### Anexo A - Entrada: tipos de líneas del PDF
 
@@ -789,8 +834,6 @@ Se esperan:
 *   2 miembros (lanzamiento de cuerda)
 
 ---
-
-
 
 ### Anexo B – Reglas de normalización
 
@@ -1724,11 +1767,24 @@ Evita crear clubes y atletas falsos
 
 ---
 
-### Anexo H – Guía de extensión del sistema
+### Anexo H - Uso de ficheros TXT como fixtures de test
+
+Para facilitar el desarrollo, depuración y reproducción de casos extremos, el sistema admite la ejecución sobre ficheros `.txt` que representan el texto extraído de un PDF.
+
+Estos ficheros:
+- simulan la salida de `extract_text()`,
+- permiten pruebas deterministas sin depender de PDFs reales,
+- se utilizan exclusivamente en herramientas auxiliares de test.
+
+No deben considerarse una fuente de datos válida en producción.
+
+---
+
+### Anexo I – Guía de extensión del sistema
 
 Este anexo describe **cómo extender el sistema de forma segura**, sin romper compatibilidad ni contratos existentes.
 
-#### H.1 Añadir soporte para un nuevo formato de PDF
+#### I.1 Añadir soporte para un nuevo formato de PDF
 
 1. Analizar si el formato rompe:
    - estructura de cabeceras,
@@ -1745,7 +1801,7 @@ Nunca modificar directamente el modelo para adaptarlo a un PDF concreto.
 
 ---
 
-#### H.2 Añadir una nueva regla de normalización
+#### I.2 Añadir una nueva regla de normalización
 
 1. Implementar la regla en `Normalizer`.
 2. Asegurarse de que es:
@@ -1756,7 +1812,7 @@ Nunca modificar directamente el modelo para adaptarlo a un PDF concreto.
 
 ---
 
-#### H.3 Añadir un nuevo campo al JSON
+#### I.3 Añadir un nuevo campo al JSON
 
 1. Definir el campo en el modelo canónico.
 2. Marcarlo como opcional.
@@ -1765,7 +1821,7 @@ Nunca modificar directamente el modelo para adaptarlo a un PDF concreto.
 
 ---
 
-#### H.4 Modificar reglas de deduplicación
+#### I.4 Modificar reglas de deduplicación
 
 **Cambio crítico**
 
@@ -1775,12 +1831,19 @@ Nunca modificar directamente el modelo para adaptarlo a un PDF concreto.
 
 ---
 
-#### H.5 Principios que no deben romperse
+#### I.5 Principios que no deben romperse
 
 - estabilidad de IDs,
 - semántica de relevos,
 - idempotencia del pipeline,
 - no invención de datos.
+
+---
+
+### J – Semántica de campos de trazabilidad
+
+El campo `meta.source.generator` identifica el sistema responsable de la generación del JSON.
+No representa el tipo de fuente de entrada (PDF, Excel), sino la identidad del proceso generador, y debe considerarse estable a lo largo del tiempo para facilitar auditoría y debugging histórico.
 
 ---
 

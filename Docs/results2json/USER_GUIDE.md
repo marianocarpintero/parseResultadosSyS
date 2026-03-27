@@ -5,13 +5,13 @@
 **Proyecto**: Pacifico – Conversión de resultados deportivos a JSON  
 **Audiencia**: Usuarios finales, analistas, consumidores de datos  
 **Nivel técnico requerido**: Básico  
-**Versión del documento**: 1.0.0
+**Versión del documento**: 1.1.0
 
 ***
 
 ## 1. ¿Para qué sirve este proyecto?
 
-Este proyecto permite convertir **actas oficiales de competiciones deportivas en PDF** en un **fichero JSON estructurado**, homogéneo y reutilizable.
+Este proyecto permite convertir **resultados deportivos oficiales desde PDF y Excel** en un **fichero JSON estructurado**, homogéneo y reutilizable.
 
 Está pensado para personas que quieren:
 
@@ -20,7 +20,7 @@ Está pensado para personas que quieren:
 *   alimentar una web, dashboard o aplicación,
 *   mantener históricos de resultados sin duplicados.
 
-👉 **No necesitas conocer cómo funciona internamente el programa** para usarlo.
+**No necesitas conocer cómo funciona internamente el programa** para usarlo.
 
 ***
 
@@ -28,7 +28,7 @@ Está pensado para personas que quieren:
 
 El programa:
 
-1.  Lee uno o varios archivos **PDF** con resultados
+1.  Lee uno o varios archivos **PDF** o **Excel** con resultados
 2.  Extrae la información relevante de las competiciones
 3.  Normaliza nombres, pruebas y tiempos
 4.  Genera **un único fichero JSON** con todos los datos
@@ -44,13 +44,13 @@ Si ejecutas el programa varias veces con los mismos PDFs:
 
 Todos los PDFs de entrada se buscan **siempre** bajo el directorio:
 
-- `./PDF`
+`/PDF`
 
 Ejemplos válidos de ejecución:
 ```bash
-python pdf2json.py 2026mad.pdf
-python pdf2json.py 2025-2026/2026mad.pdf
-python pdf2json.py 2025-2026/*.pdf
+python jsonResultados.py 2026mad.pdf
+python jsonResultados.py 2025-2026/2026mad.pdf
+python jsonResultados.py 2025-2026/*.pdf
 ```
 
 ***
@@ -59,12 +59,16 @@ python pdf2json.py 2025-2026/*.pdf
 
 ### 4.1 Qué archivos se pueden usar como entrada
 
+El programa admite como entrada:
+
 *   Archivos **PDF**
-*   Deben contener **resultados oficiales de competiciones**
-*   Un PDF puede incluir:
-    *   varias pruebas,
-    *   pruebas individuales y de relevos,
-    *   uno o varios días de competición.
+    *   Deben contener **resultados oficiales de competiciones**
+    *   Un PDF puede incluir:
+        *   varias pruebas,
+        *   pruebas individuales y de relevos,
+        *   uno o varios días de competición.
+* Ficheros Excel (`.xls`, `.xlsx`, `.xlsm`)
+* Ficheros `.txt`. Se utilizan únicamente para pruebas internas y no forman parte del uso normal.
 
 Ejemplo:
 
@@ -89,7 +93,7 @@ El programa ignora sin que tengas que hacer nada:
 
 ## 5. Cómo ejecutar el programa
 
-> ⚠️ Antes de continuar, asegúrate de haber seguido **INSTALLATION\_GUIDE.md**
+> Antes de continuar, asegúrate de haber seguido **INSTALLATION\_GUIDE.md**
 
 ***
 
@@ -98,14 +102,14 @@ El programa ignora sin que tengas que hacer nada:
 Desde la carpeta del proyecto:
 
 ```bash
-python pdf2json.py data/PDFs/2026_01_mayores.pdf
+python jsonResultados.py 2026_01_mayores.pdf
 ```
 
 Qué ocurre:
 
 *   se procesa el PDF,
 *   se genera un fichero JSON de salida.
-*   * el JSON se guarda en `./JSON/updatePacifico<fecha_ejecución>.json`.
+*   * el JSON se guarda en `/JSON/updatePacifico<fecha_ejecución>.json`.
 
 ***
 
@@ -115,14 +119,29 @@ Puedes procesar varios PDFs en una sola ejecución.
 
 #### Windows (PowerShell)
 
+Uso básico
+
 ```powershell
-python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/*.pdf (si quieres usar patrones)
+python jsonResultados.py 2026mad.pdf 2026esp.pdf
+```
+
+O, si quieres usar patrones
+
+```powershell
+python jsonResultados.py 2025-2026/*.pdf
 ```
 
 #### Linux / macOS
 
+Uso básico
+
 ```bash
-python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/*.pdf (si quieres usar patrones)
+python jsonResultados.py 2026mad.pdf 2026esp.pdf
+```
+O, si quieres usar patrones
+
+```bash
+python jsonResultados.py 2025-2026/*.pdf
 ```
 
 Resultado:
@@ -139,7 +158,7 @@ El programa se ejecuta desde línea de comandos y acepta varios argumentos.
 ### 6.1 PDFs de entrada (obligatorio)
 
 ```text
-python pdf2json.py <pdf1> <pdf2> ...
+python jsonResultados.py <pdf1> <pdf2> ...
 ```
 
 *   Puedes pasar:
@@ -147,7 +166,7 @@ python pdf2json.py <pdf1> <pdf2> ...
     *   varios archivos,
     *   comodines (`*.pdf`).
 
-👉 **Este argumento define qué datos se procesan.**
+**Este argumento define qué datos se procesan.**
 
 ***
 
@@ -156,21 +175,23 @@ python pdf2json.py <pdf1> <pdf2> ...
 (opcional) Filtra los resultados por club (argumento repetible).
 Puedes filtrar la salida para quedarte solo con los resultados de uno o varios clubes. Por defecto se filtra sólo para Pacifico.
 
-Ejemplo 1 (si no se especifica el argumento se filtra para Pacifico):
+**Ejemplo 1** (si no se especifica el argumento se filtra para Pacifico):
 ```bash
-python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/202501mayores.pdf o python pdf2json.py 2025-2026/*.pdf
+python jsonResultados.py 2026mad.pdf
+python jsonResultados.py 2025-2026/202501mayores.pdf
+python jsonResultados.py 2025-2026/*.pdf
 ```
 
-Ejemplo 2 (un club):
+**Ejemplo 2** (un club):
 ```bash
-python pdf2json.py 2026mad.pdf --club Pacifico
+python jsonResultados.py 2026mad.pdf --club Pacifico
 ```
 
 El resultado de los ejemplos 1 y 2 es el mismo.
 
-Ejemplo 3 (varios filtros; se aceptan múltiples ocurrencias):
+**Ejemplo 3** (varios filtros; se aceptan múltiples ocurrencias):
 ```bash
-python pdf2json.py 2026mad.pdf --club Pacifico --club Canoe
+python jsonResultados.py 2026mad.pdf --club Pacifico --club Canoe
 ```
 
 ***
@@ -180,7 +201,7 @@ python pdf2json.py 2026mad.pdf --club Pacifico --club Canoe
 (opcional) Genera un fichero de trazabilidad del parsing.
 Si activas `--trace`, se genera un fichero de trazabilidad en:
 
-- `./JSON/trace/<salida>.jsonl`
+- `/JSON/trace/<salida>.jsonl`
 
 donde `<salida>` es el nombre del JSON de salida sin `.json`.
 
@@ -194,10 +215,10 @@ Si no se especifica `--trace`, no se genera ningún fichero.
 Si necesitas depurar qué texto leyó el extractor del PDF, puedes generar un dump:
 
 ```bash
-python pdf2json.py 2026mad.pdf --club Pacifico --dump
+python jsonResultados.py 2026mad.pdf --club Pacifico --dump
 ```
 Se generará un fichero en:
-*   ./JSON/dump/<nombre_json_salida>.txt
+*   /JSON/dump/<nombre_json_salida>.txt
 
 ***
 
@@ -206,7 +227,7 @@ Se generará un fichero en:
 (opcional) Si un PDF provoca un error de parsing, el programa se detiene y no genera salida parcial.
 
 ```bash
-python pdf2json.py 2026mad.pdf --strict
+python jsonResultados.py 2026mad.pdf --strict
 ```
 
 Qué hace:
@@ -238,7 +259,7 @@ Modo normal (sin `--strict`):
 
 El programa genera un **fichero JSON** en:
 
-  `./JSON/updatePacifico<fecha_ejecución>.json`
+  `/JSON/updatePacifico<fecha_ejecución>.json`
 
 El nombre incluye la fecha y hora de ejecución para evitar sobrescrituras.
 No existe ningún argumento para cambiar el nombre o la carpeta de salida.
@@ -294,7 +315,7 @@ Características importantes:
 
 Cada elemento de `results` representa:
 
-> **Un deportista en una prueba concreta, en una competición concreta**
+> **Los resultados de un deportista en una prueba concreta, en una competición concreta**
 
 Incluye, entre otros:
 
@@ -305,7 +326,7 @@ Incluye, entre otros:
 *   posición,
 *   estado del resultado.
 
-👉 **Esta es la sección recomendada para análisis, gráficos y estadísticas.**
+**Esta es la sección recomendada para análisis, gráficos y estadísticas.**
 
 ***
 
@@ -320,18 +341,18 @@ Incluye, entre otros:
 *   navegación,
 *   visualización en webs.
 
-⚠️ No se recomienda usarla para cálculos o cruces complejos.
+**Nota:** No se recomienda usarla para cálculos o cruces complejos.
 
 ***
 
 ### 7.6 Ubicación y nombre del fichero generado (importante)
 El programa genera **siempre** el JSON en esta ruta:
 
-- `./JSON/updatePacifico<fecha_ejecución>.json`
+- `/JSON/updatePacifico<fecha_ejecución>.json`
 
 Donde `<fecha_ejecución>` corresponde al momento de ejecución (por ejemplo: `20260324_142530`).
 
-⚠️ **No existe un argumento para cambiar el nombre o la carpeta de salida.**
+**Nota:** No existe un argumento para cambiar el nombre o la carpeta de salida.
 
 ***
 
@@ -432,17 +453,8 @@ Garantías:
 
 | Documento                | Para qué sirve                    |
 | ------------------------ | --------------------------------- |
-| `INSTALLATION_GUIDE.md`  | Instalación y ejecución           |
 | `USER_GUIDE.md`          | Uso del programa (este documento) |
+| `INSTALLATION_GUIDE.md`  | Instalación y ejecución           |
 | `JSON_CONTRACT.md`       | Referencia técnica del JSON       |
 | `TECHNICAL_REFERENCE.md` | Funcionamiento interno            |
 
-***
-
-## 13. Resumen rápido
-
-✅ Ejecutas el programa con PDFs  
-✅ Obtienes un JSON estructurado  
-✅ Usas `results` para análisis  
-✅ Usas `tree` para navegación  
-✅ Puedes actualizar datos sin duplicados

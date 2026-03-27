@@ -43,7 +43,7 @@ from .headers import try_parse_header
 # ------------------------------------------------------------
 # Utilidades CLI
 # ------------------------------------------------------------
-def resolve_inputs(inputs: List[str], debug: bool = False) -> List[str]:
+def resolve_inputs(inputs: List[str], debug: bool = False, allow_txt: bool = False) -> List[str]:
     """
     inputs: lista de strings que pueden ser:
     - nombre directo: "2026mad.pdf" o "2026mad"
@@ -62,13 +62,15 @@ def resolve_inputs(inputs: List[str], debug: bool = False) -> List[str]:
         # Normalizar separadores (soporta Windows/Linux)
         raw_norm = raw.replace("\\", "/")
 
+        raw_low = raw_norm.lower()
+
         # ################################################
         #  
         # --- NUEVO: TXT fixture ---
         # --- Se usa para probar nuevos formatos de PDF simulándolos con TXT ---
         #
         # #################################################
-        if raw_norm.lower().endswith(".txt") or raw_norm.lower().endswith("*.txt"):
+        if allow_txt and (raw_low.endswith(".txt") or raw_low.endswith("*.txt")):
             # patrón con wildcards
             if "*" in raw_norm or "?" in raw_norm:
                 matches = glob(raw_norm)
@@ -91,7 +93,7 @@ def resolve_inputs(inputs: List[str], debug: bool = False) -> List[str]:
         # --- NUEVO: XLS ---
         #
         # #################################################
-        if raw_norm.lower().endswith((".xlsx", ".xlsm", ".xls")) or raw_norm.lower().endswith(("\\*.xlsx", "\\*.xlsm", "\\*.xls")):
+        if raw_low.endswith((".xlsx", ".xlsm", ".xls")) or raw_low.endswith(("\\*.xlsx", "\\*.xlsm", "\\*.xls")):
             if "*" in raw_norm or "?" in raw_norm:
                 matches = glob(raw_norm)
                 if debug:
@@ -151,9 +153,11 @@ def ensure_dirs(output_path: str) -> None:
 def main(argv: Optional[List[str]] = None) -> int:
     parser = argparse.ArgumentParser(prog="pdf2tree")
     parser.add_argument(
-        "pdf_inputs",
+        "inputs",
         nargs="*",
-        help="PDF(s) o patrones dentro de ./PDF. Ej: 2026mad.pdf 2025-2026/2026mad.pdf 2025* *.pdf"
+        help="Inputs normales: PDF/XLS/XLSX/XLSM. Patrones dentro de ./PDF o rutas directas. "
+            "TXT solo en modo tests con --allow-txt."
+
     )
 
     parser.add_argument(
@@ -189,6 +193,12 @@ def main(argv: Optional[List[str]] = None) -> int:
         help="(opcional) Genera un dump del texto extraído (extract_text) en ./JSON/dump/<salida>.txt."
     )
 
+    parser.add_argument(
+        "--allow-txt",
+        action="store_true",
+        help="(solo tests) Permite procesar fixtures .txt con formato dump. Por defecto NO se aceptan .txt."
+        )
+
     args = parser.parse_args(argv)
     # ------------------------------------------------------------
     # Salida JSON: SIEMPRE en ./JSON/updatePacifico<fecha_ejecución>.json
@@ -221,7 +231,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     # Resolver inputs
     inputs = args.pdf_inputs if args.pdf_inputs else ["*.pdf"]
-    pdf_files = resolve_inputs(inputs, debug=args.debug)
+    pdf_files = resolve_inputs(inputs, debug=args.debug, allow_txt=args.allow_txt)
     if not pdf_files:
         raise SystemExit("No se encontraron PDFs con los patrones indicados en ./PDF")
 
@@ -300,7 +310,16 @@ def main(argv: Optional[List[str]] = None) -> int:
                 processed.extend(processed_x)
                 continue
 
-            page_iter = iter_text_pages(input_path) if input_path.lower().endswith(".txt") else iter_pdf_pages(input_path)
+            if input_path.lower().endswith(".txt"):
+                if not args.allow_txt:
+                    raise ValueError("Input .txt no permitido en modo normal. Usa tools/txt2json.py o --allow-txt")
+                page_iter = iter_text_pages(input_path)
+
+            if input_path.lower().endswith(".pdf"):
+                page_iter = iter_pdf_pages(input_path)
+            else:
+                raise ValueError("Tipo de fichero no admitido.\nInputs normales: PDF/XLS/XLSX/XLSM. Patrones dentro de ./PDF o rutas directas.\nTXT solo en modo tests con --allow-txt.")
+
             for page in page_iter:
                 # --- IGNORAR PÁGINAS DE CLASIFICACIÓN GENERAL (no son resultados) ---
                 page_text_low = (page.text or "").lower()

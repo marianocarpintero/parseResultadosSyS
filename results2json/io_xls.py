@@ -138,7 +138,7 @@ def process_xls(
     debug: bool = False,
 ) -> List[str]:
     """
-    Lee XLS y emite Season/Competition/Club/Athlete/Event/Result con el schema de pdf2tree.
+    Lee XLS y emite Season/Competition/Club/Athlete/Event/Result con el schema de results2json.
     """
     path = Path(xls_path)
     df = pd.read_excel(path, engine="openpyxl")

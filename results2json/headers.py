@@ -206,7 +206,7 @@ def try_parse_header(input_path: str, debug: bool = False) -> Tuple[Dict[str, An
       season: dict con {id,label}
     """
     # Hook opcional:
-    # - Si has movido tus funciones de cabecera a pdf2tree.headers, las usamos.
+    # - Si has movido tus funciones de cabecera a results2json.headers, las usamos.
     # - Si no, fallback.
     try:
         # ################################################

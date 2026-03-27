@@ -5,7 +5,7 @@
 **Proyecto**: Pacifico – Resultados deportivos estructurados  
 **Audiencia**: Desarrolladores, integradores, analistas técnicos  
 **Propósito**: Definir el formato y significado del JSON generado  
-**Versión del documento**: 1.0.0  
+**Versión del documento**: 1.0.1  
 **Versión del contrato**: Ver campo `meta.version`
 
 ***
@@ -62,7 +62,7 @@ Contiene metadatos sobre **cómo y cuándo** se ha generado el fichero.
 
 ```json
 "source": {
-  "generator": "pdf2tree",
+  "generator": "jsonResultados",
   "inputs": [".\\PDF\\*.pdf"],
   "inputs_resolved": ["2026ddcc.pdf", "..."],
   "skipped": []
@@ -254,7 +254,7 @@ Vista **plana y analítica** de todos los resultados.
 | `points`         | number        | ✅           | Puntos        |
 | `series_type`    | string        | ✅           | Tipo de serie |
 | `labels`         | object        | ❌           | Etiquetas     |
-| `heat`           | number / null | ❌           | Manga         |
+| `heat`           | number / null | ❌           | Serie         |
 
 #### `time`
 
@@ -265,6 +265,12 @@ Vista **plana y analítica** de todos los resultados.
   "raw": "00:31:93"
 }
 ```
+
+| Campo            | Tipo          | Obligatorio | Descripción   |
+| ---------------- | ------------- | ----------- | ------------- |
+| `display`        | string        | ✅         | Tiempo para mostrar.<br>Se expresa en `mm:ss.ms` |
+| `seconds`        | string        | ✅         | Conversión del tiempo a segundos para gráficas.<br>Se expresa en `ss.cs` |
+| `raw`            | string        | ✅         | Tiempo en el fichero de entrada.<br>Se espresa en `hh:mm:ss`. |
 
 #### `labels`
 
@@ -297,7 +303,7 @@ Ejemplo:
   "id": "e_4x25_m_relevo_natacion_con_obstaculos_absoluto_f",
   "base": "4x25 m Relevo Natación con Obstáculos",
   "discipline": "Relevo Natación con Obstáculos",
-  "category": "Absoluto",
+  "category": "Absoluta",
   "sex": "F",
   "relay": true,
   "distance_m": "4x25"
@@ -471,7 +477,7 @@ season
 *   presentación en web,
 *   tablas jerárquicas.
 
-⚠️ **No es la fuente recomendada para análisis**.
+> **No es la fuente recomendada para análisis**.
 
 ***
 
@@ -496,13 +502,3 @@ Consultar siempre:
 ```json
 meta.version
 ```
-
-***
-
-## 8. Resumen
-
-✅ Modelo relacional  
-✅ IDs estables  
-✅ Extensible  
-✅ Apto para análisis y visualización  
-✅ Contrato claro para terceros

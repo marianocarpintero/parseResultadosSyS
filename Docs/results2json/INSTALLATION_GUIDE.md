@@ -9,7 +9,7 @@
 *   Windows (PowerShell)
 *   Linux / macOS (shell tipo bash o zsh)
 
-**Versión del documento**: 1.0.0
+**Versión del documento**: 1.1.0
 
 ***
 
@@ -83,8 +83,8 @@ Python 3.11.6
     *   <https://www.python.org/downloads/windows/>
 
 2.  Durante la instalación:
-    *   ✅ Marca **“Add Python to PATH”**
-    *   ✅ Usa la instalación recomendada
+    *   Marca **“Add Python to PATH”**
+    *   Usa la instalación recomendada
 
 3.  Abre una **nueva** ventana de PowerShell y comprueba:
 
@@ -127,8 +127,8 @@ El proyecto debe tener, como mínimo, esta estructura:
 
 ```text
 project/
-├── pdf2json.py
-├── pdf2tree/
+├── jsonResultados.py
+├── results2json
 │   ├── __init__.py
 │   ├── parser.py
 │   ├── normalize.py
@@ -138,7 +138,7 @@ project/
     └── PDFs/
 ```
 
-> El nombre de las carpetas puede variar, pero **`pdf2json.py` debe existir**.
+> El nombre de las carpetas puede variar, pero **`jsonResultados.py` debe existir**.
 
 ***
 
@@ -215,7 +215,7 @@ pip install -r requirements.txt
 
 Esto instalará automáticamente todas las librerías necesarias.
 
-Si no hay errores, la instalación está completa ✅
+Si no hay errores, la instalación está completa.
 
 ***
 
@@ -244,7 +244,7 @@ data/PDFs/
 Desde la carpeta del proyecto:
 
 ```bash
-python pdf2json.py data/PDFs/2026_01_mayores.pdf
+python jsonResultados.py data/PDFs/2026_01_mayores.pdf
 ```
 
 Salida esperada:
@@ -258,13 +258,13 @@ Salida esperada:
 #### Windows (PowerShell)
 
 ```powershell
-python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/*.pdf (si quieres usar patrones)
+python jsonResultados.py 2026mad.pdf o python jsonResultados.py 2025-2026/*.pdf (si quieres usar patrones)
 ```
 
 #### Linux / macOS
 
 ```bash
-python pdf2json.py 2026mad.pdf o python pdf2json.py 2025-2026/*.pdf (si quieres usar patrones)
+python jsonResultados.py 2026mad.pdf o python jsonResultados.py 2025-2026/*.pdf (si quieres usar patrones)
 ```
 
 Todos los PDFs se procesan y se combinan en **un único JSON**.
@@ -294,7 +294,7 @@ Si no hay salida → ✅ JSON válido.
 
 ## 10. Problemas frecuentes y soluciones
 
-### ❌ El comando `python` no funciona
+### El comando `python` no funciona
 
 *   Prueba `python3`
 *   Reabre la terminal
@@ -302,7 +302,7 @@ Si no hay salida → ✅ JSON válido.
 
 ***
 
-### ❌ Error instalando dependencias
+### Error instalando dependencias
 
 ```text
 pip: command not found
@@ -316,7 +316,7 @@ python -m pip install --upgrade pip
 
 ***
 
-### ❌ Caracteres raros (ñ, acentos) en Windows
+### Caracteres raros (ñ, acentos) en Windows
 
 Asegúrate de usar UTF‑8:
 
@@ -342,12 +342,3 @@ Para eso existen:
 *   `JSON_CONTRACT.md`
 *   `TECHNICAL_REFERENCE.md`
 
-***
-
-## 12. Resumen rápido
-
-✅ Instalas Python  
-✅ Creas un entorno virtual  
-✅ Instalas dependencias  
-✅ Ejecutas `pdf2json.py`  
-✅ Obtienes un JSON reutilizable
