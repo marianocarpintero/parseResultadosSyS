@@ -30,6 +30,7 @@ from typing import Optional, List, Tuple, Dict, Any
 
 from .io_pdf import iter_pdf_pages, dump_extract_text
 from .io_text import iter_text_pages
+from .io_xls import process_xls
 from .tokenize import Tokenizer
 from .parser import SinglePassParser
 from .builders import DimensionsBuilder, ResultsBuilder, build_tree, prune_dimensions_by_results, reconcile_athletes_and_results
@@ -42,7 +43,7 @@ from .headers import try_parse_header
 # ------------------------------------------------------------
 # Utilidades CLI
 # ------------------------------------------------------------
-def resolve_pdf_inputs(inputs: List[str], debug: bool = False) -> List[str]:
+def resolve_inputs(inputs: List[str], debug: bool = False) -> List[str]:
     """
     inputs: lista de strings que pueden ser:
     - nombre directo: "2026mad.pdf" o "2026mad"
@@ -86,6 +87,27 @@ def resolve_pdf_inputs(inputs: List[str], debug: bool = False) -> List[str]:
             continue
 
         # ################################################
+        #
+        # --- NUEVO: XLS ---
+        #
+        # #################################################
+        if raw_norm.lower().endswith((".xlsx", ".xlsm", ".xls")) or raw_norm.lower().endswith(("\\*.xlsx", "\\*.xlsm", "\\*.xls")):
+            if "*" in raw_norm or "?" in raw_norm:
+                matches = glob(raw_norm)
+                if debug:
+                    print(f"DEBUG resolve XLS pattern: {raw} -> {raw_norm} -> {len(matches)} matches")
+                resolved.extend(matches)
+            else:
+                if os.path.exists(raw_norm):
+                    resolved.append(raw_norm)
+                    if debug:
+                        print(f"DEBUG resolve XLS file: {raw} -> OK")
+                else:
+                    if debug:
+                        print(f"DEBUG resolve XLS file: {raw} -> NOT FOUND")
+            continue
+
+        # ################################################
         #  
         # --- Proceso habitual de PDF ---
         #
@@ -120,6 +142,7 @@ def ensure_dirs(output_path: str) -> None:
     out_dir = os.path.dirname(output_path) or "."
     os.makedirs(out_dir, exist_ok=True)
     os.makedirs("./PDF", exist_ok=True)
+    os.makedirs("./XLS", exist_ok=True)
 
 
 # ------------------------------------------------------------
@@ -198,7 +221,7 @@ def main(argv: Optional[List[str]] = None) -> int:
 
     # Resolver inputs
     inputs = args.pdf_inputs if args.pdf_inputs else ["*.pdf"]
-    pdf_files = resolve_pdf_inputs(inputs, debug=args.debug)
+    pdf_files = resolve_inputs(inputs, debug=args.debug)
     if not pdf_files:
         raise SystemExit("No se encontraron PDFs con los patrones indicados en ./PDF")
 
@@ -217,7 +240,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     # Contador de competitions para fallback de ids
     comp_counter = 0
 
-    for pdf_path in pdf_files:
+    for input_path in pdf_files:
         parser_sp = None
         comp_id = None
         season_id = None
@@ -236,10 +259,10 @@ def main(argv: Optional[List[str]] = None) -> int:
             comp_counter += 1
             if args.debug:
                 print("\n========================================")
-                print("DEBUG procesando:", os.path.basename(pdf_path))
+                print("DEBUG procesando:", os.path.basename(input_path))
                 print("========================================")
 
-            competition, season = try_parse_header(pdf_path, debug=args.debug)
+            competition, season = try_parse_header(input_path, debug=args.debug)
 
             season_id = season.get("id", "s_unknown")
             season_label = season.get("label", "Temporada (desconocida)")
@@ -261,18 +284,30 @@ def main(argv: Optional[List[str]] = None) -> int:
                 location=competition.get("location", ""),
                 region=competition.get("region", ""),
                 pool_type=competition.get("pool_type", ""),
-                source_file=os.path.basename(pdf_path),
+                source_file=os.path.basename(input_path),
             ))
 
-            page_iter = iter_text_pages(pdf_path) if pdf_path.lower().endswith(".txt") else iter_pdf_pages(pdf_path)
+            # --- NUEVO: XLS ---
+            if input_path.lower().endswith((".xlsx", ".xlsm", ".xls")):
+                processed_x = process_xls(
+                    input_path,
+                    dims=dims,
+                    resb=resb,
+                    trace=trace_sink,
+                    club_filters=args.club,
+                    debug=args.debug,
+                )
+                processed.extend(processed_x)
+                continue
+
+            page_iter = iter_text_pages(input_path) if input_path.lower().endswith(".txt") else iter_pdf_pages(input_path)
             for page in page_iter:
                 # --- IGNORAR PÁGINAS DE CLASIFICACIÓN GENERAL (no son resultados) ---
                 page_text_low = (page.text or "").lower()
                 if "clasificación general" in page_text_low or "clasificacion general" in page_text_low:
                     if args.debug:
-                        print(f"DEBUG skip page {page.page_index} (clasificación general) en {os.path.basename(pdf_path)}")
+                        print(f"DEBUG skip page {page.page_index} (clasificación general) en {os.path.basename(input_path)}")
                     continue
-
                 for line_no, line in enumerate(page.lines, start=1):
                     line = unicodedata.normalize("NFC", line)
                     tok = tokenizer.classify(page.page_index, line_no, line)
@@ -284,13 +319,13 @@ def main(argv: Optional[List[str]] = None) -> int:
                         competition_name_clean=comp_name_clean
                     )
 
-            processed.append(os.path.basename(pdf_path))
+            processed.append(os.path.basename(input_path))
 
         except Exception as e:
-            msg = f"{os.path.basename(pdf_path)} -> {e}"
+            msg = f"{os.path.basename(input_path)} -> {e}"
             if args.debug:
                 print("DEBUG ERROR:", msg)
-            skipped.append({"file": os.path.basename(pdf_path), "reason": str(e)})
+            skipped.append({"file": os.path.basename(input_path), "reason": str(e)})
 
             if args.strict:
                 if trace_path and hasattr(trace_sink, "close"):

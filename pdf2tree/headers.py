@@ -196,7 +196,7 @@ def extract_header_lines_from_text(txt_path: str, debug: bool = False) -> List[s
 # ------------------------------------------------------------
 # Header parsing hook
 # ------------------------------------------------------------
-def try_parse_header(pdf_path: str, debug: bool = False) -> Tuple[Dict[str, Any], Dict[str, Any]]:
+def try_parse_header(input_path: str, debug: bool = False) -> Tuple[Dict[str, Any], Dict[str, Any]]:
     """
     Intenta usar un parser de cabecera real si existe desde un PDF o un TXT (los .txt se usan para pruebas).
     Si no existe todavía en tu refactor, hace fallback a valores mínimos.
@@ -215,8 +215,8 @@ def try_parse_header(pdf_path: str, debug: bool = False) -> Tuple[Dict[str, Any]
         # --- Se usa para probar nuevos formatos de PDF simulándolos con TXT ---
         #
         # #################################################
-        if (pdf_path or "").lower().endswith(".txt"):
-            header_lines = extract_header_lines_from_text(pdf_path, debug=debug)
+        if (input_path or "").lower().endswith(".txt"):
+            header_lines = extract_header_lines_from_text(input_path, debug=debug)
             competition = parse_competition_from_header(header_lines, debug=debug)
             season = parse_season_from_header(header_lines, competition=competition, debug=debug)
             return competition, season
@@ -226,7 +226,7 @@ def try_parse_header(pdf_path: str, debug: bool = False) -> Tuple[Dict[str, Any]
         # --- Proceso habitual de PDF ---
         #
         # #################################################
-        with pdfplumber.open(pdf_path) as pdf:
+        with pdfplumber.open(input_path) as pdf:
             header_lines = extract_header_lines(pdf, debug=debug)
         competition = parse_competition_from_header(header_lines, debug=debug)
         season = parse_season_from_header(header_lines, competition=competition, debug=debug)
@@ -240,8 +240,8 @@ def try_parse_header(pdf_path: str, debug: bool = False) -> Tuple[Dict[str, Any]
         # Date: hoy (mejor que None)
         today = datetime.now().date().isoformat()
         competition = {
-            "name": os.path.basename(pdf_path),
-            "name_clean": os.path.splitext(os.path.basename(pdf_path))[0],
+            "name": os.path.basename(input_path),
+            "name_clean": os.path.splitext(os.path.basename(input_path))[0],
             "location": "",
             "region": "",
             "pool_type": "",

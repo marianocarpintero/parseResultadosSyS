@@ -931,6 +931,19 @@
         "source_file": "2026mad.pdf"
       },
       {
+        "id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+        "season_id": "s_2025_2026",
+        "name": "4ª Jornada – Fase Territorial – XXVI Liga Española Clubes Mayores 25-26 “c.d.m Concepción”",
+        "name_clean": "4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”",
+        "date": "2026-03-21",
+        "date_start": "2026-03-21",
+        "date_end": null,
+        "location": "Madrid",
+        "region": "",
+        "pool_type": "",
+        "source_file": "202604mayores.pdf"
+      },
+      {
         "id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
         "season_id": "s_2025_2026",
         "name": "XIII Campeonato De España Máster De Piscina",
@@ -19396,6 +19409,710 @@
       "heat": null
     },
     {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_remolque_de_maniqui_con_aletas_juvenil_f_a_claudia_mate_garcia_2010_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+      "athlete_id": "a_claudia_mate_garcia_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:19.030",
+        "seconds": 79.03,
+        "raw": "01:19:03"
+      },
+      "status": "OK",
+      "position": 8,
+      "points": 8,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_remolque_de_maniqui_con_aletas_absoluto_f_a_elena_dominguez_pinaderos_2004_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_f",
+      "athlete_id": "a_elena_dominguez_pinaderos_2004",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:18.200",
+        "seconds": 78.2,
+        "raw": "01:18:20"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 1,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_remolque_de_maniqui_con_aletas_juvenil_m_a_inigo_mendez_bodas_2010_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_m",
+      "athlete_id": "a_inigo_mendez_bodas_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:58.520",
+        "seconds": 58.52,
+        "raw": "00:58:52"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 1,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_remolque_de_maniqui_con_aletas_junior_m_a_inaki_cuairan_garay_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_junior_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:59.530",
+        "seconds": 59.53,
+        "raw": "00:59:53"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 1,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_remolque_de_maniqui_con_aletas_junior_m_a_lucas_gabriel_nieto_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_remolque_de_maniqui_con_aletas_junior_m",
+      "athlete_id": "a_lucas_gabriel_nieto_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:03.900",
+        "seconds": 63.9,
+        "raw": "01:03:90"
+      },
+      "status": "OK",
+      "position": 3,
+      "points": 3,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_50_m_remolque_de_maniqui_junior_f_a_gabriela_huertas_sanchez_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_50_m_remolque_de_maniqui_junior_f",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:38.720",
+        "seconds": 38.72,
+        "raw": "00:38:72"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 1,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_50_m_remolque_de_maniqui_juvenil_m_a_alvaro_rojo_paz_2010_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+      "athlete_id": "a_alvaro_rojo_paz_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:35.540",
+        "seconds": 35.54,
+        "raw": "00:35:54"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 1,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_50_m_remolque_de_maniqui_absoluto_m_a_adrian_castellanos_rodriguez_2006_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_50_m_remolque_de_maniqui_absoluto_m",
+      "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "00:32.500",
+        "seconds": 32.5,
+        "raw": "00:32:50"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 1,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_juvenil_f_a_claudia_mate_garcia_2010_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_juvenil_f",
+      "athlete_id": "a_claudia_mate_garcia_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "03:07.640",
+        "seconds": 187.64,
+        "raw": "03:07:64"
+      },
+      "status": "OK",
+      "position": 2,
+      "points": 2,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_junior_f_a_nerea_ibanez_gonzalez_2008_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_junior_f",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:50.390",
+        "seconds": 170.39,
+        "raw": "02:50:39"
+      },
+      "status": "OK",
+      "position": 2,
+      "points": 2,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_junior_f_a_andrea_ibanez_gonzalez_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_junior_f",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:58.620",
+        "seconds": 178.62,
+        "raw": "02:58:62"
+      },
+      "status": "OK",
+      "position": 4,
+      "points": 4,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_junior_f_a_gabriela_huertas_sanchez_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_junior_f",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": null,
+        "seconds": null,
+        "raw": null
+      },
+      "status": "DSQ",
+      "position": 6,
+      "points": 6,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_absoluto_f_a_maria_cruz_gonzalez_2000_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_absoluto_f",
+      "athlete_id": "a_maria_cruz_gonzalez_2000",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:56.740",
+        "seconds": 176.74,
+        "raw": "02:56:74"
+      },
+      "status": "OK",
+      "position": 4,
+      "points": 4,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_absoluto_f_a_elena_dominguez_pinaderos_2004_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_absoluto_f",
+      "athlete_id": "a_elena_dominguez_pinaderos_2004",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "03:24.010",
+        "seconds": 204.01,
+        "raw": "03:24:01"
+      },
+      "status": "OK",
+      "position": 5,
+      "points": 5,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_juvenil_m_a_inigo_mendez_bodas_2010_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_juvenil_m",
+      "athlete_id": "a_inigo_mendez_bodas_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:37.030",
+        "seconds": 157.03,
+        "raw": "02:37:03"
+      },
+      "status": "OK",
+      "position": 2,
+      "points": 2,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_junior_m_a_inaki_cuairan_garay_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_junior_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:37.060",
+        "seconds": 157.06,
+        "raw": "02:37:06"
+      },
+      "status": "OK",
+      "position": 3,
+      "points": 3,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_junior_m_a_jorge_murcia_conde_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_junior_m",
+      "athlete_id": "a_jorge_murcia_conde_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:38.110",
+        "seconds": 158.11,
+        "raw": "02:38:11"
+      },
+      "status": "OK",
+      "position": 5,
+      "points": 5,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_junior_m_a_lucas_gabriel_nieto_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_junior_m",
+      "athlete_id": "a_lucas_gabriel_nieto_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "03:00.130",
+        "seconds": 180.13,
+        "raw": "03:00:13"
+      },
+      "status": "OK",
+      "position": 6,
+      "points": 6,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_absoluto_m_a_adrian_castellanos_rodriguez_2006_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_absoluto_m",
+      "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:26.550",
+        "seconds": 146.55,
+        "raw": "02:26:55"
+      },
+      "status": "OK",
+      "position": 2,
+      "points": 2,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_supersocorrista_absoluto_m_a_alejandro_hernandez_ojeda_2006_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_supersocorrista_absoluto_m",
+      "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:44.280",
+        "seconds": 164.28,
+        "raw": "02:44:28"
+      },
+      "status": "OK",
+      "position": 5,
+      "points": 5,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_socorrista_juvenil_f_a_claudia_mate_garcia_2010_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_socorrista_juvenil_f",
+      "athlete_id": "a_claudia_mate_garcia_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:24.940",
+        "seconds": 84.94,
+        "raw": "01:24:94"
+      },
+      "status": "OK",
+      "position": 5,
+      "points": 5,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_socorrista_junior_f_a_nerea_ibanez_gonzalez_2008_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_socorrista_junior_f",
+      "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:09.100",
+        "seconds": 69.1,
+        "raw": "01:09:10"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 1,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_socorrista_junior_f_a_andrea_ibanez_gonzalez_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_socorrista_junior_f",
+      "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:17.300",
+        "seconds": 77.3,
+        "raw": "01:17:30"
+      },
+      "status": "OK",
+      "position": 3,
+      "points": 3,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_socorrista_junior_f_a_gabriela_huertas_sanchez_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_socorrista_junior_f",
+      "athlete_id": "a_gabriela_huertas_sanchez_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:17.490",
+        "seconds": 77.49,
+        "raw": "01:17:49"
+      },
+      "status": "OK",
+      "position": 4,
+      "points": 4,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_socorrista_absoluto_f_a_elena_dominguez_pinaderos_2004_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_socorrista_absoluto_f",
+      "athlete_id": "a_elena_dominguez_pinaderos_2004",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:28.350",
+        "seconds": 88.35,
+        "raw": "01:28:35"
+      },
+      "status": "OK",
+      "position": 5,
+      "points": 5,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_socorrista_juvenil_m_a_inigo_mendez_bodas_2010_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_socorrista_juvenil_m",
+      "athlete_id": "a_inigo_mendez_bodas_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:03.040",
+        "seconds": 63.04,
+        "raw": "01:03:04"
+      },
+      "status": "OK",
+      "position": 2,
+      "points": 2,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_socorrista_junior_m_a_lucas_gabriel_nieto_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_socorrista_junior_m",
+      "athlete_id": "a_lucas_gabriel_nieto_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:05.950",
+        "seconds": 65.95,
+        "raw": "01:05:95"
+      },
+      "status": "OK",
+      "position": 3,
+      "points": 3,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_socorrista_absoluto_m_a_alejandro_hernandez_ojeda_2006_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_socorrista_absoluto_m",
+      "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:06.340",
+        "seconds": 66.34,
+        "raw": "01:06:34"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 1,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_combinada_salvamento_junior_m_a_inaki_cuairan_garay_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_combinada_salvamento_junior_m",
+      "athlete_id": "a_inaki_cuairan_garay_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:17.740",
+        "seconds": 77.74,
+        "raw": "01:17:74"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 1,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_combinada_salvamento_junior_m_a_jorge_murcia_conde_2009_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_combinada_salvamento_junior_m",
+      "athlete_id": "a_jorge_murcia_conde_2009",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:17.740",
+        "seconds": 77.74,
+        "raw": "01:17:74"
+      },
+      "status": "OK",
+      "position": 2,
+      "points": 2,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_100_m_combinada_salvamento_absoluto_m_a_adrian_castellanos_rodriguez_2006_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_100_m_combinada_salvamento_absoluto_m",
+      "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "01:09.400",
+        "seconds": 69.4,
+        "raw": "01:09:40"
+      },
+      "status": "OK",
+      "position": 1,
+      "points": 1,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
+      "id": "r_c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion_e_200_m_natacion_con_obstaculos_juvenil_m_a_alvaro_rojo_paz_2010_final",
+      "date": "2026-03-21",
+      "season_id": "s_2025_2026",
+      "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+      "event_id": "e_200_m_natacion_con_obstaculos_juvenil_m",
+      "athlete_id": "a_alvaro_rojo_paz_2010",
+      "club_id": "club_c_d_e_pacifico_salvamento",
+      "time": {
+        "display": "02:30.100",
+        "seconds": 150.1,
+        "raw": "02:30:10"
+      },
+      "status": "OK",
+      "position": 3,
+      "points": 3,
+      "series_type": "Final",
+      "labels": {
+        "x": "2026-03-21\n4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”"
+      },
+      "heat": null
+    },
+    {
       "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_100_m_natacion_con_obstaculos_master_30_34_f_a_victoria_munoz_bartolome_1996_final",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
@@ -20122,7 +20839,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_30_34_f_a_maria_marin_ramirez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_30_34_f_a_maria_marin_ramirez_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20144,7 +20861,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_30_34_f_a_victoria_munoz_bartolome_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_30_34_f_a_victoria_munoz_bartolome_1996",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20166,7 +20883,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_35_39_f_a_patricia_pilar_perez_mohand_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_35_39_f_a_patricia_pilar_perez_mohand_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20188,7 +20905,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_35_39_f_a_erica_perez_prada_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_35_39_f_a_erica_perez_prada_1979",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20210,7 +20927,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_45_49_f_a_laura_rodriguez_calleja_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_45_49_f_a_laura_rodriguez_calleja_1977",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20232,7 +20949,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_45_49_f_a_mercedes_pascual_chorro_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_45_49_f_a_mercedes_pascual_chorro_1977",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20254,7 +20971,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_50_54_f_a_monica_magdalena_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_50_54_f_a_monica_magdalena_1972",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20276,7 +20993,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_50_54_f_a_rosario_segura_martinez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_50_54_f_a_rosario_segura_martinez_1972",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20298,7 +21015,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_55_59_f_a_maria_victoria_martinez_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_55_59_f_a_maria_victoria_martinez_martin_1970",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20320,7 +21037,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_55_59_f_a_maria_teresa_velasco_arribas_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_55_59_f_a_maria_teresa_velasco_arribas_1967",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20342,7 +21059,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_30_34_m_a_jorge_serrano_salado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_30_34_m_a_jorge_serrano_salado_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20364,7 +21081,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_30_34_m_a_alvaro_moreno_diaz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_30_34_m_a_alvaro_moreno_diaz_1995",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20408,7 +21125,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_35_39_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_35_39_m_a_sergio_vadillo_sanz_1987",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20430,7 +21147,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_40_44_m_a_david_caceres_manzano_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_40_44_m_a_david_caceres_manzano_1983",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20452,7 +21169,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_40_44_m_a_mariano_carpintero_arranz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_40_44_m_a_mariano_carpintero_arranz_1969",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20474,7 +21191,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_45_49_m_a_alberto_velasco_torres_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_45_49_m_a_alberto_velasco_torres_1977",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20496,7 +21213,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_45_49_m_a_mario_tamayo_cuadrado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_45_49_m_a_mario_tamayo_cuadrado_1980",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20518,7 +21235,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_50_54_m_a_jose_vazquez_troncoso_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_50_54_m_a_jose_vazquez_troncoso_1974",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20540,7 +21257,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_50_54_m_a_luis_miguel_gonzalez_aguero_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_50_54_m_a_luis_miguel_gonzalez_aguero_1976",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20562,7 +21279,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_55_59_m_a_andres_gordon_moreno_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_55_59_m_a_andres_gordon_moreno_1969",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20584,7 +21301,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_55_59_m_a_carlos_lazaro_crespo_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_55_59_m_a_carlos_lazaro_crespo_1966",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20606,7 +21323,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_60_64_m_a_andres_culebras_moreno_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_60_64_m_a_andres_culebras_moreno_1965",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20628,7 +21345,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_60_64_m_a_marcial_garcia_liberal_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_lanzamiento_de_cuerda_master_60_64_m_a_marcial_garcia_liberal_1963",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20650,7 +21367,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_maria_marin_ramirez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_maria_marin_ramirez_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20672,7 +21389,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_maria_gallego_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_maria_gallego_martin_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20694,7 +21411,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_victoria_munoz_bartolome_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_victoria_munoz_bartolome_1996",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20716,7 +21433,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_patricia_pilar_perez_mohand_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_f_a_patricia_pilar_perez_mohand_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20738,7 +21455,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_monica_magdalena_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_monica_magdalena_1972",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20760,7 +21477,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_patricia_pilar_perez_mohand_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_patricia_pilar_perez_mohand_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20782,7 +21499,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_erica_perez_prada_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_erica_perez_prada_1979",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20804,7 +21521,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_rosario_segura_martinez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_f_a_rosario_segura_martinez_1972",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20826,7 +21543,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_daniel_nieto_carrasco_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_daniel_nieto_carrasco_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20848,7 +21565,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_sergio_vadillo_sanz_1987",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20870,7 +21587,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_gonzalo_parrilla_mesas_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_gonzalo_parrilla_mesas_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20892,7 +21609,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_alvaro_moreno_diaz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_120_m_a_alvaro_moreno_diaz_1995",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20914,7 +21631,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_mario_tamayo_cuadrado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_mario_tamayo_cuadrado_1980",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20936,7 +21653,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_sergio_vadillo_sanz_1987",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20958,7 +21675,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_juan_pablo_hernandez_perez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_juan_pablo_hernandez_perez_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -20980,7 +21697,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_daniel_nieto_carrasco_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_140_m_a_daniel_nieto_carrasco_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21002,7 +21719,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_david_caceres_manzano_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_david_caceres_manzano_1983",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21024,7 +21741,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_juan_pablo_hernandez_perez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_juan_pablo_hernandez_perez_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21046,7 +21763,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_jose_luis_echarri_tornero_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_jose_luis_echarri_tornero_1975",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21068,7 +21785,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_mario_tamayo_cuadrado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_170_m_a_mario_tamayo_cuadrado_1980",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21090,7 +21807,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_attila_varga_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_attila_varga_1976",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21112,7 +21829,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_andres_gordon_moreno_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_andres_gordon_moreno_1969",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21134,7 +21851,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_alberto_velasco_torres_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_alberto_velasco_torres_1977",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21156,7 +21873,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_jose_vazquez_troncoso_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_200_m_a_jose_vazquez_troncoso_1974",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21178,7 +21895,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_mariano_carpintero_arranz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_mariano_carpintero_arranz_1969",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21200,7 +21917,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_marcial_garcia_liberal_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_marcial_garcia_liberal_1963",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21222,7 +21939,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_andres_culebras_moreno_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_andres_culebras_moreno_1965",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -21244,7 +21961,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_carlos_lazaro_crespo_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_natacion_con_obstaculos_master_r4_230_m_a_carlos_lazaro_crespo_1966",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -22850,7 +23567,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_maria_gallego_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_maria_gallego_martin_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -22872,7 +23589,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_maria_marin_ramirez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_maria_marin_ramirez_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -22894,7 +23611,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_victoria_munoz_bartolome_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_victoria_munoz_bartolome_1996",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -22916,7 +23633,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_patricia_pilar_perez_mohand_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_f_a_patricia_pilar_perez_mohand_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -22938,7 +23655,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_maria_gallego_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_maria_gallego_martin_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -22960,7 +23677,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_erica_perez_prada_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_erica_perez_prada_1979",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -22982,7 +23699,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_monica_magdalena_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_monica_magdalena_1972",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23004,7 +23721,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_maria_victoria_martinez_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_170_f_a_maria_victoria_martinez_martin_1970",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23026,7 +23743,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_laura_rodriguez_calleja_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_laura_rodriguez_calleja_1977",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23048,7 +23765,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_rosario_segura_martinez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_rosario_segura_martinez_1972",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23070,7 +23787,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_monica_magdalena_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_monica_magdalena_1972",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23092,7 +23809,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_erica_perez_prada_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_200_f_a_erica_perez_prada_1979",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23114,7 +23831,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_jorge_serrano_salado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_jorge_serrano_salado_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23136,7 +23853,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_daniel_nieto_carrasco_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_daniel_nieto_carrasco_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23158,7 +23875,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_gonzalo_parrilla_mesas_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_gonzalo_parrilla_mesas_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23180,7 +23897,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_120_m_a_sergio_vadillo_sanz_1987",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23202,7 +23919,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_david_caceres_manzano_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_david_caceres_manzano_1983",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23224,7 +23941,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_sergio_vadillo_sanz_1987",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23246,7 +23963,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_mario_tamayo_cuadrado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_mario_tamayo_cuadrado_1980",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23268,7 +23985,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_juan_pablo_hernandez_perez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_r4_140_m_a_juan_pablo_hernandez_perez_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23290,7 +24007,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_m_a_david_caceres_manzano_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_m_a_david_caceres_manzano_1983",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23312,7 +24029,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_m_a_jose_luis_echarri_tornero_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_m_a_jose_luis_echarri_tornero_1975",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23334,7 +24051,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_m_a_juan_pablo_hernandez_perez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_m_a_juan_pablo_hernandez_perez_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23356,7 +24073,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_m_a_luis_miguel_gonzalez_aguero_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_170_m_a_luis_miguel_gonzalez_aguero_1976",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23378,7 +24095,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_m_a_andres_gordon_moreno_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_m_a_andres_gordon_moreno_1969",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23400,7 +24117,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_m_a_attila_varga_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_m_a_attila_varga_1976",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23422,7 +24139,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_m_a_jose_vazquez_troncoso_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_m_a_jose_vazquez_troncoso_1974",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23444,7 +24161,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_m_a_alberto_velasco_torres_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_200_m_a_alberto_velasco_torres_1977",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23466,7 +24183,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_230_m_a_marcial_garcia_liberal_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_230_m_a_marcial_garcia_liberal_1963",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23488,7 +24205,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_230_m_a_carlos_lazaro_crespo_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_230_m_a_carlos_lazaro_crespo_1966",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23510,7 +24227,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_230_m_a_andres_culebras_moreno_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_230_m_a_andres_culebras_moreno_1965",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -23532,7 +24249,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_230_m_a_mariano_carpintero_arranz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x25_m_relevo_remolque_de_maniqui_master_230_m_a_mariano_carpintero_arranz_1969",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24346,7 +25063,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_maria_gallego_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_maria_gallego_martin_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24368,7 +25085,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_maria_marin_ramirez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_maria_marin_ramirez_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24390,7 +25107,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_patricia_pilar_perez_mohand_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_patricia_pilar_perez_mohand_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24412,7 +25129,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_victoria_munoz_bartolome_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_f_a_victoria_munoz_bartolome_1996",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24434,7 +25151,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_monica_magdalena_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_monica_magdalena_1972",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24456,7 +25173,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_maria_victoria_martinez_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_maria_victoria_martinez_martin_1970",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24478,7 +25195,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_erica_perez_prada_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_erica_perez_prada_1979",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24500,7 +25217,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_maria_gallego_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_170_f_a_maria_gallego_martin_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24522,7 +25239,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_f_a_laura_rodriguez_calleja_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_f_a_laura_rodriguez_calleja_1977",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24544,7 +25261,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_f_a_monica_magdalena_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_f_a_monica_magdalena_1972",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24566,7 +25283,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_f_a_maria_victoria_martinez_martin_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_f_a_maria_victoria_martinez_martin_1970",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24588,7 +25305,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_f_a_erica_perez_prada_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_f_a_erica_perez_prada_1979",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24610,7 +25327,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_jorge_serrano_salado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_jorge_serrano_salado_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24632,7 +25349,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_sergio_vadillo_sanz_1987",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24654,7 +25371,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_daniel_nieto_carrasco_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_daniel_nieto_carrasco_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24676,7 +25393,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_gonzalo_parrilla_mesas_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_120_m_a_gonzalo_parrilla_mesas_1994",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24698,7 +25415,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_juan_pablo_hernandez_perez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_juan_pablo_hernandez_perez_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24720,7 +25437,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_david_caceres_manzano_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_david_caceres_manzano_1983",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24742,7 +25459,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_mario_tamayo_cuadrado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_mario_tamayo_cuadrado_1980",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24764,7 +25481,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_sergio_vadillo_sanz_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_r4_140_m_a_sergio_vadillo_sanz_1987",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24786,7 +25503,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_m_a_mario_tamayo_cuadrado_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_m_a_mario_tamayo_cuadrado_1980",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24808,7 +25525,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_m_a_david_caceres_manzano_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_m_a_david_caceres_manzano_1983",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24830,7 +25547,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_m_a_jose_luis_echarri_tornero_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_m_a_jose_luis_echarri_tornero_1975",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24852,7 +25569,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_m_a_juan_pablo_hernandez_perez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_170_m_a_juan_pablo_hernandez_perez_1991",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24874,7 +25591,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_m_a_andres_culebras_moreno_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_m_a_andres_culebras_moreno_1965",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24896,7 +25613,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_m_a_marcial_garcia_liberal_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_m_a_marcial_garcia_liberal_1963",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24918,7 +25635,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_m_a_carlos_lazaro_crespo_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_m_a_carlos_lazaro_crespo_1966",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24940,7 +25657,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_m_a_luis_cruz_gonzalez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_200_m_a_luis_cruz_gonzalez_1965",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24962,7 +25679,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_230_m_a_luis_cruz_gonzalez_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_230_m_a_luis_cruz_gonzalez_1965",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -24984,7 +25701,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_230_m_a_andres_culebras_moreno_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_230_m_a_andres_culebras_moreno_1965",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -25006,7 +25723,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_230_m_a_marcial_garcia_liberal_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_230_m_a_marcial_garcia_liberal_1963",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -25028,7 +25745,7 @@
       "heat": null
     },
     {
-      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_230_m_a_carlos_lazaro_crespo_na",
+      "id": "r_c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina_e_4x50_m_relevo_combinado_master_230_m_a_carlos_lazaro_crespo_1966",
       "date": "2026-03-21",
       "season_id": "s_2025_2026",
       "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
@@ -74518,6 +75235,690 @@
           ]
         },
         {
+          "competition_id": "c_2026_03_21_madrid_4_jornada_xxvi_liga_espanola_clubes_mayores_25_26_c_d_m_concepcion",
+          "season_id": "s_2025_2026",
+          "date": "2026-03-21",
+          "name": "4ª Jornada – Fase Territorial – XXVI Liga Española Clubes Mayores 25-26 “c.d.m Concepción”",
+          "name_clean": "4ª Jornada - XXVI Liga Española Clubes Mayores 25 - 26 “c.d.m Concepción”",
+          "location": "Madrid",
+          "region": "",
+          "pool_type": "",
+          "events": [
+            {
+              "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_f",
+              "base": "100 m Remolque de Maniquí con Aletas",
+              "sex": "F",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_claudia_mate_garcia_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 8,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:19.030",
+                    "seconds": 79.03,
+                    "raw": "01:19:03"
+                  },
+                  "converted_time": "01:19.030"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_f",
+              "base": "100 m Remolque de Maniquí con Aletas",
+              "sex": "F",
+              "category": "Absoluta",
+              "athletes": [
+                {
+                  "athlete_id": "a_elena_dominguez_pinaderos_2004",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:18.200",
+                    "seconds": 78.2,
+                    "raw": "01:18:20"
+                  },
+                  "converted_time": "01:18.200"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_remolque_de_maniqui_con_aletas_juvenil_m",
+              "base": "100 m Remolque de Maniquí con Aletas",
+              "sex": "M",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_inigo_mendez_bodas_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:58.520",
+                    "seconds": 58.52,
+                    "raw": "00:58:52"
+                  },
+                  "converted_time": "00:58.520"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_remolque_de_maniqui_con_aletas_junior_m",
+              "base": "100 m Remolque de Maniquí con Aletas",
+              "sex": "M",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:59.530",
+                    "seconds": 59.53,
+                    "raw": "00:59:53"
+                  },
+                  "converted_time": "00:59.530"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_remolque_de_maniqui_con_aletas_junior_m",
+              "base": "100 m Remolque de Maniquí con Aletas",
+              "sex": "M",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_lucas_gabriel_nieto_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 3,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:03.900",
+                    "seconds": 63.9,
+                    "raw": "01:03:90"
+                  },
+                  "converted_time": "01:03.900"
+                }
+              ]
+            },
+            {
+              "event_id": "e_50_m_remolque_de_maniqui_junior_f",
+              "base": "50 m Remolque de Maniquí",
+              "sex": "F",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:38.720",
+                    "seconds": 38.72,
+                    "raw": "00:38:72"
+                  },
+                  "converted_time": "00:38.720"
+                }
+              ]
+            },
+            {
+              "event_id": "e_50_m_remolque_de_maniqui_juvenil_m",
+              "base": "50 m Remolque de Maniquí",
+              "sex": "M",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_alvaro_rojo_paz_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:35.540",
+                    "seconds": 35.54,
+                    "raw": "00:35:54"
+                  },
+                  "converted_time": "00:35.540"
+                }
+              ]
+            },
+            {
+              "event_id": "e_50_m_remolque_de_maniqui_absoluto_m",
+              "base": "50 m Remolque de Maniquí",
+              "sex": "M",
+              "category": "Absoluta",
+              "athletes": [
+                {
+                  "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "00:32.500",
+                    "seconds": 32.5,
+                    "raw": "00:32:50"
+                  },
+                  "converted_time": "00:32.500"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_juvenil_f",
+              "base": "200 m Supersocorrista",
+              "sex": "F",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_claudia_mate_garcia_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 2,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "03:07.640",
+                    "seconds": 187.64,
+                    "raw": "03:07:64"
+                  },
+                  "converted_time": "03:07.640"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_junior_f",
+              "base": "200 m Supersocorrista",
+              "sex": "F",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 2,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:50.390",
+                    "seconds": 170.39,
+                    "raw": "02:50:39"
+                  },
+                  "converted_time": "02:50.390"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_junior_f",
+              "base": "200 m Supersocorrista",
+              "sex": "F",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:58.620",
+                    "seconds": 178.62,
+                    "raw": "02:58:62"
+                  },
+                  "converted_time": "02:58.620"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_junior_f",
+              "base": "200 m Supersocorrista",
+              "sex": "F",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "DSQ",
+                  "position": 6,
+                  "series_type": "Final",
+                  "time": {
+                    "display": null,
+                    "seconds": null,
+                    "raw": null
+                  },
+                  "converted_time": null
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_absoluto_f",
+              "base": "200 m Supersocorrista",
+              "sex": "F",
+              "category": "Absoluta",
+              "athletes": [
+                {
+                  "athlete_id": "a_maria_cruz_gonzalez_2000",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:56.740",
+                    "seconds": 176.74,
+                    "raw": "02:56:74"
+                  },
+                  "converted_time": "02:56.740"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_absoluto_f",
+              "base": "200 m Supersocorrista",
+              "sex": "F",
+              "category": "Absoluta",
+              "athletes": [
+                {
+                  "athlete_id": "a_elena_dominguez_pinaderos_2004",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 5,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "03:24.010",
+                    "seconds": 204.01,
+                    "raw": "03:24:01"
+                  },
+                  "converted_time": "03:24.010"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_juvenil_m",
+              "base": "200 m Supersocorrista",
+              "sex": "M",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_inigo_mendez_bodas_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 2,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:37.030",
+                    "seconds": 157.03,
+                    "raw": "02:37:03"
+                  },
+                  "converted_time": "02:37.030"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_junior_m",
+              "base": "200 m Supersocorrista",
+              "sex": "M",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 3,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:37.060",
+                    "seconds": 157.06,
+                    "raw": "02:37:06"
+                  },
+                  "converted_time": "02:37.060"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_junior_m",
+              "base": "200 m Supersocorrista",
+              "sex": "M",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_jorge_murcia_conde_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 5,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:38.110",
+                    "seconds": 158.11,
+                    "raw": "02:38:11"
+                  },
+                  "converted_time": "02:38.110"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_junior_m",
+              "base": "200 m Supersocorrista",
+              "sex": "M",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_lucas_gabriel_nieto_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 6,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "03:00.130",
+                    "seconds": 180.13,
+                    "raw": "03:00:13"
+                  },
+                  "converted_time": "03:00.130"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_absoluto_m",
+              "base": "200 m Supersocorrista",
+              "sex": "M",
+              "category": "Absoluta",
+              "athletes": [
+                {
+                  "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 2,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:26.550",
+                    "seconds": 146.55,
+                    "raw": "02:26:55"
+                  },
+                  "converted_time": "02:26.550"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_supersocorrista_absoluto_m",
+              "base": "200 m Supersocorrista",
+              "sex": "M",
+              "category": "Absoluta",
+              "athletes": [
+                {
+                  "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 5,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:44.280",
+                    "seconds": 164.28,
+                    "raw": "02:44:28"
+                  },
+                  "converted_time": "02:44.280"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_socorrista_juvenil_f",
+              "base": "100 m Socorrista",
+              "sex": "F",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_claudia_mate_garcia_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 5,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:24.940",
+                    "seconds": 84.94,
+                    "raw": "01:24:94"
+                  },
+                  "converted_time": "01:24.940"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_socorrista_junior_f",
+              "base": "100 m Socorrista",
+              "sex": "F",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_nerea_ibanez_gonzalez_2008",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:09.100",
+                    "seconds": 69.1,
+                    "raw": "01:09:10"
+                  },
+                  "converted_time": "01:09.100"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_socorrista_junior_f",
+              "base": "100 m Socorrista",
+              "sex": "F",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_andrea_ibanez_gonzalez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 3,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:17.300",
+                    "seconds": 77.3,
+                    "raw": "01:17:30"
+                  },
+                  "converted_time": "01:17.300"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_socorrista_junior_f",
+              "base": "100 m Socorrista",
+              "sex": "F",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_gabriela_huertas_sanchez_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 4,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:17.490",
+                    "seconds": 77.49,
+                    "raw": "01:17:49"
+                  },
+                  "converted_time": "01:17.490"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_socorrista_absoluto_f",
+              "base": "100 m Socorrista",
+              "sex": "F",
+              "category": "Absoluta",
+              "athletes": [
+                {
+                  "athlete_id": "a_elena_dominguez_pinaderos_2004",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 5,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:28.350",
+                    "seconds": 88.35,
+                    "raw": "01:28:35"
+                  },
+                  "converted_time": "01:28.350"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_socorrista_juvenil_m",
+              "base": "100 m Socorrista",
+              "sex": "M",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_inigo_mendez_bodas_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 2,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:03.040",
+                    "seconds": 63.04,
+                    "raw": "01:03:04"
+                  },
+                  "converted_time": "01:03.040"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_socorrista_junior_m",
+              "base": "100 m Socorrista",
+              "sex": "M",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_lucas_gabriel_nieto_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 3,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:05.950",
+                    "seconds": 65.95,
+                    "raw": "01:05:95"
+                  },
+                  "converted_time": "01:05.950"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_socorrista_absoluto_m",
+              "base": "100 m Socorrista",
+              "sex": "M",
+              "category": "Absoluta",
+              "athletes": [
+                {
+                  "athlete_id": "a_alejandro_hernandez_ojeda_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:06.340",
+                    "seconds": 66.34,
+                    "raw": "01:06:34"
+                  },
+                  "converted_time": "01:06.340"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_combinada_salvamento_junior_m",
+              "base": "100 m Combinada Salvamento",
+              "sex": "M",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_inaki_cuairan_garay_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:17.740",
+                    "seconds": 77.74,
+                    "raw": "01:17:74"
+                  },
+                  "converted_time": "01:17.740"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_combinada_salvamento_junior_m",
+              "base": "100 m Combinada Salvamento",
+              "sex": "M",
+              "category": "Junior",
+              "athletes": [
+                {
+                  "athlete_id": "a_jorge_murcia_conde_2009",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 2,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:17.740",
+                    "seconds": 77.74,
+                    "raw": "01:17:74"
+                  },
+                  "converted_time": "01:17.740"
+                }
+              ]
+            },
+            {
+              "event_id": "e_100_m_combinada_salvamento_absoluto_m",
+              "base": "100 m Combinada Salvamento",
+              "sex": "M",
+              "category": "Absoluta",
+              "athletes": [
+                {
+                  "athlete_id": "a_adrian_castellanos_rodriguez_2006",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 1,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "01:09.400",
+                    "seconds": 69.4,
+                    "raw": "01:09:40"
+                  },
+                  "converted_time": "01:09.400"
+                }
+              ]
+            },
+            {
+              "event_id": "e_200_m_natacion_con_obstaculos_juvenil_m",
+              "base": "200 m Natación con Obstáculos",
+              "sex": "M",
+              "category": "Juvenil",
+              "athletes": [
+                {
+                  "athlete_id": "a_alvaro_rojo_paz_2010",
+                  "club_id": "club_c_d_e_pacifico_salvamento",
+                  "status": "OK",
+                  "position": 3,
+                  "series_type": "Final",
+                  "time": {
+                    "display": "02:30.100",
+                    "seconds": 150.1,
+                    "raw": "02:30:10"
+                  },
+                  "converted_time": "02:30.100"
+                }
+              ]
+            }
+          ]
+        },
+        {
           "competition_id": "c_2026_03_21_valladolid_xiii_campeonato_de_espana_master_de_piscina",
           "season_id": "s_2025_2026",
           "date": "2026-03-21",
@@ -80003,7 +81404,7 @@
               "event_id": "e_200_m_natacion_con_obstaculos_absoluto_f",
               "base": "200 m Natación con Obstáculos",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_andrea_ibanez_gonzalez_2009",
@@ -80024,7 +81425,7 @@
               "event_id": "e_200_m_natacion_con_obstaculos_absoluto_f",
               "base": "200 m Natación con Obstáculos",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_maria_cruz_gonzalez_2000",
@@ -80045,7 +81446,7 @@
               "event_id": "e_200_m_natacion_con_obstaculos_absoluto_f",
               "base": "200 m Natación con Obstáculos",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_nerea_ibanez_gonzalez_2008",
@@ -80066,7 +81467,7 @@
               "event_id": "e_200_m_natacion_con_obstaculos_absoluto_f",
               "base": "200 m Natación con Obstáculos",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_lola_marina_asensio_bergalli_2010",
@@ -80108,7 +81509,7 @@
               "event_id": "e_200_m_natacion_con_obstaculos_absoluto_m",
               "base": "200 m Natación con Obstáculos",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_lucas_gabriel_nieto_2009",
@@ -80171,7 +81572,7 @@
               "event_id": "e_100_m_combinada_salvamento_absoluto_f",
               "base": "100 m Combinada Salvamento",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_andrea_ibanez_gonzalez_2009",
@@ -80192,7 +81593,7 @@
               "event_id": "e_100_m_combinada_salvamento_absoluto_f",
               "base": "100 m Combinada Salvamento",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_gabriela_huertas_sanchez_2009",
@@ -80213,7 +81614,7 @@
               "event_id": "e_100_m_combinada_salvamento_absoluto_f",
               "base": "100 m Combinada Salvamento",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_mia_montserrat_rocha_jordan_2006",
@@ -80234,7 +81635,7 @@
               "event_id": "e_100_m_combinada_salvamento_absoluto_f",
               "base": "100 m Combinada Salvamento",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_elena_dominguez_pinaderos_2004",
@@ -80318,7 +81719,7 @@
               "event_id": "e_100_m_combinada_salvamento_absoluto_m",
               "base": "100 m Combinada Salvamento",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_adrian_castellanos_rodriguez_2006",
@@ -80339,7 +81740,7 @@
               "event_id": "e_100_m_combinada_salvamento_absoluto_m",
               "base": "100 m Combinada Salvamento",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_alvaro_moreno_diaz_1995",
@@ -80360,7 +81761,7 @@
               "event_id": "e_100_m_combinada_salvamento_absoluto_m",
               "base": "100 m Combinada Salvamento",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_jorge_murcia_conde_2009",
@@ -80381,7 +81782,7 @@
               "event_id": "e_100_m_combinada_salvamento_absoluto_m",
               "base": "100 m Combinada Salvamento",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_inigo_mendez_bodas_2010",
@@ -80402,7 +81803,7 @@
               "event_id": "e_100_m_combinada_salvamento_absoluto_m",
               "base": "100 m Combinada Salvamento",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_inaki_cuairan_garay_2009",
@@ -80444,7 +81845,7 @@
               "event_id": "e_100_m_socorrista_absoluto_f",
               "base": "100 m Socorrista",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_maria_cruz_gonzalez_2000",
@@ -80465,7 +81866,7 @@
               "event_id": "e_100_m_socorrista_absoluto_f",
               "base": "100 m Socorrista",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_nerea_ibanez_gonzalez_2008",
@@ -80486,7 +81887,7 @@
               "event_id": "e_100_m_socorrista_absoluto_f",
               "base": "100 m Socorrista",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_elena_dominguez_pinaderos_2004",
@@ -80570,7 +81971,7 @@
               "event_id": "e_100_m_socorrista_absoluto_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_alejandro_hernandez_ojeda_2006",
@@ -80591,7 +81992,7 @@
               "event_id": "e_100_m_socorrista_absoluto_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_alvaro_moreno_diaz_1995",
@@ -80612,7 +82013,7 @@
               "event_id": "e_100_m_socorrista_absoluto_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_inaki_cuairan_garay_2009",
@@ -80633,7 +82034,7 @@
               "event_id": "e_100_m_socorrista_absoluto_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_adrian_castellanos_rodriguez_2006",
@@ -80654,7 +82055,7 @@
               "event_id": "e_100_m_socorrista_absoluto_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_lucas_gabriel_nieto_2009",
@@ -80675,7 +82076,7 @@
               "event_id": "e_100_m_socorrista_absoluto_m",
               "base": "100 m Socorrista",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_felix_arenilla_sanz_2008",
@@ -80717,7 +82118,7 @@
               "event_id": "e_200_m_supersocorrista_absoluto_f",
               "base": "200 m Supersocorrista",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_andrea_ibanez_gonzalez_2009",
@@ -80780,7 +82181,7 @@
               "event_id": "e_200_m_supersocorrista_absoluto_m",
               "base": "200 m Supersocorrista",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_adrian_castellanos_rodriguez_2006",
@@ -80801,7 +82202,7 @@
               "event_id": "e_200_m_supersocorrista_absoluto_m",
               "base": "200 m Supersocorrista",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_inigo_mendez_bodas_2010",
@@ -80822,7 +82223,7 @@
               "event_id": "e_200_m_supersocorrista_absoluto_m",
               "base": "200 m Supersocorrista",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_jorge_murcia_conde_2009",
@@ -80843,7 +82244,7 @@
               "event_id": "e_200_m_supersocorrista_absoluto_m",
               "base": "200 m Supersocorrista",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_alvaro_moreno_diaz_1995",
@@ -80885,7 +82286,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_absoluto_f",
               "base": "50 m Remolque de Maniquí",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_gabriela_huertas_sanchez_2009",
@@ -80906,7 +82307,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_absoluto_f",
               "base": "50 m Remolque de Maniquí",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_maria_cruz_gonzalez_2000",
@@ -80927,7 +82328,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_absoluto_f",
               "base": "50 m Remolque de Maniquí",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_mia_montserrat_rocha_jordan_2006",
@@ -81011,7 +82412,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_absoluto_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_adrian_castellanos_rodriguez_2006",
@@ -81032,7 +82433,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_absoluto_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_alvaro_moreno_diaz_1995",
@@ -81053,7 +82454,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_absoluto_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_jorge_murcia_conde_2009",
@@ -81074,7 +82475,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_absoluto_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_inaki_cuairan_garay_2009",
@@ -81095,7 +82496,7 @@
               "event_id": "e_50_m_remolque_de_maniqui_absoluto_m",
               "base": "50 m Remolque de Maniquí",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_lucas_gabriel_nieto_2009",
@@ -81137,7 +82538,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_f",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_maria_cruz_gonzalez_2000",
@@ -81158,7 +82559,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_f",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "F",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_andrea_ibanez_gonzalez_2009",
@@ -81200,7 +82601,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_m",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_alejandro_hernandez_ojeda_2006",
@@ -81221,7 +82622,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_m",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_inaki_cuairan_garay_2009",
@@ -81242,7 +82643,7 @@
               "event_id": "e_100_m_remolque_de_maniqui_con_aletas_absoluto_m",
               "base": "100 m Remolque de Maniquí con Aletas",
               "sex": "M",
-              "category": "Absoluto",
+              "category": "Absoluta",
               "athletes": [
                 {
                   "athlete_id": "a_alvaro_moreno_diaz_1995",
