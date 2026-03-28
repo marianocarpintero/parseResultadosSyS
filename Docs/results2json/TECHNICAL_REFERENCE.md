@@ -1174,12 +1174,14 @@ club_c_d_e_pacifico_salvamento
 ##### Ejemplo 4: evento
 
 ```text
-50 m Socorrista Juvenil Femenino
+50 m Socorrista Absoluto Femenino
 ```
 
 ```text
-e_50_m_socorrista_juvenil_f
+e_50_m_socorrista_absoluto_f
 ```
+
+> La palabra `evento` es de género masculino. Por concordancia, el id se construye con categorías y sexo en género masculino, como en `_absoluto_femenino`.
 
 ---
 

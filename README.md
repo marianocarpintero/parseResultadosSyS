@@ -1,4 +1,4 @@
-# Pacifico
+# Pacífico
 ### Conversión de resultados deportivos a JSON estructurado
 
 ![python](https://img.shields.io/badge/python-3.10%2B-blue)

@@ -61,7 +61,6 @@ def resolve_inputs(inputs: List[str], debug: bool = False, allow_txt: bool = Fal
 
         # Normalizar separadores (soporta Windows/Linux)
         raw_norm = raw.replace("\\", "/")
-
         raw_low = raw_norm.lower()
 
         # ################################################
@@ -88,25 +87,41 @@ def resolve_inputs(inputs: List[str], debug: bool = False, allow_txt: bool = Fal
                         print(f"DEBUG resolve TXT file: {raw} -> NOT FOUND")
             continue
 
+
         # ################################################
         #
-        # --- NUEVO: XLS ---
+        # --- NUEVO: XLS / XLSX / XLSM ---
         #
         # #################################################
-        if raw_low.endswith((".xlsx", ".xlsm", ".xls")) or raw_low.endswith(("\\*.xlsx", "\\*.xlsm", "\\*.xls")):
-            if "*" in raw_norm or "?" in raw_norm:
-                matches = glob(raw_norm)
-                if debug:
-                    print(f"DEBUG resolve XLS pattern: {raw} -> {raw_norm} -> {len(matches)} matches")
-                resolved.extend(matches)
+        EXCEL_EXTS = (".xlsx", ".xlsm", ".xls")
+
+        is_excel = raw_low.endswith(EXCEL_EXTS) or raw_low.endswith(("*.xlsx", "*.xlsm", "*.xls"))
+        if is_excel:
+            candidates: List[str] = []
+
+            # Caso 1: ruta absoluta o el usuario ya puso carpeta (./PDF/..., PDF/..., ./XLS/..., etc.)
+            # En ese caso, respeta tal cual.
+            if os.path.isabs(raw_norm) or ("/" in raw_norm):
+                candidates = [raw_norm]
             else:
-                if os.path.exists(raw_norm):
-                    resolved.append(raw_norm)
-                    if debug:
-                        print(f"DEBUG resolve XLS file: {raw} -> OK")
+                # Caso 2: patrón/archivo sin ruta -> buscamos en carpetas "convención" y también cwd
+                candidates = [
+                    os.path.join("./XLS", raw_norm),
+                    os.path.join("./PDF", raw_norm),
+                    raw_norm,
+                ]
+
+            matches_all: List[str] = []
+            for cand in candidates:
+                if "*" in cand or "?" in cand:
+                    m = glob(cand)
                 else:
-                    if debug:
-                        print(f"DEBUG resolve XLS file: {raw} -> NOT FOUND")
+                    m = [cand] if os.path.exists(cand) else []
+                if debug:
+                    print(f"DEBUG resolve XLS: {raw} -> {cand} -> {len(m)} matches")
+                matches_all.extend(m)
+
+            resolved.extend(matches_all)
             continue
 
         # ################################################
@@ -157,7 +172,6 @@ def main(argv: Optional[List[str]] = None) -> int:
         nargs="*",
         help="Inputs normales: PDF/XLS/XLSX/XLSM. Patrones dentro de ./PDF o rutas directas. "
             "TXT solo en modo tests con --allow-txt."
-
     )
 
     parser.add_argument(
@@ -230,10 +244,13 @@ def main(argv: Optional[List[str]] = None) -> int:
     os.makedirs(dump_dir, exist_ok=True)
 
     # Resolver inputs
-    inputs = args.pdf_inputs if args.pdf_inputs else ["*.pdf"]
-    pdf_files = resolve_inputs(inputs, debug=args.debug, allow_txt=args.allow_txt)
-    if not pdf_files:
-        raise SystemExit("No se encontraron PDFs con los patrones indicados en ./PDF")
+    inputs = args.inputs if args.inputs else ["*.pdf", "*.xlsx", "*.xls", "*.xlsm"]
+    input_files = resolve_inputs(inputs, debug=args.debug, allow_txt=args.allow_txt)
+
+    if not input_files:
+        raise SystemExit("No se encontraron archivos de entrada (PDF/XLS/XLSX/XLSM)")
+
+# TODO #39 No se encuentran ficheros cuando sólo hay xlsx.
 
     # Trace sink
     trace_sink = JsonlTrace(trace_path) if trace_path else NullTrace()
@@ -250,7 +267,7 @@ def main(argv: Optional[List[str]] = None) -> int:
     # Contador de competitions para fallback de ids
     comp_counter = 0
 
-    for input_path in pdf_files:
+    for input_path in input_files:
         parser_sp = None
         comp_id = None
         season_id = None
@@ -315,7 +332,7 @@ def main(argv: Optional[List[str]] = None) -> int:
                     raise ValueError("Input .txt no permitido en modo normal. Usa tools/txt2json.py o --allow-txt")
                 page_iter = iter_text_pages(input_path)
 
-            if input_path.lower().endswith(".pdf"):
+            elif input_path.lower().endswith(".pdf"):
                 page_iter = iter_pdf_pages(input_path)
             else:
                 raise ValueError("Tipo de fichero no admitido.\nInputs normales: PDF/XLS/XLSX/XLSM. Patrones dentro de ./PDF o rutas directas.\nTXT solo en modo tests con --allow-txt.")
@@ -408,7 +425,7 @@ def main(argv: Optional[List[str]] = None) -> int:
         # Dump opcional: se guarda en ./JSON/dump/<salida>.txt
         # Requisito: si el input es TXT, --dump NO hace nada.
         if args.dump:
-            pdf_only = [p for p in pdf_files if p.lower().endswith(".pdf")]
+            pdf_only = [p for p in input_files if p.lower().endswith(".pdf")]
             if pdf_only:
                 out_base = os.path.basename(output_path)
                 out_stem = os.path.splitext(out_base)[0]
