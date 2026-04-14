@@ -12,7 +12,7 @@
 
 import re
 from typing import Optional, Tuple, Dict
-from .normalize import slugify, strip_accents
+from .normalize import normalize_key, slugify, strip_accents, normalize_spaces, normalize_dashes
 
 
 LOWER_WORDS_ES = {"de","del","la","las","los","y","e","en","con","sin","al","a","por","para"}
@@ -22,6 +22,18 @@ CAT_WORDS_RE = re.compile(
     re.IGNORECASE
 )
 SEX_WORDS_RE = re.compile(r"\b(masculino|masculina|femenino|femenina|mixto|mixta)\b", re.IGNORECASE)
+
+_GLUE_SEX_TO_WORD_RE = re.compile(r"(\b[MFxX]\b)(?=[A-Za-zÁÉÍÓÚÑáéíóúñ])")
+
+_GLUE_RANGE_SEX_RE = re.compile(r"(\d{2}\s*-\s*\d{2})([MFxX])\b")
+
+_TRAILING_SEX_LETTER_RE = re.compile(r"\b([MFxX])\b\s*$")
+
+_INLINE_SEX_BEFORE_CAT_RE = re.compile(
+    r"\b([MFxX])\b(?=\s+(?:agrupad[oa]|absolut\w*|junior|júnior|juvenil|master|m[áa]ster)\b)",
+    re.IGNORECASE
+)
+
 MEN_EN_RE = re.compile(r"\bmen(?:'s)?\b", re.IGNORECASE)
 WOMEN_EN_RE = re.compile(r"\bwomen(?:'s)?\b", re.IGNORECASE)
 
@@ -55,16 +67,53 @@ MASTER_WORD_RE = re.compile(r"\bm[áa]ster\b", re.IGNORECASE)
 
 SEX_TAIL_RE = re.compile(r"\b(femen\w*|mascul\w*|mixt\w*)\b", re.IGNORECASE)
 
-# Detecta distancia en cualquier parte:
-# - 4x12,5 m. / 4x12.5m / 4x50m.
-# - 200m / 200 m / 200m.
+# Detecta distancia en cualquier parte (EN o ES), tolerante:
+# - "200m", "200 m", "200 m.", "200" (sin m), "200 m"
+# - "4x50m", "4x50 m", "4 x 50 m", "4x12,5m", "4x12.5 m", "4x12,5"
 DIST_ANY_RE = re.compile(
-    r"(?P<relay>4x)\s*(?P<num>\d+(?:[.,]\d+)?)\s*m\.?|(?P<num2>\d{2,3})\s*m\.?",
+    r"(?P<relay>4\s*x)\s*(?P<num>\d+(?:[.,]\d+)?)\s*(?:\u202F|\s)?m?\.?\b"
+    r"|(?P<num2>\d{2,3})\s*(?:\u202F|\s)?m?\.?\b",
     re.IGNORECASE
 )
 
 CATEGORY_LINE_RE = re.compile(r"^\s*(.+?)\s*\((.+?)\)\s*$", re.IGNORECASE)
 
+EVENT_NAME_ES = {
+    "line throw": "Lanzamiento de Cuerda",
+    "obstacle swim": "Natación con Obstáculos",
+    "obstacle relay": "Relevo Natación con Obstáculos",
+    "manikin carry": "Arrastre de Maniquí",
+    "manikin relay": "Relevo Arrastre de Maniquí",
+    "medley relay": "Relevo Combinado",
+    "super lifesaver": "Supersocorrista",
+    "manikin tow with fins": "Socorrista",
+    "manikin carry with fins": "Arrastre de Maniquí con Aletas",
+    "rescue medley": "Combinada de Salvamento",
+    "pool lifesaver relay": "Relevo Socorrista"
+}
+
+DEFAULT_EVENT_DISTANCE_M = {
+    "obstacle swim": "200",
+    "obstacle relay": "4x50",
+    "natación con obstáculos": "200",
+    "relevo natación con obstáculos": "4x50",
+    "manikin tow with fins": "100",
+    "socorrista": "100",
+    "manikin carry with fins": "100",
+    "arrastre de maniquí con aletas": "100",
+    "manikin carry": "50",
+    "arrastre de maniquí": "50",
+    "rescue medley": "100",
+    "pool lifesaver relay": "4x50",
+    "manikin relay": "4x25",
+    "relevo remolque de maniquí": "4x25",
+    "relevo arrastre de maniquí": "4x25",
+    "super lifesaver": "200",
+    "supersocorrista": "200",
+    "medley relay": "4x50",
+    "relevo combinado": "4x50",
+    # Añade aquí más disciplinas según tus necesidades
+}
 
 def title_case_es(s: str) -> str:
     s = re.sub(r"\s+", " ", (s or "").strip())
@@ -101,7 +150,12 @@ def is_line_throw(text: str) -> bool:
 
 def infer_relay(text: str) -> bool:
     t = (text or "").lower()
-    return ("4x" in t) or is_line_throw(t) or ("relevo" in t)
+    return (
+        ("4x" in t)
+        or is_line_throw(t)
+        or ("relevo" in t)
+        or bool(re.search(r"\brelay\b", t))
+    )
 
 
 def sex_code(raw: Optional[str]) -> str:
@@ -122,6 +176,63 @@ def sex_code(raw: Optional[str]) -> str:
         return "M"
 
     return "X"
+
+
+def _fix_glued_sex_letter(text: str) -> str:
+    """
+    Arregla casos típicos de extract_text: '... FSeries ...' -> '... F Series ...'
+    Solo actúa cuando hay una letra de sexo seguida inmediatamente de letra.
+    """
+    if not text:
+        return text
+    return _GLUE_SEX_TO_WORD_RE.sub(r"\1 ", text)
+
+
+def translate_event_name_es(base: str) -> str:
+    if not base:
+        return base
+    return EVENT_NAME_ES.get(base.lower(), base)
+
+
+def _fix_glued_tokens(text: str) -> str:
+    """Normaliza pegados típicos del OCR/extract_text."""
+    if not text:
+        return text
+    text = _GLUE_SEX_TO_WORD_RE.sub(r"\1 ", text)
+    text = _GLUE_RANGE_SEX_RE.sub(r"\1 \2", text)
+    return text
+
+
+def _extract_trailing_sex_letter(text: str) -> tuple[str | None, str]:
+    """
+    Si el texto termina en ' ... F' / ' ... M' / ' ... X', devuelve (sexo, texto_sin_letra).
+    """
+    if not text:
+        return None, text
+    m = _TRAILING_SEX_LETTER_RE.search(text.strip())
+    if not m:
+        return None, text
+    sex = m.group(1).upper()
+    # quitar el último token (la letra)
+    stripped = _TRAILING_SEX_LETTER_RE.sub("", text).strip()
+    return sex, stripped
+
+
+def _extract_inline_sex_letter(text: str) -> tuple[Optional[str], str]:
+    """
+    Detecta sexo como letra suelta antes de la categoría:
+    'Obstacle Swim F Agrupada' -> ('F', 'Obstacle Swim Agrupada')
+    """
+    if not text:
+        return None, text
+    m = _INLINE_SEX_BEFORE_CAT_RE.search(text)
+    if not m:
+        return None, text
+    sex = m.group(1).upper()
+    # quita SOLO esa letra (una ocurrencia) y normaliza espacios
+    stripped = _INLINE_SEX_BEFORE_CAT_RE.sub("", text, count=1)
+    stripped = re.sub(r"\s+", " ", stripped).strip()
+    return sex, stripped
 
 
 def category_code(raw: Optional[str]) -> str:
@@ -311,39 +422,149 @@ def _normalize_distance_prefix(relay: bool, num_str: str) -> Tuple[str, str]:
 
     return prefix_text, distance_text
 
-
 def extract_distance_from_title(event_title: str) -> Tuple[Optional[str], Optional[str]]:
     """
-    Busca distancia en cualquier parte del título (EN o ES):
-      - 200m / 200 m / 200m.
-      - 4x50m / 4x12,5m / 4x12.5 m.
-    Devuelve (prefix_text, distance_m).
+    Busca distancia en cualquier parte del título (EN o ES), tolerante:
+      - 200m / 200 m / 200 m. / 200 (sin 'm')
+      - 4x50m / 4x12,5m / 4 x 12.5 m / 4x12,5 (sin 'm')
+    Devuelve (prefix_text, distance_m) usando el formato ES:
+      prefix_text: "200\u202Fm" / "4x12,5\u202Fm"
+      distance_m:  "200" / "4x12,5"
     """
     s = event_title or ""
     m = DIST_ANY_RE.search(s)
     if not m:
         return None, None
 
+    # Relevo: 4x...
     if m.group("relay") and m.group("num"):
+        # normaliza "4 x" -> relay True
         return _normalize_distance_prefix(True, m.group("num"))
 
+    # Individual: 50/100/200...
     if m.group("num2"):
         return _normalize_distance_prefix(False, m.group("num2"))
 
     return None, None
 
 
+def canonicalize_event_key(text: str) -> str:
+    """
+    Lleva entradas EN/ES (y variantes típicas) a una clave canónica EN
+    para:
+      - traducir de forma estable (EVENT_NAME_ES)
+      - asignar distancia por defecto (DEFAULT_EVENT_DISTANCE_M)
+    """
+    t = normalize_spaces(strip_accents(text or "")).lower()
+
+    # Normalizaciones comunes (quita dobles espacios, etc.)
+    t = re.sub(r"\s+", " ", t).strip()
+
+    # EN -> canonical
+    if "obstacle swim" in t:
+        return "obstacle swim"
+    if "manikin tow with fins" in t:
+        return "manikin tow with fins"
+    if "manikin carry" in t:
+        return "manikin carry"
+    if "manikin carry with fins" in t:
+        return "manikin carry with fins"
+    if "manikin relay" in t:
+        return "manikin relay"
+    if "line throw" in t:
+        return "line throw"
+    if "obstacle relay" in t:
+        return "obstacle relay"
+    if "super lifesaver" in t:
+        return "super lifesaver"
+    if "rescue medley" in t:
+        return "rescue medley"
+    if "medley relay" in t:
+        return "medley relay"
+    if "pool lifesaver relay" in t:
+        return "pool lifesaver relay"
+
+    # ES -> canonical (sin tildes ya)
+    if "natacion con obstaculos" in t:
+        return "obstacle swim"
+    if "arrastre de maniqui con aletas" in t:
+        return "manikin tow with fins"
+    if t == "arrastre de maniqui" or "remolque de maniqui" in t:
+        return "manikin carry"
+    if t == "arrastre de maniqui con aletas" or "remolque de maniqui con aletas" in t:
+        return "manikin carry with fins"
+    if "socorrista" in t:
+        return "manikin tow with fins"
+    if t == "relevo arrastre de maniqui" or "relevo remolque de maniqui" in t:
+        return "manikin relay"
+    if "lanzamiento de cuerda" in t:
+        return "line throw"
+    if "relevo natacion con obstaculos" in t:
+        return "obstacle relay"
+    if "supersocorrista" in t:
+        return "super lifesaver"
+    if "combinada de salvamento" in t:
+        return "rescue medley"
+    if "relevo combinado" in t:
+        return "medley relay"
+    if "relevo socorrista" in t:
+        return "pool lifesaver relay"
+
+    # fallback: intenta traducir directamente si coincide con una key EN exacta
+    return t
+
+
+# -------------------------------------
+# --- MAIN CODE
+# -------------------------------------
 def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     """
     Construye:
-      base (capitalized, sin cat/sex), distance_m, relay, category, sex (F/M/X), id
+      - base: "<distancia> <disciplina ES>" (la distancia SI va aquí)
+      - discipline: NO se devuelve aquí (la calcula parser.py desde base),
+        pero base queda ya en ES canónico para que discipline también lo sea.
+      - distance_m: "200" / "4x50" etc.
+      - category, sex, relay, id
     """
     # -------------------------------------
     # --- EVENT TITLE
     # -------------------------------------
     raw_title = event_title or ""
+    raw_title = _fix_glued_tokens(raw_title)
 
-    # tramo ES tras el guion si existe
+    # FIX PDF 2023Esp: título pegado a "Finales - Results ..." y a veces "AgrupadaFinales"
+    raw_title = re.sub(
+        r"\b(Agrupad[oa])(?=(Finales|Resultados|Results)\b)",
+        r"\1 ",
+        raw_title,
+        flags=re.IGNORECASE
+    )
+    raw_title = re.split(r"\b(?:Finales|Resultados|Results)\b", raw_title, 1)[0].strip()
+
+    # Limpieza editorial (SIEMPRE)
+    raw_title = re.sub(r"\bagrupad[oa]\b", "", raw_title, flags=re.IGNORECASE)
+    raw_title = normalize_spaces(raw_title)
+
+    # Sexo puede venir como letra al final del título
+    sex_from_title, raw_title_wo_sex = _extract_trailing_sex_letter(raw_title)
+    if sex_from_title:
+        raw_title = raw_title_wo_sex
+
+    # Sexo inline: "<prueba> F Agrupada" -> ('F', '<prueba>')
+    sex_inline, raw_title_wo_inline = _extract_inline_sex_letter(raw_title)
+    if sex_inline:
+        sex_from_title = sex_inline
+        raw_title = raw_title_wo_inline
+
+    # Sexo desde category_line (si existe) también puede venir como "... F"
+    sex_from_cat = None
+    if category_line:
+        category_line = _fix_glued_tokens(category_line)
+        sex_from_cat, cat_wo_sex = _extract_trailing_sex_letter(category_line)
+        if sex_from_cat:
+            category_line = cat_wo_sex
+
+    # tramo ES tras guion si existe (si viene "EN - ES")
     es_part = raw_title
     if re.search(r"\s-\s", raw_title):
         es_part = re.split(r"\s-\s", raw_title, 1)[1].strip()
@@ -353,103 +574,119 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     # -------------------------------------
     # --- CATEGORY LINE
     # -------------------------------------
-    # category/sex preferidos desde category_line
     cat = None
     sex_source = " ".join([raw_title, es_part, category_line or ""])
     sx = sex_code(sex_source)
+
     if category_line:
         m = CATEGORY_LINE_RE.match(category_line)
         if m:
             cat_candidate = category_code(m.group(1)) or cat
             sx_candidate = sex_code(m.group(2))
-            if sx_candidate != "X":  # si detecta sexo válido en category_line, lo usamos (sobrescribe sex)
-               sx = sx_candidate
-
-            # Validación: si el texto NO contiene categoría real, no lo uses
-#            if re.search(r"\b(infantil|inf\.?|cadete|cad\.?|juvenil|juv\.?|j[uú]nior|j[uú]n\.?|absolut|abs\.?|m[aá]ster)\b", m.group(1), re.IGNORECASE):
+            if sx_candidate != "X":
+                sx = sx_candidate
             if cat_candidate:
                 cat = cat_candidate
-            # Validación: si el texto NO contiene sexo real, no lo uses
-            if re.search(r"\b(femen\w*|mascul\w*|mixt\w*|women|men)\b", m.group(2), re.IGNORECASE):
-                sx = sx_candidate
 
-# TODO: #16 hay una prueba que se identifica como "e_4x50_m_<categoría>_x". Debería tener un nombre de prueba, que falta. En el PDF no está. Se supone que se debe tomar el nombre de prueba del event_title justo anterior.
-
-    # fallback desde event_title si no vienen en category_line
     if not sx:
         sx = sex_code(raw_title)
 
-    cat_display_override = None  # solo para mostrar "Máster ..." cuando viene del título
-
-    # 1) Si category_line ya nos dio cat, NUNCA la pisamos con master_display del título.
-    # 2) Si no hay cat, podemos usar master_display SOLO si no es múltiple (+120 y +140 / 60-64 y 70-74).
+    cat_display_override = None
     if not cat:
         if master_display and (not _is_multi_master_display(master_display)):
             cat = master_category_to_canonical(master_display)
             cat_display_override = master_display
         else:
-            cat = category_code(raw_title)  # fallback final (juvenil/junior/absoluto/master_...)
+            cat = category_code(raw_title)
 
-    # Si por cualquier razón cat sigue vacío, protege con absoluto
     if not cat:
         cat = "absoluto"
 
     # -------------------------------------
-    # --- RELEVOS
+    # --- RELEVOS / DISTANCIA / TRADUCCIÓN
     # -------------------------------------
-    relay = infer_relay(raw_title + " " + es_part)
+    # Mejora mínima: detectar "relay" en inglés también (no rompe los casos ES)
+    relay_hint = normalize_spaces(f"{raw_title} {es_part}")
 
-    # Lanzamiento de cuerda: relevo sin distancia
+
+    # Lanzamiento de cuerda: sin distancia
     if is_line_throw(es_part) or is_line_throw(raw_title):
-        base = "Lanzamiento de Cuerda"
+        discipline_es = "Lanzamiento de Cuerda"
         distance_m = None
+        prefix = None
+        base = discipline_es
+        canonical_key = "line throw"
+        relay = True
     else:
-        # extraer distancia en cualquier parte del título (EN o ES)
+        # 1) Distancia si viene en el título (da igual EN/ES y orden)
         prefix, distance_m = extract_distance_from_title(raw_title)
+        if not distance_m:
+            prefix, distance_m = extract_distance_from_title(es_part)
 
-        # limpiar texto ES: quitar cat/sex y title case
-        rest = strip_category_sex_es(base_source if master_display else es_part)
-        rest = title_case_es(rest)
+        # 2) Texto base para disciplina (sin cat/sex)
+        rest_src = strip_category_sex_es(base_source if master_display else es_part)
+        rest_src = normalize_spaces(rest_src)
 
-        # Si el texto ES ya trae distancia al inicio ("50 m.", "4x25 m.", "4x12,5 m."),
-        # la quitamos para no duplicarla al anteponer prefix.
-        rest = re.sub(r"^(?:4x)?\s*\d+(?:[.,]\d+)?\s*(?:\u202F|\s)?m\s*\.?\s*", "", rest, flags=re.IGNORECASE).strip()
-        # Normaliza patrones OCR tipo " . " o "m ."
-        rest = re.sub(r"\s*\.\s*", " ", rest).strip()
+        # Si el texto trae distancia al inicio, la quitamos para no duplicar
+        rest_src = re.sub(
+            r"^(?:4\s*x\s*)?\d+(?:[.,]\d+)?\s*(?:\u202F|\s)?m?\.?\s*",
+            "",
+            rest_src,
+            flags=re.IGNORECASE
+        ).strip()
 
-        # --- Reglas de "Relevo" ---
-        # 1) Deduplicar si el PDF trae "Relevo" más de una vez al inicio.
-        #    (por ejemplo: "Relevo Relevo Remolque de Maniquí")
-        rest = re.sub(r"^(?:\s*Relevo\b\s*){2,}", "Relevo ", rest, flags=re.IGNORECASE).strip()
+        # 3) Canonicalización EN/ES -> key EN canónica
+        canonical_key = canonicalize_event_key(rest_src)
 
-        # 2) Forzar que TODAS las pruebas relay lleven "Relevo" (excepto Lanzamiento de Cuerda, que ya se trata aparte)
-        if relay and rest:
-            if not re.match(r"^\s*relevo\b", rest, flags=re.IGNORECASE):
-                rest = f"Relevo {rest}".strip()
+        relay_hint = normalize_spaces(f"{raw_title} {es_part}")
+        relay = (
+            canonical_key.strip().lower().endswith("relay")
+            or bool(re.search(r"\b4x\b", relay_hint.lower()))
+            or bool(re.search(r"\brelevo\b", relay_hint.lower()))
+            or bool(re.search(r"\brelay\b", relay_hint.lower()))
+        )
 
-        # --- Normalización de relevos: forzar prefijo "Relevo " en el nombre base ---
-        # En los PDFs a veces aparece "Relevo ..." y otras veces no.
-        # Queremos consistencia: para cualquier relay, el "rest" debe empezar por "Relevo ".
-#        if relay and rest:
-            # Evitar duplicar si ya viene con "Relevo"
-#            if not re.match(r"^\s*relevo\b", rest, flags=re.IGNORECASE):
-#                rest = f"Relevo {rest}".strip()
+        # 4) Traducción estable a ES (discipline sin distancia)
+        discipline_es = translate_event_name_es(canonical_key)
+        if not discipline_es or discipline_es == canonical_key:
+            # fallback: si no hay mapping, al menos capitaliza
+            discipline_es = title_case_es(rest_src)
 
-# TODO #14 Las distancias se expresan <distancia><espacio corto><m sin punto><espacio normal>
+        # 5) Distancia por defecto si NO venía en el título
+        if not distance_m:
+            dflt = DEFAULT_EVENT_DISTANCE_M.get(canonical_key)
+            if dflt:
+                # dflt puede venir como "200" o "4x50"
+                if dflt.lower().startswith("4x"):
+                    num = dflt[2:]
+                    prefix, distance_m = _normalize_distance_prefix(True, num)
+                else:
+                    prefix, distance_m = _normalize_distance_prefix(False, dflt)
 
+        # 6) Forzar "Relevo " si es relay y el nombre traducido no lo trae ya
+        if relay and discipline_es and not re.match(r"^\s*relevo\b", discipline_es, flags=re.IGNORECASE):
+            discipline_es = f"Relevo {discipline_es}".strip()
+
+        # 7) Construir base (base SI incluye distancia)
         if prefix:
-            base = f"{prefix} {rest}".strip()
+            base = f"{prefix} {discipline_es}".strip()
         else:
-            # si no hay distancia detectada, dejamos solo el texto (caso raro)
-            base = rest.strip()
+            base = discipline_es.strip()
 
-    sex = sx  # F/M/X
-    category = cat # juvenil/junior/absoluto
+    # -------------------------------------
+    # --- SEX / ID
+    # -------------------------------------
+    sex_letter = sex_from_cat or sex_from_title
+    if sex_letter in {"F", "M", "X"}:
+        sex = sex_letter
+    else:
+        sex = sx  # F/M/X
+
+    category = cat  # juvenil/junior/absoluto/master_...
     event_id = "e_" + slugify(f"{base}_{category}_{sex}").lower()
 
-    # >>> DEBUG TEMPORAL (borra después) <<<
     debug_info = None
-    if "máster" in raw_title.lower() or "master" in raw_title.lower():
+    if "máster" in (event_title or "").lower() or "master" in (event_title or "").lower():
         debug_info = {
             "raw_title": raw_title,
             "es_part": es_part,
@@ -461,8 +698,8 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
             "distance_m": distance_m,
             "relay": relay,
             "id": event_id,
+            "canonical_key": canonical_key,
         }
-    # >>> FIN DEBUG TEMPORAL <<<
 
     return {
         "base": base,

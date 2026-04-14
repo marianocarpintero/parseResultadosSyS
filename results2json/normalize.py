@@ -179,7 +179,7 @@ def normalize_category(raw: str) -> Optional[str]:
     # cubre junior/júnior y mojibake tipo j·nior => contiene "nior"
     if "junior" in r or "júnior" in r or "nior" in r:
         return "junior"
-    if "absoluta" in r or "absoluto" in r:
+    if "absoluta" in r or "absoluto" in r or "agrupada" in r or "agrupado" in r:
         return "absoluto"
     return None
 
@@ -208,3 +208,20 @@ def parse_status(line: str) -> str:
     if "BAJA" in u:
         return "BAJA"
     return "OK"
+
+
+def clean_club_name(club_raw: str, position: Optional[int] = None, points: Optional[int] = None) -> str:
+    """
+    Limpia basura típica pegada al club por extract_text/OCR.
+    Ej: 'C.D.E. Pacífico Salvamento 2 18' -> 'C.D.E. Pacífico Salvamento'
+    Solo elimina números que coinciden exactamente con position/points (si se conocen).
+    """
+    s = normalize_spaces(club_raw or "")
+
+    # Quita coincidencias exactas de position / points si aparecen como tokens sueltos al final
+    if position is not None:
+        s = re.sub(rf"(?:\s+|^)\b{position}\b(?=\s|$)", " ", s)
+    if points is not None:
+        s = re.sub(rf"(?:\s+|^)\b{points}\b(?=\s|$)", " ", s)
+
+    return normalize_spaces(s)

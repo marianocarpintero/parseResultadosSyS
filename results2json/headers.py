@@ -39,10 +39,18 @@ import pdfplumber
 # ----------------------------
 
 MONTHS_ES = {
-    "enero": "01", "febrero": "02", "marzo": "03",
-    "abril": "04", "mayo": "05", "junio": "06",
-    "julio": "07", "agosto": "08", "septiembre": "09", "setiembre": "09",
-    "octubre": "10", "noviembre": "11", "diciembre": "12"
+  "enero": "01", "ene": "01", "ene.": "01",
+  "febrero": "02", "feb": "02", "feb.": "02",
+  "marzo": "03", "mar": "03", "mar.": "03",
+  "abril": "04", "abr": "04", "abr.": "04",
+  "mayo": "05", "may": "05", "may.": "05",
+  "junio": "06", "jun": "06", "jun.": "06",
+  "julio": "07", "jul": "07", "jul.": "07",
+  "agosto": "08", "ago": "08", "ago.": "08",
+  "septiembre": "09", "setiembre": "09", "sep": "09", "sep.": "09", "sept": "09", "sept.": "09",
+  "octubre": "10", "oct": "10", "oct.": "10",
+  "noviembre": "11", "nov": "11", "nov.": "11",
+  "diciembre": "12", "dic": "12", "dic.": "12",
 }
 
 MONTHS_EN = {
@@ -53,22 +61,22 @@ MONTHS_EN = {
 }
 
 DATE_RE = re.compile(
-    r"(?P<d1>\d{1,2})\s*(?:de)?\s*(?P<m>[a-záéíóúñ]+)\s*(?:de)?\s*(?P<y>\d{4})",
+    r"(?P<d1>\d{1,2})\s*(?:de)?\s*(?P<m>[a-záéíóúñ\.]+)\s*(?:de)?\s*(?P<y>\d{4})",
     re.IGNORECASE
 )
 
 RANGE_RE = re.compile(
-    r"(?P<d1>\d{1,2})\s*(?:-|al|a)\s*(?P<d2>\d{1,2})\s+de\s+(?P<m>[a-záéíóúñ]+)\s+(?P<y>\d{4})",
+    r"(?P<d1>\d{1,2})\s*(?:-|al|a)\s*(?P<d2>\d{1,2})\s+de\s+(?P<m>[a-záéíóúñ\.]+)\s+(?P<y>\d{4})",
     re.IGNORECASE
 )
 
 DATE_ES_SIMPLE_RE = re.compile(
-    r"\b(?P<d>\d{1,2})\s+(?P<m>[a-záéíóúñ]+)\s+(?P<y>\d{4})\b",
+    r"\b(?P<d>\d{1,2})\s+(?P<m>[a-záéíóúñ\.]+)\s+(?P<y>\d{4})\b",
     re.IGNORECASE
 )
 
 DATE_ES_NOYEAR_RE = re.compile(
-    r"\b(?P<d>\d{1,2})\s*(?:de\s+)?(?P<m>[a-záéíóúñ]+)\b",
+    r"\b(?P<d>\d{1,2})\s*(?:de\s+)?(?P<m>[a-záéíóúñ\.]+)\b",
     re.IGNORECASE
 )
 
@@ -341,8 +349,8 @@ def parse_dates(text: str, debug: bool = False) -> Tuple[Optional[str], Optional
         d1 = DATE_RE.search(left)
         d2 = DATE_RE.search(right)
         if d1 and d2:
-            m1 = strip_accents(d1.group("m"))
-            m2 = strip_accents(d2.group("m"))
+            m1 = strip_accents(d1.group("m")).strip(".")
+            m2 = strip_accents(d2.group("m")).strip(".")
             mm1 = MONTHS_ES.get(m1, "")
             mm2 = MONTHS_ES.get(m2, "")
             if mm1 and mm2:

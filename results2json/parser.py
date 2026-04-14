@@ -16,7 +16,7 @@ import re
 from dataclasses import dataclass, field
 from enum import Enum, auto
 from typing import Optional, List, Dict, Any, Callable, Tuple
-from .events import build_event_fields
+from .events import build_event_fields, translate_event_name_es
 
 from .tokenize import Token, TokenType
 from .normalize import (
@@ -27,6 +27,7 @@ from .normalize import (
     parse_status,
     slugify,
     time_raw_to_display_seconds,
+    clean_club_name,
 )
 from .schema import Event, Result, TimeInfo, Labels, Club, Athlete
 from .trace import TraceSink, NullTrace
@@ -175,11 +176,31 @@ class SinglePassParser:
 
         if title:
             self.ctx.pending.last_full_title = title
+        
+        if not catline:
+            catline = "Absoluta"
+
+
+        self.trace.emit({
+            "where": "before_build_event_fields",
+            "event_title": self.ctx.pending.title,
+            "category_line": self.ctx.pending.category_line,
+            "state": self.ctx.state.name,
+        })
+
+
 
         fields = build_event_fields(use_title, catline)
         hint = self.ctx.pending.sex_hint
         if hint and fields.get("sex") in (None, "", "X"):
             fields["sex"] = hint
+
+
+        self.trace.emit({
+            "where": "after_build_event_fields",
+            "fields": fields,
+        })
+
 
 #        existing = None
 #        if callable(self.on_event) and hasattr(self.on_event, "__self__"):
@@ -198,6 +219,7 @@ class SinglePassParser:
         # emitir Event a dimensions
         base = fields["base"]
         discipline = self.strip_distance_prefix(base)
+        discipline = translate_event_name_es(discipline)
 
         self.ctx.current_event_discipline = discipline
 
@@ -271,6 +293,28 @@ class SinglePassParser:
                     cut_idx = i
                     break
 
+        # --- FIX: algunas filas de relevo vienen como "... <club> ... <pos> <pts>" al final ---
+        # Si no hay tiempo/estado que haya cortado antes, y la línea termina en dos enteros,
+        # interpretamos esos enteros como (position, points) y recortamos cut_idx para que
+        # NO entren en club_name_raw.
+        if cut_idx == len(parts) and len(parts) >= 2 and position is None:
+            a, b = parts[-2], parts[-1]
+            if a.isdigit() and b.isdigit():
+                cand_pos = int(a)
+                cand_pts = int(b)
+                # si ya hemos inferido puntos, debe coincidir con el último token
+                if points is None or points == cand_pts:
+                    position = cand_pos
+                    points = cand_pts
+                    self.ctx.last_position_seen = position
+                    cut_idx = len(parts) - 2
+                    self.trace.emit({
+                        "action": "DEDUCED_POS_PTS_FROM_TAIL",
+                        "position": position,
+                        "points": points,
+                        "text": line
+                    })
+
         club_start = name_start
         for i in range(name_start, min(len(parts), cut_idx)):
             if parts[i].lower() in CLUB_START_TOKENS:
@@ -288,6 +332,7 @@ class SinglePassParser:
             first_member = normalize_athlete_name(first_member)
 
         club_name_raw= " ".join(parts[club_start:cut_idx]).strip()
+        club_name_raw = clean_club_name(club_name_raw, position=position, points=points)
         club_name = self._clean_club_tail(club_name_raw) or "club_unknown"
         club_name = self._normalize_club_display(club_name)
 
@@ -449,6 +494,7 @@ class SinglePassParser:
                 club_tokens = club_tokens[:-1]
 
         club_name = self._clean_club_tail(" ".join(club_tokens).strip()) or "club_unknown"
+        club_name = clean_club_name(club_name, position=position, points=points)
         # filtro de clubes
         if not self._club_passes(club_name):
             self.trace.emit({"action": "SKIP_INDIVIDUAL_BY_CLUB", "club": club_name, "filter": self.club_filters_norm})
@@ -567,6 +613,7 @@ class SinglePassParser:
                 self._flush_relay_context(competition_id, season_id, date, reason="new_event_title")
                 self.ctx.state = State.IN_RESULTS
             self.ctx.pending.title = token.norm
+            self.ctx.pending.category_line = None  # el EVENT_TITLE resetea la categoría pendiente
             self.ctx.pending.sex_hint = token.meta.get("sex_hint")
 
             # Nuevo bloque potencial: resetea contador de posiciones vistas
