@@ -28,9 +28,11 @@ EVENT_TITLE_EN_KNOWN_RE = re.compile(
     re.IGNORECASE
 )
 
-EVENT_TITLE_MASTER_START_RE = re.compile(r"^lanzamiento\s+de\s+cuerda\b", re.IGNORECASE)
+EVENT_TITLE_MASTER_START_RE = re.compile(r"^lanzamiento(?:\s+de)?\s+cuerda\b", re.IGNORECASE)
 
 EVENT_TITLE_MASTER_SEX_LETTER_RE = re.compile(r"\bmaster\s+[mfx]\b", re.IGNORECASE)
+
+MASTER_R4_CAT_RE = re.compile(r"^m[áa]ster\s*r4\s*\+\s*\d{2,3}$", re.IGNORECASE)
 
 CAT_ES_RE = re.compile(r"\b(juvenil|junior|júnior|absoluto|absoluta|cadete|infantil|máster|master)\b", re.IGNORECASE)
 
@@ -39,6 +41,8 @@ SEX_ES_RE = re.compile(r"\b(femen\w*|mascul\w*|mixt\w*)\b", re.IGNORECASE)
 CAT_ABBR_RE = re.compile(r"\b(cad|inf|juv|jun|abs)\b", re.IGNORECASE)
 
 SEX_LETTER_RE = re.compile(r"\b([mfx])\b", re.IGNORECASE)
+
+SEX_ABBR_WORDS_RE = re.compile(r"\b(mas|fem|mix)\b", re.IGNORECASE)
 
 AGE_RANGE_RE = re.compile(r"\b\d{2}\s*-\s*\d{2}\b")
 
@@ -57,6 +61,11 @@ ROW_START_RE = re.compile(r"^\d+\b")
 YEAR_RE = re.compile(r"\b(19\d{2}|20\d{2})\b")
 
 TIME_RE = re.compile(r"\b\d{1,2}:\d{2}:\d{2}\b")
+
+DATE_RANGE_LINE_RE = re.compile(
+    r"\b\d{1,2}\s+[a-záéíóúñ.]+\s+\d{4}\s*-\s*\d{1,2}\s+[a-záéíóúñ.]+\s+\d{4}\b",
+    re.IGNORECASE
+)
 
 NAME_COMMA_START_RE = re.compile(r"^[^,]{2,},\s*[^,]{2,}\b")
 
@@ -144,17 +153,24 @@ class Tokenizer:
         # ----------------------------------
         m = CATEGORY_SEX_RE.match(norm)
         if m:
-            cat_raw = m.group(1)
-            sex_raw = m.group(2)
-            if CAT_OK.search(cat_raw) and SEX_OK.search(sex_raw):
+            cat_raw = m.group(1).strip()
+            sex_raw = m.group(2).strip()
+
+            # ✅ aceptar categorías estándar o MásterR4 +xxx
+            cat_ok = bool(CAT_OK.search(cat_raw)) or bool(MASTER_R4_CAT_RE.match(cat_raw))
+            sex_ok = bool(SEX_OK.search(sex_raw))
+
+            if cat_ok and sex_ok:
                 return Token(TokenType.CATEGORY_LINE, page, line_no, raw, norm, {
                     "cat_raw": cat_raw,
                     "sex_raw": sex_raw
                 })
             # si no pasa validación, NO es category_line
 
-        # Título de prueba con distancia + categoría abreviada + sexo en letra (Cad F / Inf M / etc.)
-        if EVENT_TITLE_ES_START_RE.match(norm) and (CAT_ES_RE.search(norm) or CAT_ABBR_RE.search(low)) and SEX_LETTER_RE.search(low) \
+        # Cabecera de prueba en ES tipo: "50 m. ... categoría juvenil femenino"
+        # o "Lanzamiento cuerda ... Master Fem/Mas"
+        if (EVENT_TITLE_ES_START_RE.match(norm) or EVENT_TITLE_MASTER_START_RE.match(norm)) \
+        and CAT_ES_RE.search(norm) and (SEX_ES_RE.search(norm) or SEX_ABBR_WORDS_RE.search(low) or SEX_LETTER_RE.search(low)) \
         and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
             clean_norm, multi_age = _strip_multi_age_ranges(norm)
             meta = {}
@@ -238,7 +254,11 @@ class Tokenizer:
 
         # ----------------------------------
         # --- RESULTADOS
-        # ----------------------------------
+        # ----------------------------------        
+        # Línea de rango de fechas (no es resultado)
+        if DATE_RANGE_LINE_RE.search(norm):
+            return Token(TokenType.NOISE, page, line_no, raw, norm, {"reason": "date_range"})
+
         # Filas de resultados
         if ROW_START_RE.match(norm):
             parts = norm.split()

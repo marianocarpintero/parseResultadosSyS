@@ -21,7 +21,26 @@ CAT_WORDS_RE = re.compile(
     r"\b(infantil|inf\.?|cadete|cad\.?|juvenil|juv\.?|junior|júnior|jun\.?|absoluto|absoluta|abs\.?|master|máster)\b",
     re.IGNORECASE
 )
+
+JUV_JUN_RE = re.compile(r"\bjuvenil\b\s*-\s*\bjun(?:ior|i[oó]r)\b", re.IGNORECASE)
+
+_CAT_ABBR_FIXES = [
+    (re.compile(r"\bjuv\s+jun\b", re.IGNORECASE), "Juvenil - Junior"),
+    (re.compile(r"\bjuv\b", re.IGNORECASE), "Juvenil"),
+    (re.compile(r"\bjun\b", re.IGNORECASE), "Junior"),
+    (re.compile(r"\babs\b", re.IGNORECASE), "Absoluto"),
+    (re.compile(r"\bcad\b", re.IGNORECASE), "Cadete"),
+    (re.compile(r"\binf\b", re.IGNORECASE), "Infantil"),
+]
+
 SEX_WORDS_RE = re.compile(r"\b(masculino|masculina|femenino|femenina|mixto|mixta)\b", re.IGNORECASE)
+
+# sexo abreviado
+_SEX_ABBR_FIXES = [
+    (re.compile(r"\bmas\b", re.IGNORECASE), "Masculino"),
+    (re.compile(r"\bfem\b", re.IGNORECASE), "Femenino"),
+    (re.compile(r"\bmix\b", re.IGNORECASE), "Mixto"),
+]
 
 _GLUE_SEX_TO_WORD_RE = re.compile(r"(\b[MFxX]\b)(?=[A-Za-zÁÉÍÓÚÑáéíóúñ])")
 
@@ -68,11 +87,11 @@ MASTER_WORD_RE = re.compile(r"\bm[áa]ster\b", re.IGNORECASE)
 SEX_TAIL_RE = re.compile(r"\b(femen\w*|mascul\w*|mixt\w*)\b", re.IGNORECASE)
 
 # Detecta distancia en cualquier parte (EN o ES), tolerante:
-# - "200m", "200 m", "200 m.", "200" (sin m), "200 m"
-# - "4x50m", "4x50 m", "4 x 50 m", "4x12,5m", "4x12.5 m", "4x12,5"
+# - "200m", "200 m", "200 m.", "200" (sin m)  [ya lo separa normalize_event_title_variants]
+# - "4x50m", "4x50 m", "4 x 50 m", "4x12,5m", "4x12.5 m"
 DIST_ANY_RE = re.compile(
-    r"(?P<relay>4\s*x)\s*(?P<num>\d+(?:[.,]\d+)?)\s*(?:\u202F|\s)?m?\.?\b"
-    r"|(?P<num2>\d{2,3})\s*(?:\u202F|\s)?m?\.?\b",
+    r"(?P<relay>4\s*x)\s*(?P<num>\d+(?:[.,]\d+)?)\s*(?:\u202F|\s)?m\.?\b"
+    r"|(?P<num2>\d{2,3})\s*(?:\u202F|\s)?m\.?\b",
     re.IGNORECASE
 )
 
@@ -82,38 +101,75 @@ EVENT_NAME_ES = {
     "line throw": "Lanzamiento de Cuerda",
     "obstacle swim": "Natación con Obstáculos",
     "obstacle relay": "Relevo Natación con Obstáculos",
-    "manikin carry": "Arrastre de Maniquí",
-    "manikin relay": "Relevo Arrastre de Maniquí",
+    "manikin carry": "Remolque de Maniquí",
+    "manikin relay": "Relevo Remolque de Maniquí",
     "medley relay": "Relevo Combinado",
     "super lifesaver": "Supersocorrista",
     "manikin tow with fins": "Socorrista",
-    "manikin carry with fins": "Arrastre de Maniquí con Aletas",
+    "manikin carry with fins": "Remolque de Maniquí con Aletas",
+    "manikin carry with rubber fins": "Remolque de Maniquí con Aletas de Goma",
     "rescue medley": "Combinada de Salvamento",
     "pool lifesaver relay": "Relevo Socorrista"
 }
 
 DEFAULT_EVENT_DISTANCE_M = {
-    "obstacle swim": "200",
-    "obstacle relay": "4x50",
     "natación con obstáculos": "200",
+    "obstacle swim": "200",
     "relevo natación con obstáculos": "4x50",
-    "manikin tow with fins": "100",
+    "obstacle relay": "4x50",
+
     "socorrista": "100",
-    "manikin carry with fins": "100",
-    "arrastre de maniquí con aletas": "100",
-    "manikin carry": "50",
-    "arrastre de maniquí": "50",
-    "rescue medley": "100",
+    "manikin tow with fins": "100",
+    "relevo socorrista": "4x50",
     "pool lifesaver relay": "4x50",
-    "manikin relay": "4x25",
+
+    "remolque de maniquí": "50",
+    "manikin carry": "50",
     "relevo remolque de maniquí": "4x25",
     "relevo arrastre de maniquí": "4x25",
-    "super lifesaver": "200",
+    "manikin relay": "4x25",
+
+    "remolque de maniquí con aletas": "100",
+    "manikin carry with fins": "100",
+    "remolque de maniquí con aletas de goma": "100",
+    "manikin carry with rubber fins": "100",
+
+    "combinada de salvamento": "100",
+    "rescue medley": "100",
+
     "supersocorrista": "200",
-    "medley relay": "4x50",
+    "super lifesaver": "200",
+
     "relevo combinado": "4x50",
+    "medley relay": "4x50",
     # Añade aquí más disciplinas según tus necesidades
 }
+
+
+# distancia pegada tipo 100m / 4x50m
+_DISTANCE_GLUE_RE = re.compile(r"\b(\d{2,3}|4\s*x\s*\d+(?:[.,]\d+)?)m\b", re.IGNORECASE)
+
+_DUP_WORDS_RE = re.compile(r"\b(\w+)\b(?:\s+\1\b)+", re.IGNORECASE)
+
+
+def collapse_duplicate_words(text: str) -> str:
+    """
+    Colapsa repeticiones consecutivas de la misma palabra:
+      - 'Máster Máster 30-39' -> 'Máster 30-39'
+      - 'juvenil juvenil (Femenino)' -> 'juvenil (Femenino)'
+    No toca repeticiones no consecutivas.
+    """
+    if not text:
+        return text
+    prev = None
+    cur = normalize_spaces(text)
+    # iterar hasta estabilizar (por si hay 3 repeticiones)
+    while prev != cur:
+        prev = cur
+        cur = _DUP_WORDS_RE.sub(r"\1", cur)
+        cur = normalize_spaces(cur)
+    return cur
+
 
 def title_case_es(s: str) -> str:
     s = re.sub(r"\s+", " ", (s or "").strip())
@@ -145,8 +201,11 @@ def strip_category_sex_es(s: str) -> str:
 
 def is_line_throw(text: str) -> bool:
     t = (text or "").lower()
-    return ("line throw" in t) or ("lanzamiento de cuerda" in t)
-
+    return (
+        ("line throw" in t)
+        or ("lanzamiento de cuerda" in t)
+        or ("lanzamiento cuerda" in t)
+    )
 
 def infer_relay(text: str) -> bool:
     t = (text or "").lower()
@@ -235,9 +294,17 @@ def _extract_inline_sex_letter(text: str) -> tuple[Optional[str], str]:
     return sex, stripped
 
 
-def category_code(raw: Optional[str]) -> str:
+def category_code(raw: Optional[str]) -> Optional[str]:
+    if not raw:
+        return None
     r = (raw or "").lower()
 
+    # Combinado Juvenil - Junior
+    if JUV_JUN_RE.search(raw):
+        return "juvenil_junior"
+    # también si aparecen ambas palabras aunque no haya guion exacto
+    if ("juvenil" in r) and ("junior" in r or "júnior" in r or "nior" in r):
+        return "juvenil_junior"
 
     # Palabras completas
     if re.search(r"\bcadete\b", r):
@@ -286,6 +353,10 @@ def category_display(cat: str) -> str:
     """
     if not cat:
         return "Absoluta"
+
+    c = cat.strip().lower()
+    if c == "juvenil_junior":
+        return "Juvenil - Junior"
 
     # Categorías invariables en género
     if cat in {"infantil", "juvenil", "junior"}:
@@ -422,26 +493,16 @@ def _normalize_distance_prefix(relay: bool, num_str: str) -> Tuple[str, str]:
 
     return prefix_text, distance_text
 
+
 def extract_distance_from_title(event_title: str) -> Tuple[Optional[str], Optional[str]]:
-    """
-    Busca distancia en cualquier parte del título (EN o ES), tolerante:
-      - 200m / 200 m / 200 m. / 200 (sin 'm')
-      - 4x50m / 4x12,5m / 4 x 12.5 m / 4x12,5 (sin 'm')
-    Devuelve (prefix_text, distance_m) usando el formato ES:
-      prefix_text: "200\u202Fm" / "4x12,5\u202Fm"
-      distance_m:  "200" / "4x12,5"
-    """
     s = event_title or ""
     m = DIST_ANY_RE.search(s)
     if not m:
         return None, None
 
-    # Relevo: 4x...
     if m.group("relay") and m.group("num"):
-        # normaliza "4 x" -> relay True
         return _normalize_distance_prefix(True, m.group("num"))
 
-    # Individual: 50/100/200...
     if m.group("num2"):
         return _normalize_distance_prefix(False, m.group("num2"))
 
@@ -463,18 +524,18 @@ def canonicalize_event_key(text: str) -> str:
     # EN -> canonical
     if "obstacle swim" in t:
         return "obstacle swim"
+    if "obstacle relay" in t:
+        return "obstacle relay"
     if "manikin tow with fins" in t:
         return "manikin tow with fins"
-    if "manikin carry" in t:
-        return "manikin carry"
     if "manikin carry with fins" in t:
         return "manikin carry with fins"
+    if "manikin carry" in t:
+        return "manikin carry"
     if "manikin relay" in t:
         return "manikin relay"
     if "line throw" in t:
         return "line throw"
-    if "obstacle relay" in t:
-        return "obstacle relay"
     if "super lifesaver" in t:
         return "super lifesaver"
     if "rescue medley" in t:
@@ -487,22 +548,29 @@ def canonicalize_event_key(text: str) -> str:
     # ES -> canonical (sin tildes ya)
     if "natacion con obstaculos" in t:
         return "obstacle swim"
+    if "remolque" in t and "aletas" in t and "infantil" in t:
+        # Caso especial: Remolque Aletas Inf => Aletas de Goma
+        return "manikin carry with rubber fins"
+    if "remolque" in t and "aletas" in t:
+        return "manikin carry with fins"  
     if "arrastre de maniqui con aletas" in t:
         return "manikin tow with fins"
-    if t == "arrastre de maniqui" or "remolque de maniqui" in t:
-        return "manikin carry"
     if t == "arrastre de maniqui con aletas" or "remolque de maniqui con aletas" in t:
         return "manikin carry with fins"
+    if t == "arrastre de maniqui" or "remolque de maniqui" in t:
+        return "manikin carry"
+    if "remolque" in t:
+        return "manikin carry"
+    if "supersocorrista" in t:
+        return "super lifesaver"
     if "socorrista" in t:
         return "manikin tow with fins"
     if t == "relevo arrastre de maniqui" or "relevo remolque de maniqui" in t:
         return "manikin relay"
-    if "lanzamiento de cuerda" in t:
+    if "lanzamiento" in t and "cuerda" in t:
         return "line throw"
     if "relevo natacion con obstaculos" in t:
         return "obstacle relay"
-    if "supersocorrista" in t:
-        return "super lifesaver"
     if "combinada de salvamento" in t:
         return "rescue medley"
     if "relevo combinado" in t:
@@ -512,6 +580,56 @@ def canonicalize_event_key(text: str) -> str:
 
     # fallback: intenta traducir directamente si coincide con una key EN exacta
     return t
+
+
+
+def normalize_event_title_variants(text: str) -> str:
+    """
+    Normaliza variantes compactas:
+      - '100m' -> '100 m'
+      - 'Juv Jun' -> 'Juvenil - Junior'
+      - 'Abs/Cad/Inf' -> 'Absoluto/Cadete/Infantil'
+      - 'Mas/Fem/Mix' -> 'Masculino/Femenino/Mixto'
+      - 'Combinada' -> 'Combinada de Salvamento' (si aplica)
+      - 'Obstáculos' -> 'Natación con Obstáculos' (si aparece como disciplina sola)
+    """
+    if not text:
+        return text
+
+    s = normalize_spaces(text)
+
+    # 1) Separar distancia pegada (100m / 4x50m)
+    #    Mantiene "4x" tolerante a espacios
+    def _unglue(m):
+        tok = m.group(1)
+        tok = re.sub(r"\s+", "", tok, flags=re.IGNORECASE)  # "4 x 50" -> "4x50"
+        return f"{tok} m"
+    s = _DISTANCE_GLUE_RE.sub(_unglue, s)
+
+    # 2) Categorías abreviadas
+    for rx, repl in _CAT_ABBR_FIXES:
+        s = rx.sub(repl, s)
+
+    # 3) Sexo abreviado
+    for rx, repl in _SEX_ABBR_FIXES:
+        s = rx.sub(repl, s)
+
+    # 4) Combinada (cualquier variante) -> 'Combinada de Salvamento' (solo si aparece como disciplina)
+    #    Si ya viene con 'de Salvamento', no cambia.
+    if re.search(r"\bcombinada\b", s, re.IGNORECASE):
+        # normaliza "Combinada Salvamento" -> "Combinada de Salvamento"
+        s = re.sub(r"\bcombinada\s+salvamento\b", "Combinada de Salvamento", s, flags=re.IGNORECASE)
+        s = re.sub(r"\bcombinada\b(?!\s+de\s+salvamento)", "Combinada de Salvamento", s, flags=re.IGNORECASE)
+
+    # 5) Obstáculos como disciplina abreviada
+    #    Si aparece solo "Obstáculos" (o "Natación Obstáculos"), lo llevamos a "Natación con Obstáculos"
+    s = re.sub(r"\bnataci[oó]n\s+obst[aá]culos\b", "Natación con Obstáculos", s, flags=re.IGNORECASE)
+    s = re.sub(r"\bobst[aá]culos\b", "Natación con Obstáculos", s, flags=re.IGNORECASE)
+
+    # 6) Normaliza "Lanzamiento cuerda" a "Lanzamiento de cuerda"
+    s = re.sub(r"\blanzamiento\s+cuerda\b", "Lanzamiento cuerda", s, flags=re.IGNORECASE)
+
+    return normalize_spaces(s)
 
 
 # -------------------------------------
@@ -529,7 +647,7 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     # -------------------------------------
     # --- EVENT TITLE
     # -------------------------------------
-    raw_title = event_title or ""
+    raw_title = normalize_event_title_variants(event_title or "")
     raw_title = _fix_glued_tokens(raw_title)
 
     # FIX PDF 2023Esp: título pegado a "Finales - Results ..." y a veces "AgrupadaFinales"
@@ -544,6 +662,7 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     # Limpieza editorial (SIEMPRE)
     raw_title = re.sub(r"\bagrupad[oa]\b", "", raw_title, flags=re.IGNORECASE)
     raw_title = normalize_spaces(raw_title)
+    raw_title = collapse_duplicate_words(raw_title)
 
     # Sexo puede venir como letra al final del título
     sex_from_title, raw_title_wo_sex = _extract_trailing_sex_letter(raw_title)
@@ -559,16 +678,21 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     # Sexo desde category_line (si existe) también puede venir como "... F"
     sex_from_cat = None
     if category_line:
+        category_line = collapse_duplicate_words(category_line)
         category_line = _fix_glued_tokens(category_line)
         sex_from_cat, cat_wo_sex = _extract_trailing_sex_letter(category_line)
         if sex_from_cat:
             category_line = cat_wo_sex
 
-    # tramo ES tras guion si existe (si viene "EN - ES")
+    # tramo ES tras el guion si existe (solo si es separador EN - ES, NO si es "Juvenil - Junior")
     es_part = raw_title
-    if re.search(r"\s-\s", raw_title):
-        es_part = re.split(r"\s-\s", raw_title, 1)[1].strip()
+    if re.search(r"\s-\s", raw_title) and not JUV_JUN_RE.search(raw_title):
+        left, right = re.split(r"\s-\s", raw_title, 1)
+        # split solo si a la izquierda hay pinta de inglés (evita falsos positivos)
+        if re.search(r"\b(obstacle|manikin|lifesaver|rescue|relay|line throw)\b", left, re.IGNORECASE):
+            es_part = right.strip()
 
+    es_part = collapse_duplicate_words(es_part)
     master_display, base_source = extract_master_category_and_trim(es_part)
 
     # -------------------------------------
@@ -579,10 +703,25 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     sx = sex_code(sex_source)
 
     if category_line:
+        cat_candidate = None
+        category_line = normalize_event_title_variants(category_line)
+        category_line = _fix_glued_tokens(category_line)
+
         m = CATEGORY_LINE_RE.match(category_line)
         if m:
-            cat_candidate = category_code(m.group(1)) or cat
-            sx_candidate = sex_code(m.group(2))
+            cat_text = m.group(1).strip()
+            sex_text = m.group(2).strip()
+
+            # Caso MásterR4 +xxx: úsalo como master_display explícito
+            if re.match(r"^master\\s*r4\\s*\\+\\s*\\d{2,3}$", normalize_key(cat_text), flags=0):
+                cat = master_category_to_canonical(cat_text.replace("Master", "Máster"))
+                cat_display_override = cat_text.replace("Master", "Máster")
+            else:
+                cat_candidate = category_code(cat_text) or cat
+                if cat_candidate:
+                    cat = cat_candidate
+
+            sx_candidate = sex_code(sex_text)
             if sx_candidate != "X":
                 sx = sx_candidate
             if cat_candidate:
@@ -623,7 +762,11 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
         if not distance_m:
             prefix, distance_m = extract_distance_from_title(es_part)
 
-        # 2) Texto base para disciplina (sin cat/sex)
+        # 2) Texto base para disciplina (sin cat/sex)        
+        full_src = base_source if master_display else es_part
+        kfull = normalize_key(full_src)
+        rubber_fins = ("remolque" in kfull and "aletas" in kfull and ("infantil" in kfull or re.search(r"\binf\b", kfull)))
+
         rest_src = strip_category_sex_es(base_source if master_display else es_part)
         rest_src = normalize_spaces(rest_src)
 
@@ -636,12 +779,15 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
         ).strip()
 
         # 3) Canonicalización EN/ES -> key EN canónica
-        canonical_key = canonicalize_event_key(rest_src)
+        if rubber_fins:
+            canonical_key = "manikin carry with rubber fins"
+        else:
+            canonical_key = canonicalize_event_key(rest_src)
 
         relay_hint = normalize_spaces(f"{raw_title} {es_part}")
         relay = (
             canonical_key.strip().lower().endswith("relay")
-            or bool(re.search(r"\b4x\b", relay_hint.lower()))
+            or ("4x" in relay_hint.lower())
             or bool(re.search(r"\brelevo\b", relay_hint.lower()))
             or bool(re.search(r"\brelay\b", relay_hint.lower()))
         )

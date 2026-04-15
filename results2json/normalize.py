@@ -174,6 +174,11 @@ def normalize_category(raw: str) -> Optional[str]:
     if not raw:
         return None
     r = raw.lower()
+
+    # Combinado Juvenil - Junior (en cualquier orden con guiones/espacios)
+    if ("juvenil" in r) and (("junior" in r) or ("júnior" in r) or ("nior" in r)):
+        return "juvenil_junior"
+
     if "juvenil" in r:
         return "juvenil"
     # cubre junior/júnior y mojibake tipo j·nior => contiene "nior"
