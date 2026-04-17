@@ -25,9 +25,9 @@ CAT_WORDS_RE = re.compile(
 JUV_JUN_RE = re.compile(r"\bjuvenil\b\s*-\s*\bjun(?:ior|i[oó]r)\b", re.IGNORECASE)
 
 _CAT_ABBR_FIXES = [
-    (re.compile(r"\bjuv\s+jun\b", re.IGNORECASE), "Juvenil - Junior"),
+    (re.compile(r"\bjuv\s+jun\b", re.IGNORECASE), "Juvenil - Júnior"),
     (re.compile(r"\bjuv\b", re.IGNORECASE), "Juvenil"),
-    (re.compile(r"\bjun\b", re.IGNORECASE), "Junior"),
+    (re.compile(r"\bjun\b", re.IGNORECASE), "Júnior"),
     (re.compile(r"\babs\b", re.IGNORECASE), "Absoluto"),
     (re.compile(r"\bcad\b", re.IGNORECASE), "Cadete"),
     (re.compile(r"\binf\b", re.IGNORECASE), "Infantil"),
@@ -83,6 +83,8 @@ MASTER_BLOCK_RE = re.compile(
 )
 
 MASTER_WORD_RE = re.compile(r"\bm[áa]ster\b", re.IGNORECASE)
+
+_MASTER_PLUS_3_RE = re.compile(r"^master_\+\d{3}$")
 
 SEX_TAIL_RE = re.compile(r"\b(femen\w*|mascul\w*|mixt\w*)\b", re.IGNORECASE)
 
@@ -299,7 +301,7 @@ def category_code(raw: Optional[str]) -> Optional[str]:
         return None
     r = (raw or "").lower()
 
-    # Combinado Juvenil - Junior
+    # Combinado Juvenil - Júnior
     if JUV_JUN_RE.search(raw):
         return "juvenil_junior"
     # también si aparecen ambas palabras aunque no haya guion exacto
@@ -356,11 +358,13 @@ def category_display(cat: str) -> str:
 
     c = cat.strip().lower()
     if c == "juvenil_junior":
-        return "Juvenil - Junior"
+        return "Juvenil - Júnior"
 
     # Categorías invariables en género
-    if cat in {"infantil", "juvenil", "junior"}:
+    if cat in {"infantil", "juvenil"}:
         return cat.capitalize()
+    if cat == "junior":
+        return "Júnior"
 
     # Cadete -> Cadete (invariable en uso deportivo)
     if cat == "cadete":
@@ -377,15 +381,43 @@ def category_display(cat: str) -> str:
     # Máster R4 (+xxx)
     if cat.startswith("master_r4_"):
         val = cat.split("master_r4_", 1)[1].replace("_", "")
-        return f"Máster R4 {val}"
+        return _normalize_master_display(f"Máster R4 {val}")
 
     # Máster rangos / sumas
     if cat.startswith("master_"):
         val = cat.split("master_", 1)[1].replace("_", "")
-        return f"Máster {val}"
+        return _normalize_master_display(f"Máster {val}")
 
     # Fallback defensivo
     return "Absoluta"
+
+
+def _normalize_master_display(s: str) -> str:
+    """
+    Fuerza 'Máster' con tilde y mayúscula, y normaliza 'R4' si aplica.
+    """
+    if not s:
+        return s
+    t = re.sub(r"\s+", " ", s).strip()
+    # 'master' / 'máster' / 'Master' -> 'Máster'
+    t = re.sub(r"\bm[áa]ster\b", "Máster", t, flags=re.IGNORECASE)
+    # Normaliza R4 (si viene raro)
+    t = re.sub(r"\bR\s*4\b", "R4", t, flags=re.IGNORECASE)
+    return t
+
+
+def _normalize_category_display_es(s: Optional[str]) -> str:
+    if not s:
+        return ""
+    t = normalize_spaces(s)
+
+    # Fuerza Máster (tilde + mayúscula)
+    t = re.sub(r"\bm[áa]ster\b", "Máster", t, flags=re.IGNORECASE)
+
+    # (Opcional) Refuerza Júnior si te interesa blindarlo también
+    t = re.sub(r"\bJunior\b", "Júnior", t)
+
+    return t
 
 
 def extract_master_category_and_trim(title: str) -> tuple[Optional[str], str]:
@@ -411,11 +443,11 @@ def extract_master_category_and_trim(title: str) -> tuple[Optional[str], str]:
     seg = re.sub(r"\s+", " ", seg)
 
     # normalizar MásterR4 / Máster R4
-    seg = re.sub(r"\bma[áa]ster\s*r4\b", "Máster R4", seg, flags=re.IGNORECASE)
-    seg = re.sub(r"\bma[áa]sterr4\b", "Máster R4", seg, flags=re.IGNORECASE)
+    seg = re.sub(r"\bm[áa]ster\s*r4\b", "Máster R4", seg, flags=re.IGNORECASE)
+    seg = re.sub(r"\bm[áa]sterr4\b", "Máster R4", seg, flags=re.IGNORECASE)
 
     # asegurar "Máster" con acento al inicio
-    seg = re.sub(r"^ma[áa]ster", "Máster", seg, flags=re.IGNORECASE)
+    seg = re.sub(r"^m[áa]ster", "Máster", seg, flags=re.IGNORECASE)
 
     # Si el segmento es solo "Máster/Master M|F|X" (sin rango), NO lo tratamos como categoría máster
     if re.fullmatch(r"(?:Máster|master)(?:\s+[MFX])?", seg, flags=re.IGNORECASE):
@@ -474,6 +506,18 @@ def _is_multi_master_display(master_display: Optional[str]) -> bool:
     has_y_with_any = (" y " in s) and ((len(ranges) > 0) or (len(sums) > 0))
 
     return has_two_ranges or has_two_sums or has_y_with_any
+
+
+def _force_r4_for_master_plus_3(cat: Optional[str], relay: bool) -> Optional[str]:
+    """
+    Si es relevo y la categoría canónica es 'master_+XYZ' (XYZ = 3 cifras),
+    forzar 'master_r4_+XYZ'.
+    """
+    if not relay or not cat:
+        return cat
+    if _MASTER_PLUS_3_RE.match(cat) and not cat.startswith("master_r4_"):
+        return "master_r4_" + cat.split("master_", 1)[1]
+    return cat
 
 
 def _normalize_distance_prefix(relay: bool, num_str: str) -> Tuple[str, str]:
@@ -587,7 +631,7 @@ def normalize_event_title_variants(text: str) -> str:
     """
     Normaliza variantes compactas:
       - '100m' -> '100 m'
-      - 'Juv Jun' -> 'Juvenil - Junior'
+      - 'Juv Jun' -> 'Juvenil - Júnior'
       - 'Abs/Cad/Inf' -> 'Absoluto/Cadete/Infantil'
       - 'Mas/Fem/Mix' -> 'Masculino/Femenino/Mixto'
       - 'Combinada' -> 'Combinada de Salvamento' (si aplica)
@@ -684,7 +728,7 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
         if sex_from_cat:
             category_line = cat_wo_sex
 
-    # tramo ES tras el guion si existe (solo si es separador EN - ES, NO si es "Juvenil - Junior")
+    # tramo ES tras el guion si existe (solo si es separador EN - ES, NO si es "Juvenil - Júnior")
     es_part = raw_title
     if re.search(r"\s-\s", raw_title) and not JUV_JUN_RE.search(raw_title):
         left, right = re.split(r"\s-\s", raw_title, 1)
@@ -734,7 +778,7 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     if not cat:
         if master_display and (not _is_multi_master_display(master_display)):
             cat = master_category_to_canonical(master_display)
-            cat_display_override = master_display
+            cat_display_override = _normalize_master_display(master_display)
         else:
             cat = category_code(raw_title)
 
@@ -746,7 +790,6 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     # -------------------------------------
     # Mejora mínima: detectar "relay" en inglés también (no rompe los casos ES)
     relay_hint = normalize_spaces(f"{raw_title} {es_part}")
-
 
     # Lanzamiento de cuerda: sin distancia
     if is_line_throw(es_part) or is_line_throw(raw_title):
@@ -820,6 +863,26 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
             base = discipline_es.strip()
 
     # -------------------------------------
+    # --- NORMALIZACIÓN MÁSTER R4 EN RELEVOS
+    # -------------------------------------
+    # Regla: si es relevo y la categoría es "master_+<tres cifras>", forzar "master_r4_+<tres cifras>"
+    if relay and isinstance(cat, str) and re.fullmatch(r"master_\+\d{3}", cat):
+        cat = "master_r4_" + cat.split("master_", 1)[1]   # master_+170 -> master_r4_+170
+
+        # Asegurar también el display si venía como override o si luego sale de category_display
+        # Si ya había override ("Máster +170"), lo convertimos a "Máster R4 +170"
+        if cat_display_override:
+            # Normaliza "Máster" y añade R4 si no estaba
+            if re.search(r"\bm[áa]ster\b\s*\+\d{3}\b", cat_display_override, flags=re.IGNORECASE) and "R4" not in cat_display_override.upper():
+                cat_display_override = re.sub(r"\bm[áa]ster\b", "Máster R4", cat_display_override, flags=re.IGNORECASE)
+        else:
+            # Si no había override, forzamos uno explícito para que el display sea estable
+            # (asumiendo formato "Máster R4 +XYZ")
+            m = re.search(r"\+\d{3}", cat)
+            if m:
+                cat_display_override = f"Máster R4 {m.group(0)}"
+
+    # -------------------------------------
     # --- SEX / ID
     # -------------------------------------
     sex_letter = sex_from_cat or sex_from_title
@@ -830,6 +893,8 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
 
     category = cat  # juvenil/junior/absoluto/master_...
     event_id = "e_" + slugify(f"{base}_{category}_{sex}").lower()
+
+    raw_cat_display = cat_display_override if cat_display_override else category_display(category)
 
     debug_info = None
     if "máster" in (event_title or "").lower() or "master" in (event_title or "").lower():
@@ -852,7 +917,7 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
         "distance_m": distance_m,
         "relay": relay,
         "category": category,
-        "category_display": cat_display_override if cat_display_override else category_display(category),
+        "category_display": _normalize_category_display_es(raw_cat_display),
         "sex": sex,
         "id": event_id,
         "debug_info": debug_info,
