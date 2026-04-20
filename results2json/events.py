@@ -54,6 +54,7 @@ _INLINE_SEX_BEFORE_CAT_RE = re.compile(
 )
 
 MEN_EN_RE = re.compile(r"\bmen(?:'s)?\b", re.IGNORECASE)
+
 WOMEN_EN_RE = re.compile(r"\bwomen(?:'s)?\b", re.IGNORECASE)
 
 # Máster con acento o sin acento
@@ -85,6 +86,13 @@ MASTER_BLOCK_RE = re.compile(
 MASTER_WORD_RE = re.compile(r"\bm[áa]ster\b", re.IGNORECASE)
 
 _MASTER_PLUS_3_RE = re.compile(r"^master_\+\d{3}$")
+
+_TRAILING_MASTER_RE = re.compile(r"\bm[áa]ster\b\s*$", re.IGNORECASE)
+
+_DUPLICATE_TRAILING_MASTER_RE = re.compile(
+    r"(m[áa]ster\s+r\d+\s*\+\s*\d{3})\s+m[áa]ster\b",
+    re.IGNORECASE
+)
 
 SEX_TAIL_RE = re.compile(r"\b(femen\w*|mascul\w*|mixt\w*)\b", re.IGNORECASE)
 
@@ -520,6 +528,15 @@ def _force_r4_for_master_plus_3(cat: Optional[str], relay: bool) -> Optional[str
     return cat
 
 
+def _strip_trailing_master(s: str) -> str:
+    """Elimina un 'Máster' sobrante al final: 'Máster R4 +170 Máster' -> 'Máster R4 +170'."""
+    if not s:
+        return s
+    t = normalize_spaces(s)
+    t = _TRAILING_MASTER_RE.sub("", t).strip()
+    return normalize_spaces(t)
+
+
 def _normalize_distance_prefix(relay: bool, num_str: str) -> Tuple[str, str]:
     """
     Devuelve:
@@ -694,6 +711,22 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     raw_title = normalize_event_title_variants(event_title or "")
     raw_title = _fix_glued_tokens(raw_title)
 
+    # --- LIMPIEZA: eliminar sufijos editoriales que NO deben influir en sexo/categoría
+    # (Relevos) / Relevos / (Relevo) etc.
+    raw_title = re.sub(r"\(\s*relevos?\s*\)", "", raw_title, flags=re.IGNORECASE)
+    raw_title = re.sub(r"\brelevos?\b", "", raw_title, flags=re.IGNORECASE)
+    raw_title = normalize_spaces(raw_title)
+
+    # --- LIMPIEZA: el PDF a veces añade un "máster" redundante al final:
+    # "máster R4 +170 F máster" -> "máster R4 +170 F"
+    raw_title = re.sub(r"\b([MFxX])\s+m[áa]ster\b\s*$", r"\1", raw_title, flags=re.IGNORECASE)
+    raw_title = normalize_spaces(raw_title)
+
+    # FIX: elimina "máster" duplicado en títulos tipo
+    # "Máster R4 +170 F máster"
+    raw_title = _DUPLICATE_TRAILING_MASTER_RE.sub(r"\1", raw_title)
+    raw_title = normalize_spaces(raw_title)
+
     # FIX PDF 2023Esp: título pegado a "Finales - Results ..." y a veces "AgrupadaFinales"
     raw_title = re.sub(
         r"\b(Agrupad[oa])(?=(Finales|Resultados|Results)\b)",
@@ -707,6 +740,13 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
     raw_title = re.sub(r"\bagrupad[oa]\b", "", raw_title, flags=re.IGNORECASE)
     raw_title = normalize_spaces(raw_title)
     raw_title = collapse_duplicate_words(raw_title)
+
+    # --- SEXO: en relays máster suele venir como "... R4 +170 M" o "... +200 F"
+    sex_from_title = None
+    m_sex_after_sum = re.search(r"\+\s*\d{3}\s*([MFxX])\b", raw_title, flags=re.IGNORECASE)
+    if m_sex_after_sum:
+        sex_from_title = m_sex_after_sum.group(1).upper()
+        # NO quitamos la letra del título aquí (solo la capturamos). Ya has eliminado "(Relevos)" y "máster" final.
 
     # Sexo puede venir como letra al final del título
     sex_from_title, raw_title_wo_sex = _extract_trailing_sex_letter(raw_title)
@@ -753,13 +793,16 @@ def build_event_fields(event_title: str, category_line: Optional[str]) -> Dict:
 
         m = CATEGORY_LINE_RE.match(category_line)
         if m:
-            cat_text = m.group(1).strip()
+            cat_text = m.group(1).strip()            
+            cat_text = _strip_trailing_master(cat_text)
+            cat_text = collapse_duplicate_words(cat_text)
+
             sex_text = m.group(2).strip()
 
             # Caso MásterR4 +xxx: úsalo como master_display explícito
-            if re.match(r"^master\\s*r4\\s*\\+\\s*\\d{2,3}$", normalize_key(cat_text), flags=0):
+            if re.match(r"^master\\s*r4\\s*\\+\\s*\\d{3}$", normalize_key(cat_text), flags=0):
                 cat = master_category_to_canonical(cat_text.replace("Master", "Máster"))
-                cat_display_override = cat_text.replace("Master", "Máster")
+                cat_display_override = _normalize_master_display(cat_text.replace("Master", "Máster"))
             else:
                 cat_candidate = category_code(cat_text) or cat
                 if cat_candidate:

@@ -19,6 +19,17 @@ import re
 
 from .normalize import normalize_spaces, normalize_dashes
 
+# --- PDF font artifacts: cid decoding ---
+CID_MAP = {
+    16: "-",   # (cid:16) -> -
+    22: "3",   # (cid:22) -> 3
+    25: "6",   # (cid:25) -> 6
+    23: "4",   # (cid:23) -> 4
+    3:  " ",   # (cid:3)  -> space
+}
+
+CID_PAREN_RE = re.compile(r"\(\s*cid\s*:\s*(\d+)\s*\)", re.IGNORECASE)  # (cid:23) / (cid: 23)
+
 EVENT_TITLE_ES_RE = re.compile(r"^(?:4x)?\d+(?:[.,]\d+)?\s*m\.?\b", re.IGNORECASE)
 
 EVENT_TITLE_ES_START_RE = re.compile(r"^(?:4x)?\d+(?:[.,]\d+)?\s*m\.?\b", re.IGNORECASE)
@@ -32,7 +43,7 @@ EVENT_TITLE_MASTER_START_RE = re.compile(r"^lanzamiento(?:\s+de)?\s+cuerda\b", r
 
 EVENT_TITLE_MASTER_SEX_LETTER_RE = re.compile(r"\bmaster\s+[mfx]\b", re.IGNORECASE)
 
-MASTER_R4_CAT_RE = re.compile(r"^m[áa]ster\s*r4\s*\+\s*\d{2,3}$", re.IGNORECASE)
+MASTER_R4_CAT_RE = re.compile(r"^\s*m[áa]ster\s+r4\s*\+\s*\d{2,3}\s*$", re.IGNORECASE)
 
 CAT_ES_RE = re.compile(r"\b(juvenil|junior|júnior|absoluto|absoluta|cadete|infantil|máster|master)\b", re.IGNORECASE)
 
@@ -98,6 +109,34 @@ class Token:
     norm: str
     meta: Dict[str, Any]
 
+
+def decode_cid_tokens(s: str) -> str:
+    """
+    Reemplaza:
+      - '(cid:N)' usando CID_MAP
+      - caracteres de control cuyo ord() coincide con N usando CID_MAP (chr(N))
+    """
+    if not s:
+        return s
+
+    # 1) (cid:N) -> mapa
+    def _repl(m: re.Match) -> str:
+        n = int(m.group(1))
+        return CID_MAP.get(n, "")
+
+    s = CID_PAREN_RE.sub(_repl, s)
+
+    # 2) chr(N) -> mapa (control chars embebidos en números, guiones, espacios)
+    out = []
+    for ch in s:
+        o = ord(ch)
+        if o in CID_MAP:
+            out.append(CID_MAP[o])
+        else:
+            out.append(ch)
+    return "".join(out)
+
+
 def _has_split_year(parts: list[str]) -> bool:
     # detecta secuencia de 4 tokens de un dígito: 2 0 0 6 / 1 9 9 8 etc.
     for i in range(len(parts) - 3):
@@ -131,29 +170,37 @@ class Tokenizer:
         raw = line
         norm = normalize_spaces(line)
         norm_d = normalize_dashes(norm)
-        low = norm.lower()
+        
+        # ✅ Decodifica (cid:N) -> char real
+        norm_d = decode_cid_tokens(norm_d)
+        # Recolapsa espacios por si el decode dejó huecos
+        norm_d = normalize_spaces(norm_d)
+
+        low = norm_d.lower()
 
         # ----------------------------------
         # --- CABECERA
         # ----------------------------------
-        if TABLE_HEADER_RE.match(norm):
-            return Token(TokenType.TABLE_HEADER, page, line_no, raw, norm, {})
+        if TABLE_HEADER_RE.match(norm_d):
+            return Token(TokenType.TABLE_HEADER, page, line_no, raw, norm_d, {})
 
-        mth = TABLE_HEADER_ANY_RE.search(norm)
+        mth = TABLE_HEADER_ANY_RE.search(norm_d)
         if mth:
-            pre_title = norm[:mth.start()].strip(" *")
-            return Token(TokenType.TABLE_HEADER, page, line_no, raw, norm, {"pre_title": pre_title})
+            pre_title = norm_d[:mth.start()].strip(" *")
+            return Token(TokenType.TABLE_HEADER, page, line_no, raw, norm_d, {"pre_title": pre_title})
 
         # Línea de cabecera con fecha y piscina: no es fila de resultados
         if ("(piscina" in low) or ("pool:" in low):
-            return Token(TokenType.DATE_POOL, page, line_no, raw, norm, {})
+            return Token(TokenType.DATE_POOL, page, line_no, raw, norm_d, {})
 
         # ----------------------------------
         # --- CATEGORÍA
         # ----------------------------------
-        m = CATEGORY_SEX_RE.match(norm)
+        m = CATEGORY_SEX_RE.match(norm_d)
         if m:
             cat_raw = m.group(1).strip()
+            # FIX: a veces OCR duplica "Máster" al final: "Máster R4 +170 Máster"
+            cat_raw = re.sub(r"\bm[áa]ster\b\s*$", "", cat_raw, flags=re.IGNORECASE).strip()
             sex_raw = m.group(2).strip()
 
             # ✅ aceptar categorías estándar o MásterR4 +xxx
@@ -161,7 +208,7 @@ class Tokenizer:
             sex_ok = bool(SEX_OK.search(sex_raw))
 
             if cat_ok and sex_ok:
-                return Token(TokenType.CATEGORY_LINE, page, line_no, raw, norm, {
+                return Token(TokenType.CATEGORY_LINE, page, line_no, raw, norm_d, {
                     "cat_raw": cat_raw,
                     "sex_raw": sex_raw
                 })
@@ -169,10 +216,10 @@ class Tokenizer:
 
         # Cabecera de prueba en ES tipo: "50 m. ... categoría juvenil femenino"
         # o "Lanzamiento cuerda ... Master Fem/Mas"
-        if (EVENT_TITLE_ES_START_RE.match(norm) or EVENT_TITLE_MASTER_START_RE.match(norm)) \
-        and CAT_ES_RE.search(norm) and (SEX_ES_RE.search(norm) or SEX_ABBR_WORDS_RE.search(low) or SEX_LETTER_RE.search(low)) \
-        and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
-            clean_norm, multi_age = _strip_multi_age_ranges(norm)
+        if (EVENT_TITLE_ES_START_RE.match(norm_d) or EVENT_TITLE_MASTER_START_RE.match(norm_d)) \
+        and (CAT_ES_RE.search(norm_d) or CAT_ABBR_RE.search(norm_d)) and (SEX_ES_RE.search(norm_d) or SEX_ABBR_WORDS_RE.search(low) or SEX_LETTER_RE.search(low)) \
+        and (not YEAR_RE.search(norm_d)) and (not TIME_RE.search(norm_d)):
+            clean_norm, multi_age = _strip_multi_age_ranges(norm_d)
             meta = {}
             if multi_age:
                 meta["multi_age_range"] = True
@@ -189,8 +236,8 @@ class Tokenizer:
         # --- CABECERA 2
         # ----------------------------------
         # Cabecera de prueba en ES tipo: "50 m. ... categoría juvenil femenino"
-        if EVENT_TITLE_ES_RE.match(norm) and ("categor" in low) and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
-            clean_norm, multi_age = _strip_multi_age_ranges(norm)
+        if EVENT_TITLE_ES_RE.match(norm_d) and ("categor" in low) and (not YEAR_RE.search(norm_d)) and (not TIME_RE.search(norm_d)):
+            clean_norm, multi_age = _strip_multi_age_ranges(norm_d)
             meta = {}
             if multi_age:
                 meta["multi_age_range"] = True
@@ -204,10 +251,10 @@ class Tokenizer:
             )
 
         # Cabecera de prueba en ES tipo: "50 m. ... categoría juvenil femenino" o "Lanzamiento de Cuerda ... categoría junior masculino"
-        if (EVENT_TITLE_ES_START_RE.match(norm) or EVENT_TITLE_MASTER_START_RE.match(norm)) \
-        and CAT_ES_RE.search(norm) and SEX_ES_RE.search(norm) \
-        and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
-            clean_norm, multi_age = _strip_multi_age_ranges(norm)
+        if (EVENT_TITLE_ES_START_RE.match(norm_d) or EVENT_TITLE_MASTER_START_RE.match(norm_d)) \
+        and (CAT_ES_RE.search(norm_d) or CAT_ABBR_RE.search(norm_d)) and SEX_ES_RE.search(norm_d) \
+        and (not YEAR_RE.search(norm_d)) and (not TIME_RE.search(norm_d)):
+            clean_norm, multi_age = _strip_multi_age_ranges(norm_d)
             meta = {}
             if multi_age:
                 meta["multi_age_range"] = True
@@ -221,8 +268,8 @@ class Tokenizer:
             )
 
         # Caso especial: títulos "Lanzamiento de cuerda Master M/F" donde el sexo viene en la CATEGORY_LINE siguiente
-        if EVENT_TITLE_MASTER_START_RE.match(norm) and CAT_ES_RE.search(norm) and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
-            clean_norm, multi_age = _strip_multi_age_ranges(norm)
+        if EVENT_TITLE_MASTER_START_RE.match(norm_d) and (CAT_ES_RE.search(norm_d) or CAT_ABBR_RE.search(norm_d)) and (not YEAR_RE.search(norm_d)) and (not TIME_RE.search(norm_d)):
+            clean_norm, multi_age = _strip_multi_age_ranges(norm_d)
             meta = {}
             if multi_age:
                 meta["multi_age_range"] = True
@@ -237,12 +284,12 @@ class Tokenizer:
 
         # Caso: "Lanzamiento de cuerda Master M/F/X" (sexo en letra), el detalle de rango viene en la CATEGORY_LINE siguiente
         msex = re.search(r"\bmaster\s+([mfx])\b", low)
-        if EVENT_TITLE_MASTER_START_RE.match(norm) and msex and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
+        if EVENT_TITLE_MASTER_START_RE.match(norm_d) and msex and (not YEAR_RE.search(norm_d)) and (not TIME_RE.search(norm_d)):
             sex_hint = msex.group(1).upper()  # M / F / X
             return Token(TokenType.EVENT_TITLE, page, line_no, raw, norm, {"sex_hint": sex_hint})
 
         # ---- EVENT TITLE (EN sin distancia) ----
-        if EVENT_TITLE_EN_KNOWN_RE.search(norm):
+        if EVENT_TITLE_EN_KNOWN_RE.search(norm_d):
             return Token(
                 TokenType.EVENT_TITLE,
                 page=page,
@@ -256,42 +303,42 @@ class Tokenizer:
         # --- RESULTADOS
         # ----------------------------------        
         # Línea de rango de fechas (no es resultado)
-        if DATE_RANGE_LINE_RE.search(norm):
-            return Token(TokenType.NOISE, page, line_no, raw, norm, {"reason": "date_range"})
+        if DATE_RANGE_LINE_RE.search(norm_d):
+            return Token(TokenType.NOISE, page, line_no, raw, norm_d, {"reason": "date_range"})
 
         # Filas de resultados
-        if ROW_START_RE.match(norm):
-            parts = norm.split()
-            if YEAR_RE.search(norm) or _has_split_year(parts):
-                return Token(TokenType.INDIVIDUAL_ROW, page, line_no, raw, norm, {})
-            return Token(TokenType.TEAM_ROW, page, line_no, raw, norm, {})
+        if ROW_START_RE.match(norm_d):
+            parts = norm_d.split()
+            if YEAR_RE.search(norm_d) or _has_split_year(parts):
+                return Token(TokenType.INDIVIDUAL_ROW, page, line_no, raw, norm_d, {})
+            return Token(TokenType.TEAM_ROW, page, line_no, raw, norm_d, {})
 
         # TEAM_ROW sin posición (caso típico: falta el "1" en la extracción)
-        if (not ROW_START_RE.match(norm)) and (not YEAR_RE.search(norm)) and TIME_RE.search(norm):
+        if (not ROW_START_RE.match(norm_d)) and (not YEAR_RE.search(norm_d)) and TIME_RE.search(norm_d):
             # Heurística: empieza por "APELLIDOS, NOMBRE", trae tiempo, y no es cabecera
-            if NAME_COMMA_START_RE.match(norm) and not any(w in low for w in HEADER_BAD_WORDS):
-                return Token(TokenType.TEAM_ROW, page, line_no, raw, norm, {"implicit_position": True})
+            if NAME_COMMA_START_RE.match(norm_d) and not any(w in low for w in HEADER_BAD_WORDS):
+                return Token(TokenType.TEAM_ROW, page, line_no, raw, norm_d, {"implicit_position": True})
 
         # Miembro de relevo: normalmente "APELLIDO, NOMBRE" en su propia línea
-        if (not ROW_START_RE.match(norm)) and (not YEAR_RE.search(norm)) and (not TIME_RE.search(norm)):
+        if (not ROW_START_RE.match(norm_d)) and (not YEAR_RE.search(norm_d)) and (not TIME_RE.search(norm_d)):
             low = norm_d.lower()
-            if re.search(r"\d+\s*[ªº]", norm):
-                return Token(TokenType.NOISE, page, line_no, raw, norm, {})
+            if re.search(r"\d+\s*[ªº]", norm_d):
+                return Token(TokenType.NOISE, page, line_no, raw, norm_d, {})
             # Cabeceras tipo "1ª sesión ... , 2ª sesión ..." NO son miembros de relevo aunque tengan coma
-            if re.search(r"\d+\s*[ªº]", norm):
-                return Token(TokenType.COMPETITION_LINE, page, line_no, raw, norm, {})
-            if NAME_COMMA_RE.match(norm) and not any(w in low for w in HEADER_BAD_WORDS):
+            if re.search(r"\d+\s*[ªº]", norm_d):
+                return Token(TokenType.COMPETITION_LINE, page, line_no, raw, norm_d, {})
+            if NAME_COMMA_RE.match(norm_d) and not any(w in low for w in HEADER_BAD_WORDS):
                 # Evitar direcciones/ruido: si hay dígitos, no es un nombre de persona.
-                if re.search(r"\d", norm):
-                    return Token(TokenType.NOISE, page, line_no, raw, norm, {"reason": "relay_member_has_digits"})
-                return Token(TokenType.RELAY_MEMBER, page, line_no, raw, norm, {})
+                if re.search(r"\d", norm_d):
+                    return Token(TokenType.NOISE, page, line_no, raw, norm_d, {"reason": "relay_member_has_digits"})
+                return Token(TokenType.RELAY_MEMBER, page, line_no, raw, norm_d, {})
 
          # ----------------------------------
         # --- CABECERA 3
         # ----------------------------------           
         # Título de prueba (muy permisivo; se confirma al llegar TABLE_HEADER)
         if ("men's" in low) or ("women's" in low) or ("line throw" in low) or ("4x" in low):
-            clean_norm, multi_age = _strip_multi_age_ranges(norm)
+            clean_norm, multi_age = _strip_multi_age_ranges(norm_d)
             meta = {}
             if multi_age:
                 meta["multi_age_range"] = True
@@ -304,5 +351,5 @@ class Tokenizer:
                 meta
             )
 
-        return Token(TokenType.NOISE, page, line_no, raw, norm, {})
+        return Token(TokenType.NOISE, page, line_no, raw, norm_d, {})
 

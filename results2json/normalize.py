@@ -13,20 +13,18 @@
 from __future__ import annotations
 
 import re
+import unicodedata
+from typing import Optional, Tuple
 
 # ---- fix de OCR: año pegado al club ----
 # Ejemplos en PDFs: "1972C.D.E Pacífico..." o "1971Natación RACE..."
 _GLUED_YEAR_RE = re.compile(r"(\b(?:19|20)\d{2})(?=[A-Za-zÁÉÍÓÚÜÑ])")
 
+LOWER_WORDS_ES = {"de","del","la","las","los","y","e","en","con","sin","al","a","por","para","da","dos","das","do"}
+
 def fix_glued_year(s: str) -> str:
     """Inserta un espacio cuando un año YYYY viene pegado al siguiente token (letra)."""
     return _GLUED_YEAR_RE.sub(r"\1 ", s or "")
-
-import unicodedata
-from typing import Optional, Tuple
-
-
-LOWER_WORDS_ES = {"de","del","la","las","los","y","e","en","con","sin","al","a","por","para","da","dos","das","do"}
 
 def normalize_spaces(s: str) -> str:
     s = re.sub(r"\s+", " ", s or "")
